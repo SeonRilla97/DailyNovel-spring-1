@@ -1,0 +1,146 @@
+/* ctrl+f 눌러서 필요한 값 검색해서 사용 */
+/* 추가해야 할 수치들이 생각나면 꼭 공유하고 이야기 나눈 후에 추가하세요! */
+/* 우리가 쓰는 rem 단위 정리 */
+/* 
+4px = 0.25, 8px = 0.5, 16px = 1, 24px = 1.5, 48px = 3
+40px = 2.5, 60px = 3.75, 124px = 7.75, 140px = 8.75
+164px = 10.25, 288px = 18, 56px = 3.5, 20px= 1.25
+312px = 19.5, 88px = 5.5, 188px = 11.75, 72px = 4.5
+68px = 4.25
+ */
+
+/* -------------------------------------------------------------  */
+/* 공통 속성 */
+.d-none{
+  display: none;
+}
+
+/* margin */
+ 
+/* margin-top */
+/* 4 8 16 24 48 */
+
+.mgt-1{ margin-top: 0.25rem;}
+.mgt-2{ margin-top: 0.5rem;}
+.mgt-3{ margin-top: 1rem;}
+.mgt-4{ margin-top: 1.5rem;}
+.mgt-5{ margin-top: 3rem;}
+
+/* -------------------------------------------------------------  */
+
+/* padding */
+
+.pd{}
+.pdt{}
+
+/* -------------------------------------------------------------  */
+
+/* color - 값이 오를수록 진해짐.*/
+
+/* 배경 */
+
+/* 초록색 */
+.color-bg-green-1 { background-color: #9aefb0; }
+.color-bg-green-2 { background-color: #69bc80; }
+.color-bg-green-3 { background-color: #388b53; }
+/* 흰 색 */
+.color-bg-white-1 { background-color: #ffffff; }
+.color-bg-white-2 { background-color: #fcfcfc; }
+.color-bg-white-3 { background-color: #fafafa; }
+/* 노란색 */
+.color-bg-yellow-1 { background-color: #ffff77; }
+.color-bg-yellow-2 { background-color: #fff241; }
+.color-bg-yellow-3 { background-color: #c8c000; }
+
+/* 색상 */
+
+/* 초록색 */
+.color-green-1 { color: #9aefb0; }
+.color-green-2 { color: #69bc80; }
+.color-green-3 { color: #388b53; }
+
+/* 흰 색 */
+.color-white-1 { color: #ffffff; }
+.color-white-2 { color: #fcfcfc; }
+.color-white-3 { color: #fafafa; }
+
+/* 노란색 */
+.color-yellow-1 { color: #ffff77; }
+.color-yellow-2 { color: #fff241; }
+.color-yellow-3 { color: #c8c000; }
+
+
+/* -------------------------------------------------------------  */
+
+/* font */
+
+/* font 크기 */
+.font-size-1{ font-size: px;}
+
+/* font 굵기 */
+.font-weight-1{ font-weight: 100;}
+
+/* -------------------------------------------------------------  */
+
+/* border */
+
+/* radius */
+.border-r-1{ border-radius: 10px; }
+.border-r-2{border-radius: 20px;}
+.border-r-3{border-radius: 30px;}
+.border-r-3{ border-radius: 40px; }
+.border-r-4{ border-radius: 50px; }
+
+
+.border-style-btm {
+    border-radius: 0px 0px 40px 40px;
+}
+
+.border-style-left1 {
+    border-radius: 10px 0px 0px 10px;
+}
+
+.border-style-top {
+    border-radius: 30px 30px 0px 0px ;
+}
+
+.border-style-top2 {
+    border-radius: 10px 10px 0px 0px ;
+}
+.border-style-btm2 {
+    border-radius: 0px 0px 10px 10px;
+}
+
+
+
+/* -------------------------------------------------------------  */
+
+/* location 정렬 */
+.lc-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Layout(개별 컨텐츠 레이아웃) */
+.relative{
+  position: relative;
+}
+.sticky{
+  position: sticky;
+  bottom: 0;
+}
+.ib{
+  display: inline-block;
+}
+
+/* 박스 쉐도우 */
+.shadow-1 {box-shadow: 0px 3px 13px -5px rgba(0,0,0,0.69);}
+.shadow-2 {box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.153);}
+
+/* 아이템 크기 설정 */
+.content-box {
+  height: 100%;
+  width: 100%;
+}
+
