@@ -8,11 +8,14 @@ public class  HomeController {
 
 	
 	
-	@RequestMapping("index")
+	@RequestMapping("/")
 	public String index(){
 
 		return "/WEB-INF/view/index.jsp";
 		
 	}
+	
+	
+
 	
 }
