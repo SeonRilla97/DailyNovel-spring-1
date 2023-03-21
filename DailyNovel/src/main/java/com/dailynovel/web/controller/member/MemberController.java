@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/mamber/")
+@RequestMapping("/member/")
 public class  MemberController {
 
 	
@@ -16,7 +16,7 @@ public class  MemberController {
 	
 	@RequestMapping("setting")
 	public String setting(){
-		return "/WEB-INF/view/member/setting.jsp";
+		return "/member/settings/main.html";
 	}
 	
 	
