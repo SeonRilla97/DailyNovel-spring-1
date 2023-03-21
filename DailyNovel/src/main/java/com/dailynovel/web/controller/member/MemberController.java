@@ -15,6 +15,12 @@ public class  MemberController {
 		return "/WEB-INF/view/member/main.jsp";
 	}
 	
+
+	@RequestMapping("setting")
+	public String setting(){
+		return "/member/settings/main.html";
+	}
+	
 	
 
 	
