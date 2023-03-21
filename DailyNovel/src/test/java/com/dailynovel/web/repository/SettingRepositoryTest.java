@@ -1,4 +1,4 @@
-package com.dailynovel.web.repository.member;
+package com.dailynovel.web.repository;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 
 import com.dailynovel.web.entity.Setting;
+import com.dailynovel.web.repository.SettingRepository;
 
 
 @AutoConfigureTestDatabase(replace = Replace.NONE)

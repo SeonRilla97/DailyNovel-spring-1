@@ -1,4 +1,4 @@
-package com.dailynovel.web.repository.member;
+package com.dailynovel.web.repository;
 
 
 import org.apache.ibatis.annotations.Mapper;

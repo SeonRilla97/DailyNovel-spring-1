@@ -1,13 +1,14 @@
-package com.dailynovel.web.service.member;
+package com.dailynovel.web.service;
 
 import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.dailynovel.web.entity.Setting;
-import com.dailynovel.web.repository.member.SettingRepository;
+import com.dailynovel.web.repository.SettingRepository;
 
 
 
