@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/user/")
 @Controller
-public class  UserController {
+public class UserController {
 
 	@RequestMapping("login")
 	public String login() {
-		return "/WEB-INF/view/user/login.jsp";
+		return "/user/login";
 	}
 
 	@RequestMapping("signup")

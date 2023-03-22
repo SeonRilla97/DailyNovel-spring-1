@@ -19,12 +19,11 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
-	font: inherit;
-	font-family: 'Nanum Gothic', sans-serif;
-	vertical-align: baseline;
-}
 
+}
+html{
+
+}
 html{
   font-size: 16px;	
 }
@@ -36,6 +35,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;	
+
 }
 ol, ul {
 	list-style: none;
@@ -65,3 +65,4 @@ a:active{
 a:hover{
 	text-decoration: none;
 }
+

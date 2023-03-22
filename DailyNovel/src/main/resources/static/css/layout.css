@@ -95,8 +95,6 @@ html{
   height: 100%;
 
   grid-template-columns: 4rem 4rem 4rem 4rem 4rem;
-
-
   column-gap: 0.5rem;
   grid-template-areas: "nav-1 nav-2  nav-main  nav-3 nav-4";
   justify-content: space-around;
@@ -137,7 +135,32 @@ html{
   
   /* 각 페이지 별로 만들고 싶을 때 */
   /* 로그인, 메인 팀 */
+  .container-1-nmg{
 
+    width: 100vw;
+    height: 100vh;
+      
+    display: grid;
+    grid-template-rows: 1fr 7.5fr 1fr; 
+    grid-template-columns: 1fr 23.75fr 1fr;
+  }
+  
+  .container-1-nmg > .header{
+
+    grid-column: 1/4;
+    grid-row:1/2;
+  }
+  
+  .container-1-nmg > .main{
+    grid-column: 1/4;
+    grid-row:2/3;
+  }
+  
+  .container-1-nmg > .footer{    
+
+    grid-column: 1/4;
+    grid-row:3/4;
+  }
   
   /* 일기 작성, 목록 팀 */
 
@@ -163,7 +186,11 @@ html{
 
   .tmp-main{
     display: grid;
-    grid-template-rows: 1fr 3.5fr;
+    grid-template-rows: 1fr 3.5fr; 
+    
+    min-height: 100px;
+    max-height: auto ;
+    
   }
   
   /* 일기 통계, 설정 팀 */

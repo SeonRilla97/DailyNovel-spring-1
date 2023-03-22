@@ -8,7 +8,7 @@ let ctx = document.getElementById('myChart').getContext('2d');
         labels: ['자유롭게', '간편일기', '영화', '여행'],
 
         datasets: [{
-            data: [5, 8, 7, 4,],
+            data: [5, 4, 3, 2],
             backgroundColor: [
                 '#49b8a5', //행복
                 '#f2c1c1', //들뜸

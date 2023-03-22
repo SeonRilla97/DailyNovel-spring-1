@@ -4,7 +4,7 @@ let myChart = new Chart(ctx, {
     data: {
 
         
-        labels:  ['0   ~ 25% ', '26 ~ 50% ', '51 ~ 75% ', '76 ~ 100%'],
+        labels:  ['0 ~ 25% ', '26 ~ 50%  ','51 ~ 75%', '76 ~ 100%'],
 
         datasets: [{
             data: [6, 13, 8, 15],
@@ -28,7 +28,13 @@ let myChart = new Chart(ctx, {
       responsive : true,
         plugins: {
             legend: {
-                position: 'bottom'
+                position: 'bottom',
+                labels: {
+                    maxWidth: 200,
+                    padding:15
+                        
+                    
+                }
             }
         }
       }

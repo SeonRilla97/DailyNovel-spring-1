@@ -1,5 +1,4 @@
 //Javascript
-
 let loginBoxId = document.querySelector(".outBox-id");
 let loginBoxPass = document.querySelector(".outBox-pass");
 let loginInputBoxId = document.querySelector(".sample-id");
@@ -9,6 +8,11 @@ const password = document.querySelector("#passwd");
 const loginbtn = document.querySelector("#loginbtn");
 const idmiss = document.getElementById("idmiss");
 const passwordmiss = document.getElementById("passwordmiss");
+
+
+
+const outBox = document.querySelectorAll(".outBox");
+
 
 loginbtn.addEventListener('click', ()=>{
     if (id.value == '0000') {
@@ -27,7 +31,7 @@ loginbtn.addEventListener('click', ()=>{
         }
     }
     else {
-      
+
             loginbtn.type ="reset";
             idmiss.classList.remove('blind');
             passwordmiss.classList.add('blind');
@@ -38,7 +42,6 @@ loginbtn.addEventListener('click', ()=>{
 })
 
 loginInputBoxId.addEventListener('keyup', function(){
-    console.log("adsf");
     if(!loginInputBoxId.value == ''){
         //빈 값이 아닌 경우
         loginBoxId.classList.add('existence');   
@@ -61,24 +64,25 @@ loginInputBoxPass.addEventListener('keyup', function(){
 
 
 
-class inputForm{
-    constructor(selector) {
-        this.doc = document.querySelector(selector);
 
-
-    this.doc.addEventListener('keyup', function(){
-        if(!loginInputBoxPass.value == ''){
-            //빈 값이 아닌 경우
-            loginBoxPass.classList.add('existence');   
-        }else{
-            //빈 값인 경우
-            loginBoxPass.classList.remove('existence');   
-        }
-    });
-    }
-
+    //여기에 유효성검사 까지 들어간다면 어떻게 되는거지???
+    //이거 쓸 경우, outbox 내부에는 input[type='txt']가 하나만 있어야 합니다.
+    outBox.forEach(e => {
+        e.addEventListener("keyup", ()=>{
+            let value = e.querySelector("input[type='text']").value
     
-}
+            if(!value== ''){
+                //빈 값이 아닌 경우
+                e.classList.add('existence');   
+            }else{
+                //빈 값인 경우
+                e.classList.remove('existence');   
+            }
+        });
+    });
+    
+    
+
 ////////////스크롤 이벤트/////////////////////
 let html = document.querySelector("html");
 var page = 1;
