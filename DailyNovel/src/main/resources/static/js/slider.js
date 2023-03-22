@@ -168,11 +168,11 @@ const mainPreviewSlide = new slide(
     ".preview-slide .pagination > li" 
     );
 
-const mainPreviewsaSlide = new slide(
-    ".previewasf-slide", //
-    ".preview-slide .prev-btn",
-    ".preview-slide .next-btn",
-    ".preview-slide .item",
-    ".preview-slide .pagination",
-    ".preview-slide .pagination > li" 
-    );
+// const mainPreviewsaSlide = new slide(
+//     ".previewasf-slide", //
+//     ".preview-slide .prev-btn",
+//     ".preview-slide .next-btn",
+//     ".preview-slide .item",
+//     ".preview-slide .pagination",
+//     ".preview-slide .pagination > li" 
+//     );

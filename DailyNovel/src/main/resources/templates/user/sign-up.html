@@ -29,45 +29,53 @@
                 <h1 class="d-none">회원가입</h1>
                 <div class="container-form">
                     <form class="form-signup" id="sign-up-form">
-
-                        <div>
-                            <label for="email" class="mgt-5 ib label-txt">이메일</label>
-                            <input class="input-1 box-large  mgt-1" type="text" placeholder="이메일을 입력해주세요." id="email">
-                            <div class="mgt-2">알맞은 이메일 형식입니다.</div>
-                            <div class="certify-form mgt-3">
-                                <div class="user-data"><input class="input" type="text" placeholder="인증번호" id ="email-check"></div>
-                                <a class="link lc-center color-bg-yellow-1" href="">인증번호 전송</a>
-                            </div>
-                            
-                        </div>  
-                        <div>
-                            <label for="pwd" class="mgt-5 ib label-txt">비밀번호</label>
-                            <input class="input-1 box-large  mgt-1" type="text" placeholder="비밀번호를 입력해주세요." id="pwd">
+                        
+                        <div class="outBox box-large mgt-5">
+                            <div class="inputBox">
+                                <input id="email" class="sample-id" type="text"/>
+                                <label for="email">이메일</label>
+                                <span><img src="../../res/img/DiaryMainPage/fail.svg" alt="이메일을 확인해 주세요"></img></span>
+                            </div>  
                         </div>
-                        <div class="mgt-2">알맞은 이메일 형식입니다.</div>
-
-                        <div>
-                            <label for="pwd-check" class="mgt-3 ib label-txt">비밀번호 확인</label>
-                            <input class="input-1 box-large  mgt-1" type="text" placeholder="비밀번호 확인" id="pwd-check">
+                        <div class="certify-form mgt-3">
+                            <div class="user-data"><input class="input" type="text" placeholder="인증번호" id ="email-check"></div>
+                            <a class="link lc-center" href="" id="email-check-btn">인증번호 전송</a>
                         </div>
-                        <div class="mgt-2">알맞은 이메일 형식입니다.</div>
 
-                        <div>
-                            <label for="nic-name" class="mgt-5 ib label-txt">별명</label>
-                            <input class="input-1 box-large  mgt-1" type="text" placeholder="별명(중복 불가)" id="nic-name">
+
+                        <div class="outBox box-large mgt-5">
+                            <div class="inputBox">
+                                <input id="pwd" class="sample-id" type="password"/>
+                                <label for="pwd">비밀번호</label>
+                                <span><img src="../../res/img/DiaryMainPage/PASS.svg" alt="알맞은 형식입니다."></span>
+                            </div>  
                         </div>
-                        <div class="mgt-2">알맞은 이메일 형식입니다.</div>
 
-                        <div class="mgt-3">
-                            <label for="" class="mgt-5">전화번호</label>
-                            <input class="input-1 box-large  mgt-1" type="text" placeholder="전화번호를 입력해주세요." id="phone-num">
-                            
-
-                            <div class="certify-form mgt-3">
-                                <div class="user-data"><input class="input" type="text" placeholder="인증번호" id="phone-check"></div>
-                                <a class="link lc-center " href="">인증번호 전송</a>
-                            </div>
+                        <div class="outBox box-large mgt-5">
+                            <div class="inputBox">
+                                <input id="pwd-check" class="sample-id" type="password"/>
+                                <label for="id-check">비밀번호 확인</label>
+                            </div>  
                         </div>
+
+                        <div class="outBox box-large mgt-5">
+                            <div class="inputBox">
+                                <input id="nickname" class="sample-id" type="text"/>
+                                <label for="nickname">별명(중복불가)</label>
+                            </div>  
+                        </div>
+
+                        <div class="outBox box-large mgt-5">
+                            <div class="inputBox">
+                                <input id="phone" class="sample-id" type="text" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"/>
+                                <label for="phone">전화번호</label>
+                            </div>  
+                        </div>
+                        <div class="certify-form mgt-3">
+                            <div class="user-data"><input class="input" type="text" placeholder="인증번호" id="phone-check"></div>
+                            <a class="link lc-center " href="">인증번호 전송</a>
+                        </div>
+
                         
                         <input class="btn2 input-btn color-bg-green-2 color-white-2 shadow-2 mgt-5" type="submit" value="가입하기">
                     </form>
@@ -76,5 +84,7 @@
             <!-- <footer class="footer"></footer> -->
         </div>
         <script src="/res/js/valCheckSignup.js"></script>
+        <script src="/res/css/exam.js"></script>
+        
     </body>
 </html>
