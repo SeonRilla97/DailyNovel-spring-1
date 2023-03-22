@@ -1,6 +1,90 @@
 /* 로그인, 메인 팀 ======================================================== */
 
+
+
+/* 폰트 */
+@font-face {
+  font-family: 'KCCChassam';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCCChassam.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*  */
 /* 회원가입 페이지-선유진 */
+/* 실험실 */
+.outBox {padding: 0px;}
+.outBox .inputBox {position:relative; height:100%; width:100%; border: 0px;}
+.outBox .inputBox input {padding:10px 10px; width:100%; height:120%; font-size:1.2rem; box-sizing:border-box; border:0px solid #999; outline:none;}
+.outBox .inputBox label {position:absolute; left:0; bottom:0; padding:0 6px; color:#999; font-size:1rem; font-weight:normal; background:#fff; transform:scale(1) translate(4px, -18px); transition:all .15s; pointer-events:none;}
+.outBox .inputBox img {
+  /* background-color: #69BC80; */
+  right: 2%;
+  top:50%;
+  padding: 0;
+  position: absolute;
+  display: inline-block;
+  height: 50%;
+  transform: translateY(-50%);
+}
+
+
+.outBox .inputBox input:focus,
+.outBox.existence .inputBox input {
+  border: 0px solid #69bc80;
+}
+
+.outBox .inputBox input:focus + label,
+.outBox.existence .inputBox label {color:#69BC80; transform:scale(.85) translate(-3px, -48px);}
+/* 실험실 끝 */
+
+/* index페이지: 이동형*/
+.box-sizing{
+  box-sizing: border-box;
+}
+
+.opacity-0{
+  opacity: 0;
+}
+
+.scroll-event{
+  animation: fadein 3s ;
+}
+
+.overflow-hidden{
+  overflow: hidden;
+}
+
+.fade-in{
+  animation: fadein 3s ;
+}
+
+@keyframes fadein{
+  
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+    
+  }
+  
+}
+
+.fade-out{
+  animation: fadeout 3s;
+}
+
+@keyframes fadeout {
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+}
+
+/*회원가입:선유진*/
 
 /* 배경이미지 */
 .main-bg{
@@ -18,9 +102,9 @@
 
 /* 로고 폰트 */
 .main-logo {
-  font-family: "Niconne";
-  font-size: 4rem;
-  text-align: center;
+  font-family: "Niconne" !important;
+  font-size: 4rem !important;
+  text-align: center !important;
 }
 .font-normal {
   font-size: 1.5rem;
@@ -86,7 +170,7 @@
 .outBox-id .inputBox label {position:absolute; left:0; bottom:0; padding:0 6px; color:#999; font-size:1rem; font-weight:normal; background:#fff; transform:scale(1) translate(4px, -18px); transition:all .15s; pointer-events:none;}
 .outBox-id .inputBox input[type="text"]:focus,
 .outBox-id.existence .inputBox input[type="text"] {
-  border: 1px solid #69bc80;
+  border: 0px solid #69bc80;
 }
 
 .outBox-id .inputBox input[type="text"]:focus + label,
@@ -184,11 +268,13 @@
   display: inline-block;
   width: 6.5rem;
   height: 100%;
-  border: 1px solid #69bc80;
+  border: 0px solid #69bc80;
   box-sizing: border-box;
   font-weight: bold;
+  text-align: center;
+  font-size: 0.9rem;
   line-height: 3.75rem; /*certify-form의 height 값과 동일해야함 (중앙정렬 위함)*/
-  border-radius: 0 10px 10px 0;
+  background-color: #C5C5C550;
 }
 
 /* ============================================================================== */
@@ -206,6 +292,7 @@
   flex-direction: column;
   justify-content: space-around;
 }
+
 /* 일기 작성 현황(진행 바) */
 .pg-bar {
   appearance: none;
@@ -227,24 +314,42 @@
   font-weight: bold;
 }
 .hi-txt > div:nth-child(1) {
-  letter-spacing: 0.25rem;
+  /* letter-spacing: 0.25rem; */
+  font-family: 'KCCChassam';
 }
 
 /* 달력과 미리보기 레이아웃 */
 .main-pg-2Layers {
   display: grid;
-  grid-template-rows: 1fr 4fr 2fr;
+  grid-template-rows: 1fr 7fr 3fr;
   row-gap: 0.5rem;
   box-sizing: border-box;
 }
 
 /* 달력 */
 .calender {
+  position:relative;
   width: 100%;
   padding: 1rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  
+  
+}
+.calender::before{
+  /* 달력 배경 넣기 */
+  content:"";
+  position:absolute;
+  /* background-image: url("/res/img/DiaryMainPage/jojang.jpg"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  opacity: 30%;
+  pointer-events: none;;
 }
 
 .calender > .header {
@@ -287,12 +392,15 @@
 .calender .date li {
   border-radius: 50%;
 }
+/* .calender .date li:hover{
+  transform: translateY(-10px);
+} */
 .calender .date li:nth-child(-n + 7) {
   margin-top: 0;
 }
 
 .calender .inactive {
-  color: #ff0000;
+  color: #dadada;
 }
 
 /* 슬라이드 */
@@ -361,7 +469,7 @@
   width:3rem;
   height:3rem;
   background-repeat: no-repeat;
-  background-image: url(/img/DiaryMainPage/add.svg);
+  background-image: url(/res/img/DiaryMainPage/add.svg);
   
 }
 
@@ -446,8 +554,8 @@ input:focus {
     font-size: larger;
 }
 
-
 .list-main-flex-col{
+
   display: flex;
   flex-direction: column;
 }
@@ -574,7 +682,54 @@ color: white;
 }
 
 /* select-tmp.html */
-.btn1 .tmp
+.tmp-select-box{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 19.5rem;
+  min-height: 10rem;
+  max-height: auto;
+  overflow-y: auto;
+  background-color: #f3f3f3;
+  
+  border-radius: 2.5rem;
+}
+
+.tmp-select-box .active{
+  display:inherit;
+}
+
+.tmp-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 100px;
+  max-height: auto;
+  overflow: auto;
+}
+
+
+
+.tmp-btn1{
+    width: 19.5rem;
+    height: 5.5rem;
+    font-size: 1.5rem;
+   
+    background-color: #fcfcfc;
+    border-radius: 2.5rem;
+    box-shadow: 0 0.25rem 0.25rem rgba(0, 4, 4, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tmp-of-scroll{
+  min-height: 300px;
+  overflow-y: auto;
+}
+
 
 /* 통계, 설정 팀 ================================================================== */
 
@@ -688,6 +843,19 @@ color: white;
   text-decoration: none;
   cursor: pointer;
 }
+/* 메인블럭 overflow:auto를 하기위한 설정 */
+.main-size{
+  min-height: 100px; max-height: auto; 
+  padding-bottom: 0.5rem;
+}
+.overflow-auto{
+  overflow: auto;
+}
+
+/* 폰트 사이즈 변경 */
+.font-size-js{
+  font-size: 1rem;
+}
 
 
 /* 유병우 테스트용, 테스트 확인 후 삭제할 예정 */
@@ -717,6 +885,10 @@ color: white;
 /* feeling */
 
 
+.f-pdt-7{
+  padding-top: 4.5rem;
+
+}
 
 .btn-feeling {
     font-size: 1.1rem;
@@ -776,7 +948,7 @@ color: white;
 }
 .lc-feeling-view-alignment{
     display: flex;
-    width: 20rem;
+    width: 18em;
     height: 20rem;
     flex-direction: column;
     align-items: center;
@@ -784,7 +956,7 @@ color: white;
 
 .lc-space-around{
     display: flex;
-    width: 22rem;
+    width: 20rem;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
@@ -898,7 +1070,6 @@ color: white;
     width: 19.5rem;
     height: 5.5rem;
     font-size: 1.5rem;
-   
     background-color: #fcfcfc;
     border-radius: 2.5rem;
     box-shadow: 0 0.25rem 0.25rem rgba(0, 4, 4, 0.1);
@@ -927,45 +1098,6 @@ feeling view
   width: 19.5rem;
   height: 5.5rem;
   border-radius: 2.5rem;
-}
-
-/* 네비게이션   */
-
-/* 파악후에 바꿀 예정입니다. */
-.navflex {
-  display: flex;
-
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.navicon-Box > a {
-  text-decoration: none;
-}
-
-.navicon {
-  background-repeat: no-repeat;
-  position: sticky;
-  bottom: 0;
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-.ic-pencil {
-  background-image: url(../img/ic-pencil.svg);
-}
-
-.ic-graph-circle {
-  background-image: url(../img/ic-graph-circle.svg);
-}
-.ic-feed {
-  background-image: url(../img/ic-feed.svg);
-}
-.ic-calendar {
-  background-image: url(../img/ic-calendar.svg);
-}
-.ic-Vector {
-  background-image: url(../img/ic-Vector.svg);
 }
 
 .ic-doubleDown {

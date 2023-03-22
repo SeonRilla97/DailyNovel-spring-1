@@ -1,0 +1,171 @@
+/* ctrl+f 눌러서 필요한 값 검색해서 사용 */
+/* 추가해야 할 수치들이 생각나면 꼭 공유하고 이야기 나눈 후에 추가하세요! */
+/* 우리가 쓰는 rem 단위 정리 */
+/* 
+4px = 0.25, 8px = 0.5, 16px = 1, 24px = 1.5, 48px = 3
+40px = 2.5, 60px = 3.75, 124px = 7.75, 140px = 8.75
+164px = 10.25, 288px = 18, 56px = 3.5, 20px= 1.25
+312px = 19.5, 88px = 5.5, 188px = 11.75, 72px = 4.5
+68px = 4.25
+ */
+
+/* -------------------------------------------------------------  */
+/* 공통 속성 */
+.d-none{
+  display: none;
+}
+
+.t-none{
+  text-decoration: none;
+}
+
+/* margin */
+
+/* margin-top */
+/* 4 8 16 24 48 */
+
+.mgt-1{ margin-top: 0.25rem;}
+.mgt-2{ margin-top: 0.5rem;}
+.mgt-3{ margin-top: 1rem;}
+.mgt-4{ margin-top: 1.5rem;}
+.mgt-5{ margin-top: 3rem;}
+/* 추가한자: 이동형 사유:메인에서 헤더와 메인이 더 벌어졌으면 해서 넣었습니다. */
+.mgt-6{ margin-top: 5rem;}
+
+/* 추가한자: 이동형 사유:왼쪽 방향도 추가했습니다. */
+.mgl-1{ margin-left: 0.25rem;}
+.mgl-2{ margin-left: 0.5rem;}
+.mgl-3{ margin-left: 1rem;}
+.mgl-4{ margin-left: 1.5rem;}
+.mgl-5{ margin-left: 3rem;}
+
+
+
+/* -------------------------------------------------------------  */
+
+/* padding */
+
+/* 1 2 3  4  5 */
+/* 4 8 16 24 48 */
+
+.pd-a{ padding: 3rem 1.5rem;} 
+
+/* 48px, 24px */
+
+.pdt-1{ padding-top: 0.25rem;}
+.pdt-2{ padding-top: 0.5rem;}
+.pdt-3{ padding-top: 1.0rem;}
+.pdt-4{ padding-top: 1.5rem;}
+.pdt-5{ padding-top: 3rem;}
+
+.pdb-1{ padding-bottom: 0.25rem;}
+.pdb-2{ padding-bottom: 0.5rem;}
+.pdb-3{ padding-bottom: 1.0rem;}
+.pdb-4{ padding-bottom: 1.5rem;}
+.pdb-5{ padding-bottom: 3.0rem;}
+
+.pdl-1{ padding-left: 0.25rem;}
+.pdl-2{ padding-left: 0.5rem;}
+.pdl-3{ padding-left: 1.0rem;}
+.pdl-4{ padding-left: 1.5rem;}
+.pdl-5{ padding-left: 3rem;}
+
+.pdr-1{ padding-right: 0.25rem;}
+.pdr-2{ padding-right: 0.5rem;}
+.pdr-3{ padding-right: 1.0rem;}
+.pdr-4{ padding-right: 1.5rem;}
+.pdr-5{ padding-right: 3rem;}
+
+/* -------------------------------------------------------------  */
+
+/* location 정렬 */
+.lc-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-jfy-center{
+  display: flex;
+  justify-content: center;
+}
+
+.flex-aln-center{
+  display: flex;
+  align-items: center;
+}
+
+
+/* 이재준 : space-between 간격 조절 추가했습니다. (03/14) */
+.flex-jty-spacebtw {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-jfy-speven{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+.flex-row{
+  flex-direction: row;
+}
+
+.flex-column{
+  flex-direction: column;
+}
+
+/*  추가한자: 이동형 사유:location 수직 정렬이 필요했기 때문에 정렬정중앙 정렬이 아님 */
+.lc-vertical-alignment{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+
+}
+/*  추가한자: 이동형 사유:location 수평 정렬이 필요했기 때문에 정렬정중앙 정렬이 아님 */
+.lc-horizontal-alignment{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+/* Layout(개별 컨텐츠 레이아웃) */
+.relative{
+  position: relative;
+}
+.sticky{
+  position: sticky;
+  bottom: 0;
+}
+/* 임시 별칭  */
+.top-sticky{
+  position: sticky;    
+  top: 0;
+  background-color: white;  
+}
+
+.bottom-sticky{
+  position: sticky;    
+  background-color: white;     
+  bottom: 0px;
+}
+.ib{
+  display: inline-block;
+}
+
+
+/* 아이템 크기 설정 */
+.content-box {
+  height: 100%;
+  width: 100%;
+}
+.input-boder-none{
+  border:0px;
+}

@@ -17,121 +17,120 @@
 
 </head>
 <body>
-	<!-- <img src="/res/img/DiaryMainPage/flower_1.jpg" class="main-bg"> -->
-	<div class="container-1">
-		<!-- 헤더 -->
-		<header class="header horizon-center">
-			<div class="monthly-gauge mgt-4 horizon-center">
-				<h1 class="h5">Food for thought</h1>
-				<!-- 문장이 아닐 경우에는 p 금지 -->
-				<!-- 제목: h 문장: p 목록 표 폼 -->
-				<div class="mgt-4">
-					<progress value="60" max="100" class="pg-bar" id="pg-bar"></progress>
-				</div>
-			</div>
-		</header>
-		<!-- 메인 -->
-		<main class="main main-pg-2Layers pdb-4">
-			<div class="welcome horizon-center hi-txt" id="add-hello">
-				<!-- <div>000님</div> -->
-				<!-- <div class="mgt-2">즐거운 하루였나요?</div> -->
-			</div>
+    <!-- <img src="/res/img/DiaryMainPage/flower_1.jpg" class="main-bg"> -->
+    <div class="container-1">
+      <!-- 헤더 -->
+      <header class="header horizon-center">
+        <div class="monthly-gauge mgt-4 horizon-center">
+          <h1 class="h5">Food for thought</h1>
+          <!-- 문장이 아닐 경우에는 p 금지 -->
+          <!-- 제목: h 문장: p 목록 표 폼 -->
+          <div class="mgt-4">
+            <progress value="60" max="100" class="pg-bar" id="pg-bar"></progress>
+          </div>
+        </div>
+      </header>
+      <!-- 메인 -->
+      <main class="main main-pg-2Layers pdb-4">
+        <div class="welcome horizon-center hi-txt" id="add-hello">
+          <!-- <div>000님</div> -->
+          <!-- <div class="mgt-2">즐거운 하루였나요?</div> -->
+        </div>
 
-			<!-- 달력 -->
-			<div class="calender">
-				<div class="header" id="calendar-header">
-					<div class="prev-month" id="prev-btn">&#60;</div>
-					<div class="h3 lc-center" id="date-config"></div>
-					<div class="next-month" id="next-btn">&#62;</div>
-				</div>
+        <!-- 달력 -->
+        <div class="calender">
+          <div class="header" id="calendar-header">
+            <div class="prev-month" id="prev-btn">&#60;</div>
+            <div class="h3 lc-center" id="date-config"></div>
+            <div class="next-month" id="next-btn">&#62;</div>
+          </div>
 
-				<div class="main">
-					<ul class="day mgt-3">
-						<li>SUN</li>
-						<li>MON</li>
-						<li>TUE</li>
-						<li>WED</li>
-						<li>THU</li>
-						<li>FIR</li>
-						<li>SAT</li>
-					</ul>
+          <div class="main">
+            <ul class="day mgt-3">
+              <li>SUN</li>
+              <li>MON</li>
+              <li>TUE</li>
+              <li>WED</li>
+              <li>THU</li>
+              <li>FIR</li>
+              <li>SAT</li>
+            </ul>
 
-					<ul class="date" id="calendar-date"></ul>
-				</div>
-			</div>
-			<!-- 일기 미리보기
+            <ul class="date" id="calendar-date"></ul>
+          </div>
+        </div>
+        <!-- 일기 미리보기
             <article class="diary-preview-box border-r-1 shadow-2">
                 <div class="h2">제목</div>
                 <div class="h4">내용 어쩌고 한 2줄하고...</div>
                 <div>...</div>
             </article> -->
-			<article class="preview-slide slide_wrap border-r-2 shadow-2">
-				<div class="item lc-center" style="background-color: blue;">
-					<div class="icon-plus"
-						onClick="location.href='/html/member/diary/register.html'"></div>
-					<!-- <div class="ic-add-diary"></div> -->
-				</div>
-				<div class="item item-diary"
-					style="background-color: rgb(23, 192, 88);">
-					<div class="h2">2023년 3월 9일</div>
-					<div>이거 진짜 3줄 이후로 안나옴?? 이거 진짜 3줄 이후로 안나옴?? 이거 진짜 3줄 이후로 안나옴??
-						이거 진짜 3줄 이후로 안나옴?? 이거 진짜 3줄 이후로 안나옴?? 이거 진짜 3줄 이후로 안나옴??</div>
-				</div>
-				<div class="item" style="background-color: aqua;">세번째</div>
-				<div class="item" style="background-color: rgb(18, 22, 22);">네번째</div>
-				<div class="item" style="background-color: aqua;">다섯번째</div>
-				<div class="prev-btn btn">◀</div>
-				<div class="next-btn btn">▶</div>
-				<ul class="pagination"></ul>
-			</article>
+            <article class="slider border-r-2 shadow-2">
+                <div class="item lc-center" >
+                  <div class="icon-plus" onClick="location.href='/diary/guide.html'"></div>
+                  <!-- <div class="ic-add-diary"></div> -->
+                </div>
+                <div class="item item-diary">
+                  <div class="h2">2023년 3월 9일</div>
+                  <div>
+                      이거 진짜 3줄 이후로 안나옴?? 이거 진짜 3줄 이후로 안나옴?? 이거 진짜 3줄 이후로 안나옴?? 이거 진짜 3줄
+                      이후로 안나옴?? 이거 진짜 3줄 이후로 안나옴?? 이거 진짜 3줄 이후로 안나옴??
+                  </div>
+                </div>
+                <div class="item">세번째</div>
+                <div class="item">네번째</div>
+                <div class="item">다섯번째</div>
+                <div class="prev-btn btn">◀</div>
+                <div class="next-btn btn">▶</div>
+                <ul class="pagination pagination-main"></ul>
+            </article>
 
-		</main>
-		<!-- 푸터 -->
-		<footer class="footer ">
-			<div class="container-nav color-white-1">
+        </main>
+        <!-- 푸터 -->
+        <footer class="footer ">
+            <div class="container-nav color-white-1">
+                
+                <div class="nav-1 lc-center">
+                    <a href="../member/diary/list.html" class="lc-vertical-alignment">
+                    <div class="nav-icon bookmark-btn"></div>
+                    <div class="h6 mgt-2">모아보기</div>
+                </a>
+                </div>
+                
+                <div class="nav-2 lc-center">
+                    <a href="../index.html" class="lc-vertical-alignment">
+                        <div class=" nav-icon speech-bubble-btn"></div>
+                        <div class="h6 mgt-2">커뮤니티</div>
+                    </a>
+                </div>
 
-				<div class="nav-1 lc-center">
-					<a href="../member/diary/list.html" class="lc-vertical-alignment">
-						<div class="nav-icon bookmark-btn"></div>
-						<div class="h6 mgt-2">모아보기</div>
-					</a>
-				</div>
+                <div class="nav-main lc-center">
+                    <a href="../member/main.html" class="lc-vertical-alignment">
+                        <div class="nav-icon book-btn"></div>
+                        <div class="h6 mgt-2">메인화면</div>
+                    </a>
+                </div>
+    
+                <div class="nav-4 lc-center">
+                    <a href="../member/diary/analysis/main.html" class="lc-vertical-alignment" >
+                    <div class="nav-icon  hourglass-btn"></div>
+                    <div class="h6 mgt-2">돌아보기</div>
+                </a>
+                </div>
+                <div class="nav-5 lc-center">
 
-				<div class="nav-2 lc-center">
-					<a href="../index.html" class="lc-vertical-alignment">
-						<div class=" nav-icon speech-bubble-btn"></div>
-						<div class="h6 mgt-2">커뮤니티</div>
-					</a>
-				</div>
+                    <a href="./settings/main.html" class="lc-vertical-alignment">
 
-				<div class="nav-main lc-center">
-					<a href="../member/main.html" class="lc-vertical-alignment">
-						<div class="nav-icon book-btn"></div>
-						<div class="h6 mgt-2">메인화면</div>
-					</a>
-				</div>
+                    <div class="nav-icon gear-btn"></div>
+                    <div class="h6 mgt-2">설정하기</div>
+                </a>
+                </div>
+            </div>
 
-				<div class="nav-4 lc-center">
-					<a href="../member/diary/analysis/main.html"
-						class="lc-vertical-alignment">
-						<div class="nav-icon  hourglass-btn"></div>
-						<div class="h6 mgt-2">돌아보기</div>
-					</a>
-				</div>
-				<div class="nav-5 lc-center">
-
-					<a href="./settings/main.html" class="lc-vertical-alignment">
-
-						<div class="nav-icon gear-btn"></div>
-						<div class="h6 mgt-2">설정하기</div>
-					</a>
-				</div>
-			</div>
-
-		</footer>
-	</div>
-	<script src="/js/calendar.js"></script>
-	<script src="/js/slider.js"></script>
-	<script src="/js/mainLetter.js"></script>
+        </footer>
+    </div>
+    <script src="/js/calendar.js"></script>
+    <script src="/js/slider.js"></script>
+    <script src="/js/mainLetter.js"></script>
 </body>
 </html>
