@@ -1,0 +1,78 @@
+/* 버튼 */
+.btn1-clr {
+    width: 19.5rem;
+    height: 5.5rem;
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    background-color: #69BC80;
+    border-radius: 2.5rem;
+    box-shadow: 0 0.25rem 0.25rem rgba(0, 4, 4, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn1 {
+    width: 19.5rem;
+    height: 5.5rem;
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    background-color: #fcfcfc;
+    border-radius: 2.5rem;
+    box-shadow: 0 0.25rem 0.25rem rgba(0, 4, 4, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn2-clr {
+    width: 13.75rem;
+    height: 3.5rem;
+    font-size: 1.1rem;
+    margin-top: 2.5rem;
+    background-color: #69BC80;
+    border-radius: 2.5rem;
+    box-shadow: 0 0.25rem 0.25rem rgba(0, 4, 4, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn2 {
+    width: 13.75rem;
+    height: 3.5rem;
+    font-size: 1.1rem;
+    margin-top: 2.5rem;
+    background-color: #fcfcfc;
+    border-radius: 2.5rem;
+    box-shadow: 0 0.25rem 0.25rem rgba(0, 4, 4, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn3-clr {
+    font-size: 1.1rem;
+    width: 11.75rem;
+    height: 4.25rem;
+    margin-top: 2.5rem;
+    background-color: #69BC80;
+    border-radius: 2.5rem;
+    box-shadow: 0 0.25rem 0.25rem rgba(0, 4, 4, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn3 {
+    font-size: 1.1rem;
+    width: 11.75rem;
+    height: 4.25rem;
+    margin-top: 2.5rem;
+    background-color: #fcfcfc;
+    border-radius: 2.5rem;
+    box-shadow: 0 0.25rem 0.25rem rgba(0, 4, 4, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

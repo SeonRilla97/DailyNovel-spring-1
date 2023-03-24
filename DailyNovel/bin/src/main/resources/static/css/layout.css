@@ -1,0 +1,5 @@
+.grid1{
+    display: grid;
+    grid-template-rows: 5.5rem 1fr 6rem;  /*88px 96px*/
+}
+

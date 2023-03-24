@@ -1,0 +1,180 @@
+/* ctrl+f 눌러서 필요한 값 검색해서 사용 */
+/* 추가해야 할 수치들이 생각나면 꼭 공유하고 이야기 나눈 후에 추가하세요! */
+/* 우리가 쓰는 rem 단위 정리 */
+/* 
+4px = 0.25, 
+8px = 0.5, 
+16px = 1, 
+20px= 1.25
+24px = 1.5, 
+40px = 2.5,
+48px = 3
+56px = 3.5
+60px = 3.75, 
+68px = 4.25
+72px = 4.5
+88px = 5.5,
+124px = 7.75, 
+140px = 8.75,
+152px = 9.5,
+164px = 10.25, 
+188px = 11.75,
+240px = 15,
+288px = 18,
+312px = 19.5,   
+ */
+/* ----------------------------- */
+    /* ===일반 박스들====*/
+    .box-middle-clr{
+        background-color: #69BC80;
+        width: 19.5rem; /* 312px */
+        height: 3.75rem; /* 60px */
+
+        margin-top: 2.5rem;
+        border-radius: 0.625rem;
+        color: white;
+        box-shadow: 0 0.25rem 0.25rem rgba(0, 4, 4, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .box-middle{
+        background-color: #ffffff;
+        width: 19.5rem; /* 312px */
+        height: 3.75rem; /* 60px */
+
+        margin-top: 2.5rem;
+        border-radius: 0.625rem;
+        box-shadow:0 0.25rem 0.25rem rgba(0, 4, 4, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .box-short{
+        width: 9.5rem;
+        height: 2.5rem;
+        
+        margin-top: 2.5rem;
+
+        border-radius: 0.625rem;
+        box-shadow:0 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+/* ---------------------------------- */
+
+.l-box-large{
+    background-color: #FCFCFC;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 15rem;
+    height: 15rem;
+
+    margin-top: 2.5rem;
+
+    border-radius: 0.625rem;
+    box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
+}
+    .l-box-large > .name {
+        background-color: #69BC80;
+
+        width: 15rem;
+        height: 4.5rem;
+        border-radius: 0.625rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .l-box-large > .content {
+        background-color: #ffffff;
+
+        width: 15rem;
+        height: 10.5rem;
+
+        border-radius: 0.625rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+.l-box-middle{
+    display: flex;
+    flex-direction: column;
+
+    width: 18rem;
+    height: 8.75rem;
+
+    margin-top: 2.5rem;
+    
+    background-color: #ffffff;
+    grid-template-rows: 2.5rem auto;
+    border-radius: 2.5rem 2.5rem 0.625rem 0.625rem;
+    box-shadow: 0 0.25rem 0.25rem rgba(0, 4, 4, 0.1);
+}
+    .l-box-middle > .name {
+        background-color: #69BC80;
+        border-radius: 2.5rem;
+        color: #ffffff; 
+        width: 18rem;
+        height: 2.5rem;
+        /* content - layout */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .l-box-middle > .content {
+        background-color: #ffffff;
+        width:18rem;
+        height: 6.25rem;
+        border-radius: 2.5rem 2.5rem 0.625rem 0.625rem; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+
+
+
+
+.l-box-short{
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 2.5rem;
+    color: #000000;
+    width: 18rem;
+    height: 3.75rem;
+    margin-top: 2.5rem;
+    box-shadow: 0 0.25rem 0.25rem rgba(0, 4, 4, 0.2);
+}
+    .l-box-short > .name {
+        background-color: #69BC80;
+        border-radius: 2.5rem;
+        color: #ffffff;
+        /* content - layout */
+        width: 7.75rem;
+        height: 3.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .l-box-short > .content {
+        background-color: #ffffff;
+        color: black;
+        width:10.25rem;
+        height: 3.75rem;
+        border-radius: 0 2.5rem 2.5rem 0;
+        /* content - layout */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
