@@ -21,7 +21,16 @@ public class  MemberController {
 		return "/member/settings/main";
 	}
 	
-	
-
-	
+	@RequestMapping("/diary/guide")
+	public String diaryguide(){
+		return "/member/diary/guide";
+	}	
+	@RequestMapping("/diary/list")
+	public String diarylist(){
+		return "/member/diary/list";
+	}
+	@RequestMapping("/diary/selecttmp")
+	public String diarySelectView(){
+		return "/member/diary/select-tmp";
+	}
 }

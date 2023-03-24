@@ -40,7 +40,7 @@
 						<option value="기분">좋아</option>
 						<option value="기분">쏘쏘</option>
 					</select>					
-				<div class="lc-center">날짜</div>
+				<div class="lc-center" id="openBtn">날짜</div>
 			</div>
 			<ul class="lists">
 				<li class="list-box">
@@ -124,8 +124,40 @@
                 </a>
                 </div>
             </div>
-
         </footer>
-		
+	</div>
+
+		<!-- 모달창 -->
+	<div class="list-modal hidden">
+		<div class="bg"></div>
+		<div class="modalBox">
+			<div class="calender">
+				<div class="header" id="calendar-header">
+				  <div class="prev-month" id="prev-btn">&#60;</div>
+				  <div class="h3 lc-center" id="date-config"></div>
+				  <div class="next-month" id="next-btn">&#62;</div>
+				</div>
+	  
+				<div class="main">
+				  <ul class="day mgt-3">
+					<li>SUN</li>
+					<li>MON</li>
+					<li>TUE</li>
+					<li>WED</li>
+					<li>THU</li>
+					<li>FIR</li>
+					<li>SAT</li>
+				  </ul>
+	  
+				  <ul class="date" id="calendar-date"></ul>
+				</div>
+			  </div>
+		</div>
+	</div>
+
+
+
+	<script  src="/js/member/diary/list.js"></script>
+	<script src="/js/calendar.js"></script>
 </body>
 </html>
