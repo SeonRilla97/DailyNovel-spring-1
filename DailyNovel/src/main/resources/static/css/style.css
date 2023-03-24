@@ -19,9 +19,9 @@ html {
 .color-bg-green-3 { background-color: #388b53; }
 
 /* 흰 색 */
-.color-bg-white-1 { background-color: #ffffff; }
-.color-bg-white-2 { background-color: #fcfcfc; }
-.color-bg-white-3 { background-color: #fafafa; }
+.color-bg-white-1 { background-color: #ffffff !important; }
+.color-bg-white-2 { background-color: #fcfcfc !important; }
+.color-bg-white-3 { background-color: #fafafa !important; }
 
 /* 노란색 */
 .color-bg-yellow-1 { background-color: #ffff77; }
@@ -51,7 +51,7 @@ html {
 .color-red-3{color:#f70000;}
 
 /* 검은색 */
-.color-black-1 { color: #000;}
+.color-black-1 { color: #000 !important;}
 
 
 /* -------------------------------------------------------------  */
