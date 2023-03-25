@@ -24,10 +24,21 @@ public class SettingDefaultService implements SettingService {
 	public void setRepository(SettingRepository repository) {
 		this.repository=repository;
 	}
-
 	@Override
-	public Setting getById(int id) {
+	public Setting getById(Integer id) {
 		return repository.findById(id);
 	}
 
+
+	@Override
+	public int updateProfile(Setting setting) {
+		
+	return 	repository.updateProfile(setting);
+	}
+
+	@Override
+	public int deleteAcount(Integer id) {
+		
+		return repository.deleteAcount(id);
+	}
 }

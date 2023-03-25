@@ -185,52 +185,6 @@
 .outBox-pass .inputBox input[type="password"]:focus + label,
 .outBox-pass.existence .inputBox label {color:#69BC80; transform:scale(.85) translate(-10px, -48px);}
 
-
-
-
-.container-form{
-    width: 19.5rem; /* 312px */  
-    margin:0 auto; 
-}
-
-.outBox-pass .inputBox {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  border: 0px;
-}
-.outBox-pass .inputBox input[type="password"] {
-  padding: 0 10px;
-  width: 100%;
-  height: 100%;
-  font-size: 14px;
-  box-sizing: border-box;
-  border: 0px solid #999;
-  outline: none;
-}
-.outBox-pass .inputBox label {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  padding: 0 6px;
-  color: #999;
-  font-size: 14px;
-  font-weight: normal;
-  background: #fff;
-  transform: scale(1) translate(4px, -18px);
-  transition: all 0.15s;
-  pointer-events: none;
-}
-.outBox-pass .inputBox input[type="password"]:focus,
-.outBox-pass.existence .inputBox input[type="password"] {
-  border: 0px solid #69bc80;
-}
-.outBox-pass .inputBox input[type="password"]:focus + label,
-.outBox-pass.existence .inputBox label {
-  color: #69bc80;
-  transform: scale(0.85) translate(-10px, -48px);
-}
-
 .container-form {
   width: 19.5rem; /* 312px */
   margin: 0 auto;
@@ -334,8 +288,6 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  
-  
 }
 .calender::before{
   /* 달력 배경 넣기 */
@@ -404,7 +356,7 @@
 }
 
 /* 슬라이드 */
-.preview-slide {
+.slider {
   /* 옆으로 넘기는 슬라이드 */
   display: flex;
   flex-wrap: nowrap;
@@ -419,14 +371,14 @@
 }
 
 /* 아이템 스타일 나중에 일기(쓰러가기/미리보기) 두 부분으로 나눠져야함*/
-.preview-slide .item {
+.slider .item {
   width: 100%;
   height: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  
   position: relative;
 
   left: 0;
@@ -439,13 +391,24 @@
   /* 실제 슬라이드로 동작 할 친구!! */
   transition: left 0.15s;
 }
-.preview-slide .item-diary div:nth-child(1) {
+/* guide 부분 페이지 UI  */
+
+.slider .item-guide div:nth-child(1){
+  margin-top: 13vh;
+}
+.slider .item-guide div:nth-child(2){
+  margin-top: 15vh;
+}
+/* guide 부분 페이지 UI 끝 */
+
+/* main page에서 일기 미리보기 */
+.slider .item-diary div:nth-child(1) {
   position: relative;
   top: 20%;
   width: 70%;
   text-align: center;
 }
-.preview-slide .item-diary div:nth-child(2) {
+.slider .item-diary div:nth-child(2) {
   position: relative;
   top: 30%;
   width: 70%;
@@ -459,22 +422,22 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.preview-slide .write-btn {
+/* mainpage 미리보기 부분 끝 */
+.slider .write-btn {
   background-color: #99999920;
   text-align: center;
   /* border-radius: 100%; */
 }
 
-.preview-slide .icon-plus{
+.slider .icon-plus{
   width:3rem;
   height:3rem;
   background-repeat: no-repeat;
   background-image: url(/res/img/DiaryMainPage/add.svg);
-  
 }
 
 /* 버튼 스타일 */
-.preview-slide .btn {
+.slider .btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -494,51 +457,51 @@
   background-color: #cccccc40;
   cursor: pointer;
 }
-.preview-slide .prev-btn {
+.slider .prev-btn {
   left: 0.625rem;
 }
-.preview-slide .next-btn {
+.slider .next-btn {
   right: 0.625rem;
 }
 /* 나중에 꼭 빼야 할 속성 (배경만) */
 
 
 /* 페이지네이션 스타일 */
-.preview-slide ul,
-.preview-slide li {
+.slider ul,
+.slider li {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
-.preview-slide .pagination {
-  /* layout */
+.slider .pagination {
+  /* 슬라이드로 동작하기위해 필요 (스타일을 위한 친구가 아님) */
   display: flex;
-  gap: 1rem;
 
-  /* position */
+}
+/* pagination의 위치 수정하는 친구들 */
+.pagination-main{
   position: absolute;
   bottom: 0;
-  /* left:50%, translateX(-50%)를 하면 가로 가운데로 위치시킬 수 있다. */
   left: 50%;
   transform: translateX(-50%);
-}
-.preview-slide .pagination > li {
-  /* 현재 슬라이드가 아닌 것은 투명도 부여 */
-  color: #7fb5ff88;
-  cursor: pointer;
-  font-size: 25px;
-}
-.preview-slide .pagination > li.active {
-  /* 현재 슬라이드 색상은 투명도 없이 */
-  color: #7fb5ff;
+  gap: 1rem;}
+.pagination-guide{
+  position: absolute;
+  gap: 0.1rem;
+  left: 50%; 
+  transform: translateX(-50%);
 }
 
-/* ---------------공통 수정 제안. ---------------- */
-/* input Tag에 기본 Padding이 있음 (Reset에서 input태그 추가) */
-/* 추후 reset.css에 추가 */
-/* 이거 없으면 input tag 포커스 시 보더 생김 개 찐하게 */
-input:focus {
-  outline: none;
+/* pagination 리스트 속성부여 */
+.slider .pagination > li {
+  /* 현재 슬라이드가 아닌 것은 투명도 부여 */
+  color: #CECECE;
+  cursor: pointer;
+  font-size: 40px;
+}
+.slider .pagination > li.active {
+  /* 현재 슬라이드 색상은 투명도 없이 */
+  color: #69BC80;
 }
 
 /* 일기 작성, 목록 팀 ==================================================== */
@@ -639,7 +602,7 @@ color: white;
 }
 
 /* -- 작성 - guide.html */
-
+/* 없어질지도 모름(현재 안씀) */
 .swiper-bullets{
     width:40%;
     display: flex;
@@ -649,7 +612,7 @@ color: white;
     .swiper-bullets > .active {
         background-color: #69BC80;
     }
-
+/* 없어질지도 모름(현재 안씀) */
 .swiper-bullet{
     width: 0.7rem;
     height: 0.7rem;
@@ -658,29 +621,6 @@ color: white;
 
     text-indent: -999rem;  
 }
-
-.guide-content{
-    width:100%;
-    height:100%;
-
-    position: relative;
-    display: flex;
-    /* flex-direction: column; */
-    flex-wrap: nowrap;
-    
-    /* box-sizing: border-box; */
-    user-select: none;
-    overflow: hidden;
-}
-
-.guide-content > .ty6{
-    width:100%;
-    height:100%;
-    flex-shrink: 0;
-    position: relative;
-    /* box-sizing: border-box; */
-}
-
 /* select-tmp.html */
 .tmp-select-box{
   display:flex;

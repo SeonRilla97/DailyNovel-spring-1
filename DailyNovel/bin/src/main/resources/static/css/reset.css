@@ -66,3 +66,7 @@ a:hover{
 	text-decoration: none;
 }
 
+/* 추가자 : 선유진 -> input tag 포커싱시, 주변 테두리 생기는거 제거 */
+input:focus {
+	outline: none;
+}

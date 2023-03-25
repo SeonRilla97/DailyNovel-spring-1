@@ -7,5 +7,8 @@ import com.dailynovel.web.entity.Setting;
 
 
 public interface SettingService {
-	Setting getById(int id);
+	Setting getById(Integer id);
+	
+	int updateProfile(Setting setting);
+	int deleteAcount(Integer id);
 }
