@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../../css/util.css">
 
     <!-- js -->
-    <script src="../../../../res/js/setting.js"></script>
+    <script src="../../js/setting.js"></script>
 </head>
 <body>
     <section class="container-1">
@@ -27,11 +27,16 @@
 
         <section class="main lc-center flex-column  main-size">
             <div class="mgt-4 main-size overflow-auto">
-                <form action="./profile/update" method="post">
+                <form action="./profile/update" method="post" enctype="multipart/form-data">
                     <div class="lc-center">
-                        <input type="file" accept="image/*" onchange="updateImg()" class="upload-btn C d-none" style="display: none;">
-                        <div th:style="'background-image:url('+ @{/image/profile/{img}(img=${setting.profileImage})} +');'" class="pro-img finger" >
-                        	<!-- <img  th:src="@{/image/profile/{img}(img=${setting.profileImage})}"> -->
+                        <!--<input type="file" accept="image/*" onchange="updateImg()" class="upload-btn C d-none">-->
+                        <!--<input type="file" accept="image/*" onchange="updateImg()" class="upload-btn C" accept="image/png, image/jpeg">-->
+                        <!--<input type="file" name="image" accept="image/*" onchange="updateImg()" class="upload-btn C d-none">-->
+                        <!--<input type="file" name="image" accept="image/*" onchange="updateImg()" class="upload-btn C">-->
+                        <input type="file" name="image" accept="image/*" class="upload-btn C" onchange="updateImg()" >
+                        <div th:style="'background-image:url('+ @{/img/profile/{img}(img=${setting.profileImage})} +');'" class="pro-img finger" >
+                        
+                        <!--<div th:style="'background-image:url('+ @{/image/profile/{img}(img=${setting.profileImage})} +');'" class="pro-img finger" >-->
                         </div>
                     </div>
                     
