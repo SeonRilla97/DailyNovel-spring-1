@@ -10,11 +10,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class FeelingCountView {
-	
+public class FeelingTopRankView {
 	
 	
 	private String name;
+	private String description;
 	private int frequency;
+	private String bigimg;
 	private String img;
+
 }
