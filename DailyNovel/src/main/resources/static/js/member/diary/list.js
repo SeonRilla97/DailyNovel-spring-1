@@ -14,7 +14,13 @@ const close = () => {
 }
 
 document.querySelector("#openBtn").addEventListener("click", open);
-let a = document.querySelector("#openBtn")
-console.log(a);
 // document.querySelector(".list-modal .modalBox .closeBtn").addEventListener("click", close);
 document.querySelector(".list-modal .bg").addEventListener("click", close);
+
+
+// document.querySelector(".args").add
+
+
+// document.querySelector(".args").addEventListener("click", open);
+// // document.querySelector(".list-modal .modalBox .closeBtn").addEventListener("click", close);
+// document.querySelector(".list-modal .bg").addEventListener("click", close);

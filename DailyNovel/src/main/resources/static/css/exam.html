@@ -7,43 +7,76 @@
     <link rel="stylesheet" href="exam.css">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/res/css/reset.css">
-    <link rel="stylesheet" href="/res/css/layout.css">
-    <link rel="stylesheet" href="/res/css/button.css">
-    <link rel="stylesheet" href="/res/css/box.css">
-    <link rel="stylesheet" href="/res/css/component-mobile.css">
-    <link rel="stylesheet" href="/res/css/style.css">
-    <link rel="stylesheet" href="/res/css/util.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/button.css">
+    <link rel="stylesheet" href="../css/box.css">
+    <link rel="stylesheet" href="../css/component-mobile.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/util.css">
 </head>
 <body>
-    <form class="form-signup" id="sign-up-form">
-                        
-        <!-- <div class="outBox box-large">
-            <div class="inputBox">
-                <input id="email" class="sample-id" type="text"/>
-                <label for="email">이메일</label>
-                <span><img src="../../res/img/DiaryMainPage/fail.svg" alt="이메일을 확인해 주세요"></img></span>
-            </div>  
-        </div> -->
-    
-        <div class="pp">aa</div>
-        <div class="pp">a</div>
-        <div class="pp">a</div>
-        <div class="pp">a</div>
-        <div class="pp">a</div>
-        <div class="pp">a</div>
-        <div class="ppa">a</div>
-        <div class="pp">a</div>
-        <div class="ppa">a</div>
-        <div class="ppa">a</div>
+
+    <div class="option-box">
+        <div class="title">기분</div>
+        <div class="mgt-1">
+            <ul class="select">
+                <li class="option">a</li>
+                <li class="option">b</li>
+                <li class="option">c</li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+<script>
+    const btn = document.querySelector(".option-box");
+
+    btn.addEventListener('click',(e) => {
+
+        let tag = e.target.tagName;
+        if(!(tag =='DIV')) return;
         
+        const cate = btn.querySelector(".select");
+        cate.classList.toggle('d-none');
 
+    });
 
+    
+
+</script>
     <style>
-        .pp:last-of-type{
-            background-color: aqua;
-            font-size:100px;
+        .option-box{
+            width:5rem;
+            height: 1rem;
+            background-color: #9aefb0;
+        
+            text-align: center;
+            border-bottom: 1px solid black;
+        }
+        .option-box .option{
+            width:5rem;
+            height: 1rem;
+            background-color: #9aefb0;
+            border: 1px dotted #00000020;
+            text-align: center;
+        }
+        
+    </style>
+    <style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 48
         }
     </style>
+
 </body>
 </html>

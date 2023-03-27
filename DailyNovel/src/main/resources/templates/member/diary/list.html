@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,62 +26,33 @@
 		
 		<main class="main list-main-flex-col">
 			<div class="lists-filter filter-pos-style pdt-4">
-				<div class="lc-center color-bg-white-2 color-black-1 font-bold">정렬</div>	
-					<select name="" id="" style="-webkit-appearance:none;">
-						<option value="NULL">HOW</option>
-						<option value="기본">기분</option>
-						<option value="여행">여행</option>
-						<option value="영화">영화</option>
+				<div class="lc-center color-bg-white-2 color-black-1 font-bold args">정렬</div>	
+					<label for="template"></label>
+					<select name="template" id="template" style="-webkit-appearance:none;" class="args">
+						<option class ="ib ops" value="NULL">HOW</option>
+						<option class ="ib ops" value="기본">기본</option>
+						<option class ="ib ops" value="여행">여행</option>
+						<option class ="ib ops" value="영화">영화</option>
 					</select>
 					
-					<select name="" id="" style="-webkit-appearance:none;">
-						<option value="기분">기분</option>
-						<option value="기분">싫어</option>
-						<option value="기분">좋아</option>
-						<option value="기분">쏘쏘</option>
+					<label for="feeling"></label>
+					<select name="feeling" id="feeling" style="-webkit-appearance:none;" class="args">
+						<option class ="ib ops" value="기분">기분</option>
+						<option class ="ib ops" value="기분">싫어</option>
+						<option class ="ib ops" value="기분">좋아</option>
+						<option class ="ib ops" value="기분">쏘쏘</option>
 					</select>					
-				<div class="lc-center" id="openBtn">날짜</div>
+				<div class="lc-center args" id="openBtn">날짜</div>
 			</div>
 			<ul class="lists">
-				<li class="list-box">
-					<div class="list-date lc-center h2 font-weight-bolder mgt-2">2022-22-22</div>
-					<div class="list-title mgt-3">오늘은 힘든 하루</div>
+				<li class="list-box" th:each="diary : ${list}">
+					<div class="list-date lc-center h2 font-weight-bolder mgt-2" th:text="${diary.regDate}">2022-22-22</div>
+					<div class="list-title mgt-3" th:text="${diary.title}">오늘은 힘든 하루</div>
 					<!-- <div class="title"><span class="ib diary">노는게 젤 좋아 친구들 모여라</span><span class="ib date">2022-22-22</span></div> -->
-					<div class="content mgt-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea eum labore eos a deleniti tenetur, libero minima hic at, vel necessitatibus nemo, suscipit rerum vitae expedita porro obcaecati quibusdam repellat.</div>
+					<div class="content mgt-2" th:text=${diary.content}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea eum labore eos a deleniti tenetur, libero minima hic at, vel necessitatibus nemo, suscipit rerum vitae expedita porro obcaecati quibusdam repellat.</div>
 				</li>
-
-				<li class="list-box">
-					<div class="list-date lc-center h2 font-weight-bolder mgt-2">2022-22-22</div>
-					<div class="list-title mgt-3">오늘은 힘든 하루</div>
-					<!-- <div class="title"><span class="ib diary">노는게 젤 좋아 친구들 모여라</span><span class="ib date">2022-22-22</span></div> -->
-					<div class="content mgt-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea eum labore eos a deleniti tenetur, libero minima hic at, vel necessitatibus nemo, suscipit rerum vitae expedita porro obcaecati quibusdam repellat.</div>
-				</li>
-				<li class="list-box">
-					<div class="list-date lc-center h2 font-weight-bolder mgt-2">2022-22-22</div>
-					<div class="list-title mgt-3">오늘은 힘든 하루</div>
-					<!-- <div class="title"><span class="ib diary">노는게 젤 좋아 친구들 모여라</span><span class="ib date">2022-22-22</span></div> -->
-					<div class="content mgt-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea eum labore eos a deleniti tenetur, libero minima hic at, vel necessitatibus nemo, suscipit rerum vitae expedita porro obcaecati quibusdam repellat.</div>
-				</li>
-				<li class="list-box">
-					<div class="list-date lc-center h2 font-weight-bolder mgt-2">2022-22-22</div>
-					<div class="list-title mgt-3">오늘은 힘든 하루</div>
-					<!-- <div class="title"><span class="ib diary">노는게 젤 좋아 친구들 모여라</span><span class="ib date">2022-22-22</span></div> -->
-					<div class="content mgt-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea eum labore eos a deleniti tenetur, libero minima hic at, vel necessitatibus nemo, suscipit rerum vitae expedita porro obcaecati quibusdam repellat.</div>
-				</li>
-				<li class="list-box">
-					<div class="list-date lc-center h2 font-weight-bolder mgt-2">2022-22-22</div>
-					<div class="list-title mgt-3">오늘은 힘든 하루</div>
-					<!-- <div class="title"><span class="ib diary">노는게 젤 좋아 친구들 모여라</span><span class="ib date">2022-22-22</span></div> -->
-					<div class="content mgt-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea eum labore eos a deleniti tenetur, libero minima hic at, vel necessitatibus nemo, suscipit rerum vitae expedita porro obcaecati quibusdam repellat.</div>
-				</li>
-				<li class="list-box">
-					<div class="list-date lc-center h2 font-weight-bolder mgt-2">2022-22-22</div>
-					<div class="list-title mgt-3">오늘은 힘든 하루</div>
-					<!-- <div class="title"><span class="ib diary">노는게 젤 좋아 친구들 모여라</span><span class="ib date">2022-22-22</span></div> -->
-					<div class="content mgt-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea eum labore eos a deleniti tenetur, libero minima hic at, vel necessitatibus nemo, suscipit rerum vitae expedita porro obcaecati quibusdam repellat.</div>
-				</li>
-
 			</ul>
+
 		</main>
 
 		
@@ -128,7 +99,7 @@
 	</div>
 
 		<!-- 모달창 -->
-	<div class="list-modal hidden">
+	<div class="list-modal hidden" onclick="console.log('이거 클릭됨')"> 
 		<div class="bg"></div>
 		<div class="modalBox">
 			<div class="calender">
@@ -154,6 +125,14 @@
 			  </div>
 		</div>
 	</div>
+
+	<!-- //템플릿 모달
+	<div class="list-modal hidden">
+		<div class="bg"></div>
+		<div class="modalBox">
+
+		</div>
+	</div> -->
 
 
 
