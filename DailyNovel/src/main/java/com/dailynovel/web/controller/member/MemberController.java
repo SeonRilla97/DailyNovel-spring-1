@@ -1,9 +1,13 @@
 package com.dailynovel.web.controller.member;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.dailynovel.web.entity.Export;
 import com.dailynovel.web.entity.Setting;
 import com.dailynovel.web.service.SettingService;
 
@@ -150,6 +155,35 @@ public class  MemberController {
 		System.out.println(setting);
 		return "member/settings/component/export";
 	}
+	
+	@RequestMapping("setting/export/text")
+	public String exportText(Model model) throws FileNotFoundException{
+
+		List<Export> export = settingService.getDiaryListByid(2);
+		//C:\Users\BW3\Desktop\down
+		String homeDir = System.getProperty("user.home");
+		System.out.println(homeDir);
+		String filePath = homeDir + "/Downloads/dailynovel.txt";
+		FileOutputStream fos = new FileOutputStream(filePath);
+		PrintStream out = new PrintStream(fos);
+		
+		for(Export aa : export ) {
+			out.print(aa.getRegDate());
+			out.print(" [ ");
+			out.print(aa.getFeelingName());
+			out.print(" ] ");
+			out.println();
+			out.printf("제목: %s", aa.getTitle());
+			out.println();
+			out.print(aa.getText());
+			out.println();
+			out.println();
+		}
+		
+		return "redirect:../../setting/export";
+	}
+	
+	
 	
 	// 세팅-피드백-------------------------------------------------------------------
 	@RequestMapping("setting/service-help")

@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dailynovel.web.repository.SettingRepository">
 
-	<resultMap id="settingKK" type="setting">
+	<resultMap id="settingId" type="setting">
 	  <result property="profileImage" column="profile_image"/>
 	  <result property="statusMessage" column="status_message"/>
 	  <result property="alarmSwitch" column="alarm_switch"/>
@@ -12,13 +12,27 @@
 	  <result property="alarmTime" column="alarm_time"/>
 	</resultMap>
 	
+	<resultMap id="exportId" type="export">
+	  <result property="regDate" column="reg_date"/>
+	  <result property="feelingName" column="name"/>
+	</resultMap>
+
 	
-
-
-	<select id="findById" resultMap="settingKK">
+	<select id="findById" resultMap="settingId">
 		select * from member 
 		where id=#{id}
 	</select>
+	
+	
+
+	<select id="findDiaryListById" resultMap="exportId">
+		select d.reg_date, f.name, d.title, d.text 
+			from Diary d 
+			inner join feeling f 
+			on d.feeling_id=f.id 
+			where member_id=#{id};
+	</select>
+	
 	
  	<update id="updateProfile" parameterType="Setting">
 		update member

@@ -22,26 +22,32 @@
         </header>
 
         <section class="main lc-center flex-column">
-            <div class="l-box-short">
-                <div class="name">알림</div>
-                <div class="content">
-                    <form action="">
-                        <input type="checkbox" name="web-alarm" class="box-check">
-                    </form>
-                </div>
-            </div>
-
-            <div class="l-box-short mgt-5">
-                <div class="name">카톡</div>
-                <div class="content">
-                    <input type="checkbox" name="katolk-alarm" class="box-check">
-                </div>
-            </div>
-            <div class="l-box-short mgt-5">
-                <div class="name">시간</div>
-                <div class="content"><input type="time" name="" id="" value="22:00"></div>
-            </div>
-
+	  		<form action="./alarm/update" method="post">     
+	            <div class="l-box-short">
+	                <div class="name">알림</div>
+	                <div class="content">
+                        
+                        <input type="checkbox" name="web-alarm" class="box-check" value="1" th:checked="${setting.alarmSwitch}==1? 'checked'">
+	                </div>
+	            </div>
+	
+	            <div class="l-box-short mgt-5">
+	                <div class="name">카톡</div>
+	                <div class="content">
+	                    <input type="checkbox" name="katolk-alarm" class="box-check"  value="1" th:checked="${setting.kakaoAlarmSwitch}==1? 'checked'">
+	                </div>
+	            </div>
+	            <div class="l-box-short mgt-5">
+	                <div class="name">시간</div>
+	                <div class="content">
+	                	<input type="time" name="timer" id="" value="22:00" th:value="${setting.alarmTime}">
+	               	</div>
+	            </div>
+                <div class="mgt-4 lc-center">
+	            	 <input class="btn3" type="submit" value="적용">
+	            	 <input class="btn3 font-s-box mgl-6-f" type="reset" value="초기화">
+	            </div>
+			</form>
         </section>
     
         <div class="footer">
