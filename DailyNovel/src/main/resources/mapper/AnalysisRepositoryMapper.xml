@@ -7,27 +7,30 @@
 	
 	
 	<select id="findViewAll" resultType="FeelingCountView">
-		SELECT feeling.name, feeling.img, count(Diary.feeling_id) as frequency 
-		FROM feeling 
-		INNER JOIN Diary ON feeling.id = Diary.feeling_id 
+		SELECT member_id, feeling.name, feeling.img, count(Diary.feeling_id) as frequency 
+		FROM Diary
+		INNER JOIN feeling ON feeling.id = Diary.feeling_id 
 		GROUP BY feeling.name
+        having member_id =1 
 		ORDER BY frequency DESC
 	</select>
 	
 	<select id="findTopRankView" resultType="FeelingTopRankView">
-		SELECT feeling.bigimg, COUNT(Diary.feeling_id) as frequency, description 
-		FROM feeling 
-		INNER JOIN Diary ON feeling.id = Diary.feeling_id 
+		SELECT member_id, feeling.bigimg, COUNT(Diary.feeling_id) as frequency, description 
+		FROM Diary
+		INNER JOIN feeling ON feeling.id = Diary.feeling_id 
 		GROUP BY feeling.name 
+        having member_id = 1
 		ORDER BY frequency DESC 
 		LIMIT 1
 	</select>
 	
 	<select id="findRankView" resultType="FeelingRankView">
-		SELECT feeling.img, COUNT(Diary.feeling_id) as frequency, description 
-		FROM feeling 
-		INNER JOIN Diary ON feeling.id = Diary.feeling_id 
+		SELECT member_id, feeling.img, COUNT(Diary.feeling_id) as frequency, description 
+		FROM Diary
+		INNER JOIN feeling ON feeling.id = Diary.feeling_id 
 		GROUP BY feeling.name 
+        having member_id =1
 		ORDER BY frequency DESC 
 		LIMIT 1,4
 	</select>
