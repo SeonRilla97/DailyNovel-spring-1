@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>일기 쓰기 전</title>
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/layout.css">
+<link rel="stylesheet" href="/css/icon.css">
+<link rel="stylesheet" href="/css/button.css">
+<link rel="stylesheet" href="/css/box.css">
+<link rel="stylesheet" href="/css/component-mobile.css">
+<link rel="stylesheet" href="/css/util.css">
+
+
+</head>
+  <body>
+    <div class="container-1" style="position:relative;">
+        <!-- 헤더 -->
+        <div class="header" >
+          <div class="icon close-btn" style="position:absolute; top:5vh;right:10vw;"></div>
+        </div>
+        <!-- 메인  -->
+        <div class="main guide-main slider">
+
+          <!-- 페이지네이션 -->
+          <ul class="pagination pagination-guide"></ul>
+
+          <!-- 아이템들(글귀들) -->
+
+            <!-- 아이템1 -->
+        <div class="item item-guide"> 
+          <div id="guide-index" class="lc-center h2 font-weight-700 ">Q1</div>
+            <div class="guide-content">
+              <p class="text-center h1">오늘은 어떤 하루였는지<br>떠올려볼까요?</p> 
+          </div>  
+        
+        </div>
+
+            <!-- 아이템2 -->
+        <div class="item item-guide"> 
+          <div id="guide-index" class="lc-center h2 font-weight-700 ">Q2</div>
+            <div class="guide-content">
+              <p class="text-center h1">대머리를 깎으면<br>머리가 없지요?</p> 
+          </div>  
+        </div>
+
+            <!-- 아이템3 -->
+        <div class="item item-guide"> 
+          <div id="guide-index" class="lc-center h2 font-weight-700 ">Q3</div>
+            <div class="guide-content">
+              <p class="text-center h1">집에<br>가자?</p> 
+          </div>      
+          
+        </div>
+        
+        
+        <!-- 이 페이지는 슬라이드 버튼이 필요 없으므로 안씁니다.(js오류 클래스 생성자 때문에 넣은거) -->
+        <div class="prev-btn btn d-none"></div>
+        <div class="next-btn btn d-none"></div>
+      </div>
+
+
+      <!-- 푸터 -->
+      <div class="footer lc-center">
+          <a href="../diary/select-tmp.html" style="text-align: center;">바로 작성을 하고 싶으신가요?<br>여기를 클릭하세요.</a>
+      </div>
+    </div>  
+    <script src="/res/js/slider.js"></script>
+    <script src="/res/js/member/diary/guide.js"></script>
+  </body>
+</html>

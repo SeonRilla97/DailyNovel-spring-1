@@ -608,26 +608,6 @@ color: white;
   /* background-color: #cecece; */
 }
 
-.reg-select-modal{
-  z-index:1;
-  height: 100vh;
-  width: 100vw;
-
-  display: none; /* 모달창 초기 상태: 숨김 */
-
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2.5rem;
-  background-color: rgba(0,0,0,0.4);
-
-  position: absolute;
-  top:0;
-  left:0;
-}
-
-
 
 /* -- 작성 - guide.html */
 /* 없어질지도 모름(현재 안씀) */
@@ -649,33 +629,6 @@ color: white;
 
     text-indent: -999rem;  
 }
-
-/* select-tmp.html */
-
-.tmp-section{
-  display: flex;
-  justify-content: center;
-  /* flex-direction: column; */
-  /* align-items: center; */
-  
-  max-height: auto;
-  overflow-x: hidden;
-
-
-  /* overflow-y :scroll; */
-  /* height: fit-content; */
-}
-
-.tmps{  
-  display: flex;
-  flex-direction: column;
-  align-items: center;  
-  /* height: 40rem; */
-  height: fit-content;
-  gap: 2.5rem;
-}
-
-
 .tmp-select-box{
   display:flex;
   flex-direction: column;

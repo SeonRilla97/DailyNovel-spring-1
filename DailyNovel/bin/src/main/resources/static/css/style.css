@@ -2,7 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 /* -------------------------------------------------------------  */
 
-
+/* 앱 기본 폰트 */
+html {
+    font-size: 100%;
+	font: inherit;
+	font-family: 'Nanum Gothic', sans-serif;
+	vertical-align: baseline;
+}
 /* color - 값이 오를수록 진해짐.*/
 
 /* 배경 */
@@ -47,6 +53,7 @@
 /* 검은색 */
 .color-black-1 { color: #000;}
 
+
 /* -------------------------------------------------------------  */
 
 /* font */
@@ -72,6 +79,9 @@
 
 .font-size30{font-size: 1.875rem;}
 .font-size20{font-size: 1.25rem;}
+
+/*font-size 새로 만들려고 합니다.  index에서 사용중*/
+.font-size48{font-size: 3rem;}
 /* 30 = 1.875 */
 
 

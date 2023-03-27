@@ -1,25 +1,17 @@
+const outBox = document.querySelectorAll(".outBox");
+//여기에 유효성검사 까지 들어간다면 어떻게 되는거지???
+//이거 쓸 경우, outbox 내부에는 input이 하나만 있어야 합니다.
+outBox.forEach(e => {
+    e.addEventListener("keyup", ()=>{
+        let value = e.querySelector("input").value
 
-class inputForm{
-    constructor(container, input) {
-        this.doc = document.querySelector(container);
-        this.input  = document.querySelector(input);
-        console.log( this.input.value);
-        let value = this.input.value;
-    this.input.addEventListener('keyup', function(){
-        value = this.input.value;
-        console.log(value)
-        if(!value=== ''){
+        if(!value== ''){
             //빈 값이 아닌 경우
-            this.doc.classList.add('existence');   
+            e.classList.add('existence');   
         }else{
             //빈 값인 경우
-            this.doc.classList.remove('existence');   
+            e.classList.remove('existence');   
         }
     });
-    }   
-}
-
-
-new inputForm(".outBox-id",".sample-id");
-
+});
 
