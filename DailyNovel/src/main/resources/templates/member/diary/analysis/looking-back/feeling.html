@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html 	xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,24 +23,27 @@
         <div class="main pdt-5 lc-space-between-alignment">
                
                
-            <div>
-                    <div class="box-img f-pdt-7">
-                        <div class="main-feeling"></div>
-                    </div>
-                     
-                    <div class="collection-feeling mgt-4">
-                        <div class="feeling-angry"></div>
-                        <div class="feeling-awkward"></div>
-                        <div class="feeling-calm"></div>
-                        <div class="feeling-disappointed"></div>
-                    </div>
-             
-            </div>
-                
+            
+			<div class="feeling-rank-box" >
+
+				  <div class="top-feeling" th:style="'background-image:url('+ @{/image/feeling/{img}(img=${Toprank.bigimg})} +');'"></div>
+				  <div class="sub-feeling">
+						<div class="rank-box" th:each="rank : ${rank}" th:style="'background-image:url('+ @{/image/feeling/{img}(img=${rank.img})} +');'">
+						</div>
+				 </div>
+			</div>
+				
+				
+				
+                <div class="">
+                    <p class="box-p font-size20 font-weight-bolder" th:text="${Toprank.description}">
+                    </p>
+                </div>    
+
                
                 <div class="lc-space-around pdb-5">
-                    <div class="btn-feeling"><a class="" href="../looking-back/feeling-view-details.html">상세보기</a></div>
-                    <div class="btn-feeling"><a class="" href="../looking-back/feeling-chart.html">차트보기</a></div>
+                    <div class="btn-feeling"><a class="" href="member/diary/analysis/looking-back/feeling-view-details">상세보기</a></div>
+                    <div class="btn-feeling"><a class="" href="./feeling-chart.html">차트보기</a></div>
                 </div>
           
 
