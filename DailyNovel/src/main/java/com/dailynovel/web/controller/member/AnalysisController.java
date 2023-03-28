@@ -32,13 +32,13 @@ public class  AnalysisController {
 		return "member/diary/analysis/looking-back/feeling";
 	}
 	
-//	@GetMapping("feeling-chart")
-//	public String feeling-chart(Model model) {
-//		List<Feeling> list = service.getList();
-//		model.addAttribute("list", list);
-//		return "analysis/feeling-chart";
-//	}
-//	
+	
+	@GetMapping("feeling-chart")
+		public String feelingChart() {
+		
+		return "member/diary/analysis/looking-back/feeling-chart";
+	}
+	
 	@GetMapping("feeling-view-detail")
 	public String feelingViewDetail(Model model) {
 		List<FeelingCountView> list = service.getViewCount();
