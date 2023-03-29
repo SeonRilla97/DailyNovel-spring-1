@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,37 +15,53 @@
     <link rel="stylesheet" href="../../css/util.css">
 
 </head>
+
 <body>
-    <section class="container-1">
-        <header class="header lc-center top-sticky">
-            <div class="box-large color-bg-green-2 h1 mgt-3">피드백</div>
-        </header>
+  
 
-        <section class="main lc-center flex-column  main-size">
-            <div class="main-size overflow-auto">
-                <form action="">
-                    <textarea name="" id="" cols="30" rows="10" placeholder="문의사항을 적어주세요" class="box-large input-boder-none mgt-5 feedback-box-size"></textarea>
+<!-- START HERE -->
+   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+   <!-- Style The Contact Form How Ever You Prefer -->
+   <link rel="stylesheet" href="style.css">
 
-                    <div class="l-box-short mgt-5">
-                        <fieldset class="name">문의종류</fieldset>
-                            <div class="content">
-                                <label for="kind">버그</label>
-                                <input type="radio" name="kind" id="">
-                                <label for="kind">기능</label>
-                                <input type="radio" name="kind" id="">
-                                <label for="kind">그외</label>
-                                <input type="radio" name="kind" id="">
-                            </div>
-                    </div>
-                    <div class="flex-jfy-center mgt-5">
-                        <input class="btn3" type="submit" value="보내기">
-                    </div>
-                </form>
-            </div>
-        </section>
+   <section class="container-1">
+    <header class="header lc-center top-sticky">
+        <div class="box-large color-bg-green-2 h1 mgt-3">피드백</div>
+    </header>
 
- 
+    <section class="main lc-center flex-column  main-size">
+        <div class="main-size overflow-auto">
+            <form class="gform pure-form pure-form-stacked" method="POST" data-email="21jamaica21@gmail.com"
+            action="https://script.google.com/macros/s/AKfycbwXpwyVpOZOykaH4D39jxDVBz6ut5WajId3_VsytutS8efshqMxbeuQ9Oe90UZrkEt5kg/exec" target = iframe1>
+                <!-- change the form action to your script url -->
+                <textarea name="message" id="" cols="30" rows="10" placeholder="문의사항을 적어주세요" class="box-large input-boder-none mgt-5 feedback-box-size"></textarea>
+                <label for="name">이름</label>
+                <input type="text" name="name" placeholder="이름을 적어주세요." maxlength='5' th:value="${setting.nickName}" readonly>
+                <label for="email">이메일</label>
+                <input type="text" name="email" placeholder="이메일을 적어주세요." maxlength='30'th:value="${setting.email}" readonly>
+                <div class="l-box-short mgt-5">
+                    <fieldset class="name">문의종류</fieldset>
+                        <div class="content">
+                            <label for="kind" >버그</label>
+                            <input type="radio" name="kind" id="" value="버그">
+                            <label for="kind">기능</label>
+                            <input type="radio" name="kind" id="" value="기능">
+                            <label for="kind">그외</label>
+                            <input type="radio" name="kind" id="" value="그외" checked>
+                        </div>
+                </div>
+                <div class="flex-jfy-center mgt-5">
+                    <input class="btn3" type="submit" value="보내기">
+                </div>
 
+
+
+
+            </form>
+            <iframe id="iframe1" name="iframe1" class="d-none"></iframe>
+        </div>
+    </section>
         <div class="footer">
             <div class="container-nav color-white-1">
                 
@@ -84,6 +100,11 @@
                 </div>
             </div>
         </div>
-    </section>
+
+
+  <!-- Submit the Form to Google Using "AJAX" -->
+  <script data-cfasync="false" src="form-submission-handler.js"></script>
+<!-- END -->
+
 </body>
 </html>

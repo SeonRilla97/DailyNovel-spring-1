@@ -22,8 +22,8 @@ class SettingRepositoryTest2 {
 		setting.setId(7);
 		setting.setNickName("고양이");
 		setting.setProfileImage("kakao.12.png");
-		setting.setAlarmSwitch(0);
-		setting.setKakaoAlarmSwitch(1);
+//		setting.setAlarmSwitch(0);
+//		setting.setKakaoAlarmSwitch(1);
 		setting.setAlarmTime("23:11:25");
 		System.out.println(setting);
 		repository.updateProfile(setting);
