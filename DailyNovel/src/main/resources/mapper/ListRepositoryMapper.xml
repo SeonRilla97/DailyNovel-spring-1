@@ -8,9 +8,24 @@
       <result property="regDate" column="reg_date" />
       </resultMap>
 	
-	<select id="findAllById" resultMap="DiaryResultMap">
-		select date_format(reg_date, '%Y-%m-%d') as reg_date, title, text
-		from Diary
-	</select>
+<!-- 	<select id="findAllById" resultMap="DiaryResultMap">
+		SELECT date_format(reg_date, '%Y-%m-%d') as regDate, title,text as content FROM dailynoveldb.Diary
+		WHERE str_to_date(reg_date,'%Y-%m-%d')= ${date}
+		and template_id = ${how}
+		and feeling_id = ${feeling};
+	</select> -->
 	
+	
+	<select id="findAllById" resultMap="DiaryResultMap">
+		select *
+		FROM dailynoveldb.Diary
+		<trim prefix="where" prefixOverrides="AND |OR ">
+			<if test="date != null">
+				str_to_date(reg_date,'%Y-%m-%d')= #{date}</if>
+			<if test="how != null">
+				and template_id = ${how}</if>
+			<if test="feeling != null">
+				and feeling_id = ${feeling}</if>
+		</trim>
+	</select>
 </mapper>

@@ -43,7 +43,7 @@ public class  MemberController {
 		
 		List<Diary> list =  listservice.getDiarys(id);
 		System.out.println(list);
-		model.addAttribute("list",list);
+//		model.addAttribute("list",list);
 		return "/member/diary/list";
 	}
 	@RequestMapping("/diary/selecttmp")

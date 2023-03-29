@@ -25,25 +25,48 @@
 		</header>
 		
 		<main class="main list-main-flex-col">
-			<div class="lists-filter filter-pos-style pdt-4">
-				<div class="lc-center color-bg-white-2 color-black-1 font-bold args">정렬</div>	
-					<label for="template"></label>
-					<select name="template" id="template" style="-webkit-appearance:none;" class="args">
-						<option class ="ib ops" value="NULL">HOW</option>
-						<option class ="ib ops" value="기본">기본</option>
-						<option class ="ib ops" value="여행">여행</option>
-						<option class ="ib ops" value="영화">영화</option>
-					</select>
+			<div class="option-container lists-filter pdt-4">
+			 <!-- 정렬을 위로 빼기 -->
+					<div class="option-box mgl-2">
+						<div class="title lc-center border-r-2">템플릿</div>
+						<div class="select border-r-2 hidden no-scroll">
+							<div class="option lc-center">기본</div>
+							<div class="option lc-center">여행</div>
+							<div class="option lc-center">영화</div>
+							<div class="option lc-center h5">선택안함</div>
+						</div>
+					</div>
 					
-					<label for="feeling"></label>
-					<select name="feeling" id="feeling" style="-webkit-appearance:none;" class="args">
-						<option class ="ib ops" value="기분">기분</option>
-						<option class ="ib ops" value="기분">싫어</option>
-						<option class ="ib ops" value="기분">좋아</option>
-						<option class ="ib ops" value="기분">쏘쏘</option>
-					</select>					
-				<div class="lc-center args" id="openBtn">날짜</div>
+					<div class="option-box mgl-2">
+						<div class="title lc-center border-r-2">기분</div>
+						<div class="select border-r-2 hidden">
+							<div class="option lc-center">화남</div>
+							<div class="option lc-center">불편</div>
+							<div class="option lc-center">평온</div>
+							<div class="option lc-center">실망</div>
+							<div class="option lc-center">불안</div>
+							<div class="option lc-center">행복</div>
+							<div class="option lc-center">슬픔</div>
+							<div class="option lc-center">감동</div>
+							<div class="option lc-center">신남</div>
+							<div class="option lc-center h5">선택안함</div>
+						</div>
+					</div>
+
+					<div class="option-box mgl-2">
+						<div class="title lc-center border-r-2">정렬방법</div>
+						<div class="select border-r-2 hidden no-scroll">
+							<div class="option lc-center">최신순</div>
+							<div class="option lc-center">과거순</div>
+							<div class="option lc-center">인기순</div>
+							<div class="option lc-center h5">선택안함</div>
+						</div>
+					</div>
+					
+					
+					<div class="b lc-center args border-r-2 mgl-2 color-bg-green-2" id="openBtn">날짜</div>
 			</div>
+
 			<ul class="lists">
 				<li class="list-box" th:each="diary : ${list}">
 					<div class="list-date lc-center h2 font-weight-bolder mgt-2" th:text="${diary.regDate}">2022-22-22</div>

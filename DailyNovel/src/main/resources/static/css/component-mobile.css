@@ -534,10 +534,7 @@
   position:relative
 }
 
-.filter-pos-style {
-  display: flex;
-  align-items: center;
-}
+
 .lists {
   
   height: 90%;
@@ -576,13 +573,12 @@
   margin-right: 1rem;
 }
 .lists-filter > .args {
-margin-right: 0.6rem;
-text-align: center;
-font-size: 1rem;
-border-radius: 0.625rem;
-background-color: #69BC80;
-width: 5rem;
-height: 2rem;
+  width:5rem;
+  height: 2rem;
+  /* border: 1px dotted #00000020; */
+  text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
 /* margin-right: 1rem; */
 color: white;
 }
@@ -615,6 +611,7 @@ color: white;
     align-items: baseline;
     padding-top:1rem;
     border-bottom: 1px solid #C5C5C5;
+
   }
     .list-box .title .diary{
       font-size : 1.25rem;
@@ -671,6 +668,76 @@ color: white;
     width: 80px;
     margin: 0 auto;
   }
+
+
+/* 일기 리스트 -> 일기 정렬 방식 CSS */
+.option-container{
+    width: 100%;;
+    /* height: 2rem; */
+    /* background-color: #9aefb0; */
+    text-align: center;
+    /* border-bottom: 1px solid black; */
+    display:flex;
+}
+
+.option-container * {
+    -webkit-touch-callout: none;
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+
+.option-container .label{
+    width: 5rem;
+    height : 2rem;
+}
+.option-box .title{
+    width:5rem;
+    height: 2rem;
+    background: #69bc80;
+    text-align: center;
+    box-sizing: border-box;
+    color:white;
+    /* overflow: hidden; */
+}
+
+.option-box .select{
+    visibility:hidden;
+    transition: height 0.5s;
+    height : 0rem;
+    /* background-color: aquamarine; */
+    overflow: scroll;
+    box-sizing: border-box;
+    display:inline-block;
+    width:100%;    
+    margin-top:0.3rem;
+    -webkit-backface-visibility: hidden;
+}
+.option-box .select.no-scroll::-webkit-scrollbar{
+    display:none;
+}
+
+.option-box .option{
+    height: 2rem;
+    min-height:1rem;
+    padding: 0.125rem;
+    box-sizing: border-box;
+}
+
+.option-box .select:not(.hidden)
+{
+    visibility: visible;
+    background-color: #f5f5dc;
+    height:8rem;
+    overflow: scroll;
+    /* transition: height 0.5s; */
+    /* -webkit-backface-visibility: hidden; */
+}
+/* 일기 리스트 -> 일기 정렬 방식 CSS 끝 === */
+
+
 
 /* 일기 작성 */
 

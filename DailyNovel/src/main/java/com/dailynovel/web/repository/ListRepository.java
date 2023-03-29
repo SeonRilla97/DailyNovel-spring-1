@@ -11,11 +11,9 @@ public interface ListRepository {
 	
 	List<Diary> findAllById(
 			Integer memberId,
-			Integer how,
-			Integer feeling,
-			Integer year,
-			Integer month,
-			Integer sort
+			Integer how, //템플릿
+			Integer feeling, //기분
+			String date //날짜
 			);
 	
 }

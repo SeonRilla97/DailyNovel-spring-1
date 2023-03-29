@@ -16,7 +16,7 @@ public class defaultListService implements ListService {
 	@Override
 	public List<Diary> getDiarys(Integer memberId) {
 		// TODO Auto-generated method stub
-		return repository.findAllById(memberId,null,null,null,null,null);
+		return repository.findAllById(memberId,null,null,null);
 	}
 
 }

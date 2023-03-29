@@ -18,7 +18,7 @@ class ListRepositoryTest {
 	private ListRepository repo;
 	@Test
 	void test() {
-		List<Diary> list = repo.findAllById(1,null,null,null,null,null);
+		List<Diary> list = repo.findAllById(1,null,null,"2023-03-24");
 		System.out.println(list);
 	}
 
