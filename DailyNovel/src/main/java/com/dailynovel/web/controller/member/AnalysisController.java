@@ -8,9 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.dailynovel.web.entity.FeelingCountView;
-import com.dailynovel.web.entity.FeelingRankView;
-import com.dailynovel.web.entity.FeelingTopRankView;
+import com.dailynovel.web.entity.FeelingRank;
 import com.dailynovel.web.service.FeelingService;
 
 @Controller
@@ -24,8 +22,8 @@ public class  AnalysisController {
 	
 	@GetMapping("feeling")
 	public String feeling(Model model) {
-		List<FeelingRankView> rank = service.getRankView();
-	    FeelingTopRankView Toprank = service.getTopRankView().get(0); // 첫 번째 요소만 가져오기
+		List<FeelingRank> rank = service.getRank();
+		FeelingRank Toprank = service.getTopRank().get(0); // 첫 번째 요소만 가져오기
 		System.out.println("Rank");
 		model.addAttribute("rank", rank);
 		model.addAttribute("Toprank", Toprank);
@@ -41,7 +39,7 @@ public class  AnalysisController {
 	
 	@GetMapping("feeling-view-detail")
 	public String feelingViewDetail(Model model) {
-		List<FeelingCountView> list = service.getViewCount();
+		List<FeelingRank> list = service.getCount();
 		System.out.println(list);
 		model.addAttribute("list", list);
 		return "member/diary/analysis/looking-back/feeling-view-details";

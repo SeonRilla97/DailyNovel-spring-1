@@ -7,7 +7,7 @@ import org.mybatis.spring.boot.test.autoconfigure.AutoConfigureMybatis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.dailynovel.web.entity.FeelingRankView;
+import com.dailynovel.web.entity.FeelingRank;
 import com.dailynovel.web.repository.FeelingRepository;
 
 @SpringBootTest
@@ -21,7 +21,7 @@ class DefaultFeelingServiceTest {
 	
 	@Test
 	void test() {
-		List<FeelingRankView> list = service.getRankView();
+		List<FeelingRank> list = service.getRank();
 		System.out.println(list);		
 		System.out.println("작업완료");
 	}
