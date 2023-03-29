@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dailynovel.web.entity.FeelingCountView;
-import com.dailynovel.web.entity.FeelingRankView;
-import com.dailynovel.web.entity.FeelingTopRankView;
+import com.dailynovel.web.entity.FeelingRank;
 import com.dailynovel.web.repository.FeelingRepository;
 
 @Service
@@ -17,23 +15,31 @@ public class DefaultFeelingService implements FeelingService {
 	@Autowired
 	private FeelingRepository repository;
 	
+
 	@Override
-	public List<FeelingCountView> getViewCount() {
-		
-		return repository.findViewAll();
+	public List<FeelingRank> getCount() {
+		// TODO Auto-generated method stub
+		return repository.findAll(null, null, null, null);
 	}
 
 	@Override
-	public List<FeelingRankView> getRankView() {
+	public List<FeelingRank> getRank() {
 		// TODO Auto-generated method stub
-		return repository.findRankView();
+		return repository.findRank(null, null, null);
 	}
 
 	@Override
-	public List<FeelingTopRankView> getTopRankView() {
+	public List<FeelingRank> getTopRank() {
 		// TODO Auto-generated method stub
-		return repository.findTopRankView();
+		return repository.findTopRank(null, null, null, null);
 	}
+	
+	
+	
+	
+	
+
+
 
 
 

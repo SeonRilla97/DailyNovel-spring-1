@@ -4,19 +4,31 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.dailynovel.web.entity.FeelingCountView;
-import com.dailynovel.web.entity.FeelingRankView;
-import com.dailynovel.web.entity.FeelingTopRankView;
+import com.dailynovel.web.entity.FeelingRank;
 
 @Mapper
 public interface FeelingRepository {
 	
 	
-	List<FeelingCountView> findViewAll(); 
+	 
 	
-	List<FeelingRankView> findRankView(); 
+	List<FeelingRank> findAll(String name,
+							String description,
+							String img,
+							Integer frequency
+									); 
+	List<FeelingRank> findTopRank(String name,
+								String img,
+								Integer frequency,
+								String description
+									);
+	List<FeelingRank> findRank(String name,
+				   			String img,
+							Integer frequency
+			);
+	
 
-	List<FeelingTopRankView> findTopRankView(); 
+	 
 
 	
 }

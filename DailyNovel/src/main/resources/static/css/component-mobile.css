@@ -827,6 +827,84 @@ color: white;
 
 /* feeling */
 
+
+
+
+
+.feeling-rank-box{
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  width: 20rem;
+  height: 25rem;
+}
+
+.feeling-rank-box > .top-feeling{
+  display: grid;
+  gap: 0.5rem;
+  background-repeat: no-repeat;
+  background-size: 135%;
+  background-position: center;
+  grid-template:
+    "feeling1 feeling2 medal " 1fr
+    "feeling3 feeling4 feeling5" 1fr
+    "feeling6 feeling7 feeling8" 1fr
+    /1fr 1fr 1fr;
+}
+
+/* .feeling-rank-box > .top-feeling { */
+/*   display: grid; */
+/*   gap: 0.5rem; */
+/*   background-repeat: no-repeat; */
+/*   background-size: 135%; */
+/*   background-position: center; */
+/* } */
+
+.top-feeling > .first-prize{
+
+  grid-area: medal;
+  background-image: url("data:image/svg+xml,%3Csvg width='676' height='800' viewBox='0 0 676 800' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M675.5 0H450.501L125.499 474.998H350.498L675.5 0Z' fill='%23BF392C'/%3E%3Cpath d='M0.500488 0H225.499L550.498 474.998H325.5L0.500488 0Z' fill='%23E2574C'/%3E%3Cpath d='M350.5 250C503 250 625.5 372.501 625.5 525C625.5 677.5 503 800 350.5 800C198.001 800 75.5 677.5 75.5 525C75.5 372.501 198.001 250 350.5 250Z' fill='%23EFC75E'/%3E%3Cpath d='M350.5 325C240.501 325 150.5 414.999 150.5 525.001C150.5 635.002 240.498 725.001 350.5 725.001C460.502 725.001 550.501 635.002 550.501 525.001C550.501 414.999 460.499 325 350.5 325ZM350.5 675C268 675 200.501 607.499 200.501 525.001C200.501 442.503 268.002 375.001 350.5 375.001C432.998 375.001 500.499 442.503 500.499 525.001C500.499 607.499 432.998 675 350.5 675Z' fill='%23D7B354'/%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+
+}
+
+.feeling-rank-box > .sub-feeling {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.feeling-rank-box > .sub-feeling > .rank-box {
+  display: grid;
+  background-repeat: no-repeat;
+  background-size: 150%;
+  background-position: center;
+  grid-template:
+  "feeling1 feeling2 medal " 1fr
+  "feeling3 feeling4 feeling5" 1fr
+  "feeling6 feeling7 feeling8" 1fr
+  /1fr 1fr 1fr;
+}
+
+.rank-box > .second-prize{
+  grid-area: medal;
+  background-image: url("data:image/svg+xml,%3Csvg width='676' height='800' viewBox='0 0 676 800' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M675.5 0H450.501L125.499 474.998H350.498L675.5 0Z' fill='%23BF392C'/%3E%3Cpath d='M0.500488 0H225.499L550.498 474.998H325.5L0.500488 0Z' fill='%23E2574C'/%3E%3Cpath d='M350.5 250C503 250 625.5 372.501 625.5 525C625.5 677.5 503 800 350.5 800C198.001 800 75.5 677.5 75.5 525C75.5 372.501 198.001 250 350.5 250Z' fill='%23E4E7E7'/%3E%3Cpath d='M350.5 325C240.501 325 150.5 414.999 150.5 525.001C150.5 635.002 240.498 725.001 350.5 725.001C460.502 725.001 550.501 635.002 550.501 525.001C550.501 414.999 460.499 325 350.5 325ZM350.5 675C268 675 200.501 607.499 200.501 525.001C200.501 442.503 268.002 375.001 350.5 375.001C432.998 375.001 500.499 442.503 500.499 525.001C500.499 607.499 432.998 675 350.5 675Z' fill='%23CDCFCF'/%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+}
+.rank-box > .third-prize{
+  grid-area: medal;
+  background-image: url("data:image/svg+xml,%3Csvg width='676' height='800' viewBox='0 0 676 800' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M675.5 0H450.501L125.499 474.998H350.498L675.5 0Z' fill='%23BF392C'/%3E%3Cpath d='M0.500488 0H225.499L550.498 474.998H325.5L0.500488 0Z' fill='%23E2574C'/%3E%3Cpath d='M350.5 250C503 250 625.5 372.501 625.5 525C625.5 677.5 503 800 350.5 800C198.001 800 75.5 677.5 75.5 525C75.5 372.501 198.001 250 350.5 250Z' fill='%23ED9D5D'/%3E%3Cpath d='M350.5 325C240.501 325 150.5 414.999 150.5 525.001C150.5 635.002 240.498 725.001 350.5 725.001C460.502 725.001 550.501 635.002 550.501 525.001C550.501 414.999 460.499 325 350.5 325ZM350.5 675C268 675 200.501 607.499 200.501 525.001C200.501 442.503 268.002 375.001 350.5 375.001C432.998 375.001 500.499 442.503 500.499 525.001C500.499 607.499 432.998 675 350.5 675Z' fill='%23D58D54'/%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+}
+
+
+
+
 .feeling-big-box{
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
@@ -842,46 +920,11 @@ color: white;
   
 }
 
-.feeling-rank-box{
-  display: grid;
-  grid-template-rows: 3fr 1fr;
-  width: 20rem;
-  height: 25rem;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-
-.feeling-rank-box > .top-feeling {
-  display: grid;
-  gap: 0.5rem;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-
-.feeling-rank-box > .sub-feeling {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.5rem;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-
-.feeling-rank-box > .sub-feeling > .rank-box {
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-
-
 .feeling-box > .feeling{
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 130%;
   background-position: center;
 }
-
 
 .feeling-box > .count-box{
   
