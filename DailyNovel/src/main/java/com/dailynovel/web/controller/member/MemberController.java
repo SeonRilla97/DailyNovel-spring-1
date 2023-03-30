@@ -61,6 +61,8 @@ public class  MemberController {
 		System.out.println(templateList);
 		System.out.println(list);
 		System.out.println(regDate +id +weatherId+templateId+feelingId);
+		System.out.println(weatherList);
+		System.out.println(feelingList);
 		model.addAttribute("list",list);
 		return "/member/diary/list";
 	}

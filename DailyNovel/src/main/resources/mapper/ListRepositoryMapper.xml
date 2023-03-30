@@ -18,7 +18,7 @@
 	
 	<select id="findAllById" resultMap="DiaryResultMap">
 		select *
-		FROM dailynoveldb.Diary
+		FROM dailynoveldb.diary
 		<trim prefix="where" prefixOverrides="AND |OR ">
 			<if test="date != null">
 				str_to_date(reg_date,'%Y-%m-%d')= #{date}</if>
