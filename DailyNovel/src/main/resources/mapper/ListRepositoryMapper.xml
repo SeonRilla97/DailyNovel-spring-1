@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 이거 MenuRepository의 Getter를 쓰는거임 (무조건 Getter있어야함) -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dailynovel.web.repository.ListRepository">
+	   <resultMap id="DiaryResultMap" type="Diary">
+      <result property="regDate" column="reg_date" />
+      </resultMap>
+	
+<!-- 	<select id="findAllById" resultMap="DiaryResultMap">
+		SELECT date_format(reg_date, '%Y-%m-%d') as regDate, title,text as content FROM dailynoveldb.Diary
+		WHERE str_to_date(reg_date,'%Y-%m-%d')= ${date}
+		and template_id = ${how}
+		and feeling_id = ${feeling};
+	</select> -->
+	
+	
+	<select id="findAllById" resultMap="DiaryResultMap">
+		select *
+		FROM dailynoveldb.diary
+		<trim prefix="where" prefixOverrides="AND |OR ">
+			<if test="date != null">
+				str_to_date(reg_date,'%Y-%m-%d')= #{date}</if>
+			<if test="how != null">
+				and template_id = ${how}</if>
+			<if test="feeling != null">
+				and feeling_id = ${feeling}</if>
+		</trim>
+	</select>
+</mapper>

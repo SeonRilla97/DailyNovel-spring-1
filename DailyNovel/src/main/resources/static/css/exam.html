@@ -7,43 +7,153 @@
     <link rel="stylesheet" href="exam.css">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/res/css/reset.css">
-    <link rel="stylesheet" href="/res/css/layout.css">
-    <link rel="stylesheet" href="/res/css/button.css">
-    <link rel="stylesheet" href="/res/css/box.css">
-    <link rel="stylesheet" href="/res/css/component-mobile.css">
-    <link rel="stylesheet" href="/res/css/style.css">
-    <link rel="stylesheet" href="/res/css/util.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/button.css">
+    <link rel="stylesheet" href="../css/box.css">
+    <link rel="stylesheet" href="../css/component-mobile.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/util.css">
 </head>
 <body>
-    <form class="form-signup" id="sign-up-form">
-                        
-        <!-- <div class="outBox box-large">
-            <div class="inputBox">
-                <input id="email" class="sample-id" type="text"/>
-                <label for="email">이메일</label>
-                <span><img src="../../res/img/DiaryMainPage/fail.svg" alt="이메일을 확인해 주세요"></img></span>
-            </div>  
-        </div> -->
+
+    <div class="option-container">
+        <label class="label lc-center color-bg-white-3 border-r-2">정렬</label>
+        <div class="option-box mgl-2">
+            <div class="title lc-center border-r-2">템플릿</div>
+            <div class="select border-r-2 hidden no-scroll">
+                <div class="option lc-center">기본</div>
+                <div class="option lc-center">여행</div>
+                <div class="option lc-center">영화</div>
+                <div class="option lc-center h5">선택안함</div>
+            </div>
+        </div>
+        <div class="option-box mgl-2">
+            <div class="title lc-center border-r-2">기분</div>
+            <div class="select border-r-2 hidden">
+                <div class="option lc-center">화남</div>
+                <div class="option lc-center">불편</div>
+                <div class="option lc-center">평온</div>
+                <div class="option lc-center">실망</div>
+                <div class="option lc-center">불안</div>
+                <div class="option lc-center">행복</div>
+                <div class="option lc-center">슬픔</div>
+                <div class="option lc-center">감동</div>
+                <div class="option lc-center">신남</div>
+                <div class="option lc-center h5">선택안함</div>
+            </div>
+        </div>
+        <div class="option-box mgl-2">
+            <div class="title lc-center border-r-2">정렬방법</div>
+            <div class="select border-r-2 hidden no-scroll">
+                <div class="option lc-center">최신순</div>
+                <div class="option lc-center">과거순</div>
+                <div class="option lc-center">인기순</div>
+                <div class="option lc-center h5">선택안함</div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
     
-        <div class="pp">aa</div>
-        <div class="pp">a</div>
-        <div class="pp">a</div>
-        <div class="pp">a</div>
-        <div class="pp">a</div>
-        <div class="pp">a</div>
-        <div class="ppa">a</div>
-        <div class="pp">a</div>
-        <div class="ppa">a</div>
-        <div class="ppa">a</div>
+
+
+    <script>
+        const btns = document.querySelectorAll(".option-box");
+    
+        for(let btn of btns){
+        btn.addEventListener('click',(e) => {
+    
+            let tag = e.target.tagName;
+            if(!(tag =='DIV')) return;
+            
+            const cate = btn.querySelector(".select");
+            cate.classList.toggle('hidden');
         
-
-
-    <style>
-        .pp:last-of-type{
-            background-color: aqua;
-            font-size:100px;
+            });
         }
-    </style>
+    </script>
 </body>
+
+<style>
+    body{
+        width:100vw;
+        height: 100vh;
+    }
+    .option-container{
+        width: 100%;;
+        height: 2rem;
+        /* background-color: #9aefb0; */
+        text-align: center;
+        /* border-bottom: 1px solid black; */
+        display:flex;
+    }
+    .option-container * {
+        -webkit-touch-callout: none;
+        user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+    }
+    .option-container .label{
+        width: 5rem;
+        height : 2rem;
+    }
+    .option-box .title{
+        width:5rem;
+        height: 2rem;
+        background: linear-gradient(#dfec51, #73aa0a);
+        /* border: 1px dotted #00000020; */
+        text-align: center;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .option-box .select{
+        visibility:hidden;
+        transition: all 1s;
+        height : 0;
+        /* background-color: aquamarine; */
+        overflow: auto;
+        box-sizing: border-box;
+        display:inline-block;
+        width:100%;    
+        margin-top:0.125rem;
+    }
+    .option-box .select.no-scroll::-webkit-scrollbar{
+        display:none;
+    }
+
+    .option-box .option{
+        height: 2rem;
+        min-height:1rem;
+        padding: 0.125rem;
+        box-sizing: border-box;
+    }
+
+    .option-box .select:not(.hidden)
+    {
+        visibility: visible;
+        background-color: #f5f5dc;
+        height:8rem;
+        
+    }
+
+</style>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 48
+    }
+</style>
 </html>

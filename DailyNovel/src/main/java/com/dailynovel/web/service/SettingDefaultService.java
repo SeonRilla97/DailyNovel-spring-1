@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.dailynovel.web.entity.Export;
 import com.dailynovel.web.entity.Setting;
 import com.dailynovel.web.repository.SettingRepository;
 
@@ -24,10 +25,26 @@ public class SettingDefaultService implements SettingService {
 	public void setRepository(SettingRepository repository) {
 		this.repository=repository;
 	}
-
 	@Override
-	public Setting getById(int id) {
+	public Setting getById(Integer id) {
 		return repository.findById(id);
 	}
 
+
+	@Override
+	public int updateProfile(Setting setting) {
+		
+	return 	repository.updateProfile(setting);
+	}
+
+	@Override
+	public int deleteAcount(Integer id) {
+		
+		return repository.deleteAcount(id);
+	}
+	@Override
+	public List<Export> getDiaryListByid(Integer id) {
+
+		return repository.findDiaryListById(id);
+	}
 }
