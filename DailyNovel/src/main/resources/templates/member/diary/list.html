@@ -15,24 +15,26 @@
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/util.css">
 
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="/js/member/diary/list.js" defer="defer"></script>
 </head>
 <body>
 
-	<div class="container-1">
+	<div class="container-1" id = "main-container">
 		<header class="header lc-center">
-			<div class="box-large font-weight-bolder h2 mgt-4">모아보기</div>
+			<div class="box-large font-weight-bolder h2 mgt-4" 
+			 @click.prevent="calcHandler"
+			>모아보기</div>
 			
 		</header>
 		
-		<main class="main list-main-flex-col">
+		<main class="main list-main-flex-col" id="main">
 			<div class="option-container lists-filter pdt-4">
 			 <!-- 정렬을 위로 빼기 -->
 					<div class="option-box mgl-2">
 						<div class="title lc-center border-r-2">템플릿</div>
 						<div class="select border-r-2 hidden no-scroll">
-							<div class="option lc-center">기본</div>
-							<div class="option lc-center">여행</div>
-							<div class="option lc-center">영화</div>
+							<div class="option lc-center" th:text="${template.name}"  th:attr = "data-tid=${template.id}" th:each="template : ${templateList}">기본</div>
 							<div class="option lc-center h5">선택안함</div>
 						</div>
 					</div>
@@ -40,25 +42,15 @@
 					<div class="option-box mgl-2">
 						<div class="title lc-center border-r-2">기분</div>
 						<div class="select border-r-2 hidden">
-							<div class="option lc-center">화남</div>
-							<div class="option lc-center">불편</div>
-							<div class="option lc-center">평온</div>
-							<div class="option lc-center">실망</div>
-							<div class="option lc-center">불안</div>
-							<div class="option lc-center">행복</div>
-							<div class="option lc-center">슬픔</div>
-							<div class="option lc-center">감동</div>
-							<div class="option lc-center">신남</div>
+							<div class="option lc-center" th:each="feeling:${feeling}" th:text="${feeling.name}" th:attr="data-fid= ${feeling.id}">화남</div>
 							<div class="option lc-center h5">선택안함</div>
 						</div>
 					</div>
 
 					<div class="option-box mgl-2">
-						<div class="title lc-center border-r-2">정렬방법</div>
-						<div class="select border-r-2 hidden no-scroll">
-							<div class="option lc-center">최신순</div>
-							<div class="option lc-center">과거순</div>
-							<div class="option lc-center">인기순</div>
+						<div class="title lc-center border-r-2">날씨</div>
+						<div class="select border-r-2">
+							<div class="option lc-center" th:attr= "data-wid = ${weather.id}" th:each="weather:${weatherList}" th:text = "${weather.name}">맑음</div>
 							<div class="option lc-center h5">선택안함</div>
 						</div>
 					</div>
@@ -159,7 +151,6 @@
 
 
 
-	<script  src="/js/member/diary/list.js"></script>
 	<script src="/js/calendar.js"></script>
 </body>
 </html>

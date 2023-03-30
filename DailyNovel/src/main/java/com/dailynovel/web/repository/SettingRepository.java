@@ -7,8 +7,5 @@ import com.dailynovel.web.entity.Setting;
 
 @Mapper
 public interface SettingRepository {
-	
 	Setting findById(int id);
-	
-
 }
