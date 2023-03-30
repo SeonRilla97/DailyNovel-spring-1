@@ -98,8 +98,6 @@ public class MemberController {
 		setting.setStatusMessage(stsMessage);
 		int a = settingService.updateProfile(setting);
 		
-		//Thread.sleep(5000);
-		
 		return "redirect:../profile";
 		
 	}
