@@ -1,39 +1,28 @@
 package com.dailynovel.web.entity;
 
+import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Setting {
-	private int id;
-
-	
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
-	
-	
-	public Setting() {
-		super();
-	}
-
-
-	public Setting(int id) {
-		super();
-		this.id = id;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Setting [id=" + id + "]";
-	}
-	
-	
-	
-
+	private Integer id;
+	private String email;
+	private String password;
+	private String nickName;
+	//private MultipartFile profileImage;
+	private String profileImage;
+	private String statusMessage;
+	private String alarmSwitch;
+	private String kakaoAlarmSwitch;
+	private String alarmTime;
+	//private MultipartFile profileImage2;
 }

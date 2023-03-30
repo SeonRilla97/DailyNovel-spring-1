@@ -159,13 +159,13 @@ class slide{
 // PC 클릭 이벤트 (드래그)
     
     
-const mainPreviewSlide = new slide(
-    ".preview-slide", //
-    ".preview-slide .prev-btn",
-    ".preview-slide .next-btn",
-    ".preview-slide .item",
-    ".preview-slide .pagination",
-    ".preview-slide .pagination > li" 
+const slider = new slide(
+    ".slider", //
+    ".slider .prev-btn",
+    ".slider .next-btn",
+    ".slider .item",
+    ".slider .pagination",
+    ".slider .pagination > li" 
     );
 
 // const mainPreviewsaSlide = new slide(

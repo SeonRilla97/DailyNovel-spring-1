@@ -4,9 +4,62 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dailynovel.web.repository.SettingRepository">
 
-	<select id="findById" resultType="Setting">
-		select * from demotest where id=#{id}
-	</select>
+	<resultMap id="settingKK" type="setting">
+	  <result property="profileImage" column="profile_image"/>
+	  <result property="statusMessage" column="status_message"/>
+	  <result property="alarmSwitch" column="alarm_switch"/>
+	  <result property="kakaoAlarmSwitch" column="kakao_alarm_switch"/>
+	  <result property="alarmTime" column="alarm_time"/>
+	</resultMap>
+	
+	
 
+
+	<select id="findById" resultMap="settingKK">
+		select * from member 
+		where id=#{id}
+	</select>
+	
+ 	<update id="updateProfile" parameterType="Setting">
+		update member
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="profileImage !=null">
+				profile_image=#{profileImage},
+			</if>
+			<if test="nickName !=null">
+				nickname=#{nickName},
+			</if>
+			<if test="statusMessage !=null">
+				status_message=#{statusMessage},
+			</if>
+			<if test="alarmSwitch !=null">
+				alarm_switch=#{alarmSwitch},
+			</if>
+			<if test="kakaoAlarmSwitch !=null">
+				kakao_alarm_switch=#{kakaoAlarmSwitch},
+			</if>
+			<if test="alarmTime !=null">
+				alarm_time=#{alarmTime}
+			</if>
+		</trim>
+			 where id=#{id}
+	</update>
+
+<!-- 	<update id="updateStatus" parameterType="">
+		update member
+		<trim prefix="SET" suffixoverrides=",">
+			<if test="name !=null">
+				nickname="#{nickname}",
+			</if>
+			<if test="status_message !=null">
+				status_message="#{statusMessage}
+			</if>
+			 where id=#{id};
+		</trim>
+	</update> -->
+
+	<delete id="deleteAcount" parameterType="Setting">
+		delete from member where id = #{id};
+	</delete>
 
 </mapper>
