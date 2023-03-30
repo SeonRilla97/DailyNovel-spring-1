@@ -12,12 +12,15 @@
 /* -------------------------------------------------------------  */
 /* 공통 속성 */
 .d-none{
-  display: none;
+  display: none !important;
 }
 
 .t-none{
   text-decoration: none;
 }
+
+
+
 
 /* margin */
 
