@@ -15,6 +15,5 @@ public interface SettingRepository {
 	int updateProfile(Setting setting);
 	int deleteAcount(Integer id);
 	List<Export> findDiaryListById(Integer id);
-	
-
 }
+

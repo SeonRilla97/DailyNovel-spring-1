@@ -36,6 +36,14 @@
 
 .outBox .inputBox input:focus + label,
 .outBox.existence .inputBox label {color:#69BC80; transform:scale(.85) translate(-3px, -48px);}
+
+/* ------------------------------------------ */
+/* 일기 list에 쓸 모달창 */
+
+
+
+
+
 /* 실험실 끝 */
 
 /* index페이지: 이동형*/
@@ -288,6 +296,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  height:100%;
 }
 .calender::before{
   /* 달력 배경 넣기 */
@@ -333,7 +342,7 @@
 }
 
 .calender .day > li {
-  font-size: 0.75rem;
+  font-size: 1rem;
   color: #00000040;
 }
 .calender .date {
@@ -518,17 +527,32 @@
 }
 
 .list-main-flex-col{
-
-  display: flex;
-  flex-direction: column;
+  max-height: 100%;
+  height:100%;
+  overflow:scroll;
+  box-sizing: border-box;
+  position:relative
 }
 
-.filter-pos-style {
-  display: flex;
-  align-items: center;
-}
+
 .lists {
-  height: 100%;
+  
+  height: 90%;
+  /* max-height: 100%; */
+  overflow: scroll;
+  padding-bottom: 1rem;
+  box-sizing:border-box;
+}
+.lists::-webkit-scrollbar {
+  display: none; /*스크롤바 숨기기*/
+}
+
+.main-size{
+  min-height: 100px; max-height: auto; 
+  padding-bottom: 0.5rem;
+}
+.overflow-auto{
+  overflow: auto;
 }
 
 
@@ -538,22 +562,181 @@
 
 .lists-filter {
   border-bottom: 1px solid #C5C5C5;
-  padding-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  position: sticky;
+  top:0;
+  height: 10%;
+  box-sizing: border-box;
 }
 
 .lists-filter > span {
   margin-right: 1rem;
 }
-.lists-filter > div {
-margin-right: 0.4rem;
-text-align: center;
-font-size: 1rem;
-border-radius: 1rem;
-background-color: #69BC80;
-padding: 0.5rem 1.5rem;
-margin-right: 1rem;
+.lists-filter > .args {
+  width:5rem;
+  height: 2rem;
+  /* border: 1px dotted #00000020; */
+  text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
+/* margin-right: 1rem; */
 color: white;
 }
+.lists-filter> .ops{
+  background-color: #999;
+  text-align: center;
+  width: 8rem;
+  height: 2rem;
+  font-size:20px;
+  min-height: 1rem;
+
+}
+
+
+.list-box {
+  box-shadow: 0px 4px 4px 0px #DFDFDF;
+  background-color: #FCFCFC;
+  border-radius: 5px;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  height: 10.5rem;
+  padding-left: 3%;
+  padding-top: 3%;
+}
+
+  .list-box .title{
+    display:flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top:1rem;
+    border-bottom: 1px solid #C5C5C5;
+
+  }
+    .list-box .title .diary{
+      font-size : 1.25rem;
+    }
+    .list-box .title .date{
+      font-size : 0.9rem;
+    }
+
+  .list-box .content{
+    /* padding-left: 2%; */
+    line-height: 1rem;
+  }    
+
+
+
+    /* 일기 날짜 정렬 모달창 */
+  .list-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition:all 0.2s;
+    opacity:0;
+    visibility: hidden;
+  }
+  .list-modal:not(.hidden){
+    opacity:1;
+    visibility: visible;
+  }
+
+  .list-modal .bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0,0.6);
+  }
+  
+  .list-modal .modalBox {
+    position: absolute;
+    background-color: #fcfcfc;
+    width: 80vw;
+    height: 40vh;
+    padding: 15px;
+    display:flex;
+    align-items: center;
+    justify-self: center;
+  }
+  
+  .list-modal .modalBox button {
+    display: block;
+    width: 80px;
+    margin: 0 auto;
+  }
+
+
+/* 일기 리스트 -> 일기 정렬 방식 CSS */
+.option-container{
+    width: 100%;;
+    /* height: 2rem; */
+    /* background-color: #9aefb0; */
+    text-align: center;
+    /* border-bottom: 1px solid black; */
+    display:flex;
+}
+
+.option-container * {
+    -webkit-touch-callout: none;
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+
+.option-container .label{
+    width: 5rem;
+    height : 2rem;
+}
+.option-box .title{
+    width:5rem;
+    height: 2rem;
+    background: #69bc80;
+    text-align: center;
+    box-sizing: border-box;
+    color:white;
+    /* overflow: hidden; */
+}
+
+.option-box .select{
+    visibility:hidden;
+    transition: height 0.5s;
+    height : 0rem;
+    /* background-color: aquamarine; */
+    overflow: scroll;
+    box-sizing: border-box;
+    display:inline-block;
+    width:100%;    
+    margin-top:0.3rem;
+    -webkit-backface-visibility: hidden;
+}
+.option-box .select.no-scroll::-webkit-scrollbar{
+    display:none;
+}
+
+.option-box .option{
+    height: 2rem;
+    min-height:1rem;
+    padding: 0.125rem;
+    box-sizing: border-box;
+}
+
+.option-box .select:not(.hidden)
+{
+    visibility: visible;
+    background-color: #f5f5dc;
+    height:8rem;
+    overflow: scroll;
+    /* transition: height 0.5s; */
+    /* -webkit-backface-visibility: hidden; */
+}
+/* 일기 리스트 -> 일기 정렬 방식 CSS 끝 === */
+
 
 
 /* 일기 작성 */
@@ -1127,12 +1310,3 @@ feeling view
 
 
 
-.list-box {
-  box-shadow: 0px 4px 4px 0px #DFDFDF;
-  background-color: #FCFCFC;
-  border-radius: 5px;
-  margin-top: 1rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  height: 17%
-}
