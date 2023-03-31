@@ -26,6 +26,9 @@ public interface FeelingRepository {
 				   			String img,
 							Integer frequency
 			);
+	List<FeelingRank> findValue(String name,
+						Integer frequency
+			);
 	
 
 	 
