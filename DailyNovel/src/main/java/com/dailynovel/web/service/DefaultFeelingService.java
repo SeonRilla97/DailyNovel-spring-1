@@ -33,6 +33,12 @@ public class DefaultFeelingService implements FeelingService {
 		// TODO Auto-generated method stub
 		return repository.findTopRank(null, null, null, null);
 	}
+
+	@Override
+	public List<FeelingRank> getValue() {
+		// TODO Auto-generated method stub
+		return repository.findValue(null, null);
+	}
 	
 	
 	

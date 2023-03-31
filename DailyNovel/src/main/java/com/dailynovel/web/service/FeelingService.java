@@ -10,6 +10,8 @@ public interface FeelingService {
 	
 	List<FeelingRank> getRank(); 
 	
-	List<FeelingRank> getTopRank(); 
+	List<FeelingRank> getTopRank();
+	
+	List<FeelingRank> getValue();
 
 }
