@@ -21,7 +21,7 @@
 		FROM dailynoveldb.diary
 		<trim prefix="where" prefixOverrides="AND |OR ">
 			<if test="date != null">
-				str_to_date(reg_date,'%Y-%m-%d')= #{date}</if>
+				str_to_date(reg_date,'%Y-%m-%d') = #{date}</if>
 			<if test="tid != null">
 				and template_id = ${tid}</if>
 			<if test="wid != null">
