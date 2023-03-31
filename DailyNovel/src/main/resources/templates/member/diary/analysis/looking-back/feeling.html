@@ -26,15 +26,16 @@
             
 			<div class="feeling-rank-box" >
 
-				  <div class="top-feeling" th:style="'background-image:url('+ @{/image/feeling/{img}(img=${Toprank.img})} +');'">
+				 <div class="top-feeling" th:style="'background-image:url('+ @{/image/feeling/{img}(img=${Toprank.img})} +');'">
 						<div class="first-prize"></div>
 				  
-				  </div>
-				  <div class="sub-feeling">
-						<div class="rank-box" th:each="rank : ${rank}" th:style="'background-image:url('+ @{/image/feeling/{img}(img=${rank.img})} +');'">
-                              
-						</div>
 				 </div>
+				<div class="sub-feeling">
+				    <div class="rank-box" th:each="rank, index : ${rank}" th:style="'background-image:url('+ @{/image/feeling/{img}(img=${rank.img})} +');'">
+				        <div th:class="${index == 0 ? 'second-prize' : ''}"></div>
+				        <div th:class="${index == 1 ? 'third-prize' : ''}"></div>
+				    </div>
+				</div>
 			</div>
 				
 				

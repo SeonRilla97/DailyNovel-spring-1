@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,7 @@
     
     
 </head>
-<body class="container-1">
+<body class="container-1" id="app">
     
     <header class="header lc-center">
         <div class="box-large color-bg-green-2 h1 font-weight-bold color-white-1 ">기분</div>
@@ -81,8 +81,10 @@
                 </div>
         </div>
 </body>
+
 <script>
 	Chart.register(ChartDataLabels); //전역으로 플러그인 등록
 </script>
+
 <script src="/js/feeling-chart.js"></script>
 </html>
