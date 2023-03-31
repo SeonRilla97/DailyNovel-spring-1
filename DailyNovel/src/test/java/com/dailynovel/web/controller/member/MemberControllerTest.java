@@ -1,4 +1,4 @@
-package com.dailynovel.web.repository;
+package com.dailynovel.web.controller.member;
 
 import java.util.List;
 
@@ -9,16 +9,20 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 
 import com.dailynovel.web.entity.Diary;
+import com.dailynovel.web.service.ListService;
 
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @MybatisTest
-class ListRepositoryTest {
+class MemberControllerTest {
+
 
 	@Autowired
-	private ListRepository repo;
+	private ListService listservice;
+	
+	
 	@Test
-	void test() {
-		List<Diary> list = repo.findAllById(1,1,null,null,null);
+	void testDiarylist() {
+		List<Diary> list = listservice.getDiarys(1, 1, 1, 1, null);
 		System.out.println(list);
 	}
 

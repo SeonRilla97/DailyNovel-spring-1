@@ -15,8 +15,8 @@
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/util.css">
 
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<script src="/js/member/diary/list.js" defer="defer"></script>
+<!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+<script src="/js/member/diary/list2.js" defer="defer"></script>
 </head>
 <body>
 
@@ -32,31 +32,32 @@
 			<div class="option-container lists-filter pdt-4">
 			 <!-- 정렬을 위로 빼기 -->
 					<div class="option-box mgl-2">
-						<div class="title lc-center border-r-2">템플릿</div>
+						<div data-name="tid" data-id="" class="title lc-center border-r-2">템플릿</div>
 						<div class="select border-r-2 hidden no-scroll">
-							<div class="option lc-center" th:text="${template.name}"  th:attr = "data-tid=${template.id}" th:each="template : ${templateList}">기본</div>
-							<div class="option lc-center h5">선택안함</div>
+							<div class="option lc-center" th:text="${template.name}"  th:attr = "data-id=${template.id}" th:each="template : ${templateList}">기본</div>
+							<div class="option lc-center h5" data-id="" data-default="템플릿">선택안함</div>
 						</div>
 					</div>
 					
-					<div class="option-box mgl-2">
+					<div  data-name="fid" data-id="" class="option-box mgl-2">
 						<div class="title lc-center border-r-2">기분</div>
 						<div class="select border-r-2 hidden">
-							<div class="option lc-center" th:each="feeling:${feeling}" th:text="${feeling.name}" th:attr="data-fid= ${feeling.id}">화남</div>
-							<div class="option lc-center h5">선택안함</div>
+							<div class="option lc-center" th:each="feeling:${feeling}" th:text="${feeling.name}" th:attr="data-id= ${feeling.id}">화남</div>
+							<div class="option lc-center h5" data-id="" data-default="기분">선택안함</div>
 						</div>
 					</div>
 
-					<div class="option-box mgl-2">
+					<div data-name="wid" data-id="" class="option-box mgl-2" >
 						<div class="title lc-center border-r-2">날씨</div>
-						<div class="select border-r-2">
-							<div class="option lc-center" th:attr= "data-wid = ${weather.id}" th:each="weather:${weatherList}" th:text = "${weather.name}">맑음</div>
-							<div class="option lc-center h5">선택안함</div>
+						<div class="select border-r-2 hidden">
+							<div class="option lc-center" th:attr= "data-id = ${weather.id}" th:each="weather:${weatherList}" th:text = "${weather.name}">맑음</div>
+							<div class="option lc-center h5" data-id="" data-default="날씨">선택안함</div>
 						</div>
 					</div>
+					 
 					
-					
-					<div class="b lc-center args border-r-2 mgl-2 color-bg-green-2" id="openBtn">날짜</div>
+					<div class="b lc-center args border-r-2 mgl-2 color-bg-green-2 wid-6rem" id="openBtn">날짜</div>
+				
 			</div>
 
 			<ul class="lists">
@@ -114,10 +115,10 @@
 	</div>
 
 		<!-- 모달창 -->
-	<div class="list-modal hidden" onclick="console.log('이거 클릭됨')"> 
+	<div class="list-modal hidden"> 
 		<div class="bg"></div>
 		<div class="modalBox">
-			<div class="calender">
+			<div class="calender" id = "calendar">
 				<div class="header" id="calendar-header">
 				  <div class="prev-month" id="prev-btn">&#60;</div>
 				  <div class="h3 lc-center" id="date-config"></div>

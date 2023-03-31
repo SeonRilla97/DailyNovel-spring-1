@@ -3,39 +3,39 @@
 let calHeader = document.querySelector("#calendar-header"), //헤더 담당
 calDate = document.querySelector("#calendar-date");//날짜 그리기 담당
 
-// =========== 달력에 오늘을 넣기 위해 값을 삽입 ===========
-let curdate = new Date();
+    // =========== 달력에 오늘을 넣기 위해 값을 삽입 ===========
+    let curdate = new Date();
     let year = curdate.getFullYear();//년
     let month = curdate.getMonth();//월
     let date = curdate.getDate();//일
     let day = curdate.getDay();//요일
 
-
     // =========== 달력 Header 부분 Tag 생성 ===========
 
     // =========== 달력 넘기기 버튼 리스너들 ===========
     const prevMonthBtn= document.querySelector("#prev-btn");
-    prevMonthBtn.addEventListener('click',()=>{
-        console.log("동작");
+    prevMonthBtn.onclick=function(){
         month--;
         drawDate();
-    });
+    };
 
     const nextMonthBtn= document.querySelector("#next-btn")
-    nextMonthBtn.addEventListener('click',()=>{
+    nextMonthBtn.onclick= function(){
         month++;
         drawDate();
-        console.log("동작");
-    });
+    };
+
+
 const yearMonthTag = document.querySelector("#date-config")
 
 function drawDate() {
+    //그리기를 위한 함수
     let dateCount = 0;
 
 
     // =========== 달력에 표시할 날 세팅 ===========        
-    curdate = new Date(year, month, date, day)
 
+    curdate = new Date(year, month);
 
     // =========== 날짜 그리기 위해 필요한 변수들 ===========    
     year = curdate.getFullYear();//년
@@ -50,9 +50,9 @@ function drawDate() {
     let curDay = new Date(year,month,1).getDay(); //이달 첫 요일
     let curLastDay = new Date(year,month+1,0).getDate(); //이달 말일
     let nextFirstDay = new Date(year, month+1, 1).getDay(); //다음달 첫 요일
-
     let dateList = ""; //날짜 표시할 태그 
     yearMonthTag.innerText=`${year}년 ${month+1}월`;
+    yearMonthTag.dataset.regDate = `${year}-${String(month+1).padStart(2,"0")}`
     //현재 달(전달, 다음달 넘어가기 버튼)
    
     // =========== 날짜 그리기 ===========
@@ -81,6 +81,8 @@ function drawDate() {
     }
     // =========== 날짜 삽입 코드(실제로 날짜는 여기서 HTML에 삽입됨) ===========
     calDate.innerHTML = dateList ;
+
+
 }  //달력 그리기 함수 끝!
 
 
@@ -88,9 +90,7 @@ function drawDate() {
 
 
 //최초 달력 동작 (오늘을 기준으로 날짜가 뜰거임)
-drawDate();
-
-
+drawDate();   
 
 
 
