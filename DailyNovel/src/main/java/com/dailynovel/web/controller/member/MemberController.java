@@ -1,30 +1,20 @@
 package com.dailynovel.web.controller.member;
 
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintStream;
-import java.net.URLEncoder;
-import java.nio.file.DirectoryNotEmptyException;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
+
+import com.dailynovel.web.entity.Diary;
+import com.dailynovel.web.entity.Feeling;
+import com.dailynovel.web.entity.Template;
+import com.dailynovel.web.entity.Weather;
+import com.dailynovel.web.service.ListService;
+import com.dailynovel.web.service.SettingService;
 
 @Controller
 @RequestMapping("/member/")
@@ -41,10 +31,22 @@ public class MemberController {
 		return "/member/main";
 	}
 
+	// 일기 작성 부분	
 	@RequestMapping("/diary/guide")
 	public String diaryguide(){
 		return "/member/diary/guide";
 	}	
+	
+	@RequestMapping("/diary/selecttmp")
+	public String diarySelectView(){
+		return "/member/diary/select-tmp";
+	}
+	
+	@RequestMapping("/diary/register")
+	public String register() {
+		return "/member/diary/register";
+	}
+	
 	@RequestMapping("/diary/list")
 	public String diarylist(Model model,
 			@RequestParam(required = true, defaultValue = "1", name="id") Integer id
@@ -72,16 +74,7 @@ public class MemberController {
 		model.addAttribute("list",list);
 		return "/member/diary/list";
 	}	
-	@RequestMapping("/diary/selecttmp")
-	public String diarySelectView(){
-		return "/member/diary/select-tmp";
-	}
 	
-	@RequestMapping("register")
-	public String register() {
-		return "/member/diary/register";		
-
-	}
 
 	
 }

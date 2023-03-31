@@ -14,14 +14,14 @@ html {
 /* 배경 */
 
 /* 초록색 */
-.color-bg-green-1 { background-color: #9aefb0 !important;}
-.color-bg-green-2 { background-color: #69bc80 !important; }
-.color-bg-green-3 { background-color: #388b53 !important; }
+.color-bg-green-1 { background-color: #9aefb0; }
+.color-bg-green-2 { background-color: #69bc80; }
+.color-bg-green-3 { background-color: #388b53; }
 
 /* 흰 색 */
-.color-bg-white-1 { background-color: #ffffff !important; }
-.color-bg-white-2 { background-color: #fcfcfc !important; }
-.color-bg-white-3 { background-color: #fafafa !important; }
+.color-bg-white-1 { background-color: #ffffff; }
+.color-bg-white-2 { background-color: #fcfcfc; }
+.color-bg-white-3 { background-color: #fafafa; }
 
 /* 노란색 */
 .color-bg-yellow-1 { background-color: #ffff77; }
