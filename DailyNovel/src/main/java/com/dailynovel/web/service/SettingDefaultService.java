@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.dailynovel.web.entity.Export;
+import com.dailynovel.web.entity.Font;
 import com.dailynovel.web.entity.Setting;
 import com.dailynovel.web.repository.SettingRepository;
 
@@ -46,5 +47,10 @@ public class SettingDefaultService implements SettingService {
 	public List<Export> getDiaryListByid(Integer id) {
 
 		return repository.findDiaryListById(id);
+	}
+	@Override
+	public List<Font> getByFontId() {
+		// TODO Auto-generated method stub
+		return repository.findFontById();
 	}
 }

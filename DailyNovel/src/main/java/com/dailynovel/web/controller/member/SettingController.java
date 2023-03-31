@@ -30,6 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.aspose.words.Document;
 import com.dailynovel.web.entity.Export;
+import com.dailynovel.web.entity.Font;
 import com.dailynovel.web.entity.Setting;
 import com.dailynovel.web.service.SettingService;
 
@@ -103,9 +104,27 @@ public class  SettingController {
 
 		// 세팅-폰트-------------------------------------------------------------------
 		@RequestMapping("/font")
-		public String font(Model model) {
+		public String font(Model model, Model model2) {
 
-			Setting setting = settingService.getById(2);
+			Setting setting = settingService.getById(1);
+			
+			List<Font> font = settingService.getByFontId();
+			
+			model2.addAttribute("setting", setting);
+			model.addAttribute("font", font);
+			System.out.println(font);
+			System.out.println(setting);
+			System.out.println(String.valueOf(font.get(0).getId()).equals(setting.getFontFamily()));
+
+			
+			
+			return "member/settings/component/font";
+		}
+		
+		@RequestMapping("/font/update")
+		public String fontUpdate(Model model) {
+
+			Setting setting = settingService.getById(1);
 			model.addAttribute("setting", setting);
 			System.out.println(setting);
 			return "member/settings/component/font";
@@ -115,7 +134,7 @@ public class  SettingController {
 		@RequestMapping("/alarm")
 		public String alarm(Model model) {
 
-			Setting setting = settingService.getById(2);
+			Setting setting = settingService.getById(1);
 			model.addAttribute("setting", setting);
 			System.out.println(setting);
 			return "member/settings/component/alarm";
@@ -126,7 +145,7 @@ public class  SettingController {
 				@RequestParam(name = "katolk-alarm", required = false) String kakaoAlarmSwitch,
 				@RequestParam(name = "timer") String alarmTime, @ModelAttribute Setting setting) {
 
-			setting.setId(2);
+			setting.setId(1);
 			setting.setAlarmSwitch((alarmSwitch == null ? "0" : "1"));
 			setting.setKakaoAlarmSwitch((kakaoAlarmSwitch == null ? "0" : "1"));
 			setting.setAlarmTime(alarmTime);
@@ -145,7 +164,7 @@ public class  SettingController {
 		@RequestMapping("/export")
 		public String export(Model model) {
 
-			Setting setting = settingService.getById(2);
+			Setting setting = settingService.getById(1);
 			model.addAttribute("setting", setting);
 			System.out.println(setting);
 			return "member/settings/component/export";
@@ -164,7 +183,7 @@ public class  SettingController {
 			SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS"); // 시간 측정 포멧 지정
 			String time = format.format(date); // 측정한 시간을 포멧화 하기
 
-			String filePath = "C:/Users/BW3/Desktop/novelPrj/prj0327/DailyNovel/src/main/resources/static/text/" + time
+			String filePath = "C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/" + time
 					+ "dailyNovel.txt";
 
 			FileOutputStream fos = new FileOutputStream(filePath);
@@ -189,11 +208,11 @@ public class  SettingController {
 			Document document = new Document(filePath);
 
 			// TXT 파일을 PDF로 저장
-			document.save("C:/Users/BW3/Desktop/novelPrj/prj0327/DailyNovel/src/main/resources/static/text/" + time
+			document.save("C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/" + time
 					+ "output.pdf");
 
 			// 전송
-			String path = "C:/Users/BW3/Desktop/novelPrj/prj0327/DailyNovel/src/main/resources/static/text/" + time
+			String path = "C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/" + time
 					+ "output.pdf";
 			FileInputStream fis = new FileInputStream(path);
 			byte buf[] = new byte[1024];
@@ -219,7 +238,7 @@ public class  SettingController {
 			try {
 				// 파일 삭제
 				// 삭제
-				Path testPdf = Paths.get("C:/Users/BW3/Desktop/novelPrj/prj0327/DailyNovel/src/main/resources/static/text/"
+				Path testPdf = Paths.get("C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/"
 						+ time + "output.pdf");
 				// String deletePath =
 				// "C:/Users/BW3/Desktop/novelPrj/prj0327/DailyNovel/src/main/resources/static/text/"+
@@ -229,7 +248,7 @@ public class  SettingController {
 				// time +"output.pdf";
 
 				Files.delete(testPdf);
-				Path testText = Paths.get("C:/Users/BW3/Desktop/novelPrj/prj0327/DailyNovel/src/main/resources/static/text/"
+				Path testText = Paths.get("C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/"
 						+ time + "dailyNovel.txt");
 				Files.delete(testText);
 				// 디렉토리 삭제
@@ -249,7 +268,7 @@ public class  SettingController {
 		@RequestMapping("/service-help")
 		public String serviceHelp(Model model) {
 
-			Setting setting = settingService.getById(2);
+			Setting setting = settingService.getById(1);
 			model.addAttribute("setting", setting);
 			System.out.println(setting);
 			return "member/settings/component/service-help";
