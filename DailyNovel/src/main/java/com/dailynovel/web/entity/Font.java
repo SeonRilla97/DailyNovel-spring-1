@@ -5,16 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-@Builder
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-public class FeelingRank {
-	
-	
+@Builder
+public class Font {
+	private int id;
 	private String name;
-	private String description;
-	private int frequency;
-	private String img;
-	}
+}

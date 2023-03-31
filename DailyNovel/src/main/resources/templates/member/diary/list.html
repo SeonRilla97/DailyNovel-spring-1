@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,81 +8,149 @@
 
 
 <link rel="stylesheet" href="/css/reset.css">
-
 <link rel="stylesheet" href="/css/layout.css">
-
 <link rel="stylesheet" href="/css/box.css">
-
+<link rel="stylesheet" href="/css/icon.css">
+<link rel="stylesheet" href="/css/component-mobile.css">
+<link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/util.css">
 
-<link rel="stylesheet" href="/css/style.css">
-
-<link rel="stylesheet" href="/css/icon.css">
-
-<link rel="stylesheet" href="/css/component-mobile.css">
-
-<link rel="stylesheet" href="/css/navigation.css">
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="/js/member/diary/list.js" defer="defer"></script>
 </head>
 <body>
 
-	<div class="container-2">
-		<div class="header lc-center">
-			<div class="box-large font-weight-bolder h2">모아보기</div>
-		</div>
-		<div class="main mgt-4 list-main-flex-col">
-			<div class="lists-filter filter-pos-style ">
-				<span class="font-weight-bolder">정렬</span>
-				<div>HOW</div>
-				<div>기분</div>
-				<div>날짜</div>
+	<div class="container-1" id = "main-container">
+		<header class="header lc-center">
+			<div class="box-large font-weight-bolder h2 mgt-4" 
+			 @click.prevent="calcHandler"
+			>모아보기</div>
+			
+		</header>
+		
+		<main class="main list-main-flex-col" id="main">
+			<div class="option-container lists-filter pdt-4">
+			 <!-- 정렬을 위로 빼기 -->
+					<div class="option-box mgl-2">
+						<div class="title lc-center border-r-2">템플릿</div>
+						<div class="select border-r-2 hidden no-scroll">
+							<div class="option lc-center" th:text="${template.name}"  th:attr = "data-tid=${template.id}" th:each="template : ${templateList}">기본</div>
+							<div class="option lc-center h5">선택안함</div>
+						</div>
+					</div>
+					
+					<div class="option-box mgl-2">
+						<div class="title lc-center border-r-2">기분</div>
+						<div class="select border-r-2 hidden">
+							<div class="option lc-center" th:each="feeling:${feeling}" th:text="${feeling.name}" th:attr="data-fid= ${feeling.id}">화남</div>
+							<div class="option lc-center h5">선택안함</div>
+						</div>
+					</div>
+
+					<div class="option-box mgl-2">
+						<div class="title lc-center border-r-2">날씨</div>
+						<div class="select border-r-2">
+							<div class="option lc-center" th:attr= "data-wid = ${weather.id}" th:each="weather:${weatherList}" th:text = "${weather.name}">맑음</div>
+							<div class="option lc-center h5">선택안함</div>
+						</div>
+					</div>
+					
+					
+					<div class="b lc-center args border-r-2 mgl-2 color-bg-green-2" id="openBtn">날짜</div>
 			</div>
 
-			<ul class="lists list-main-flex-col">
-				<li class="list-box ">
-					<div class="list-date lc-center h2 font-weight-bolder ">2022-22-22</div>
-					<div class="list-title mgt-3">오늘은 힘든 하루</div>
-					<div class="list-description mgt-2">그냥</div>
+			<ul class="lists">
+				<li class="list-box" th:each="diary : ${list}">
+					<div class="list-date lc-center h2 font-weight-bolder mgt-2" th:text="${diary.regDate}">2022-22-22</div>
+					<div class="list-title mgt-3" th:text="${diary.title}">오늘은 힘든 하루</div>
+					<!-- <div class="title"><span class="ib diary">노는게 젤 좋아 친구들 모여라</span><span class="ib date">2022-22-22</span></div> -->
+					<div class="content mgt-2" th:text=${diary.content}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea eum labore eos a deleniti tenetur, libero minima hic at, vel necessitatibus nemo, suscipit rerum vitae expedita porro obcaecati quibusdam repellat.</div>
 				</li>
 			</ul>
+
+		</main>
+
+		
+		<footer class="footer" style="position: sticky; bottom:0">
+            <div class="container-nav color-white-1">
+                
+                <div class="nav-1 lc-center">
+                    <a href="../member/diary/list.html" class="lc-vertical-alignment">
+                    <div class="nav-icon bookmark-btn"></div>
+                    <div class="h6 mgt-2">모아보기</div>
+                </a>
+                </div>
+                
+                <div class="nav-2 lc-center">
+                    <a href="../index.html" class="lc-vertical-alignment">
+                        <div class=" nav-icon speech-bubble-btn"></div>
+                        <div class="h6 mgt-2">커뮤니티</div>
+                    </a>
+                </div>
+
+                <div class="nav-main lc-center">
+                    <a href="../member/main.html" class="lc-vertical-alignment">
+                        <div class="nav-icon book-btn"></div>
+                        <div class="h6 mgt-2">메인화면</div>
+                    </a>
+                </div>
+    
+                <div class="nav-4 lc-center">
+                    <a href="../member/diary/analysis/main.html" class="lc-vertical-alignment" >
+                    <div class="nav-icon  hourglass-btn"></div>
+                    <div class="h6 mgt-2">돌아보기</div>
+                </a>
+                </div>
+                <div class="nav-5 lc-center">
+
+                    <a href="./settings/main.html" class="lc-vertical-alignment">
+
+                    <div class="nav-icon gear-btn"></div>
+                    <div class="h6 mgt-2">설정하기</div>
+                </a>
+                </div>
+            </div>
+        </footer>
+	</div>
+
+		<!-- 모달창 -->
+	<div class="list-modal hidden" onclick="console.log('이거 클릭됨')"> 
+		<div class="bg"></div>
+		<div class="modalBox">
+			<div class="calender">
+				<div class="header" id="calendar-header">
+				  <div class="prev-month" id="prev-btn">&#60;</div>
+				  <div class="h3 lc-center" id="date-config"></div>
+				  <div class="next-month" id="next-btn">&#62;</div>
+				</div>
+	  
+				<div class="main">
+				  <ul class="day mgt-3">
+					<li>SUN</li>
+					<li>MON</li>
+					<li>TUE</li>
+					<li>WED</li>
+					<li>THU</li>
+					<li>FIR</li>
+					<li>SAT</li>
+				  </ul>
+	  
+				  <ul class="date" id="calendar-date"></ul>
+				</div>
+			  </div>
 		</div>
-		<div class="footer">
-			<div class="container-nav color-white-1">
+	</div>
 
-				<div class="nav-1 lc-center">
-					<a href="../index.html" class="lc-vertical-alignment">
-						<div class="nav-icon bookmark-btn"></div>
-						<div class="h6 mgt-2">모아보기</div>
-					</a>
-				</div>
+	<!-- //템플릿 모달
+	<div class="list-modal hidden">
+		<div class="bg"></div>
+		<div class="modalBox">
 
-				<div class="nav-2 lc-center">
-					<a href="../index.html" class="lc-vertical-alignment">
-						<div class=" nav-icon speech-bubble-btn"></div>
-						<div class="h6 mgt-2">커뮤니티</div>
-					</a>
-				</div>
-
-				<div class="nav-main lc-center">
-					<a href="../index.html" class="lc-vertical-alignment">
-						<div class="nav-icon book-btn"></div>
-						<div class="h6 mgt-2">메인화면</div>
-					</a>
-				</div>
-
-				<div class="nav-4 lc-center">
-					<a href="" class="lc-vertical-alignment">
-						<div class="nav-icon  hourglass-btn"></div>
-						<div class="h6 mgt-2">돌아보기</div>
-					</a>
-				</div>
-				<div class="nav-5 lc-center">
-					<a href="../index.html" class="lc-vertical-alignment">
-						<div class="nav-icon gear-btn"></div>
-						<div class="h6 mgt-2">설정하기</div>
-					</a>
-				</div>
-			</div>
 		</div>
-		<script src="../../../res/js/member/diary/list.js"></script>
+	</div> -->
+
+
+
+	<script src="/js/calendar.js"></script>
 </body>
 </html>

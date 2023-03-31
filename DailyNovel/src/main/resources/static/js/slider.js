@@ -60,11 +60,11 @@ class slide{
             if (this.startPoint < this.endPoint) {
                 // 마우스가 오른쪽으로 드래그 된 경우
                 // console.log("prev move");
-                prevMove();
+                this.prevMove();
             } else if (this.startPoint > this.endPoint) {
                 // 마우스가 왼쪽으로 드래그 된 경우
                 // console.log("next move");
-                nextMove();
+                this.nextMove();
             }
         });
     
