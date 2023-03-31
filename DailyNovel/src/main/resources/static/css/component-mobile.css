@@ -758,11 +758,18 @@ color: white;
   background-color: #69bc80;
   border-radius: 10px;
 }
+.l-box-mini > .value {
+  height: 3.75rem;
+  
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 .reg-title-section{
   display: flex;
   width: 100%;
-  height: 5%;
+  height: 3rem;
   justify-content: space-around;
 }
 .editor-title{
@@ -791,6 +798,102 @@ color: white;
   /* background-color: #cecece; */
 }
 
+/* 모달 파트 */
+.reg-select-modal{
+  z-index:1;
+  position: fixed;  
+  top:0;
+  left:0;
+
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;   
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  background-color: rgba(0,0,0,0.6);
+  
+  visibility: hidden;
+  opacity: 0;  
+  transition: all 0.3s;
+}
+
+.reg-select-modal.active{  
+  opacity : 1;
+  transition: all 0.3s;
+  visibility: visible;
+}
+
+.position-fixed{
+  position: fixed;
+  top:0;
+  left:0;
+}
+
+.reg-feel-select-box{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0.5rem;
+
+  width: fit-content;
+  height: fit-content;  
+  /* background-color: ; */
+}
+
+.feel-circle-box{
+  background-color: #f3f3f3;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  border-radius: 15px;
+  width:7rem;
+  height:7rem;
+  
+  text-indent: -999rem;
+  overflow: hidden;
+
+  transition: all 0.2s;
+}
+
+.feel-circle-box:active{
+  border-radius: 50px;
+  background-color: #fff241;
+}
+
+.reg-weather-select-box{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0.3rem;
+  height: fit-content;
+}
+
+.weather-box{
+  position: relative;
+  height: 25rem;
+  background-color: orange;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.weather-box:active{
+  transform : translate(0,-4rem);  
+}
+
+.reg-honesty-section{
+  width: 20rem;
+  height: 30rem;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: space-evenly;  
+  align-items: center;
+  flex-direction: column;
+
+  background-color: #ffffff;
+}
 
 /* -- 작성 - guide.html */
 /* 없어질지도 모름(현재 안씀) */
@@ -812,6 +915,33 @@ color: white;
 
     text-indent: -999rem;  
 }
+
+/* select-tmp.html */
+
+.tmp-section{
+  display: flex;
+  justify-content: center;
+  /* flex-direction: column; */
+  /* align-items: center; */
+  
+  max-height: auto;
+  overflow-x: hidden;
+
+
+  /* overflow-y :scroll; */
+  /* height: fit-content; */
+}
+
+.tmps{  
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  /* height: 40rem; */
+  height: fit-content;
+  gap: 2.5rem;
+}
+
+
 .tmp-select-box{
   display:flex;
   flex-direction: column;
@@ -820,23 +950,45 @@ color: white;
 
   width: 19.5rem;
   background-color: #f3f3f3;
-  height: 15rem;
+  /* height: 15rem; */
   border-radius: 2.5rem;  
   
-  /* visibility: hidden;
+  visibility: hidden;
   height: 0rem;
   
-  transition: all 5s;   */
+  transition: all 0.7s;   
 }
 
-.tmp-select-box .active{
+.simple-tmp-box{
+  width: 9.5rem;
+  height: 0rem;
+  visibility: hidden;
+  background-color: #ffff77;
+
+  border-radius: 0.625rem;
+  box-shadow:0 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+
+  transition: all 0.7s;   
+}
+
+.simple-tmp-box.active{
+  height: 2.5rem;
+  opacity: 1;
+  visibility: visible;
+}
+
+.tmp-select-box.active{
   
   visibility: visible;
   height: 15rem;
 }
-
-
-
 
 
 .tmp-btn1{
@@ -856,7 +1008,6 @@ color: white;
   min-height: 300px;
   overflow-y: auto;
 }
-
 
 /* 통계, 설정 팀 ================================================================== */
 
