@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dailynovel.web.entity.FeelingRank;
+import com.dailynovel.web.entity.Feeling;
 import com.dailynovel.web.repository.FeelingRepository;
 
 @Service
-public class DefaultFeelingService implements FeelingService {
+public class DefaultAnalysisService implements AnalysisService {
 
 	
 	@Autowired
@@ -17,25 +17,25 @@ public class DefaultFeelingService implements FeelingService {
 	
 
 	@Override
-	public List<FeelingRank> getCount() {
+	public List<Feeling> getCount() {
 		// TODO Auto-generated method stub
 		return repository.findAll(null, null, null, null);
 	}
 
 	@Override
-	public List<FeelingRank> getRank() {
+	public List<Feeling> getFeelingRank() {
 		// TODO Auto-generated method stub
 		return repository.findRank(null, null, null);
 	}
 
 	@Override
-	public List<FeelingRank> getTopRank() {
+	public List<Feeling> getFeelingTopRank() {
 		// TODO Auto-generated method stub
 		return repository.findTopRank(null, null, null, null);
 	}
 
 	@Override
-	public List<FeelingRank> getValue() {
+	public List<Feeling> getValue() {
 		// TODO Auto-generated method stub
 		return repository.findValue(null, null);
 	}
