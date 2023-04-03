@@ -9,13 +9,13 @@ import com.dailynovel.web.entity.Setting;
 
 public interface SettingService {
 	Setting getById(Integer id);
-	
-	
-	int updateProfile(Setting setting);
-	int deleteAcount(Integer id);
-	
 	List<Export> getDiaryListByid(Integer id);
 	
 	List<Font> getByFontId();
+	
+	int updateProfile(Setting setting);
+	int updateFont(Setting setting);
+	
+	int deleteAcount(Integer id);
 	
 }
