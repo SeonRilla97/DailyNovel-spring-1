@@ -70,18 +70,18 @@
 			 where id=#{id}
 	</update>
 
-<!-- 	<update id="updateStatus" parameterType="">
+	<update id="updateFont" parameterType="Setting">
 		update member
-		<trim prefix="SET" suffixoverrides=",">
-			<if test="name !=null">
-				nickname="#{nickname}",
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="fontFamily !=null">
+				font_family=#{fontFamily},
 			</if>
-			<if test="status_message !=null">
-				status_message="#{statusMessage}
+			<if test="fontSize !=null">
+				font_size=#{fontSize}
 			</if>
-			 where id=#{id};
 		</trim>
-	</update> -->
+			 where id=#{id};
+ 	</update>
 
 	<delete id="deleteAcount" parameterType="Setting">
 		delete from member where id = #{id};
