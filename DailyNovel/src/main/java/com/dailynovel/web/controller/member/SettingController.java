@@ -292,22 +292,26 @@ public class  SettingController {
 		// 세팅-로그아웃-------------------------------------------------------------------
 		@RequestMapping("/out")
 		public String out() {
-
+			
+			Setting setting = settingService.getById(35);
+			System.out.println(setting);
+			
 			return "member/settings/component/out";
 		}
 
-		@PostMapping("setting/out/update")
+		@PostMapping("/out/update")
 		public String acountOut(Model model, 
 				@ModelAttribute Setting setting) {
 
-			Integer id = 1;
-			// setting.setId(id);
+			Integer id = 35;
+			setting.setId(id);
 
 			int a = settingService.deleteAcount(id);
-
+			System.out.println(a);
 //			return "member/settings/main";
 			if (a == 1)
 				return "redirect:../../../";
+				//return "redirect:../alarm";
 			else
 				return "redirect:../../setting/out";
 		}
