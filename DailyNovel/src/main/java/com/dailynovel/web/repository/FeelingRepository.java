@@ -4,13 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.dailynovel.web.entity.Feeling;
 import com.dailynovel.web.entity.FeelingRank;
 
 @Mapper
 public interface FeelingRepository {
 	
-	List<Feeling> findFeelingAll();
 
 	
 	List<FeelingRank> findAll(String name,
