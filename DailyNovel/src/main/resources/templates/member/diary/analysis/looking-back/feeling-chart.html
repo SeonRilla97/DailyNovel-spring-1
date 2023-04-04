@@ -31,7 +31,7 @@
 
         <div class="main f-pdt-7 lc-space-between-alignment">
             <div class ="chart">
-                <canvas id="myChart" width="3rem" height="3rem"></canvas>
+                <canvas id="myChart" width="3rem" height="3rem" ></canvas>
             
             </div>
                 <div class="">
@@ -41,7 +41,7 @@
                     </p>
                 </div>
 
-                <div class="lc-space-around pdb-5" th:text ="${Name}">
+                <div class="lc-space-around pdb-5">
                     <div class="btn-feeling"><a class="" href="/analysis/feeling"> 이전</a></div>
                 </div>
 
@@ -83,17 +83,22 @@
                     <div class="h6 mgt-2">설정하기</div>
                 </a>
                 </div>
-        </div>
+            </div>
 </body>
 
 <script>
 	Chart.register(ChartDataLabels); //전역으로 플러그인 등록
 </script>
 
-<script th:inline="javascript" src="/js/feeling-chart.js" >
-	var feelingname = [[${Name}]];
-	var feelingdata = [[${Value}]];
+    <script th:inline="javascript" src="/js/feeling-chart.js">
+        
+        var feelingname = [];
+        var feelingdata = [];
+        <th:block th:each="N, V:${Name}">
+        feelingname.push(${n}.name);
+        feelingdata.push(${v}.frequency);
+        </th:block>
+    </script>
 
-</script>
 
 </html>

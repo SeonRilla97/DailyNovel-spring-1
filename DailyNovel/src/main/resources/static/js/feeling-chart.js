@@ -1,16 +1,14 @@
-//var feelingname = /*[[${Name}]]*/ '';
-//var feelingdata = /*[[${Value}]]*/ '';
+// var feelingname = /*[[${Name}]]*/ '';
+// var feelingdata = /*[[${Value}]]*/ '';
 let ctx = document.getElementById('myChart').getContext('2d');
 let myChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
 
-        
-
-        labels: [feelingname],
+        labels: feelingname,
 
         datasets: [{
-            data: [feelingdata],
+            data: feelingdata,
             backgroundColor: [
                 '#A593E0', //행복
                 '#81C147', //들뜸
@@ -37,6 +35,12 @@ let myChart = new Chart(ctx, {
 
         }]
     },
+
+
+
+
+
+
     options: {
         maintainAspectRatio :false,
       responsive : true,
