@@ -8,6 +8,8 @@
 	  <result property="profileImage" column="profile_image"/>
 	  <result property="statusMessage" column="status_message"/>
 	  <result property="alarmSwitch" column="alarm_switch"/>
+	  <result property="fontFamily" column="font_family"/>
+	  <result property="fontSize" column="font_size"/>
 	  <result property="kakaoAlarmSwitch" column="kakao_alarm_switch"/>
 	  <result property="alarmTime" column="alarm_time"/>
 	</resultMap>
@@ -16,6 +18,11 @@
 	  <result property="regDate" column="reg_date"/>
 	  <result property="feelingName" column="name"/>
 	</resultMap>
+	
+<!-- 	<resultMap id="fontId" type="font"> -->
+<!-- 	  <result property="regDate" column="reg_date"/> -->
+<!-- 	  <result property="feelingName" column="name"/> -->
+<!-- 	</resultMap> -->
 
 	
 	<select id="findById" resultMap="settingId">
@@ -27,10 +34,14 @@
 
 	<select id="findDiaryListById" resultMap="exportId">
 		select d.reg_date, f.name, d.title, d.text 
-			from Diary d 
+			from diary d 
 			inner join feeling f 
 			on d.feeling_id=f.id 
 			where member_id=#{id};
+	</select>
+	
+	<select id="findFontById" resultType="font">
+		select * from font_family;
 	</select>
 	
 	
@@ -59,18 +70,18 @@
 			 where id=#{id}
 	</update>
 
-<!-- 	<update id="updateStatus" parameterType="">
+	<update id="updateFont" parameterType="Setting">
 		update member
-		<trim prefix="SET" suffixoverrides=",">
-			<if test="name !=null">
-				nickname="#{nickname}",
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="fontFamily !=null">
+				font_family=#{fontFamily},
 			</if>
-			<if test="status_message !=null">
-				status_message="#{statusMessage}
+			<if test="fontSize !=null">
+				font_size=#{fontSize}
 			</if>
-			 where id=#{id};
 		</trim>
-	</update> -->
+			 where id=#{id};
+ 	</update>
 
 	<delete id="deleteAcount" parameterType="Setting">
 		delete from member where id = #{id};

@@ -100,6 +100,8 @@ window.addEventListener("load", function() {
   let fontApply = document.querySelector("input[type=submit]");
   let fontInit = document.querySelector("input[type=reset]");
 
+  content.style.fontSize = fontAdjuster.value + "px";
+ 
   fontAdjuster.oninput = function(e){
     console.log(fontAdjuster.value);
     content.style.fontSize=fontAdjuster.value+"px";

@@ -5,26 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>고객지원</title>
-    <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/layout.css">
-    <link rel="stylesheet" href="../../css/box.css">
-    <link rel="stylesheet" href="../../css/button.css">
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/icon.css">
-    <link rel="stylesheet" href="../../css/component-mobile.css">
-    <link rel="stylesheet" href="../../css/util.css">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/layout.css">
+    <link rel="stylesheet" href="../../../css/box.css">
+    <link rel="stylesheet" href="../../../css/button.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../css/icon.css">
+    <link rel="stylesheet" href="../../../css/component-mobile.css">
+    <link rel="stylesheet" href="../../../css/util.css">
 
 </head>
 
 <body>
-  
-
-<!-- START HERE -->
-   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-   <!-- Style The Contact Form How Ever You Prefer -->
-   <link rel="stylesheet" href="style.css">
-
    <section class="container-1">
     <header class="header lc-center top-sticky">
         <div class="box-large color-bg-green-2 h1 mgt-3">피드백</div>
@@ -36,10 +28,12 @@
             action="https://script.google.com/macros/s/AKfycbwXpwyVpOZOykaH4D39jxDVBz6ut5WajId3_VsytutS8efshqMxbeuQ9Oe90UZrkEt5kg/exec" target = iframe1>
                 <!-- change the form action to your script url -->
                 <textarea name="message" id="" cols="30" rows="10" placeholder="문의사항을 적어주세요" class="box-large input-boder-none mgt-5 feedback-box-size"></textarea>
-                <label for="name">이름</label>
-                <input type="text" name="name" placeholder="이름을 적어주세요." maxlength='5' th:value="${setting.nickName}" readonly>
-                <label for="email">이메일</label>
-                <input type="text" name="email" placeholder="이메일을 적어주세요." maxlength='30'th:value="${setting.email}" readonly>
+                <div class="d-none">
+	                <label for="name">이름</label>
+	                <input type="text" name="name" placeholder="이름을 적어주세요." maxlength='5' th:value="${setting.nickName}" readonly>
+	                <label for="email">이메일</label>
+	                <input type="text" name="email" placeholder="이메일을 적어주세요." maxlength='30'th:value="${setting.email}" readonly>
+                </div>
                 <div class="l-box-short mgt-5">
                     <fieldset class="name">문의종류</fieldset>
                         <div class="content">
@@ -93,7 +87,7 @@
                     </a>
                 </div>
                 <div class="nav-5 lc-center">
-                    <a href="../setting" class="lc-vertical-alignment">
+                    <a href="../setting/main" class="lc-vertical-alignment">
                         <div class="nav-icon gear-btn"></div>
                         <div class="h6 mgt-2">설정하기</div>
                     </a>

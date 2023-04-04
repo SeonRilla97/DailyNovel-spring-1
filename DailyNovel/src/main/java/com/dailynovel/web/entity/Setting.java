@@ -21,8 +21,11 @@ public class Setting {
 	//private MultipartFile profileImage;
 	private String profileImage;
 	private String statusMessage;
+	private String fontFamily;
+	private String fontSize;
 	private String alarmSwitch;
 	private String kakaoAlarmSwitch;
 	private String alarmTime;
 	//private MultipartFile profileImage2;
 }
+

@@ -7,17 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로필</title>
-    <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/layout.css">
-    <link rel="stylesheet" href="../../css/box.css">
-    <link rel="stylesheet" href="../../css/button.css">
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/icon.css">
-    <link rel="stylesheet" href="../../css/component-mobile.css">
-    <link rel="stylesheet" href="../../css/util.css">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/layout.css">
+    <link rel="stylesheet" href="../../../css/box.css">
+    <link rel="stylesheet" href="../../../css/button.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../css/icon.css">
+    <link rel="stylesheet" href="../../../css/component-mobile.css">
+    <link rel="stylesheet" href="../../../css/util.css">
 
     <!-- js -->
-    <script src="../../js/setting.js"></script>
+    <script src="/../js/setting.js"></script>
 </head>
 <body>
     <section class="container-1">
@@ -29,11 +29,7 @@
             <div class="mgt-4 main-size overflow-auto">
                 <form action="./profile/update" method="post" enctype="multipart/form-data">
                     <div class="lc-center">
-                        <!--<input type="file" accept="image/*" onchange="updateImg()" class="upload-btn C d-none">-->
-                        <!--<input type="file" accept="image/*" onchange="updateImg()" class="upload-btn C" accept="image/png, image/jpeg">-->
-                        <!--<input type="file" name="image" accept="image/*" onchange="updateImg()" class="upload-btn C d-none">-->
-                        <!--<input type="file" name="image" accept="image/*" onchange="updateImg()" class="upload-btn C">-->
-                        <input type="file" name="image" accept="image/*" class="upload-btn C" onchange="updateImg()" >
+                        <input type="file" name="image" accept="image/*" class="upload-btn C d-none" onchange="updateImg()" >
                         <div th:style="'background-image:url('+ @{/img/profile/{img}(img=${setting.profileImage})} +');'" class="pro-img finger" >
                         
                         <!--<div th:style="'background-image:url('+ @{/image/profile/{img}(img=${setting.profileImage})} +');'" class="pro-img finger" >-->
@@ -102,7 +98,7 @@
                     </a>
                 </div>
                 <div class="nav-5 lc-center">
-                    <a href="../setting" class="lc-vertical-alignment">
+                    <a href="../setting/main" class="lc-vertical-alignment">
                         <div class="nav-icon gear-btn"></div>
                         <div class="h6 mgt-2">설정하기</div>
                     </a>
