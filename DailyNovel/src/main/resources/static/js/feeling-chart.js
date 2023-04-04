@@ -1,4 +1,5 @@
-
+//var feelingname = /*[[${Name}]]*/ '';
+//var feelingdata = /*[[${Value}]]*/ '';
 let ctx = document.getElementById('myChart').getContext('2d');
 let myChart = new Chart(ctx, {
     type: 'doughnut',
@@ -6,10 +7,10 @@ let myChart = new Chart(ctx, {
 
         
 
-        labels: ['행복', '들뜸', '감동', '화남', '불안', '실망', '슬픔', '평온', '난감'],
+        labels: [feelingname],
 
         datasets: [{
-            data: [10, 10, 10, 10, 10, 10, 10, 10, 10],
+            data: [feelingdata],
             backgroundColor: [
                 '#A593E0', //행복
                 '#81C147', //들뜸

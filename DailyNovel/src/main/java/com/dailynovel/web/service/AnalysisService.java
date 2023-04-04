@@ -2,16 +2,18 @@ package com.dailynovel.web.service;
 
 import java.util.List;
 
-import com.dailynovel.web.entity.FeelingRank;
+import com.dailynovel.web.entity.Feeling;
 
-public interface FeelingService {
+public interface AnalysisService {
 	
-	List<FeelingRank> getCount();
+	List<Feeling> getCount();	
 	
-	List<FeelingRank> getRank(); 
-	
-	List<FeelingRank> getTopRank();
-	
-	List<FeelingRank> getValue();
+	List<Feeling> getValue();
+
+	List<Feeling> getFeelingRank();
+
+	List<Feeling> getFeelingTopRank();
+
+	List<Feeling> getLabel();
 
 }

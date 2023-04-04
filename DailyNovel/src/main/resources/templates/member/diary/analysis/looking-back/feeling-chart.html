@@ -16,6 +16,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     
+    <script th:inline="javascript">
+    var feelingname = /*[[${Name}]]*/ '';
+    var feelingdata = /*[[${Value}]]*/ '';
+	</script>
     
 </head>
 <body class="container-1" id="app">
@@ -37,7 +41,7 @@
                     </p>
                 </div>
 
-                <div class="lc-space-around pdb-5 ">
+                <div class="lc-space-around pdb-5" th:text ="${Name}">
                     <div class="btn-feeling"><a class="" href="/analysis/feeling"> 이전</a></div>
                 </div>
 
@@ -86,5 +90,10 @@
 	Chart.register(ChartDataLabels); //전역으로 플러그인 등록
 </script>
 
-<script src="/js/feeling-chart.js"></script>
+<script th:inline="javascript" src="/js/feeling-chart.js" >
+	var feelingname = [[${Name}]];
+	var feelingdata = [[${Value}]];
+
+</script>
+
 </html>
