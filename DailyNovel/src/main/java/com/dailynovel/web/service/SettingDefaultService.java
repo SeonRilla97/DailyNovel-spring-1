@@ -30,7 +30,16 @@ public class SettingDefaultService implements SettingService {
 	public Setting getById(Integer id) {
 		return repository.findById(id);
 	}
-
+	@Override
+	public List<Export> getDiaryListByid(Integer id) {
+		
+		return repository.findDiaryListById(id);
+	}
+	@Override
+	public List<Font> getByFontId() {
+		// TODO Auto-generated method stub
+		return repository.findFontById();
+	}
 
 	@Override
 	public int updateProfile(Setting setting) {
@@ -39,18 +48,14 @@ public class SettingDefaultService implements SettingService {
 	}
 
 	@Override
+	public int updateFont(Setting setting) {
+		return repository.updateFont(setting);
+	}
+	
+	
+	@Override
 	public int deleteAcount(Integer id) {
 		
 		return repository.deleteAcount(id);
-	}
-	@Override
-	public List<Export> getDiaryListByid(Integer id) {
-
-		return repository.findDiaryListById(id);
-	}
-	@Override
-	public List<Font> getByFontId() {
-		// TODO Auto-generated method stub
-		return repository.findFontById();
 	}
 }

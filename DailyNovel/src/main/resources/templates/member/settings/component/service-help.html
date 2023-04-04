@@ -36,10 +36,12 @@
             action="https://script.google.com/macros/s/AKfycbwXpwyVpOZOykaH4D39jxDVBz6ut5WajId3_VsytutS8efshqMxbeuQ9Oe90UZrkEt5kg/exec" target = iframe1>
                 <!-- change the form action to your script url -->
                 <textarea name="message" id="" cols="30" rows="10" placeholder="문의사항을 적어주세요" class="box-large input-boder-none mgt-5 feedback-box-size"></textarea>
-                <label for="name">이름</label>
-                <input type="text" name="name" placeholder="이름을 적어주세요." maxlength='5' th:value="${setting.nickName}" readonly>
-                <label for="email">이메일</label>
-                <input type="text" name="email" placeholder="이메일을 적어주세요." maxlength='30'th:value="${setting.email}" readonly>
+                <div class="d-none">
+	                <label for="name">이름</label>
+	                <input type="text" name="name" placeholder="이름을 적어주세요." maxlength='5' th:value="${setting.nickName}" readonly>
+	                <label for="email">이메일</label>
+	                <input type="text" name="email" placeholder="이메일을 적어주세요." maxlength='30'th:value="${setting.email}" readonly>
+                </div>
                 <div class="l-box-short mgt-5">
                     <fieldset class="name">문의종류</fieldset>
                         <div class="content">

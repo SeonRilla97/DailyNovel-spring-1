@@ -66,8 +66,11 @@ public class  SettingController {
 		@PostMapping("profile/update")
 		public String profileUpdate(Model model,
 				// MultipartFile profileIma,
-				@RequestPart(name = "image") MultipartFile profile, @RequestParam("name") String Nickname,
-				@RequestParam("stsMessage") String stsMessage, @ModelAttribute Setting setting, HttpServletRequest request)
+				@RequestPart(name = "image") MultipartFile profile, 
+				@RequestParam("name") String Nickname,
+				@RequestParam("stsMessage") String stsMessage, 
+				@ModelAttribute Setting setting, 
+				HttpServletRequest request)
 				throws Exception {
 			Integer id = 1;
 			String realPath= "";
@@ -106,15 +109,18 @@ public class  SettingController {
 		@RequestMapping("/font")
 		public String font(Model model, Model model2) {
 
-			Setting setting = settingService.getById(1);
+			Setting setting = settingService.getById(2);
 			
 			List<Font> font = settingService.getByFontId();
 			
 			model2.addAttribute("setting", setting);
 			model.addAttribute("font", font);
-			System.out.println(font);
-			System.out.println(setting);
-			System.out.println(String.valueOf(font.get(0).getId()).equals(setting.getFontFamily()));
+//			System.out.println(font);
+			System.out.printf("폰트패밀리 %s\n",setting.getFontFamily());
+			System.out.printf("폰트사이즈 %s\n",setting.getFontSize());
+			
+//			System.out.println(setting.getFontSize().equals("1"));
+//			System.out.println(String.valueOf(font.get(0).getId()).equals(setting.getFontFamily()));
 
 			
 			
@@ -122,12 +128,22 @@ public class  SettingController {
 		}
 		
 		@RequestMapping("/font/update")
-		public String fontUpdate(Model model) {
-
-			Setting setting = settingService.getById(1);
-			model.addAttribute("setting", setting);
+		public String fontUpdate(Model model,
+				@RequestParam(name = "font", required = false) String font,
+				@RequestParam(name = "fontSize", required = false) int fontSize,
+				@ModelAttribute Setting setting
+				) {
+			Integer id = 2;
+			
+			setting.setId(id);
+			setting.setFontFamily((font));
+			setting.setFontSize((fontSize==16 ? "1" : fontSize==22?"2":"3"));
 			System.out.println(setting);
-			return "member/settings/component/font";
+			
+			int a = settingService.updateFont(setting);
+
+				return "redirect:../font";
+
 		}
 
 		// 세팅-알람-------------------------------------------------------------------
@@ -141,9 +157,11 @@ public class  SettingController {
 		}
 
 		@PostMapping("/alarm/update")
-		public String alarm(Model model, @RequestParam(name = "web-alarm", required = false) String alarmSwitch,
+		public String alarm(Model model, 
+				@RequestParam(name = "web-alarm", required = false) String alarmSwitch,
 				@RequestParam(name = "katolk-alarm", required = false) String kakaoAlarmSwitch,
-				@RequestParam(name = "timer") String alarmTime, @ModelAttribute Setting setting) {
+				@RequestParam(name = "timer") String alarmTime, 
+				@ModelAttribute Setting setting) {
 
 			setting.setId(1);
 			setting.setAlarmSwitch((alarmSwitch == null ? "0" : "1"));
@@ -174,10 +192,7 @@ public class  SettingController {
 		public void exportText(Model model, HttpServletResponse response) throws Exception {
 
 			List<Export> export = settingService.getDiaryListByid(1);
-			// C:\Users\BW3\Desktop\down
-//			String homeDir = System.getProperty("user.home");
-//			System.out.println(homeDir);
-//			String filePath = "text/dailynovel.txt";
+
 
 			Date date = new Date(System.currentTimeMillis()); // 현재 시간 측정
 			SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS"); // 시간 측정 포멧 지정
@@ -282,7 +297,8 @@ public class  SettingController {
 		}
 
 		@PostMapping("setting/out/update")
-		public String acountOut(Model model, @ModelAttribute Setting setting) {
+		public String acountOut(Model model, 
+				@ModelAttribute Setting setting) {
 
 			Integer id = 1;
 			// setting.setId(id);

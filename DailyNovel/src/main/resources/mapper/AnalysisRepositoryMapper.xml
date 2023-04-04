@@ -6,11 +6,6 @@
 	<!-- 아래의 리졀트맵의 id값을 활용해서 select문의 resultMap에 넣어주면 된다. -->
 	
 	
-	<select id="findFeelingAll" resultType="Feeling">
-		select *
-		FROM dailynoveldb.feeling
-	</select>
-	
 	<select id="findAll" resultType="FeelingRank">
 		SELECT f.name, f.img, count(d.feeling_id) as frequency
 		FROM feeling f
