@@ -25,7 +25,7 @@ class TemplateRepositoryTest {
 	@Test
 	void testFindAll() {
 		List<Template> list = repo.findAll();
-		List<Feeling> listF = Frepo.findAll();
+//		List<Feeling> listF = Frepo.findAll();
 		List<Weather> listW = Wrepo.findAll();
 		System.out.println(listW);
 	}

@@ -32,7 +32,7 @@
 			<div class="option-container lists-filter pdt-4">
 			 <!-- 정렬을 위로 빼기 -->
 					<div class="option-box mgl-2">
-						<div data-name="tid" data-id="" class="title lc-center border-r-2">템플릿</div>
+						<div data-name="tid" data-id="" class="title lc-center border-r-2" th:attr="data-id=${curTmeplate?.id}?:''" th:text="${curTmeplate?.name}?:'템플릿'">템플릿</div>		
 						<div class="select border-r-2 hidden no-scroll">
 							<div class="option lc-center" th:text="${template.name}"  th:attr = "data-id=${template.id}" th:each="template : ${templateList}">기본</div>
 							<div class="option lc-center h5" data-id="" data-default="템플릿">선택안함</div>
@@ -40,7 +40,7 @@
 					</div>
 					
 					<div  data-name="fid" data-id="" class="option-box mgl-2">
-						<div class="title lc-center border-r-2">기분</div>
+						<div class="title lc-center border-r-2" th:attr="data-id=${curFeeling?.id}?:''" th:text="${curFeeling?.name}?:'기분'" >기분</div>
 						<div class="select border-r-2 hidden">
 							<div class="option lc-center" th:each="feeling:${feeling}" th:text="${feeling.name}" th:attr="data-id= ${feeling.id}">화남</div>
 							<div class="option lc-center h5" data-id="" data-default="기분">선택안함</div>
@@ -48,7 +48,7 @@
 					</div>
 
 					<div data-name="wid" data-id="" class="option-box mgl-2" >
-						<div class="title lc-center border-r-2">날씨</div>
+						<div class="title lc-center border-r-2" th:attr="data-id=${curWeather?.id}?:''" th:text="${curWeather?.name}?:'날씨'">날씨</div>
 						<div class="select border-r-2 hidden">
 							<div class="option lc-center" th:attr= "data-id = ${weather.id}" th:each="weather:${weatherList}" th:text = "${weather.name}">맑음</div>
 							<div class="option lc-center h5" data-id="" data-default="날씨">선택안함</div>
@@ -56,7 +56,7 @@
 					</div>
 					 
 					
-					<div class="b lc-center args border-r-2 mgl-2 color-bg-green-2 wid-6rem" id="openBtn">날짜</div>
+					<div class="b lc-center args border-r-2 mgl-2 color-bg-green-2 wid-6rem" id="openBtn" th:attr="data-reg-date=${curRegDate}">날짜</div>
 				
 			</div>
 
@@ -66,6 +66,12 @@
 					<div class="list-title mgt-3" th:text="${diary.title}">오늘은 힘든 하루</div>
 					<!-- <div class="title"><span class="ib diary">노는게 젤 좋아 친구들 모여라</span><span class="ib date">2022-22-22</span></div> -->
 					<div class="content mgt-2" th:text=${diary.content}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea eum labore eos a deleniti tenetur, libero minima hic at, vel necessitatibus nemo, suscipit rerum vitae expedita porro obcaecati quibusdam repellat.</div>
+				</li>
+
+		        	
+	        	<li class="list-box" th:if="${#lists.isEmpty(list)}">
+					<div class="list-date lc-center h2 font-weight-bolder mgt-2" th:text="${param?.reg_date}?'날짜 : ' +  ${param.reg_date}:'다시한번 확인해주세요!'">2022-22-22</div>
+					<div class="content mgt-5 lc-center h1" > 일기가 없어요!</div>
 				</li>
 			</ul>
 

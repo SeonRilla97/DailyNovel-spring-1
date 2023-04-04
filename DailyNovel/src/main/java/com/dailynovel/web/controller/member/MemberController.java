@@ -75,25 +75,30 @@ public class MemberController {
 		List<Template> templateList = listservice.getTemplateList();
 		List<Feeling>	feelingList = listservice.getFeelingList();
 		List<Weather>	weatherList =listservice.getWeatherList();
-		String curTName;
-		String curFName;
-		String curWName;
+		Template curTName;
+		Feeling curFName;
+		Weather curWName;
+		
 		//======request로 부터 받은 id를 가지고 List collection에 저장되어있는 카테고리의 이름을 얻어온다.============
 		if(tid !=null) {
-		curTName = templateList.get(tid-1).getName(); //List 0 부터 시작(DB의 1번이 List에선 0번)
+		curTName = templateList.get(tid-1); //List 0 부터 시작(DB의 1번이 List에선 0번)
 		System.out.println(curTName);
 		model.addAttribute("curTmeplate",curTName);}
 		if(fid !=null) {
-		curFName = feelingList.get(fid-1).getName();
+		curFName = feelingList.get(fid-1);
 		System.out.println(curFName);
-		model.addAttribute("curFeelingmeplate",curFName);
+		model.addAttribute("curFeeling",curFName);
 		}
 		if(wid !=null) {
-		curWName  = weatherList.get(wid-1).getName();
+		curWName  = weatherList.get(wid-1);
 		System.out.println(curWName);
-		model.addAttribute("curWeathermeplate",curWName);
+		model.addAttribute("curWeather",curWName);
 		}
-		
+		if(regDate != null) {
+			String curRegDate = regDate;
+			System.out.println("날짜 삽입 완료!!");
+			model.addAttribute("curRegDate", curRegDate);		
+		}
 //		=======View로 이용하기 위해 Model에 데이터 삽입==============================
 		model.addAttribute("feeling", feelingList);
 		model.addAttribute("diaryList", list);

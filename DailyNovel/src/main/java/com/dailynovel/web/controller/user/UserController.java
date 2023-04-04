@@ -15,6 +15,6 @@ public class UserController {
 
 	@RequestMapping("signup")
 	public String signUp() {
-		return "/WEB-INF/view/user/sign_up.jsp";
+		return "/user/signup";
 	}
 }

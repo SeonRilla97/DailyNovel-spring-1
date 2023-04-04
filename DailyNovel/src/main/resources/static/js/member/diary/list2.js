@@ -79,26 +79,19 @@ for(let op of optionList){
     
     // btnTitle
     // modalBtn
-    exceQuery();
-    // console.log(query);
     if(opClickedBtn.textContent=="선택안함"){
       opClickedBtn.textContent=op.dataset.default;
     }
+    exceQuery();
+    // console.log(query);
   }
 }
 // 2. calendar의 list 눌렀을 때, 날짜의 reg-date 와 value가 변경되도록
 
-// const calendarLi = document.querySelectorAll(".calender .date .active");
-// console.log(calendarLi);
-// for(let calLi of calendarLi ){
-//   calLi.onclick=function(e) {
-//     console.log(calLi.textContent);
-//   };
-// }
 const calendarDate = document.querySelector("#calendar-date");
 const yearMonth =  document.querySelector("#date-config");
 calendar.onclick=function(e) {
-  // console.log("ok!");
+
   //커서 얻고
   let cursor = e.target;
   //누른게 LI가 아니라면 안함!
@@ -109,63 +102,37 @@ calendar.onclick=function(e) {
   //모달버튼 
 
   // modalBtn.textContent = `${yearMonth.dataset.regDate}-${cursor.textContent}`;
-  modalBtn.dataset.regdate = `${yearMonth.dataset.regDate}-${String(cursor.textContent).padStart(2,"0")}`
-  exceQuery();
+  modalBtn.dataset.regDate = `${yearMonth.dataset.regDate}-${String(cursor.textContent).padStart(2,"0")}`
+   exceQuery();
   close();
 };
 
 
-/* 
-for(let btn of btnTitle){
-  console.log(btn);
-  btn.change=function() {
-    console.log("aa");
-  }
-}
-*/
-//쓰레기통========================================================
-// 기존 모달 버튼 누르면 모달창 뜨게 하는거 (메뉴 버튼 이벤트에 흡수)
-// document.querySelector("#openBtn").addEventListener("click", open);
-// document.querySelector(".list-modal .modalBox .closeBtn").addEventListener("click", close);
-
-
-
-
-
-  // 정렬 방식 JS -> 정렬 버튼 이벤트에 통합
-// const btns = document.querySelectorAll(".option-box");
-    
-// for(let btn of btns){
-// btn.addEventListener('click',(e) => {
-
-//     let tag = e.target.tagName;
-//     if(!(tag =='DIV')) return;
-    
-//     const cate = btn.querySelector(".select");
-//     cate.classList.toggle('hidden');
-
-//     });
-// }
-// 정렬방식 JS 끝!
-//========================================================
-
-// modalBtn.onchange;
 let exceQuery=function(){
+
+  //각각 버튼의 dataset 에서 data를 받아온다.
   let tid = btnTitle[0].dataset.id;
   let fid = btnTitle[1].dataset.id;
   let wid = btnTitle[2].dataset.id;
-  let regDate = modalBtn.dataset.regdate;
-  // console.log(`${tid} + ${fid} + ${wid} + ${regDate}`)
-  // location.href = (`./list?wid=1`);
+  let regDate = modalBtn.dataset.regDate;
+  console.log(modalBtn);
+  console.log(regDate);
   let queryString =""; 
-  queryString += tid?`tid=${tid}`:"";
-  queryString += fid?`fid=${fid}`:"";
-  queryString += wid?`wid=${wid}`:"";
-  queryString += regDate?`reg_date=${regDate}`:"";
-  console.log(`wid=${wid} // fid=${fid} // tid=${tid}`);
-  let query = `?wid=${wid?wid:""}&fid=${fid?fid:""}&tid=${tid?tid:""}&reg_date=${regDate?regDate:""}`;
-  if(queryString != "")
-    location.href = (`./list?${queryString}`);
-    else
-    location.href = (`./list`);
+  queryString += tid?`&tid=${tid}`:"";
+  queryString += fid?`&fid=${fid}`:"";
+  queryString += wid?`&wid=${wid}`:"";
+  queryString += regDate?`&reg_date=${regDate}`:"";
+  console.log(queryString);
+  // let regDatequery=new URLSearchParams(window.location.search).get('reg_date');
+//  queryString += new URLSearchParams(window.location.search).get('reg_date')?`&reg_date=${regDate}`:"";
+  // console.log(`wid=${wid} // fid=${fid} // tid=${tid}`);
+  // let query = `?wid=${wid?wid:""}&fid=${fid?fid:""}&tid=${tid?tid:""}&reg_date=${regDate?regDate:""}`;
+  // console.log(new URLSearchParams(window.location.search).get('reg_date'));
+  //======== 실제 url로 이동하는 코드 ========
+    if(queryString != "")
+      location.href = (`./list?${queryString}`);
+      else
+      location.href = (`./list`);
+
+    
 };
