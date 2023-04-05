@@ -101,6 +101,8 @@ public class  SettingController {
 			setting.setStatusMessage(stsMessage);
 			int a = settingService.updateProfile(setting);
 			
+			Thread.sleep(5000);
+			
 			return "redirect:../profile";
 			
 		}
@@ -293,7 +295,7 @@ public class  SettingController {
 		@RequestMapping("/out")
 		public String out() {
 			
-			Setting setting = settingService.getById(35);
+			Setting setting = settingService.getById(36);
 			System.out.println(setting);
 			
 			return "member/settings/component/out";
@@ -303,7 +305,7 @@ public class  SettingController {
 		public String acountOut(Model model, 
 				@ModelAttribute Setting setting) {
 
-			Integer id = 35;
+			Integer id = 36;
 			setting.setId(id);
 
 			int a = settingService.deleteAcount(id);
