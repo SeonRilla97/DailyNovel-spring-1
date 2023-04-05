@@ -761,7 +761,7 @@ color: white;
 .l-box-mini > .value {
   height: 3.75rem;
   
-  background-size: contain;
+  background-size: 60%;
   background-repeat: no-repeat;
   background-position: center;
 }
