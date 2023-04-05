@@ -10,20 +10,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.dailynovel.web.entity.Feeling;
 import com.dailynovel.web.service.FeelingService;
+import com.dailynovel.web.service.AnalysisService;
 
 @Controller
 @RequestMapping("/analysis")
 public class  AnalysisController {
 
 	@Autowired
-	private FeelingService service;
+	private AnalysisService service;
 	
 	
 	
 	@GetMapping("feeling")
 	public String feeling(Model model) {
-		List<Feeling> rank = service.getRank();
-		Feeling Toprank = service.getTopRank().get(0); // 첫 번째 요소만 가져오기
+		List<Feeling> rank = service.getFeelingRank();
+		Feeling Toprank = service.getFeelingTopRank().get(0); // 첫 번째 요소만 가져오기
 		System.out.println("Rank");
 		model.addAttribute("rank", rank);
 		model.addAttribute("Toprank", Toprank);
@@ -33,8 +34,10 @@ public class  AnalysisController {
 	
 	@GetMapping("feeling-chart")
 		public String feelingChart(Model model) {
-		List<Feeling> value = service.getValue();
-		model.addAttribute("value", value);
+		List<Feeling> labels = service.getLabel();
+		List<Feeling> Value = service.getValue();
+		model.addAttribute("Name", labels);
+		model.addAttribute("Value", Value);
 		return "member/diary/analysis/looking-back/feeling-chart";
 	}
 	

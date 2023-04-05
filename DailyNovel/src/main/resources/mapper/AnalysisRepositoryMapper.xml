@@ -14,7 +14,7 @@
 		ORDER BY frequency DESC;
 	</select>
 	
-	<select id="findTopRank" resultType="Feeling">
+	<select id="findFeelingTopRank" resultType="Feeling">
 		SELECT f.name, f.img, count(d.feeling_id) as frequency, f.description
 		FROM feeling f
 		inner JOIN diary d ON f.id = d.feeling_id AND d.member_id = 1
@@ -22,7 +22,7 @@
 		ORDER BY frequency DESC
 	</select>
 	
-	<select id="findRank" resultType="Feeling">
+	<select id="findFeelingRank" resultType="Feeling">
 		SELECT f.img, f.name, COUNT(d.feeling_id) as frequency, DENSE_RANK() OVER (ORDER BY COUNT(d.feeling_id) DESC) as ranking
 		FROM diary d
 		INNER JOIN feeling f ON f.id = d.feeling_id
@@ -33,11 +33,19 @@
 	</select>
 	
 	<select id="findValue" resultType="Feeling">
-		SELECT f.name, count(d.feeling_id) as frequency
+		SELECT COUNT(d.feeling_id) as frequency
 		FROM feeling f
 		LEFT JOIN diary d ON f.id = d.feeling_id AND d.member_id = 1
-		group by f.name
-		ORDER BY frequency DESC;
+		GROUP BY f.name
+		ORDER BY COUNT(d.feeling_id) DESC;
+	</select>
+	
+	<select id="findLabel" resultType="Feeling">
+	    SELECT f.name
+		FROM feeling f
+		LEFT JOIN diary d ON f.id = d.feeling_id AND d.member_id = 1
+		GROUP BY f.name 
+		ORDER BY COUNT(d.feeling_id) DESC;
 	</select>
 	
 

@@ -32,8 +32,7 @@
 				 </div>
 				<div class="sub-feeling">
 				    <div class="rank-box" th:each="rank, index : ${rank}" th:style="'background-image:url('+ @{/image/feeling/{img}(img=${rank.img})} +');'">
-				        <div th:class="${index == 0 ? 'second-prize' : ''}"></div>
-				        <div th:class="${index == 1 ? 'third-prize' : ''}"></div>
+				       
 				    </div>
 				</div>
 			</div>

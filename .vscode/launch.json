@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DailyNovelApplication<DailyNovel>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.dailynovel.web.DailyNovelApplication",
+            "projectName": "DailyNovel",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

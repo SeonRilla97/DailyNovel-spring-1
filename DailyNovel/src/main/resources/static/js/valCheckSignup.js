@@ -1,12 +1,13 @@
+window.onload = function(){
+
 const email=document.querySelector("#email");
 const emailCheck=document.querySelector("#email-check");
-const emailCheckBtn = document.querySelector("email-check-btn");
+const emailCheckBtn = document.querySelector("#email-check-btn"); //인증번호 전송
 const pwd=document.querySelector("#pwd");
 const pwdCheck=document.querySelector("#pwd-check");
 const nickName=document.querySelector("#nickname");
 const phoneNum=document.querySelector("#phone");
 const phoneCheck=document.querySelector("#phone-check");
-
 // Form 태그의 Input Tag에 커서를 주고 Enter 누르면 제출되는 문제 해결
 const signUpForm = document.querySelector("#sign-up-form");
 signUpForm.addEventListener('keydown', (e) => {
@@ -32,12 +33,17 @@ function ValidateEmail()
     return (false)
 }
 
+
+
 //이메일 인증번호 눌렀을때, 서버로 인증번호 전송해달라고 확인하는 이메일을 보내야함
 function CheckEmailVerify() {
     //서버로부터 확인받아야 하는것
     //0. 이메일 형식이 맞는지 페이지에서 확인해야함 (이때부터는 이메일 변경 하면 안됨)
+    
     //1. 내가 쓴 이메일이 DB에 저장되어 있는 이메일인지 확인해야함 (중복확인)
+    
     //2. 서버는 인증번호를 가지고 있으며 이를 사용자 에게 보내줘야함 (서버도 가지고 있어야함)
+    
     //3. 인증확인은 input 태그가 변화할 시 마다 서버로 확인을 받게 할 예정
     
 }
@@ -86,7 +92,31 @@ function ValidatePhone()
 }
 
 
+
+
+emailCheckBtn.addEventListener('click',function(){
+	let emailCheck = email.value;
+	
+	const xhr = new XMLHttpRequest();
+	xhr.open('GET', '/user/mailCheck?email='+emailCheck);
+	xhr.onload = function(){
+			alert('인증번호가 전송되었습니다.');
+		if(xhr.status===200){
+			console.log('data: '+xhr.responseText);
+			emailCheck.disabled =false;
+			code = xhr.responseText;
+			}
+			
+	};
+xhr.send();
+	
+})
+
+
+
 email.addEventListener('change',ValidateEmail);
 pwd.addEventListener('change',ValidatePwd);
 pwdCheck.addEventListener('change',checkPwd);
 phoneNum.addEventListener('change',ValidatePhone);
+
+}

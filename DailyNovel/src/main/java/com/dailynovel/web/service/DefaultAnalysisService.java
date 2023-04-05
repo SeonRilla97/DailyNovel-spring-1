@@ -9,7 +9,7 @@ import com.dailynovel.web.entity.Feeling;
 import com.dailynovel.web.repository.FeelingRepository;
 
 @Service
-public class DefaultFeelingService implements FeelingService {
+public class DefaultAnalysisService implements AnalysisService {
 
 	
 	@Autowired
@@ -23,22 +23,30 @@ public class DefaultFeelingService implements FeelingService {
 	}
 
 	@Override
-	public List<Feeling> getRank() {
+	public List<Feeling> getFeelingRank() {
 		// TODO Auto-generated method stub
-		return repository.findRank(null, null, null);
+		return repository.findFeelingRank(null, null, null);
 	}
 
 	@Override
-	public List<Feeling> getTopRank() {
+	public List<Feeling> getFeelingTopRank() {
 		// TODO Auto-generated method stub
-		return repository.findTopRank(null, null, null, null);
+		return repository.findFeelingTopRank(null, null, null, null);
 	}
 
 	@Override
 	public List<Feeling> getValue() {
-		// TODO Auto-generated method stub
-		return repository.findValue(null, null);
+		return repository.findValue(null);
 	}
+
+	@Override
+	public List<Feeling> getLabel() {
+		return repository.findLabel(null);
+	}
+
+
+
+
 	
 	
 	
