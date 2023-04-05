@@ -53,7 +53,7 @@ public class defaultListService implements ListService {
 		return list; 	
 		}
 	public List<Feeling> getFeelingList(){
-		List<Feeling> list = feelingRepository.findFeelingAll();
+		List<Feeling> list = feelingRepository.findAll(null,null,null,null);
 		return  list;
 	}
 

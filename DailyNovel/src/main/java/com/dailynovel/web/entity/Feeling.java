@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class FeelingRank {
+public class Feeling {
 	
 	
 	private String name;
 	private String description;
 	private int frequency;
 	private String img;
-	}
+}

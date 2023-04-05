@@ -9,13 +9,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Niconne&display=swap" rel="stylesheet">
     <!-- style -->
-    <link rel="stylesheet" href="/res/css/reset.css">
-    <link rel="stylesheet" href="/res/css/layout.css">
-    <link rel="stylesheet" href="/res/css/button.css">
-    <link rel="stylesheet" href="/res/css/box.css">
-    <link rel="stylesheet" href="/res/css/component-mobile.css">
-    <link rel="stylesheet" href="/res/css/style.css">
-    <link rel="stylesheet" href="/res/css/util.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/button.css">
+    <link rel="stylesheet" href="/css/box.css">
+    <link rel="stylesheet" href="/css/component-mobile.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/util.css">
 
     <title>회원가입</title>
 
@@ -28,13 +28,13 @@
             <main class="main">
                 <h1 class="d-none">회원가입</h1>
                 <div class="container-form">
-                    <form class="form-signup" id="sign-up-form">
+                    <form class="form-signup" id="sign-up-form" method="post" action="./signup">
                         
                         <div class="outBox box-large mgt-5">
                             <div class="inputBox">
-                                <input id="email" class="sample-id" type="text"/>
+                                <input id="email" class="sample-id" type="text" name="id"/>
                                 <label for="email">이메일</label>
-                                <span><img src="../../res/img/DiaryMainPage/fail.svg" alt="이메일을 확인해 주세요"></img></span>
+                                <span><img src="/img/DiaryMainPage/fail.svg" alt="이메일을 확인해 주세요"></img></span>
                             </div>  
                         </div>
                         <div class="certify-form mgt-3">
@@ -45,9 +45,9 @@
 
                         <div class="outBox box-large mgt-5">
                             <div class="inputBox">
-                                <input id="pwd" class="sample-id" type="password"/>
+                                <input id="pwd" class="sample-id" type="password" name="pwd"/>
                                 <label for="pwd">비밀번호</label>
-                                <span><img src="../../res/img/DiaryMainPage/PASS.svg" alt="알맞은 형식입니다."></span>
+                                <span><img src="/img/DiaryMainPage/PASS.svg" alt="알맞은 형식입니다."></span>
                             </div>  
                         </div>
 
@@ -60,14 +60,14 @@
 
                         <div class="outBox box-large mgt-5">
                             <div class="inputBox">
-                                <input id="nickname" class="sample-id" type="text"/>
+                                <input id="nickname" class="sample-id" type="text" name="nickname"/>
                                 <label for="nickname">별명(중복불가)</label>
                             </div>  
                         </div>
 
                         <div class="outBox box-large mgt-5">
                             <div class="inputBox">
-                                <input id="phone" class="sample-id" type="text" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"/>
+                                <input id="phone" class="sample-id" type="text" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" name="phoneNum"/>
                                 <label for="phone">전화번호</label>
                             </div>  
                         </div>
@@ -83,8 +83,8 @@
             </main>
             <!-- <footer class="footer"></footer> -->
         </div>
-        <script src="/res/js/valCheckSignup.js"></script>
-        <script src="/res/css/exam.js"></script>
+        <script src="/js/valCheckSignup.js"></script>
+        <script src="/css/exam.js"></script>
         
     </body>
 </html>

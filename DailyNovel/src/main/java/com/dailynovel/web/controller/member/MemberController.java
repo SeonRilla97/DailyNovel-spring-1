@@ -61,10 +61,10 @@ public class MemberController {
 		List<Diary> list =  listservice.getDiarys(memberId,tid,fid,wid,regDate);
 		 
 		List<Template> templateList = listservice.getTemplateList();
-		List<Feeling>	feelingList = listservice.getFeelingList();
+//		List<Feeling>	feelingList = listservice.getFeelingList();
 		List<Weather>	weatherList =listservice.getWeatherList();
 		Template curTName;
-		Feeling curFName;
+//		Feeling curFName;
 		Weather curWName;
 		
 		//======request로 부터 받은 id를 가지고 List collection에 저장되어있는 카테고리의 이름을 얻어온다.============
@@ -73,9 +73,9 @@ public class MemberController {
 		System.out.println(curTName);
 		model.addAttribute("curTmeplate",curTName);}
 		if(fid !=null) {
-		curFName = feelingList.get(fid-1);
-		System.out.println(curFName);
-		model.addAttribute("curFeeling",curFName);
+//		curFName = feelingList.get(fid-1);
+//		System.out.println(curFName);
+//		model.addAttribute("curFeeling",curFName);
 		}
 		if(wid !=null) {
 		curWName  = weatherList.get(wid-1);
@@ -88,7 +88,7 @@ public class MemberController {
 			model.addAttribute("curRegDate", curRegDate);		
 		}
 //		=======View로 이용하기 위해 Model에 데이터 삽입==============================
-		model.addAttribute("feeling", feelingList);
+//		model.addAttribute("feeling", feelingList);
 		model.addAttribute("diaryList", list);
 		model.addAttribute("templateList", templateList);
 		model.addAttribute("weatherList", weatherList);
