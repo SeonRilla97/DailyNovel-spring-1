@@ -1,5 +1,4 @@
 window.onload = function(){
-
 const email=document.querySelector("#email");
 const emailCheck=document.querySelector("#email-check");
 const emailCheckBtn = document.querySelector("#email-check-btn"); //인증번호 전송
@@ -10,11 +9,21 @@ const phoneNum=document.querySelector("#phone");
 const phoneCheck=document.querySelector("#phone-check");
 // Form 태그의 Input Tag에 커서를 주고 Enter 누르면 제출되는 문제 해결
 const signUpForm = document.querySelector("#sign-up-form");
+
+//유효성 검사를 통과하면 초록색 실패하면 빨간색에 유효성 검사 보여주기
+const emailLabel = document.querySelector("label[for='email']");
+const pwdLabel = document.querySelector("label[for='pwd']");
+const pwdCheckLabel = document.querySelector("label[for='id-check']");
+
+emailCheckBtn.disabled = true;
+
 signUpForm.addEventListener('keydown', (e) => {
     if(e.key ==="Enter"){  
         e.preventDefault();
     }
 });
+
+
 
 // 이메일 유효성 검사
 let isEamilValidate = false;
@@ -24,12 +33,16 @@ function ValidateEmail()
     const emailReg = new RegExp(/^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/);
  if (emailReg.test(checkMail))
   {
-      console.log("이메일 완료!");
-      isEamilValidate=true;
+	emailLabel.textContent="이메일";
+	emailLabel.style.color = "#69BC80";
+     isEamilValidate=true;
+     emailCheckBtn.disabled = false;
     return (true)
   }
-    console.log("이메일 실패!");
-    isEamilValidate=false;
+  	emailLabel.textContent="이메일";
+	emailLabel.style.color = "red";
+    isEamilValidate=true;
+    emailCheckBtn.disabled = true;
     return (false)
 }
 
@@ -53,13 +66,17 @@ function CheckEmailVerify() {
 function ValidatePwd() 
 {
     const checkPwd = pwd.value;
-    const PwdReg = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*]{8,}$/);
+    const PwdReg = new RegExp(/^(?=.*[A-Za-z0-9])(?=.*\d)[A-Za-z0-9\d!@#$%^&*]{8,25}$/);
  if (PwdReg.test(checkPwd))
   {
-      console.log("비밀번호 완료!");
+   	console.log("비밀번호 완료!");
+   	pwdLabel.style.color="#69BC80";
+   	pwd.style.color="#69BC80";
     return (true)
   }
   console.log("비밀번호 실패!");
+   	pwdLabel.style.color="red";
+   	 	pwd.style.color="red";
     return (false)
 }
 
@@ -68,14 +85,20 @@ function checkPwd() {
     
     if(confirm == pwd.value){
         console.log("비밀번호 같다!!");
+        pwdCheck.style.color="#69BC80";
+         pwdCheckLabel.style.color="#69BC80";
         return true;
     }
     console.log("비밀번호 일치하지 않음");
+     pwdCheck.style.color="red";
+     pwdCheckLabel.style.color="red";
     return false;
 }
 
 function nicknameCheck() {
     //중복확인 -> DB와 통신 필요함
+    
+    
 }
 
 function ValidatePhone() 
@@ -92,26 +115,28 @@ function ValidatePhone()
 }
 
 
+function ValidateEmailNumber(){
+	
+	
+}
+
 
 
 emailCheckBtn.addEventListener('click',function(){
+	
 	let emailCheck = email.value;
-	
-	const xhr = new XMLHttpRequest();
-	xhr.open('GET', '/user/mailCheck?email='+emailCheck);
-	xhr.onload = function(){
-			alert('인증번호가 전송되었습니다.');
-		if(xhr.status===200){
-			console.log('data: '+xhr.responseText);
-			emailCheck.disabled =false;
-			code = xhr.responseText;
-			}
-			
-	};
-xhr.send();
-	
-})
+		const xhr = new XMLHttpRequest();
+		xhr.open('GET', '/user/mailCheck?email='+emailCheck);
+		xhr.onload = function(){
+			if(xhr.status===200){
+				console.log('data: '+xhr.responseText);
+				code = xhr.responseText;
+				}
 
+		};
+		xhr.send();
+		alert('인증번호가 전송되었습니다.');	
+});
 
 
 email.addEventListener('change',ValidateEmail);
@@ -119,4 +144,4 @@ pwd.addEventListener('change',ValidatePwd);
 pwdCheck.addEventListener('change',checkPwd);
 phoneNum.addEventListener('change',ValidatePhone);
 
-}
+};
