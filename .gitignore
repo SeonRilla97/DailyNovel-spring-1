@@ -134,6 +134,9 @@ yarn-error.log
 # End of https://www.toptal.com/developers/gitignore/api/java,eclipse,visualstudiocode,vue,vuejs
 
 
+
+
+# =====선유진 추가 ====== Intellij ignore 추가
 ### Intellij ### 선유진 추가 -> intellij에서 프로젝트 돌렸다가 .idea 파일 생겨버림 제거하기 ignore 설정
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
