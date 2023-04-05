@@ -8,11 +8,14 @@ public interface AnalysisService {
 	
 	List<Feeling> getCount();
 	
-	List<Feeling> getFeelingRank(); 
-	
-	
+
 	List<Feeling> getValue();
 
+	List<Feeling> getFeelingRank();
+
 	List<Feeling> getFeelingTopRank();
+
+	List<Feeling> getValue(String name, Integer frequency);
+
 
 }

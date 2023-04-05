@@ -33,8 +33,8 @@ public class  AnalysisController {
 	
 	@GetMapping("feeling-chart")
 		public String feelingChart(Model model) {
-		List<Feeling> value = service.getValue();
-		model.addAttribute("value", value);
+		List<Feeling> Value = service.getValue();
+		model.addAttribute("Value", Value);
 		return "member/diary/analysis/looking-back/feeling-chart";
 	}
 	
