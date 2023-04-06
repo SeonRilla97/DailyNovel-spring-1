@@ -18,7 +18,7 @@ window.addEventListener('load',()=>{
   const modalCloseBtn = document.querySelectorAll("#modal-close-btn");
   const regmodal = document.querySelector(".reg-select-modal");
   const regCancelModal = document.querySelector("#reg-cancel-modal");
-  const regHonestyModal = document.querySelector("#reg-honesty-select-modal");
+  const regHonestyModal = document.querySelector("#reg-honesty-modal");
 
   regSumbitBtn.addEventListener('click', ()=>{
     modalOpen(regHonestyModal,container);
@@ -66,7 +66,7 @@ window.addEventListener('load',()=>{
   }
 
   function modalClose(modal, container){
-//    modal.classList.remove('active');      
+    modal.classList.remove('active');      
     container.classList.toggle('position-fixed');
   }
 
