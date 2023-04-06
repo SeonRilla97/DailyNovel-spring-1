@@ -48,6 +48,8 @@ public class  SettingController {
 	@Autowired
 	private SettingService settingService;
 	
+	private String imageName= "사슴";
+	
 	@RequestMapping("main")
 	public String main(){
 		return "/member/settings/main";
@@ -56,12 +58,16 @@ public class  SettingController {
 
 		// 세팅-프로필-------------------------------------------------------------------
 		@RequestMapping("profile")
-		public String profile(Model model) {
-
+		public String profile(Model model, String imageName) {
+	        
 			Setting setting = settingService.getById(1);
 			// Setting setting = settingService.update();
 			model.addAttribute("setting", setting);
 			System.out.println(setting);
+			System.out.println(imageName);
+			imageName = setting.getProfileImage();
+			System.out.println(imageName);
+
 			return "member/settings/component/profile";
 		}
 
@@ -72,10 +78,13 @@ public class  SettingController {
 				@RequestParam("name") String Nickname,
 				@RequestParam("stsMessage") String stsMessage, 
 				@ModelAttribute Setting setting, 
-				HttpServletRequest request)
+				HttpServletRequest request
+				)
 				throws Exception {
 			Integer id = 1;
 			String realPath= "";
+			System.out.println(setting.getProfileImage());
+			System.out.println(imageName);
 			if (profile != null && !profile.isEmpty()) { // 이미지가 비어있지 않을 때만 실행시키기
 				Date date = new Date(System.currentTimeMillis()); // 현재 시간 측정
 				SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS"); // 시간 측정 포멧 지정
@@ -102,8 +111,15 @@ public class  SettingController {
 			setting.setNickName(Nickname);
 			setting.setStatusMessage(stsMessage);
 			int a = settingService.updateProfile(setting);
-			Thread.sleep(5000);
-			return "redirect:../profile";
+			System.out.println(setting.getProfileImage());
+			System.out.println(setting.getStatusMessage());
+			System.out.println(setting.getProfileImage());
+			if(setting.getProfileImage()!=null) {  // 사진의 업데이트가 있으면 5초 지연
+				Thread.sleep(5000);
+				return "redirect:../profile";
+			}
+			else								   // 사진의 업데이트가 없으면 바로 전송
+				return "redirect:../profile";
 			
 		}
 
@@ -200,12 +216,11 @@ public class  SettingController {
 			SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS"); // 시간 측정 포멧 지정
 			String time = format.format(date); // 측정한 시간을 포멧화 하기
 
-//	String filePath = "C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/" + time
-//			+ "dailyNovel.txt";
+//	String filePath = "C:/Users/BW3/Desktop/prj2/DailyNovel/src/main/resources/static/export/" + time + "dailyNovel.txt";
 			
 			// 바탕화면으로 경로 만들기 테스트
 				String deskTopPath = System.getProperty("user.home");
-				String filePath = deskTopPath + time + "dailyNovel.txt";
+				String filePath = deskTopPath + "/Desktop/" + time + "dailyNovel.txt";
 
 			FileOutputStream fos = new FileOutputStream(filePath);
 			PrintStream out = new PrintStream(fos);
@@ -229,17 +244,15 @@ public class  SettingController {
 			Document document = new Document(filePath);
 
 			// TXT 파일을 PDF로 저장
-//	document.save("C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/" + time
-//			+ "output.pdf");
+//	document.save("C:/Users/BW3/Desktop/prj2/DailyNovel/src/main/resources/static/export/" + time + "output.pdf");
 			// 바탕화면으로 TXT 파일을 PDF로 저장
-				document.save( deskTopPath + time + "output.pdf");
+				document.save( deskTopPath + "/Desktop/" + time + "output.pdf");
 			
 
 			// 전송
-//	String path = "C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/" + time
-//			+ "output.pdf";
+//	String path = "C:/Users/BW3/Desktop/prj2/DailyNovel/src/main/resources/static/export/" + time + "output.pdf";
 			 // 바탕화면으로 전송
-				String path = deskTopPath + time + "output.pdf";
+				String path = deskTopPath + "/Desktop/" + time + "output.pdf";
 				
 				
 			FileInputStream fis = new FileInputStream(path);
@@ -266,10 +279,9 @@ public class  SettingController {
 			try {
 				// 파일 삭제
 				// 삭제
-//	Path testPdf = Paths.get("C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/"
-//			+ time + "output.pdf");
+//	Path testPdf = Paths.get("C:/Users/BW3/Desktop/prj2/DailyNovel/src/main/resources/static/export/" + time + "output.pdf");
 					// 바탕화면 삭제
-						Path testPdf = Paths.get( deskTopPath + time + "output.pdf");
+						Path testPdf = Paths.get( deskTopPath + "/Desktop/" + time + "output.pdf");
 				// String deletePath =
 				// "C:/Users/BW3/Desktop/novelPrj/prj0327/DailyNovel/src/main/resources/static/text/"+
 				// time +"dailyNovel.txt";
@@ -278,9 +290,8 @@ public class  SettingController {
 				// time +"output.pdf";
 
 				Files.delete(testPdf);
-//	Path testText = Paths.get("C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/"
-//			+ time + "dailyNovel.txt");
-					Path testText = Paths.get(deskTopPath+ time + "dailyNovel.txt");
+//	Path testText = Paths.get("C:/Users/BW3/Desktop/prj2/DailyNovel/src/main/resources/static/export/" + time + "dailyNovel.txt");
+					Path testText = Paths.get(deskTopPath + "/Desktop/" + time + "dailyNovel.txt");
 				
 				Files.delete(testText);
 				// 디렉토리 삭제
