@@ -21,11 +21,13 @@
 		FROM dailynoveldb.diary
 		<trim prefix="where" prefixOverrides="AND |OR ">
 			<if test="date != null">
-				str_to_date(reg_date,'%Y-%m-%d')= #{date}</if>
-			<if test="how != null">
-				and template_id = ${how}</if>
-			<if test="feeling != null">
-				and feeling_id = ${feeling}</if>
+				str_to_date(reg_date,'%Y-%m-%d') = #{date}</if>
+			<if test="tid != null">
+				and template_id = ${tid}</if>
+			<if test="wid != null">
+				and weather_id = ${wid}</if>
+			<if test="fid != null">
+				and feeling_id = ${fid}</if>
 		</trim>
 	</select>
 </mapper>
