@@ -5,8 +5,14 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dailynovel.web.repository.MemberRepository">
 
+
+	<select id="FindSameNickname" parameterType="String" resultType="int">
+		select count(nickname) samenickname from member where nickname =#{nickname};
+	</select>
+
 	<insert id="insert">
 		Insert into dailynoveldb.member(email, password, nickname)
 		values (#{id},#{pwd}, #{nickname});
 	</insert>
+
 </mapper>

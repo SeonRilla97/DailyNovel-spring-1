@@ -75,6 +75,7 @@ window.onload = function() {
 		pwd.style.color = "red";
 		return (false)
 	}
+	
 	function updatecheckPwd(){
 		checkPwd();
 		
@@ -100,8 +101,31 @@ window.onload = function() {
 
 	function nicknameCheck() {
 		//중복확인 -> DB와 통신 필요함
-
-
+		
+	const NicknameReg = new RegExp(/^(?=.*[A-Za-z0-9])(?=.*\d)[A-Za-z0-9\d!@#$%^&*]{1,6}$/);		
+	
+	if(NicknameReg.test(nickName.value)){
+	const nickCheck={
+		method:"get"
+	};
+	fetch("http://localhost:8080/user/nicknameCheck?nickname="+nickName.value)
+	.then(response => response.text())	
+	.then(data=>{
+		if(nickName.value==""){
+			alert("빈문자열");
+		}
+		else if(data==="success"){
+			alert("성공!");
+			
+		}
+		else{
+			alert("실패!");
+		}
+		
+		});	
+	}
+	else
+		console.log("유효성 검사 실패");
 	}
 
 	function ValidatePhone() {
@@ -149,5 +173,6 @@ window.onload = function() {
 	pwd.addEventListener('input', ValidatePwd);
 	pwdCheck.addEventListener('input', updatecheckPwd);
 	phoneNum.addEventListener('change', ValidatePhone);
+	nickName.addEventListener('change',nicknameCheck);
 
 };
