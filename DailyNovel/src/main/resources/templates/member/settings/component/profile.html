@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="../../../css/util.css">
 
     <!-- js -->
-    <script src="/../js/setting.js"></script>
+    <script src="/js/setProfile.js" defer="defer"></script>
+    <script src="/js/setProfileModal.js" defer="defer"></script>
 </head>
 <body>
     <section class="container-1">
@@ -39,9 +40,7 @@
                     <div class="mgt-4 lc-center">
                         <div class="l-box-short">
                             <div class="name">닉네임</div>
-                            <input type="text" class="content modalBtn" value="송지산" maxlength="10" th:value="${setting.nickName}"
-                            name="name"
-                            >
+                            <input style="padding-left:1rem" type="text" class="content modalBtn" value="송지산" maxlength="10" th:value="${setting.nickName}" name="name">
                         </div>
                     </div>
                     <div class="mgt-4 lc-center">
@@ -58,12 +57,27 @@
                         </div>
                     </div>   
                     <div class="mgt-4 lc-center">
-                        <input class="btn3" type="submit" value="적용">
+                        <input class="btn3 modal-btn" type="submit" id="test-btn" value="적용">
                         <input class="btn3 font-s-box mgl-6-f" type="reset" value="초기화">
                     </div> 
                 </form>
             </div>
         </section>
+        
+        <!-- 업로드모달 테스트 -->
+          	<div id="modal" class="modal">
+                <div class="modal-content ">
+                <span class="close">&times;</span>
+                <p>업로드 중입니다.</p>
+                    <div style="display: flex;">
+                        <div class="loading11">
+                            <div class="line-box">
+                                <div class="line"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 
@@ -92,7 +106,7 @@
                 </div>
     
                 <div class="nav-4 lc-center">
-                    <a href="" class="lc-vertical-alignment" >
+                    <a href="../../analysis/main" class="lc-vertical-alignment" >
                         <div class="nav-icon  hourglass-btn"></div>
                         <div class="h6 mgt-2">돌아보기</div>
                     </a>

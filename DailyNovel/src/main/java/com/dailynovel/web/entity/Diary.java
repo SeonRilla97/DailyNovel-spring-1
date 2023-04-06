@@ -15,9 +15,13 @@ public class Diary {
 	private int templateId;
 	private Integer feelingId;
 	private Integer weatherId;
-	private Float honestyId;
+	private Integer honesty;
+	private String honestyRange;
 	private Integer count;
 	private String regDate;
 	private String title;
 	private String content;
+
+
+
 }

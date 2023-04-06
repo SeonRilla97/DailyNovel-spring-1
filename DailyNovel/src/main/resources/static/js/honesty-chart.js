@@ -1,20 +1,20 @@
-const requestOptions = {
+var requestOptions = {
   method: 'GET',
   redirect: 'follow'
 };
 
-fetch("http://localhost:8080/analysis1/honesty?honesty=0.3&count=1", requestOptions)
+fetch("http://localhost:8080/analysis1/honesty?honesty=10&count=1", requestOptions)
   .then(response => response.json())
   .then(data => {
     const extractedData = data.map(honesty => {
-      return { honesty: honesty.honesty, count: honesty.count };
+      return { honestyRange: honesty.honestyRange, count: honesty.count };
     });
 
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
       type: 'polarArea',
       data: {
-        labels:  [ '80 ~ 100%', '60 ~ 80%','40 ~ 60%','20 ~ 40% ','0 ~ 20%'],
+        labels: ['0 ~ 20', '21 ~ 40', '41 ~ 60', '61 ~ 80', '81 ~ 100'],
         datasets: [{
           data: extractedData.map(honesty => honesty.count),
           backgroundColor: [

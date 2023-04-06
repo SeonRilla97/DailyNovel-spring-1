@@ -3,7 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dailynovel.web.repository.AnalysisRepository">
-	<!-- 아래의 리졀트맵의 id값을 활용해서 select문의 resultMap에 넣어주면 된다. -->
+	<resultMap id="honestyMap" type="Diary">
+		  <result property="honestyRange=" column="honesty_range"/>
+		</resultMap>
 	
 	
 	<select id="findCount" resultType="Feeling">
@@ -15,6 +17,7 @@
 	</select>
 
 	
+
 	<select id="findFeelingTopRank" resultType="Feeling">
 		SELECT name, img, frequency, description
 		FROM feeling_view
@@ -23,6 +26,7 @@
 		ORDER BY frequency DESC
 	</select>
 	
+
 	<select id="findFeelingRank" resultType="Feeling">
 		SELECT img, name, frequency, DENSE_RANK() OVER (ORDER BY frequency DESC) as ranking
 		FROM feeling_view
@@ -40,21 +44,21 @@
 		ORDER BY frequency DESC;
 	</select>
 	
-	<select id="findHonesty" resultType="Diary">
-		SELECT
-		  CASE
-		    WHEN honesty_id BETWEEN 0 AND 0.2 THEN 0.2
-		    WHEN honesty_id BETWEEN 0.2 AND 0.4 THEN 0.4
-		    WHEN honesty_id BETWEEN 0.4 AND 0.6 THEN 0.6
-		    WHEN honesty_id BETWEEN 0.6 AND 0.8 THEN 0.8
-		    WHEN honesty_id BETWEEN 0.8 AND 1 THEN 1
-		  END AS honesty,
-		  COUNT(*) AS count
+	<select id="findHonesty" resultMap="honestyMap">
+    SELECT
+    CASE
+        WHEN honesty BETWEEN 0 AND 20 THEN '0-20'
+        WHEN honesty BETWEEN 21 AND 40 THEN '21-40'
+        WHEN honesty BETWEEN 41 AND 60 THEN '41-60'
+        WHEN honesty BETWEEN 61 AND 80 THEN '61-80'
+        WHEN honesty BETWEEN 81 AND 100 THEN '81-100'
+	    END AS honesty_range,
+	    COUNT(*) AS count
 		FROM diary
-		WHERE member_id = 1 AND honesty_id IS NOT NULL
-		GROUP BY honesty
-		ORDER BY honesty DESC;
-	</select>
+		WHERE member_id = 1 AND honesty IS NOT NULL
+		GROUP BY honesty_range
+		ORDER BY honesty_range ASC;
+</select>
 	
 	
 	

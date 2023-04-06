@@ -15,10 +15,12 @@
 
 <!-- <script src="../../../res/js/" type="text/javascript"></script> -->
 <script src="/js/modal.js"></script>
+<script src="/js/register.js"></script>
 <title>일기 작성</title>
 </head>
 
-<body> 
+
+<body>
   
   <div class="container-2" >
     <div class="header reg-header">
@@ -68,64 +70,65 @@
   
   <div id="reg-tmp-modal"  class="reg-select-modal">
     <div class="tmp-section">
-        <div class="tmps" style="margin-bottom: 1rem;">
+        <ul class="tmps" style="margin-bottom: 1rem;">
 
-              <div class="btn1">자유롭게</div>
+              <li class="btn1" value="free-form">자유롭게</li>
 
-              <div>
+              <li>
                 <div id="simple-tmp" class="btn1">간편일기</div>      
-                <div class="tmp-select-box mgt-1" >
-                  <div class="simple-tmp-box">감사일기</div>
-                  <div class="simple-tmp-box">밥블로그</div>
-                  <div class="simple-tmp-box">질문일기</div>
-                </div>        
-              </div>
+                <ul class="tmp-select-box mgt-1" >
+                  <li class="simple-tmp-box" value="thanks-form">감사일기</li>
+                  <li class="simple-tmp-box" value="meat-form">밥블로그</li>
+                  <li class="simple-tmp-box" value="question-form">질문일기</li>
+                </ul>        
+              </li>
       
-              <div class="btn1">영화</div>
-              <div class="btn1">여행</div>
-              <div id="modal-close-btn" class="color-bg-green-2 close-btn-white circle-box-modal">모달 종료 버튼</div>
-        </div>
+              <li class="btn1" value="movie-form">영화</li>
+              <li class="btn1" value="trip-form">여행</li>
+              <li id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</li>
+        </ul>
     </div>
   </div>
 
   <div id="reg-feel-modal" class="reg-select-modal">
     <div class="feel-section">      
       <div>일기를 쓰실 때의 기분은 어떠신가요?</div>
-      <div class="reg-feel-select-box">
-        <div class="feel-circle-box happy-img">행복</div>
-        <div class="feel-circle-box happy-img">신남</div>
-        <div class="feel-circle-box happy-img">감동</div>
-        <div class="feel-circle-box happy-img">화남</div>
-        <div class="feel-circle-box happy-img">불편</div>
-        <div class="feel-circle-box happy-img">실망</div>
-        <div class="feel-circle-box happy-img">불안</div>
-        <div class="feel-circle-box happy-img">평온</div>
-        <div class="feel-circle-box happy-img">슬픔</div>
-        <div class="lc-center mgt-3" style="grid-column: 2/3;">
+      <ul class="reg-feel-select-box">
+        <li class="feel-circle-box happy-img" value="happy">행복</li>
+        <li class="feel-circle-box excited-img" value="excited">신남</li>
+        <li class="feel-circle-box touched-img" value="touched">감동</li>
+        <li class="feel-circle-box angry-img" value="angry">화남</li>
+        <li class="feel-circle-box awkward-img" value="awkward">불편</li>
+        <li class="feel-circle-box disappointed-img" value="disappointed">실망</li>
+        <li class="feel-circle-box anxiety-img" value="anxiety">불안</li>
+        <li class="feel-circle-box calm-img" value="calm">평온</li>
+        <li class="feel-circle-box sad-img" value="sad">슬픔</li>
+        <li class="lc-center mgt-3" style="grid-column: 2/3;">
           <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</div>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
   </div>
 
   <div id="reg-weather-modal" class="reg-select-modal">
     <div class="weather-section">
-      <div class="reg-weather-select-box">
-        <div class="weather-box">맑음</div>
-        <div class="weather-box">흐림</div>
-        <div class="weather-box">눈</div>
-        <div class="weather-box">비</div>
-        <div class="weather-box">먼지/황사</div>
-      </div>
+      <ul class="reg-weather-select-box">
+        <li class="weather-box" value="sunny">맑음</li>
+        <li class="weather-box" value="cloudy">흐림</li>
+        <li class="weather-box" value="snow">눈</li>
+        <li class="weather-box" value="rain">비</li>
+        <li class="weather-box" value="dust">먼지/황사</li>
+      </ul>
       <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</div>
     </div>
   </div>
 
-  <div id="reg-honesty-select-modal" class="reg-select-modal active">
+  <div id="reg-honesty-modal" class="reg-select-modal">
     <div class="reg-honesty-section">
       <p style="text-align: center;">이번 일기를 생각할 때 <br>얼마나 진실되었다고 생각하시나요?</p>
       <div class="reg-range-value"></div>
-      <input class="reg-honesty-test" type="range" min="0" max="100" step="10" value="100">
+        <input class="reg-honesty-test" type="range" min="0" max="100" step="10" value="100">
+        
       <div>바로 저장하기</div>
       <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</div>
     </div>
@@ -133,8 +136,11 @@
 
   <div id="reg-cancel-modal" class="reg-select-modal">    
     <div>지금 돌아가시면 지금까지 작성하신 내용은 사라집니다. 괜찮으신가요?</div>
-    <div>네</div>
-    <div>아니요, 돌아갈래요.</div>
+    <ul>
+      <li id="register-btn" class="btn3">네</li>
+      <li class="btn3">아니요, 돌아갈래요.</li>
+    </ul>    
+    <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</div>
   </div>
 </body>
 

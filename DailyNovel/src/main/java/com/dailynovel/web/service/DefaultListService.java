@@ -9,13 +9,13 @@ import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.Feeling;
 import com.dailynovel.web.entity.Template;
 import com.dailynovel.web.entity.Weather;
-import com.dailynovel.web.repository.AnalysisRepository;
+import com.dailynovel.web.repository.FeelingRepository;
 import com.dailynovel.web.repository.ListRepository;
 import com.dailynovel.web.repository.TemplateRepository;
 import com.dailynovel.web.repository.WeatherRepository;
 
 @Service
-public class defaultListService implements ListService {
+public class DefaultListService implements ListService {
 	
 	@Autowired
 	private ListRepository repository;
@@ -24,14 +24,23 @@ public class defaultListService implements ListService {
 	@Autowired
 	private WeatherRepository weatherRepository;
 	@Autowired
-	private AnalysisRepository feelingRepository;
-	
+	private FeelingRepository feelingRepository;
 	
 	
 	@Override
-	public List<Diary> getDiarys(Integer memberId) {
+	public List<Diary> getDiarys(
+			Integer memberId,
+			Integer tid,
+			Integer fid,
+			Integer wid,
+			String regDate 
+			) {
 		// TODO Auto-generated method stub
-		return repository.findAllById(memberId,null,null,null);
+//		System.out.println("여기는 서비스 단 입니다." + memberId.toString() + tid + fid + wid + regDate);
+		List<Diary> list = repository.findAllById(memberId,tid,fid,wid,regDate);
+		System.out.println("서비스단 리스트 출력" + list);
+		return repository.findAllById(memberId,tid,fid,wid,regDate);
+//		return null;
 	}
 	
 	public List<Template> getTemplateList(){
@@ -44,7 +53,7 @@ public class defaultListService implements ListService {
 		return list; 	
 		}
 	public List<Feeling> getFeelingList(){
-		List<Feeling> list = feelingRepository.findFeelingAll();
+		List<Feeling> list = feelingRepository.findAll();
 		return  list;
 	}
 

@@ -9,6 +9,7 @@ public interface AnalysisService {
 	
 	List<Feeling> getCount();
 	
+
 	List<Feeling> getValue();
 
 	List<Feeling> getFeelingRank();
@@ -19,6 +20,6 @@ public interface AnalysisService {
 
 	List<Diary> getHonesty();
 
-	List<Diary> getHonesty(Float honestyId, Integer count);
+	List<Diary> getHonesty(String honestyRange, Integer count);
 
 }

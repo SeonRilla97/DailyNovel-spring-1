@@ -12,7 +12,6 @@ public interface AnalysisRepository {
 	
 
 	
-	 
 	
 	List<Feeling> findCount(String name,
 							String description,
@@ -28,12 +27,10 @@ public interface AnalysisRepository {
 				   			String img,
 							Integer frequency
 									);
-
 	
+	List<Diary> findHonesty(String honestyRange, Integer count);
 	
 	List<Feeling> findValue(String name, Integer frequency);
-	
-	List<Diary> findHonesty(Float honesty, Integer count);
 	
 	
 
