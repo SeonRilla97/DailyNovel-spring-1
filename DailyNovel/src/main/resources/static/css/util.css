@@ -14,7 +14,7 @@
 /* 230331 : util 속성의 경우에는 최종적으로 부여하는 속성의 위치를 수정하는 부분들이라서 !important을 다 부여해준다고 합니다! */
 /* 공통 속성 */
 .d-none{
-  display: none !important;
+  display: none;
 }
 
 .t-none{

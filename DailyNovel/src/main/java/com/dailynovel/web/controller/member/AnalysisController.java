@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.dailynovel.web.entity.Feeling;
+import com.dailynovel.web.service.FeelingService;
 import com.dailynovel.web.service.AnalysisService;
 
 @Controller
