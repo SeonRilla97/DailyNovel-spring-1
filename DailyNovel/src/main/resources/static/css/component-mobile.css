@@ -1120,7 +1120,7 @@ color: white;
 
 .modal-content {
   background-color: #fefefe;
-  margin: 40vh auto;
+  margin: auto;
   padding: 1rem;
   border: 1px solid #888;
   border-radius: 1rem;
@@ -1154,22 +1154,39 @@ color: white;
   /*font-size: 0.625rem; /* 10px */
   font-size: 1rem; /* 16px */
 }
+/* 로딩박스 css */
+.loading11{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 194px;
+}
+.loading11 .line-box{
+  padding: 2px;
+  width: 100%;
+  height: 20px;
+  border: 2px solid #267191;
+  border-radius: 20px;
+}
+.loading11 .line-box .line{
+  height: 20px;
+  border-radius: 20px;
+  background-color: #67d295;
+  animation: loading 5s forwards cubic-bezier(0,0,0,0);
+}
 
-
-/* 유병우 테스트용, 테스트 확인 후 삭제할 예정 */
-.mgt-4-s{margin-top: 4rem;}
-.mgl-6-f{margin-left: 1.25rem;}
-
+@keyframes loading {
+  0%{
+    width: 0%
+  }
+  100%{
+    width: 100%
+  }
+}
 .color-bg-gray-1 { background-color: #d3d3d3; }
 .l-box-short .color-bg-gray-1{ background-color: #d3d3d3; }
-.out{/*회원탈퇴*/
-  color: red;
-  border: solid 1px red;
-}
-.test{
-  background-color: #f1f1f1;
-  border-radius: 1px;
-}
+
+/*통계 - 권주형 ------------------------------------------------*/
 
 
 /**/
