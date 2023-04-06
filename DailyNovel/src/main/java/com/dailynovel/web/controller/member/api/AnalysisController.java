@@ -47,9 +47,9 @@ public class  AnalysisController {
 	@GetMapping("honesty")
 	public List<Diary> getHonesty(
 			
-			@RequestParam(name = "HonestyRange") String HonestyRange,
+			@RequestParam(name = "honestyRange") String honestyRange,
 			@RequestParam(name = "count") Integer count){					
-			List<Diary> truely = service.getHonesty(HonestyRange, count);
+			List<Diary> truely = service.getHonesty(honestyRange, count);
 			return truely;
 			
 }

@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dailynovel.web.repository.AnalysisRepository">
 	<resultMap id="honestyMap" type="Diary">
-		  <result property="honestyRange=" column="honesty_range"/>
+		  <result property="honestyRange" column="honesty_range"/>
 		</resultMap>
 	
 	
