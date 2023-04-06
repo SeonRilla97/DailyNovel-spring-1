@@ -30,7 +30,6 @@ let feelDiv = document.querySelector("#reg-feel-modal");
 let tmpDiv = document.querySelector("#reg-tmp-modal");
 let weatherDiv = document.querySelector("#reg-weather-modal");
 let honestyDiv = document.querySelector("#reg-honesty-modal");
-let 
 
 function viewObj() {
 	console.log(diaryObj);

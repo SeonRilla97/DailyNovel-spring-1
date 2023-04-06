@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dailynovel.web.repository.FeelingRepository">
+	<!-- 아래의 리졀트맵의 id값을 활용해서 select문의 resultMap에 넣어주면 된다. -->
+	
+	<select id="findAll" resultType="Feeling">
+		SELECT * FROM feeling;
+	</select>
+	
+
+
+
+</mapper>

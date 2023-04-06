@@ -7,7 +7,7 @@ import org.mybatis.spring.boot.test.autoconfigure.AutoConfigureMybatis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.dailynovel.web.entity.DiaryPreview;
+import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.repository.ListRepository;
 @SpringBootTest
 @AutoConfigureMybatis
