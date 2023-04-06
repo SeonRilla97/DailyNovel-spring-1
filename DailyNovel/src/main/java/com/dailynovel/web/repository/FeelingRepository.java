@@ -8,9 +8,9 @@ import com.dailynovel.web.entity.Feeling;
 
 @Mapper
 public interface FeelingRepository {
-	
 
 	
+	List<Feeling> findAll();
 	 
 	
 	List<Feeling> findCount(String name,
@@ -31,14 +31,5 @@ public interface FeelingRepository {
 							);
 	
 	List<Feeling> findValue(String name, Integer frequency);
-	
-	
-
-	 
-
-	
-
-	 
-
 	
 }

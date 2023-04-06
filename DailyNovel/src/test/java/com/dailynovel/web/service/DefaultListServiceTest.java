@@ -7,11 +7,11 @@ import org.mybatis.spring.boot.test.autoconfigure.AutoConfigureMybatis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.dailynovel.web.entity.Diary;
+import com.dailynovel.web.entity.DiaryPreview;
 import com.dailynovel.web.repository.ListRepository;
 @SpringBootTest
 @AutoConfigureMybatis
-class defaultListServiceTest {
+class DefaultListServiceTest {
 	@Autowired
 	private ListRepository repository;
 
@@ -19,7 +19,7 @@ class defaultListServiceTest {
 	
 	@Test
 	void testGetDiarys() {
-		List<Diary> list = repository.findAllById(1,1,null,null,null);
+		List<Diary> list = repository.findAllById(1,null,null,null,null);
 		System.out.println(list);
 	}
 

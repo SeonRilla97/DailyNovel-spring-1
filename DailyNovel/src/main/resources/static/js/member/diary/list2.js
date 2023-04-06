@@ -56,8 +56,8 @@ const close = () => {
 
 calModalBg = document.querySelector(".list-modal .bg").onclick=function(){
   modalBtn.textContent = "날짜";
-  modalBtn.dataset.regdate = "";
-  exceQuery();
+  modalBtn.dataset.regDate = "";
+   exceQuery();
   close();
 }
 //모달창 js 끝!
@@ -83,7 +83,8 @@ for(let op of optionList){
       opClickedBtn.textContent=op.dataset.default;
     }
     exceQuery();
-    // console.log(query);
+    
+     console.log(query);
   }
 }
 // 2. calendar의 list 눌렀을 때, 날짜의 reg-date 와 value가 변경되도록
