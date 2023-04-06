@@ -27,7 +27,6 @@ public class DefaultListService implements ListService {
 	private FeelingRepository feelingRepository;
 	
 	
-	
 	@Override
 	public List<Diary> getDiarys(
 			Integer memberId,

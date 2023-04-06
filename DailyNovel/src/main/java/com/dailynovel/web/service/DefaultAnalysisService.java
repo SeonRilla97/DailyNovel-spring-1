@@ -5,15 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.Feeling;
-import com.dailynovel.web.repository.FeelingRepository;
+import com.dailynovel.web.repository.AnalysisRepository;
 
 @Service
 public class DefaultAnalysisService implements AnalysisService {
 
 	
 	@Autowired
-	private FeelingRepository repository;
+	private AnalysisRepository repository;
 	
 
 	@Override
@@ -49,6 +50,31 @@ public class DefaultAnalysisService implements AnalysisService {
 	}
 
 
+	@Override
+	public List<Diary> getHonesty() {
+		// TODO Auto-generated method stub
+		return repository.findHonesty(null, null);
+	}
+
+
+	@Override
+	public List<Diary> getHonesty(String honestyRange, Integer count) {
+		// TODO Auto-generated method stub
+		return repository.findHonesty(honestyRange, count);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	
 
 
 

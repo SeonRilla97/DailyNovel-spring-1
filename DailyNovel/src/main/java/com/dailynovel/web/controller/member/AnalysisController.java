@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.Feeling;
 import com.dailynovel.web.service.FeelingService;
 import com.dailynovel.web.service.AnalysisService;
@@ -47,12 +48,12 @@ public class  AnalysisController {
 		return "member/diary/analysis/looking-back/feeling-view-details";
 	}
 	
-//		@GetMapping("honesty")
-//		public String honesty(Model model) {
-//			List<Feeling> list = service.getList();
-//			model.addAttribute("list", list);
-//			return "analysis/honesty";
-//		}
+		@GetMapping("honesty")
+		public String honesty(Model model) {
+			List<Diary> list = service.getHonesty();
+			model.addAttribute("list", list);
+			return "member/diary/analysis/looking-back/honesty";
+		}
 //	
 //	@GetMapping("How")
 //	public String How(Model model) {
