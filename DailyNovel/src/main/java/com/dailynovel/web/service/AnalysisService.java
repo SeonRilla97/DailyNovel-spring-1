@@ -2,6 +2,7 @@ package com.dailynovel.web.service;
 
 import java.util.List;
 
+import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.Feeling;
 
 public interface AnalysisService {
@@ -16,5 +17,8 @@ public interface AnalysisService {
 
 	List<Feeling> getValue(String name, Integer frequency);
 
+	List<Diary> getHonesty();
+
+	List<Diary> getHonesty(Float honestyId, Integer count);
 
 }

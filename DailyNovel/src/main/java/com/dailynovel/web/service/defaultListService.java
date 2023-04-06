@@ -9,7 +9,7 @@ import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.Feeling;
 import com.dailynovel.web.entity.Template;
 import com.dailynovel.web.entity.Weather;
-import com.dailynovel.web.repository.FeelingRepository;
+import com.dailynovel.web.repository.AnalysisRepository;
 import com.dailynovel.web.repository.ListRepository;
 import com.dailynovel.web.repository.TemplateRepository;
 import com.dailynovel.web.repository.WeatherRepository;
@@ -24,7 +24,7 @@ public class defaultListService implements ListService {
 	@Autowired
 	private WeatherRepository weatherRepository;
 	@Autowired
-	private FeelingRepository feelingRepository;
+	private AnalysisRepository feelingRepository;
 	
 	
 	

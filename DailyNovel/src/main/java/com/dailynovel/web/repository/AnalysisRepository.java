@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.Feeling;
 
 @Mapper
-public interface FeelingRepository {
+public interface AnalysisRepository {
 	
 
 	
@@ -31,6 +32,8 @@ public interface FeelingRepository {
 	
 	
 	List<Feeling> findValue(String name, Integer frequency);
+	
+	List<Diary> findHonesty(Float honesty, Integer count);
 	
 	
 
