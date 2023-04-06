@@ -5,7 +5,7 @@ import com.dailynovel.web.entity.Diary;
 public interface DiaryService {
 	
 	Diary viewDiary();
-	void registerDiary(Diary diary);
+	void insertDiary(Diary diary);
 	int updateDiary();
 	int deleteDiary();
 }
