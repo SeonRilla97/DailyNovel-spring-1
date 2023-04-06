@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
+import java.net.InetAddress;
 import java.net.URLEncoder;
+import java.net.UnknownHostException;
 import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -100,9 +102,7 @@ public class  SettingController {
 			setting.setNickName(Nickname);
 			setting.setStatusMessage(stsMessage);
 			int a = settingService.updateProfile(setting);
-			
 			Thread.sleep(5000);
-			
 			return "redirect:../profile";
 			
 		}
@@ -182,7 +182,7 @@ public class  SettingController {
 
 		// 세팅-내보내기-------------------------------------------------------------------
 		@RequestMapping("/export")
-		public String export(Model model) {
+		public String export(Model model) throws UnknownHostException {
 
 			Setting setting = settingService.getById(1);
 			model.addAttribute("setting", setting);
@@ -200,8 +200,12 @@ public class  SettingController {
 			SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS"); // 시간 측정 포멧 지정
 			String time = format.format(date); // 측정한 시간을 포멧화 하기
 
-			String filePath = "C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/" + time
-					+ "dailyNovel.txt";
+//	String filePath = "C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/" + time
+//			+ "dailyNovel.txt";
+			
+			// 바탕화면으로 경로 만들기 테스트
+				String deskTopPath = System.getProperty("user.home");
+				String filePath = deskTopPath + time + "dailyNovel.txt";
 
 			FileOutputStream fos = new FileOutputStream(filePath);
 			PrintStream out = new PrintStream(fos);
@@ -225,12 +229,19 @@ public class  SettingController {
 			Document document = new Document(filePath);
 
 			// TXT 파일을 PDF로 저장
-			document.save("C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/" + time
-					+ "output.pdf");
+//	document.save("C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/" + time
+//			+ "output.pdf");
+			// 바탕화면으로 TXT 파일을 PDF로 저장
+				document.save( deskTopPath + time + "output.pdf");
+			
 
 			// 전송
-			String path = "C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/" + time
-					+ "output.pdf";
+//	String path = "C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/" + time
+//			+ "output.pdf";
+			 // 바탕화면으로 전송
+				String path = deskTopPath + time + "output.pdf";
+				
+				
 			FileInputStream fis = new FileInputStream(path);
 			byte buf[] = new byte[1024];
 
@@ -255,8 +266,10 @@ public class  SettingController {
 			try {
 				// 파일 삭제
 				// 삭제
-				Path testPdf = Paths.get("C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/"
-						+ time + "output.pdf");
+//	Path testPdf = Paths.get("C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/"
+//			+ time + "output.pdf");
+					// 바탕화면 삭제
+						Path testPdf = Paths.get( deskTopPath + time + "output.pdf");
 				// String deletePath =
 				// "C:/Users/BW3/Desktop/novelPrj/prj0327/DailyNovel/src/main/resources/static/text/"+
 				// time +"dailyNovel.txt";
@@ -265,8 +278,10 @@ public class  SettingController {
 				// time +"output.pdf";
 
 				Files.delete(testPdf);
-				Path testText = Paths.get("C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/"
-						+ time + "dailyNovel.txt");
+//	Path testText = Paths.get("C:/Users/BW3/Desktop/novelPrj/dev/DailyNovel/src/main/resources/static/text/"
+//			+ time + "dailyNovel.txt");
+					Path testText = Paths.get(deskTopPath+ time + "dailyNovel.txt");
+				
 				Files.delete(testText);
 				// 디렉토리 삭제
 //		            Files.delete(directoryPath);
