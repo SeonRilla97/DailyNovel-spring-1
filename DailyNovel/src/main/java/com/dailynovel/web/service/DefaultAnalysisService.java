@@ -19,14 +19,9 @@ public class DefaultAnalysisService implements AnalysisService {
 	@Override
 	public List<Feeling> getCount() {
 		// TODO Auto-generated method stub
-		return repository.findCount();
+		return repository.findCount(null, null, null, null);
 	}
 
-	@Override
-	public List<Feeling> getFeelingRank() {
-		// TODO Auto-generated method stub
-		return repository.findFeelingRank(null, null, null);
-	}
 
 	@Override
 	public List<Feeling> getFeelingTopRank() {
@@ -36,13 +31,25 @@ public class DefaultAnalysisService implements AnalysisService {
 
 	@Override
 	public List<Feeling> getValue() {
-		return repository.findValue(null);
+		// TODO Auto-generated method stub
+		return repository.findCount(null, null, null, null);
 	}
 
 	@Override
-	public List<Feeling> getLabel() {
-		return repository.findLabel(null);
+	public List<Feeling> getFeelingRank() {
+		// TODO Auto-generated method stub
+		return repository.findFeelingRank(null, null, null);
 	}
+
+
+	@Override
+	public List<Feeling> getValue(String name, Integer frequency) {
+		// TODO Auto-generated method stub
+		return repository.findValue(name, frequency);
+	}
+
+
+
 
 
 
