@@ -19,7 +19,7 @@ public class DefaultAnalysisService implements AnalysisService {
 	@Override
 	public List<Feeling> getCount() {
 		// TODO Auto-generated method stub
-		return repository.findAll(null, null, null, null);
+		return repository.findCount();
 	}
 
 	@Override

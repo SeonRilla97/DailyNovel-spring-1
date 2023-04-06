@@ -9,16 +9,10 @@ import com.dailynovel.web.entity.FeelingRank;
 
 @Mapper
 public interface FeelingRepository {
-	
 
 	
-	 
-	
-	List<Feeling> findAll(String name,
-							String description,
-							String img,
-							Integer frequency
-									); 
+	List<Feeling> findAll();
+	List<Feeling> findCount();
 	List<Feeling> findFeelingTopRank(String name,
 								String img,
 								Integer frequency,
@@ -33,14 +27,5 @@ public interface FeelingRepository {
 	List<Feeling> findLabel(String name);
 	
 	List<Feeling> findValue(Integer frequency);
-	
-	
-
-	 
-
-	
-
-	 
-
 	
 }
