@@ -73,4 +73,15 @@ public class UserController {
 	    sender.send(message);
 	    return "success";
 	  }
+	
+	@RequestMapping("nicknameCheck")
+	@ResponseBody
+	public String nicknameCheck(String nickname) {
+		
+		
+		
+		
+		
+		return "success";
+	}
 }

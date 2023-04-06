@@ -6,14 +6,16 @@ import com.dailynovel.web.entity.Feeling;
 
 public interface AnalysisService {
 	
-	List<Feeling> getCount();	
+	List<Feeling> getCount();
 	
+
 	List<Feeling> getValue();
 
 	List<Feeling> getFeelingRank();
 
 	List<Feeling> getFeelingTopRank();
 
-	List<Feeling> getLabel();
+	List<Feeling> getValue(String name, Integer frequency);
+
 
 }

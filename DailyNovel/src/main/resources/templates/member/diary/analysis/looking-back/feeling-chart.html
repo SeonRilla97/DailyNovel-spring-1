@@ -91,13 +91,7 @@
 </script>
 
     <script th:inline="javascript" src="/js/feeling-chart.js">
-        
-        var feelingname = [];
-        var feelingdata = [];
-        <th:block th:each="N, V:${Name}">
-        feelingname.push(${n}.name);
-        feelingdata.push(${v}.frequency);
-        </th:block>
+  
     </script>
 
 
