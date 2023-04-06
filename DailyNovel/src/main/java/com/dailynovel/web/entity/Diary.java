@@ -16,8 +16,6 @@ public class Diary {
 	private Integer feelingId;
 	private Integer weatherId;
 	private Integer honesty;
-	private String honestyRange;
-	private Integer count;
 	private String regDate;
 	private String title;
 	private String content;

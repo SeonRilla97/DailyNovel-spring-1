@@ -3,7 +3,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("http://localhost:8080/analysis1/honesty?honesty=10&count=1", requestOptions)
+fetch("http://localhost:8080/analysis1/honesty?honestyRange=10&count=5", requestOptions)
   .then(response => response.json())
   .then(data => {
     const extractedData = data.map(honesty => {

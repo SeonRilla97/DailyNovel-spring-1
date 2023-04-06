@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.Feeling;
+import com.dailynovel.web.entity.Analysis;
 import com.dailynovel.web.service.AnalysisService;
 
 @RestController("apiAnalysisController")
@@ -45,11 +45,11 @@ public class  AnalysisController {
 			
 }
 	@GetMapping("honesty")
-	public List<Diary> getHonesty(
+	public List<Analysis> getHonesty(
 			
-			@RequestParam(name = "HonestyRange") String HonestyRange,
+			@RequestParam(name = "honestyRange") String honestyRange,
 			@RequestParam(name = "count") Integer count){					
-			List<Diary> truely = service.getHonesty(HonestyRange, count);
+			List<Analysis> truely = service.getHonesty(honestyRange, count);
 			return truely;
 			
 }

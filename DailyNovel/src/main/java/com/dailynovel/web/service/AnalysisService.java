@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.Feeling;
+import com.dailynovel.web.entity.Analysis;
 
 public interface AnalysisService {
 	
@@ -18,8 +19,8 @@ public interface AnalysisService {
 
 	List<Feeling> getValue(String name, Integer frequency);
 
-	List<Diary> getHonesty();
+	List<Analysis> getHonesty();
 
-	List<Diary> getHonesty(String honestyRange, Integer count);
+	List<Analysis> getHonesty(String honestyRange, Integer count);
 
 }
