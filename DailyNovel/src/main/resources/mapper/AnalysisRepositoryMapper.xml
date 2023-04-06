@@ -3,8 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dailynovel.web.repository.AnalysisRepository">
-	<resultMap id="honestyMap" type="Diary">
-		  <result property="honestyRange=" column="honesty_range"/>
+	<resultMap id="AnalysisMap" type="Analysis">
+		  <result property="honestyRange" column="honesty_range"/>
 		</resultMap>
 	
 	
@@ -44,7 +44,7 @@
 		ORDER BY frequency DESC;
 	</select>
 	
-	<select id="findHonesty" resultMap="honestyMap">
+	<select id="findHonesty" resultMap="AnalysisMap">
     SELECT
     CASE
         WHEN honesty BETWEEN 0 AND 20 THEN '0-20'

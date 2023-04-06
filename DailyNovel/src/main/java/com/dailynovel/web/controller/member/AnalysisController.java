@@ -8,9 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.Feeling;
-import com.dailynovel.web.service.FeelingService;
+import com.dailynovel.web.entity.Analysis;
 import com.dailynovel.web.service.AnalysisService;
 
 @Controller
@@ -50,7 +49,7 @@ public class  AnalysisController {
 	
 		@GetMapping("honesty")
 		public String honesty(Model model) {
-			List<Diary> list = service.getHonesty();
+			List<Analysis> list = service.getHonesty();
 			model.addAttribute("list", list);
 			return "member/diary/analysis/looking-back/honesty";
 		}
