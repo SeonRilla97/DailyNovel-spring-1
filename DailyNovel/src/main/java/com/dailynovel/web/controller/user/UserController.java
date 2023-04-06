@@ -2,6 +2,7 @@ package com.dailynovel.web.controller.user;
 
 import java.util.Random;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -12,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
+import com.dailynovel.web.service.MemberService;
+
 import com.dailynovel.web.service.SignupService;
+
 
 import jakarta.mail.internet.MimeMessage;
 
@@ -21,8 +26,15 @@ import jakarta.mail.internet.MimeMessage;
 @RequestMapping("/user/")
 @Controller
 public class UserController {
+	
+
+	
 	@Autowired
 	private JavaMailSenderImpl sender;
+	
+	@Autowired
+	private MemberService service;
+	
 
 	@Autowired
 	private SignupService signupService;
@@ -78,10 +90,11 @@ public class UserController {
 	@ResponseBody
 	public String nicknameCheck(String nickname) {
 		
-		
-		
-		
-		
+		int samenicknameNumber=  service.FindSameNickname(nickname);
+		if(samenicknameNumber==0) {
+		System.out.println(samenicknameNumber);
 		return "success";
+		}		
+		return "false";
 	}
 }
