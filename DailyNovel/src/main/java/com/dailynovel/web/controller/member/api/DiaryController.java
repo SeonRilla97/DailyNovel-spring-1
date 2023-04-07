@@ -1,5 +1,6 @@
 package com.dailynovel.web.controller.member.api;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,5 +29,13 @@ public class DiaryController {
 		System.out.println(diary);
 		return "ㄷ...될까..?";
 	}
-	
+		@GetMapping("preview")
+	public Map<Integer, ArrayList<DiaryPreview>> getPreview(
+			@RequestParam int year,
+			@RequestParam int month) {
+		Map<Integer, ArrayList<DiaryPreview>> list = service.getPreview(year, month);
+		
+		return list;
+	}
+
 }
