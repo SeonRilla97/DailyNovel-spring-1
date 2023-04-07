@@ -23,7 +23,7 @@ fetch("http://localhost:8080/analysis1/feeling-chart?name=화남&frequency=1", r
             '#f100e5', //감동
             '#E53A40', //화남
             '#f94e3f', //불안
-            '#181842', //실망
+            '#FFFF66', //실망
             '#566270', //슬픔
             '#D7FFF1', //평온
             '#FBFFB9' //난감
@@ -34,7 +34,7 @@ fetch("http://localhost:8080/analysis1/feeling-chart?name=화남&frequency=1", r
             '#f100e5', //감동
             '#E53A40', // 화남
             '#f94e3f', //불안
-            '#181842', //실망
+            '#FFFF66', //실망
             '#566270', //슬픔
             '#D7FFF1', //평온
             '#FBFFB9' //난감
