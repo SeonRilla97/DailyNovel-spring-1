@@ -25,8 +25,9 @@ public class DefaultDiaryService implements DiaryService {
 	}
 	
 	@Override
-	public void registerDiary(Diary diary) {
-		repository.register(diary);
+
+	public void insertDiary(Diary diary) {
+		repository.register(diary);		
 	}
 	
 	
