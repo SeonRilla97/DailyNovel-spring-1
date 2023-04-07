@@ -14,7 +14,7 @@ window.onload = function() {
 	const emailLabel = document.querySelector("label[for='email']");
 	const pwdLabel = document.querySelector("label[for='pwd']");
 	const pwdCheckLabel = document.querySelector("label[for='id-check']");
-
+	const nicknameLabel = document.querySelector("label[for='nickname']");
 	emailCheckBtn.disabled = true;
 
 	signUpForm.addEventListener('keydown', (e) => {
@@ -113,19 +113,23 @@ window.onload = function() {
 	.then(data=>{
 		if(nickName.value==""){
 			alert("빈문자열");
+			nicknameLabel.style.color ="red";
 		}
 		else if(data==="success"){
 			alert("성공!");
+			nicknameLabel.style.color = "#69BC80";
 			
 		}
 		else{
 			alert("실패!");
+			nicknameLabel.style.color ="red";
 		}
 		
 		});	
 	}
 	else
 		console.log("유효성 검사 실패");
+			nicknameLabel.style.color ="red";
 	}
 
 	function ValidatePhone() {
