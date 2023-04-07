@@ -58,15 +58,15 @@ public class  SettingController {
 
 		// 세팅-프로필-------------------------------------------------------------------
 		@RequestMapping("profile")
-		public String profile(Model model, String imageName) {
+		public String profile(Model model) {
 	        
 			Setting setting = settingService.getById(1);
 			// Setting setting = settingService.update();
 			model.addAttribute("setting", setting);
 			System.out.println(setting);
-			System.out.println(imageName);
+//							System.out.printf("논리상 현재 파일 이름 %s\n",imageName);
 			imageName = setting.getProfileImage();
-			System.out.println(imageName);
+//							System.out.printf("설정의 논리상 전역설정한 이름: %s\n",imageName);
 
 			return "member/settings/component/profile";
 		}
@@ -81,10 +81,16 @@ public class  SettingController {
 				HttpServletRequest request
 				)
 				throws Exception {
+			
+			System.out.printf("전역되는지 확인하는 코드 %s\n",imageName);
+//			Setting setting18 = settingService.getById(1);
+//			System.out.printf("업데이트의 논리상 삭제할 파일 이름2: %s\n",setting18.getProfileImage());
+			File.delete();
 			Integer id = 1;
+			
+			
+			
 			String realPath= "";
-			System.out.println(setting.getProfileImage());
-			System.out.println(imageName);
 			if (profile != null && !profile.isEmpty()) { // 이미지가 비어있지 않을 때만 실행시키기
 				Date date = new Date(System.currentTimeMillis()); // 현재 시간 측정
 				SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS"); // 시간 측정 포멧 지정
