@@ -7,6 +7,6 @@
 
 	<select id="findAll" resultType="Template">
 		select *
-		FROM dailynoveldb.Template
+		FROM dailynoveldb.template
 	</select>
 </mapper>

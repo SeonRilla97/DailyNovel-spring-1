@@ -43,7 +43,6 @@ let tmpDiv = document.querySelector("#reg-tmp-modal");
 let weatherDiv = document.querySelector("#reg-weather-modal");
 let honestyDiv = document.querySelector("#reg-honesty-modal");
 
-
 function viewObj() {
 	console.log(diaryObj);
 }

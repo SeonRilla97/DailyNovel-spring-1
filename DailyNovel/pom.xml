@@ -114,6 +114,11 @@
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
 				
+<!-- 		js, css 자동반영	:선유진 -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-devtools</artifactId>
+		</dependency>
 		
 	</dependencies>
 

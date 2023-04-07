@@ -1,0 +1,92 @@
+[33mf3ef25f[m[33m ([m[1;36mHEAD -> [m[1;32mlist[m[33m)[m 이대로 되면 ㅈ된다
+[33m044d6fe[m[33m ([m[1;31morigin/list[m[33m)[m Merge branch 'list' of https://github.com/3Team-DailyNovel/DailyNovel-spring into list
+[33m30ad03d[m UPDATE(list): git push를 위한 list branch Commit
+[33m6975a4f[m Update .gitignore
+[33m4f895d7[m Update .gitignore
+[33mc2f4616[m Merge branch 'dev' of https://github.com/3Team-DailyNovel/DailyNovel-spring into list "원격 Dev와 로컬 List Branch merge"
+[33mc92861e[m update(list) : signup java단 구현 완료 Create
+[33m5832d02[m Merge pull request #21 from 3Team-DailyNovel/register : value 넘기기 작업 초입부
+[33m48ee1fb[m Merge pull request #20 from 3Team-DailyNovel/signup
+[33m8272144[m[33m ([m[1;31morigin/signup[m[33m)[m Feat(index):이메일로 난수 받는거까지 확인
+[33mbf89416[m Merge pull request #19 from 3Team-DailyNovel/analysis
+[33m8d9d940[m[33m ([m[1;31morigin/analysis[m[33m)[m Fix(analysis): 오류수정
+[33m0c918d0[m Update pom.xml
+[33mcbbacd8[m Delete DailyNovel-spring.iml
+[33m5649d61[m Delete .idea directory
+[33mb8b2211[m test(list): git ignore 실험
+[33m4f8efde[m 이거 됨?
+[33m84254c7[m 나머지 파일 ignore 되겠지...??? .idea 만들어졌는데....?
+[33m56a4dcc[m update(list) : ã정렬 오류 ã뜨는 문제 해결, signup backend 작업을 위해 이전 변경사항 커밋
+[33mc83d3e6[m Merge branch 'analysis' of https://github.com/3Team-DailyNovel/DailyNovel-spring into analysis
+[33mf3173dd[m Fix(analysis): vscode이동 전 수정
+[33m82a2284[m Merge branch 'dev' of https://github.com/3Team-DailyNovel/DailyNovel-spring.git into analysis
+[33m7d3a0c8[m[33m ([m[1;32mdev[m[33m)[m Merge pull request #18 from 3Team-DailyNovel/setting
+[33m20cb702[m[33m ([m[1;31morigin/register[m[33m)[m Feat(register) : value 넘기기 작업 진행중
+[33me2565c6[m[33m ([m[1;31morigin/setting[m[33m)[m Fix(setting) update out.html
+[33md397e5a[m Fix(analysis):name 수정"
+[33m6c39255[m Merge pull request #17 from 3Team-DailyNovel/setting
+[33m09a34b5[m Docs(setting) update: before merge
+[33m1154438[m Merge pull request #16 from 3Team-DailyNovel/dev
+[33m9947ffd[m Merge branch 'dev' of https://github.com/3Team-DailyNovel/DailyNovel-spring.git into dev
+[33m26420c2[m Merge pull request #15 from 3Team-DailyNovel/analysis
+[33m5780d76[m pull 오류 고침
+[33m6c46b44[m 누구야^^
+[33m89d3419[m Feat(anaylsis) : mapper부분 수정
+[33m1e97e7e[m Feat(anaylsis) : 차트 수정중
+[33m403b23e[m Merge pull request #14 from 3Team-DailyNovel/register : 작성 쪽 스프링 작업 시작
+[33ma2e04c6[m Feat(register) : 작성 후 서버 저장 작업 시작
+[33mab57288[m hotfix(list): maven 업데이트를 하지 않아 list 페이지 500에러 뜨는거 해결
+[33m6abdfae[m test(list) : 첫번째 커밋 실험
+[33m1a392fd[m[33m ([m[1;32msignup[m[33m)[m movetoList(signup) : signup branch 작업물 list branch로 이동하기 위한 commmit (signup) 에선 남아있으면 안됨
+[33m4f143cf[m Merge pull request #13 from 3Team-DailyNovel/setting
+[33m3b6fafc[m Feat(setting) update applying thymeleaf to font.html
+[33m9efa569[m Merge branch 'dev' of https://github.com/3Team-DailyNovel/DailyNovel-spring.git into register
+[33m49cc712[m Merge pull request #12 from 3Team-DailyNovel/setting
+[33m944e867[m Merge branch 'dev' into setting
+[33mdb3491f[m Docs(setting) update change the absolute path to the relatice path
+[33m84e298a[m gitignore 파일 수정
+[33mc5dbd97[m Docs(setting)update: divide MenuController to SettingController
+[33m4975388[m Merge pull request #11 from 3Team-DailyNovel/signup
+[33mefbe9c9[m update(signup):remote 추가사항 pull 땡겨서 merge후, push 위한 commit
+[33m3dad0d3[m Merge branch 'signup' of https://github.com/3Team-DailyNovel/DailyNovel-spring into signup
+[33m86b2115[m hotfix(list) : 선유진, Repository 중복과, Mapper 객체 설정 오류로, Server 안돌아가는 현상 수정
+[33m53ad171[m Merge pull request #10 from 3Team-DailyNovel/signup
+[33m258f20c[m Merge branch 'dev' into signup
+[33m971574e[m Merge branch 'dev' of https://github.com/3Team-DailyNovel/DailyNovel-spring into signup
+[33mdd2679e[m Merge pull request #9 from 3Team-DailyNovel/setting
+[33mc64fb1c[m Merge branch 'dev' into setting
+[33m5560a6d[m update(signup): 리스트 프론트 작업 중단, Back CRUD 작성 예정(미완)
+[33m9fb7432[m Design(setting) update modify pdf image
+[33m2ad0cf4[m Merge pull request #8 from 3Team-DailyNovel/analysis
+[33mddb8f24[m Merge branch 'dev' of https://github.com/3Team-DailyNovel/DailyNovel-spring.git into analysis
+[33m1897de2[m Design(analysis):css및 img 수정
+[33m6fb0114[m Feat(setting) add pdf download
+[33md89d58d[m feat(list) : 리스트 페이지 정렬 버튼 변경 / transition 삽입
+[33m2974cd8[m Merge branch 'dev' of https://github.com/3Team-DailyNovel/DailyNovel-spring.git into register
+[33mbac65d6[m Merge pull request #7 from 3Team-DailyNovel/analysis
+[33m3dfed87[m Feat(analysis):sql update
+[33m3f81d61[m update(signup|list) : 리스트 db단순연결, list 모달창 수정, 드롭박스 형식 변경결정(모달로 띄울것)
+[33m0a87a7f[m Feat(setting) add: export.html make text
+[33m7c57d3f[m Merge pull request #6 from 3Team-DailyNovel/analysis
+[33m47c8596[m Merge branch 'dev' into analysis
+[33m5bfea36[m Feat(analysis): 순위 매기기기능추가
+[33m1936843[m Feat(setting)add: connected font.html to db
+[33m2052995[m Feat(analysis):업로드
+[33mad876b5[m create register branch and test
+[33m4026165[m feat(Setting) add: sql -select, update, delete
+[33mfde6813[m update(signup): 금욜까지 완료한것 깃허브 등록
+[33me08918c[m NEW(signup) : 새로이 시작하는 나만의 사인업 공간 Seonrilla
+[33mb6cc836[m Feat(anaylsis):이름수정 및 파일업로드
+[33mcbfdc1c[m update(seonyujin) : 2023-03-22 기준 vscode dev branch 기준 css js로 덮어 씌움
+[33m0d8c2e6[m test(dev): 바꿔지나요?
+[33md686d84[m[33m ([m[1;31morigin/login[m[33m)[m Merge pull request #3 from 3Team-DailyNovel/login
+[33m0a4698b[m "DEV(FIX):css파일 경로 수정 및 vscode에서 만든 퍼블리싱으로 바꿈"
+[33mb6edaa1[m Merge pull request #2 from 3Team-DailyNovel/setting
+[33m1719660[m Merge branch 'dev' into setting
+[33m4f521b5[m "DEV(fix):설정 및 패키지명 고치기"
+[33m778e319[m "DEV(Update): db연결 및 DEV로 옮길 branch"
+[33m714e925[m setting test
+[33ma523656[m Merge pull request #1 from 3Team-DailyNovel/Signup
+[33m0ce9d3e[m feat(signup) : Vscode 작업물 전부 STS 환경으로 이동 로그인, 회원가입 부분 컨트롤러 제작"
+[33me3e3638[m[33m ([m[1;32mmain[m[33m)[m "Add properties Mapper Setting"
+[33m6bb5932[m "예전에 만들어둔 부트"

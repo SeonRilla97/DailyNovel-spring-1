@@ -19,4 +19,7 @@ public class Diary {
 	private String regDate;
 	private String title;
 	private String content;
+
+
+
 }

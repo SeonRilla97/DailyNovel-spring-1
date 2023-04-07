@@ -23,7 +23,7 @@ loginbtn.addEventListener('click', ()=>{
         }
         else {
         
-            loginbtn.type ="reset";
+
             passwordmiss.classList.remove('blind');
             idmiss.classList.add('blind');
             loginBoxId.classList.remove('existence');   
@@ -32,7 +32,7 @@ loginbtn.addEventListener('click', ()=>{
     }
     else {
 
-            loginbtn.type ="reset";
+
             idmiss.classList.remove('blind');
             passwordmiss.classList.add('blind');
             loginBoxId.classList.remove('existence');   
