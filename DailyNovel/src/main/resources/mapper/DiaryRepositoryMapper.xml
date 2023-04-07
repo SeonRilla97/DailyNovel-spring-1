@@ -3,6 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dailynovel.web.repository.DiaryRepository">
+
+	<resultMap id="DiaryPreviewResultMap" type="DiaryPreview">
+      <result property="regDate" column="reg_date" />
+      <result property="diaryDate" column="diary_date" />
+<!--       <result property="memberId" column="member_id" /> -->
+	</resultMap>
+	
+
   <select id="getAllDiaryById" resultType="Diary">
     select * 
     from Diary 
@@ -35,5 +43,27 @@
 	#{honestyId});  
   </insert>  
   
+  <select id="getDiaryByMonthly" resultMap="DiaryPreviewResultMap">
+  	SELECT 
+	  	substring(text, 1, 60) as content,
+	  	title,
+	 	str_to_date(reg_date,'%Y-%m-%d') as reg_date,
+	 	day(reg_date) as diary_date	
+  	FROM 
+  		dailynoveldb.diary
+	WHERE  		
+		year(reg_date) = ${year}
+  		and month(reg_date) = ${month};
+  </select>
 
+
+  <select id="getDateByMonthly" resultType="Integer">
+  	SELECT 
+		day(reg_date) as reg_date
+	FROM 
+		dailynoveldb.diary
+	WHERE
+		year(reg_date) = ${year}
+		and month(reg_date) = ${month};
+  </select>
 </mapper>

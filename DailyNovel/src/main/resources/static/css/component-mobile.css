@@ -361,15 +361,25 @@
 	display:inline-block;
 	height:2rem;
 	width:2rem;
-	background-color: yellow;
+/* 	background-color: yellow; */
 	display:flex;
 	justify-content: center;
 	align-items: center;
 	border-radius: 50%;
 }
 .calender .date li .circle-li.today{
-	background-color: red;
+	background-color: #69bc80;
 }
+
+.calender .date li .circle-li.being-diary{
+	border: solid 0.1rem #69bc80;
+	box-sizing: border-box;
+}
+.calender .date li .circle-li:hover{
+	 
+	background-color: #fff241;
+}
+
 .calendar .date .today{
 	background-color : #ffffff;
 }
@@ -462,7 +472,7 @@
   width:3rem;
   height:3rem;
   background-repeat: no-repeat;
-  background-image: url(/res/img/DiaryMainPage/add.svg);
+  background-image: url(/img/DiaryMainPage/add.svg);
 }
 
 /* 버튼 스타일 */
@@ -483,7 +493,7 @@
 
   /* style */
   border-radius: 100%;
-  background-color: #cccccc40;
+/*   background-color: #cccccc40; */
   cursor: pointer;
 }
 .slider .prev-btn {

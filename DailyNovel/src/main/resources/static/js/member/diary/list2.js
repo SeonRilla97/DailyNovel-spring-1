@@ -96,12 +96,14 @@ calendar.onclick=function(e) {
   //커서 얻고
   let cursor = e.target;
   //누른게 LI가 아니라면 안함!
-  if(cursor.tagName != 'LI')return;
+//  console.log(cursor);
+  if(cursor.tagName != 'SPAN')return;
+  console.log("클릭!");
   for(let a of cursor.classList){
     if( a=='inactive') return;
   }
   //모달버튼 
-
+	console.log(cursor.textContent);
   // modalBtn.textContent = `${yearMonth.dataset.regDate}-${cursor.textContent}`;
   modalBtn.dataset.regDate = `${yearMonth.dataset.regDate}-${String(cursor.textContent).padStart(2,"0")}`
    exceQuery();
@@ -134,6 +136,7 @@ let exceQuery=function(){
       location.href = (`./list?${queryString}`);
       else
       location.href = (`./list`);
-
-    
+  
 };
+
+
