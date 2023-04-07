@@ -10,11 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class analysis {
+public class Analysis {
 	
-	private Integer id;
-	private String name;
-	private String description;
-	private int frequency;
-	private String img;
+	private String honestyRange;
+	private Integer count;
+	private Integer honesty;
+
 }

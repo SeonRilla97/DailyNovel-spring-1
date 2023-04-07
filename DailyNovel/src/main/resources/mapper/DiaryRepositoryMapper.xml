@@ -21,7 +21,7 @@
 	template_id,
 	feeling_id,
 	weather_id,
-	honesty_id)
+	honesty)
 	
 	values
 	
@@ -32,7 +32,7 @@
 	#{templateId},
 	#{feelingId},
 	#{weatherId},
-	#{honestyId});  
+	#{honesty});  
   </insert>  
   
 

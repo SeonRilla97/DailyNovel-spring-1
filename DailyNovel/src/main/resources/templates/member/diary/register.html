@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -58,7 +58,7 @@
           <div class="lc-center font-bold">제목</div>
           <input type="text" class="editor-title pdl-3 pdr-3">
         </div>
-        <textarea class="editor-base mgt-2 pdt-3 pdl-3 pdr-3" placeholder="여기에서 일기를 작성하세요."></textarea>
+        <textarea id="content-editor" class="editor-base mgt-2 pdt-3 pdl-3 pdr-3" placeholder="여기에서 일기를 작성하세요."></textarea>
       </div>
     
     </div> 
@@ -85,7 +85,7 @@
       
               <li class="btn1" value="movie-form">영화</li>
               <li class="btn1" value="trip-form">여행</li>
-              <li id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</li>
+              <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</li>
         </ul>
     </div>
   </div>
@@ -127,9 +127,10 @@
     <div class="reg-honesty-section">
       <p style="text-align: center;">이번 일기를 생각할 때 <br>얼마나 진실되었다고 생각하시나요?</p>
       <div class="reg-range-value"></div>
+		<span id="range-text-test"></span>      
         <input class="reg-honesty-test" type="range" min="0" max="100" step="10" value="100">
         
-      <div>바로 저장하기</div>
+      <div id="submit-test" class="btn3">바로 저장하기</div>
       <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</div>
     </div>
   </div>
@@ -137,8 +138,8 @@
   <div id="reg-cancel-modal" class="reg-select-modal">    
     <div>지금 돌아가시면 지금까지 작성하신 내용은 사라집니다. 괜찮으신가요?</div>
     <ul>
-      <li id="register-btn" class="btn3">네</li>
-      <li class="btn3">아니요, 돌아갈래요.</li>
+      <li class="btn3">네</li>
+      <th:href=""><li class="btn3">아니요, 돌아갈래요.</li>
     </ul>    
     <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</div>
   </div>
@@ -147,9 +148,10 @@
 <script>
   const range = document.querySelector(".reg-honesty-test");
   const value = document.querySelector(".reg-range-value");
+  const rangeText = document.querySelector("#range-text-test");
   range.addEventListener("input",()=>{
-    value.text = range.value;
-    console.log(range.value);
+    value.text = range.value;    
+    rangeText.innerText = range.value;
   })
 </script>
 </html>

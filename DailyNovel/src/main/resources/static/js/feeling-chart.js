@@ -18,26 +18,26 @@ fetch("http://localhost:8080/analysis1/feeling-chart?name=화남&frequency=1", r
         datasets: [{
           data: extractedData.map(emotion => emotion.frequency),
           backgroundColor: [
-            '#A593E0', //행복
-            '#81C147', //들뜸
-            '#f100e5', //감동
-            '#E53A40', //화남
-            '#f94e3f', //불안
-            '#181842', //실망
-            '#566270', //슬픔
-            '#D7FFF1', //평온
-            '#FBFFB9' //난감
+            '#A593E0', 
+            '#81C147', 
+            '#f100e5', 
+            '#E53A40', 
+            '#f94e3f', 
+            '#FFFF66', 
+            '#566270', 
+            '#D7FFF1', 
+            '#FBFFB9' 
           ],
           borderColor: [
-            '#A593E0', //행복
-            '#E0E3DA', //들뜸
-            '#f100e5', //감동
-            '#E53A40', // 화남
-            '#f94e3f', //불안
-            '#181842', //실망
-            '#566270', //슬픔
-            '#D7FFF1', //평온
-            '#FBFFB9' //난감
+            '#A593E0', 
+            '#E0E3DA', 
+            '#f100e5', 
+            '#E53A40', 
+            '#f94e3f', 
+            '#FFFF66', 
+            '#566270', 
+            '#D7FFF1', 
+            '#FBFFB9' 
           ],
           borderWidth: 1,
         }]

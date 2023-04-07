@@ -14,4 +14,8 @@ public interface MemberRepository {
 			String nickname,
 			String phoneNum);
 
+
+	public int getFindId(String email);
+	public int getFindPwd(String email,String password);
+
 }
