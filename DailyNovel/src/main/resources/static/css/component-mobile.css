@@ -1172,6 +1172,10 @@ color: white;
   color: red;
   border: solid 1px red;
 }
+.cursor-p{
+	cursor: pointer;
+}
+
 /*통계 - 권주형 ------------------------------------------------*/
 
 
