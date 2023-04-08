@@ -1,6 +1,6 @@
 window.onload = function() {
 	const email = document.querySelector("#email");
-	const emailCheck = document.querySelector("#email-check");
+	const emailCheckNum = document.querySelector("#email-check");
 	const emailCheckBtn = document.querySelector("#email-check-btn"); //인증번호 전송
 	const pwd = document.querySelector("#pwd");
 	const pwdCheck = document.querySelector("#pwd-check");
@@ -33,7 +33,8 @@ window.onload = function() {
 			 isValidatePwd &&
 			 ischeckPwd&&
 			 isNicknameCheck&&
-		 	 isValidatePhone
+		 	 isValidatePhone &&
+		 	 isemailCheckNum
 			
 		){
 			console.log("성공!")
@@ -195,10 +196,31 @@ phoneNum.addEventListener('input', () => {
 		xhr.send();
 		alert('인증번호가 전송되었습니다.');
 	});
+	const 	isemailCheckNum =false;
+	function ValidateEmailNumber(){
+		emailCheckNumber = emailCheckNum.value;
+		
+		console.log(emailCheckNumber);
+		
+		const ValidateEmailNum ={
+			method:"get"
+		};
+		fetch("http://localhost:8080/user/emailCheckNum?emailCheckNum="+emailCheckNumber)
+		.then(response =>response.text())
+		.then(data=>{
+			if(data=="true"){
+				isemailCheckNum = true;
+			}
+			else{
+					isemailCheckNum = false;
+			}
+		});
+
+	};
 
 
 
-
+	emailCheckNum.addEventListener('change',ValidateEmailNumber);
 	email.addEventListener('change', ValidateEmail);
 	pwd.addEventListener('input', ValidatePwd);
 	pwdCheck.addEventListener('input', updatecheckPwd);
