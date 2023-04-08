@@ -30,9 +30,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.aspose.words.Document;
+//import com.aspose.words.Document;
 import com.dailynovel.web.entity.Export;
-import com.dailynovel.web.entity.Font;
+import com.dailynovel.web.entity.setFont;
 import com.dailynovel.web.entity.Setting;
 import com.dailynovel.web.service.SettingService;
 import com.dailynovel.web.service.파일없음예외;
@@ -142,7 +142,7 @@ public class  SettingController {
 
 			Setting setting = settingService.getById(id);
 			
-			List<Font> font = settingService.getByFontId();
+			List<setFont> font = settingService.getByFontId();
 			
 			model2.addAttribute("setting", setting);
 			model.addAttribute("font", font);
