@@ -23,7 +23,7 @@ public class MemberController {
 	@Autowired
 	private SettingService settingService;
 
-  @Autowired
+	@Autowired
 	private ListService listservice;
 	
 	@RequestMapping("main")
