@@ -35,6 +35,7 @@ import com.dailynovel.web.entity.Export;
 import com.dailynovel.web.entity.Font;
 import com.dailynovel.web.entity.Setting;
 import com.dailynovel.web.service.SettingService;
+import com.dailynovel.web.service.파일없음예외;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -43,30 +44,29 @@ import jakarta.servlet.http.HttpServletResponse;
 @RequestMapping("/member/setting/")
 public class  SettingController {
 
-	
-	
 	@Autowired
 	private SettingService settingService;
 	
 	private String imageName;
+	private Integer id;
+	public SettingController() {
+		id=1;
+	}
 	
 	@RequestMapping("main")
 	public String main(){
 		return "/member/settings/main";
 	}
 
-
 		// 세팅-프로필-------------------------------------------------------------------
 		@RequestMapping("profile")
 		public String profile(Model model) {
 	        
-			Setting setting = settingService.getById(1);
-			// Setting setting = settingService.update();
-			model.addAttribute("setting", setting);
-			System.out.println(setting);
-//							System.out.printf("논리상 현재 파일 이름 %s\n",imageName);
-			imageName = setting.getProfileImage();
-//							System.out.printf("설정의 논리상 전역설정한 이름: %s\n",imageName);
+			//Integer id = 1;
+			Setting setting = settingService.getById(id); // id 1번의 member테이블의 값 가지고 오기
+			model.addAttribute("setting", setting);		// 가지고 온 테이블 값을 model에 심기
+			System.out.println(setting);				// 삭제요망 제대로 가지고 왔는지 확인차 출력해 보기 삭제요망
+			imageName = setting.getProfileImage();		// 가지고 온 profile이미지의 명칭을 전역변수에 넣기
 
 			return "member/settings/component/profile";
 		}
@@ -79,25 +79,27 @@ public class  SettingController {
 				@RequestParam("stsMessage") String stsMessage, 
 				@ModelAttribute Setting setting, 
 				HttpServletRequest request
-				)
-				throws Exception {
+				) throws Exception {
 			
-			System.out.printf("전역되는지 확인하는 코드 %s\n",imageName);
-//			Setting setting18 = settingService.getById(1);
-//			System.out.printf("업데이트의 논리상 삭제할 파일 이름2: %s\n",setting18.getProfileImage());
+			// 전에 등록한 프로필 사진 사진파일 삭제하는 코드?
+			String beforeImagePath = System.getProperty("user.home"); // 컴퓨터의 사용자 경로 추출 
+// 노트북 경로 Path filePath = Paths.get( beforeImagePath + "/Desktop/proproprj/DailyNovel/src/main/webapp/img/profile/" + imageName);
+/*데스크톱경로*/Path filePath = Paths.get( beforeImagePath + "/Desktop/novelPrj(2)/noPrj/DailyNovel/src/main/webapp/img/profile/" + imageName); 
 			
-			// 업데이트 전, 이전 사진파일 삭제하는 코드?
-			String beforeImagePath = System.getProperty("user.home");
-			Path filePath = Paths.get( beforeImagePath + "/Desktop/proproprj/DailyNovel/src/main/webapp/img/profile/" + imageName);
-			System.out.printf("경로 되는 지 확인하는 코드 출력: %s\n",filePath);
-			System.out.println("삭제하기 전");
-			Files.delete(filePath);
-			System.out.println("삭제한 후 오류");
+			try {
+				// 삭제하는 클래스 생성(사실상 서비스를 호출) service.deleteImage(filePath);
+				// 서비스에 deleteImage매소드를 만들고, 그 안에서 filePath에 해당 이미지 파일잉 없으면 출력할 예외만들기 'throw new 사진없음예외();'
+				settingService.deleteBeforeImage(filePath);
+				Files.delete(filePath);				
+			}
+			catch(파일없음예외 e){
+				System.out.println(e.getMessage());
+			}
 			
-			Integer id = 1;
+
 			
 			String realPath= "";
-			if (profile != null && !profile.isEmpty()) { // 이미지가 비어있지 않을 때만 실행시키기
+			if (profile != null && !profile.isEmpty()) { // 사용자가 새로운 이미지를 등록 했을 때만 실행하기
 				Date date = new Date(System.currentTimeMillis()); // 현재 시간 측정
 				SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS"); // 시간 측정 포멧 지정
 				String time = format.format(date); // 측정한 시간을 포멧화 하기
@@ -119,18 +121,17 @@ public class  SettingController {
 				fos.close();
 				setting.setProfileImage(profileImage);
 			}
+			//Integer id = 1;
 			setting.setId(id);
 			setting.setNickName(Nickname);
 			setting.setStatusMessage(stsMessage);
 			int a = settingService.updateProfile(setting);
-//			System.out.println(setting.getProfileImage());
-//			System.out.println(setting.getStatusMessage());
-//			System.out.println(setting.getProfileImage());
+			
 			if(setting.getProfileImage()!=null) {  // 사진의 업데이트가 있으면 5초 지연
 				Thread.sleep(5000);
 				return "redirect:../profile";
 			}
-			else								   // 사진의 업데이트가 없으면 바로 전송
+			else								   // 사진의 업데이트가 없으면 바로 전송(상태메시지 수정만 있는 경우
 				return "redirect:../profile";
 			
 		}
@@ -139,7 +140,7 @@ public class  SettingController {
 		@RequestMapping("/font")
 		public String font(Model model, Model model2) {
 
-			Setting setting = settingService.getById(2);
+			Setting setting = settingService.getById(id);
 			
 			List<Font> font = settingService.getByFontId();
 			
@@ -157,7 +158,7 @@ public class  SettingController {
 				@RequestParam(name = "fontSize", required = false) int fontSize,
 				@ModelAttribute Setting setting
 				) {
-			Integer id = 2;
+			//Integer id = 1;
 			
 			setting.setId(id);
 			setting.setFontFamily((font));
@@ -172,8 +173,9 @@ public class  SettingController {
 		// 세팅-알람-------------------------------------------------------------------
 		@RequestMapping("/alarm")
 		public String alarm(Model model) {
-
-			Setting setting = settingService.getById(1);
+			
+			//Integer id = 1;
+			Setting setting = settingService.getById(id);
 			model.addAttribute("setting", setting);
 			System.out.println(setting);
 			return "member/settings/component/alarm";
@@ -185,8 +187,9 @@ public class  SettingController {
 				@RequestParam(name = "katolk-alarm", required = false) String kakaoAlarmSwitch,
 				@RequestParam(name = "timer") String alarmTime, 
 				@ModelAttribute Setting setting) {
-
-			setting.setId(1);
+			
+			//Integer id = 1;
+			setting.setId(id);
 			setting.setAlarmSwitch((alarmSwitch == null ? "0" : "1"));
 			setting.setKakaoAlarmSwitch((kakaoAlarmSwitch == null ? "0" : "1"));
 			setting.setAlarmTime(alarmTime);
@@ -203,8 +206,9 @@ public class  SettingController {
 		// 세팅-내보내기-------------------------------------------------------------------
 		@RequestMapping("/export")
 		public String export(Model model) throws UnknownHostException {
-
-			Setting setting = settingService.getById(1);
+			
+			//Integer id = 1;
+			Setting setting = settingService.getById(id);
 			model.addAttribute("setting", setting);
 			System.out.println(setting);
 			return "member/settings/component/export";
@@ -212,9 +216,9 @@ public class  SettingController {
 
 		@RequestMapping("/export/text")
 		public void exportText(Model model, HttpServletResponse response) throws Exception {
-
-			List<Export> export = settingService.getDiaryListByid(1);
-
+			
+			//Integer id = 1;
+			List<Export> export = settingService.getDiaryListByid(id);
 
 			Date date = new Date(System.currentTimeMillis()); // 현재 시간 측정
 			SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS"); // 시간 측정 포멧 지정
@@ -297,7 +301,8 @@ public class  SettingController {
 		@RequestMapping("/service-help")
 		public String serviceHelp(Model model) {
 
-			Setting setting = settingService.getById(1);
+			//Integer id = 1;
+			Setting setting = settingService.getById(id);
 			model.addAttribute("setting", setting);
 			return "member/settings/component/service-help";
 		}
@@ -306,7 +311,8 @@ public class  SettingController {
 		@RequestMapping("/out")
 		public String out() {
 			
-			Setting setting = settingService.getById(36);
+			Integer id = 39;
+			Setting setting = settingService.getById(id);
 			System.out.println(setting);
 			
 			return "member/settings/component/out";
@@ -316,7 +322,7 @@ public class  SettingController {
 		public String acountOut(Model model, 
 				@ModelAttribute Setting setting) {
 
-			Integer id = 36;
+			Integer id = 39;
 			setting.setId(id);
 
 			int a = settingService.deleteAcount(id);
