@@ -1,5 +1,7 @@
 package com.dailynovel.web.service;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 
 
@@ -57,5 +59,12 @@ public class SettingDefaultService implements SettingService {
 	public int deleteAcount(Integer id) {
 		
 		return repository.deleteAcount(id);
+	}
+	@Override
+	public void deleteBeforeImage(Path filePath) throws 파일없음예외 {
+	    if (!Files.exists(filePath)) {
+	        throw new 파일없음예외();
+	    }
+		
 	}
 }

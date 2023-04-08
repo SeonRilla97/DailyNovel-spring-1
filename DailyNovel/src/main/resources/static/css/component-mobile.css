@@ -1214,6 +1214,13 @@ color: white;
 }
 .color-bg-gray-1 { background-color: #d3d3d3; }
 .l-box-short .color-bg-gray-1{ background-color: #d3d3d3; }
+.out{/*회원탈퇴*/
+  color: red;
+  border: solid 1px red;
+}
+.cursor-p{
+	cursor: pointer;
+}
 
 /*통계 - 권주형 ------------------------------------------------*/
 

@@ -5,17 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>폰트</title>
-    <link rel="stylesheet" href="../../../css/reset.css">
-    <link rel="stylesheet" href="../../../css/layout.css">
-    <link rel="stylesheet" href="../../../css/box.css">
-    <link rel="stylesheet" href="../../../css/button.css">
-    <link rel="stylesheet" href="../../../css/style.css">
-    <link rel="stylesheet" href="../../../css/icon.css">
-    <link rel="stylesheet" href="../../../css/component-mobile.css">
-    <link rel="stylesheet" href="../../../css/util.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/box.css">
+    <link rel="stylesheet" href="/css/button.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/icon.css">
+    <link rel="stylesheet" href="/css/component-mobile.css">
+    <link rel="stylesheet" href="/css/util.css">
 
-	<script src="/../js/setFont.js"></script>
-<!--     <script src="/../js/setting.js"></script> -->
+	<script src="/js/setFont.js"></script>
 </head>
 <body>
     <section class="container-1">
@@ -42,7 +41,7 @@
                             <input class="radio-btn d-none" type="radio" name="font" id="font-3" th:value="${font[2].id}" value="3" checked th:checked="${font[2].id}==${setting.fontFamily}">
                             <label class="box-short font-s-box mgl-2" for="font-3" th:text="${font[2].name}">선프라워</label>
                             <input class="radio-btn d-none" type="radio" name="font" id="font-4" th:value="${font[3].id}" value="4" checked th:checked="${font[3].id}==${setting.fontFamily}">
-                            <label class="box-short font-s-box mgl-2" for="font-4" th:text="${font[3].name}">동글</label>j
+                            <label class="box-short font-s-box mgl-2" for="font-4" th:text="${font[3].name}">동글</label>
                         </div>
                         <div class="l-box-short mgt-4">
                             <h1 class="name">글꼴크기</h1>
@@ -51,8 +50,8 @@
                             <input name="fontSize" class="font-adjuster" type="range" min="16" max="28" value="16" step="6" th:value="${#strings.equals(setting.fontSize,'1') ? 16 : (#strings.equals(setting.fontSize,'2') ? 22 : 28)}" />
                         </div>
                         <div class="mgt-4 lc-center">
-                            <input class="btn3" type="submit" value="적용">
-                            <input class="btn3 font-s-box mgl-6-f" type="reset" value="초기화">
+                            <input class="btn3 cursor-p" type="submit" value="적용">
+                            <input class="btn3 font-s-box mgl-6-f cursor-p" type="reset" value="초기화">
                         </div>   
                     </form>
                 </div>
