@@ -32,7 +32,7 @@ import jakarta.websocket.Session;
 @Controller
 public class UserController {
 	
-
+	private int checkNum;
 	
 	@Autowired
 	private JavaMailSenderImpl sender;
@@ -89,7 +89,7 @@ public class UserController {
 	public String mailCheck(String email) throws Exception{
 		
 		Random rand = new Random();
-		int checkNum = rand.nextInt(999999);
+		checkNum = rand.nextInt(999999);
 	    MimeMessage message = sender.createMimeMessage();
 	    // use the true flag to indicate you need a multipart message
 	    MimeMessageHelper helper = new MimeMessageHelper(message, false);
@@ -113,4 +113,19 @@ public class UserController {
 		}		
 		return "false";
 	}
+	
+	@RequestMapping("emailCheckNum")
+	@ResponseBody
+	public String emailCheckNum(int emailCheckNum){
+
+		if(emailCheckNum==checkNum) {	
+			Random rand = new Random();
+			checkNum = rand.nextInt(999999);
+			return "true";
+		}
+
+		return "false";
+	};
+	
+	
 }
