@@ -7,14 +7,18 @@ window.onload = function() {
 	const nickName = document.querySelector("#nickname");
 	const phoneNum = document.querySelector("#phone");
 	const phoneCheck = document.querySelector("#phone-check");
+	const submitBtn = document.querySelector("#submit-Btn");
 	// Form 태그의 Input Tag에 커서를 주고 Enter 누르면 제출되는 문제 해결
 	const signUpForm = document.querySelector("#sign-up-form");
-
+	
 	//유효성 검사를 통과하면 초록색 실패하면 빨간색에 유효성 검사 보여주기
 	const emailLabel = document.querySelector("label[for='email']");
 	const pwdLabel = document.querySelector("label[for='pwd']");
 	const pwdCheckLabel = document.querySelector("label[for='id-check']");
 	const nicknameLabel = document.querySelector("label[for='nickname']");
+	const phoneCheckLabel = document.querySelector("label[for='phone']");
+	
+	
 	emailCheckBtn.disabled = true;
 
 	signUpForm.addEventListener('keydown', (e) => {
@@ -22,20 +26,39 @@ window.onload = function() {
 			e.preventDefault();
 		}
 	});
-
+	signUpForm.addEventListener('submit', (e)=>{
+		if(	
+		isValidatePhone &&
+			 isEamilValidate &&
+			 isValidatePwd &&
+			 ischeckPwd&&
+			 isNicknameCheck&&
+		 	 isValidatePhone
+			
+		){
+			console.log("성공!")
+			
+		}
+		else{
+			e.preventDefault();
+			console.log("실패!")
+		}
+		
+	});
+	
 
 
 	// 이메일 유효성 검사
 	let isEamilValidate = false;
 	function ValidateEmail() {
 		const checkMail = email.value;
-		const emailReg = new RegExp(/^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/);
+		const emailReg = new RegExp(/^[a-zA-Z0-9+-_.]+@[a-zA-Z-]+\.[a-zA-Z-.]+$/);
 		if (emailReg.test(checkMail)) {
 			emailLabel.textContent = "이메일";
 			emailLabel.style.color = "#69BC80";
 			isEamilValidate = true;
 			emailCheckBtn.disabled = false;
-			return (true)
+			return (true);
 		}
 		emailLabel.textContent = "이메일";
 		emailLabel.style.color = "red";
@@ -58,7 +81,8 @@ window.onload = function() {
 		//3. 인증확인은 input 태그가 변화할 시 마다 서버로 확인을 받게 할 예정
 
 	}
-
+	let isValidatePwd =false;
+	
 	function ValidatePwd() {
 		
 		const validatePwd = pwd.value;
@@ -68,9 +92,11 @@ window.onload = function() {
 			console.log("비밀번호 완료!");
 			pwdLabel.style.color = "#69BC80";
 			pwd.style.color = "#69BC80";
+			isValidatePwd=true;
 			return (true)
 		}
 		console.log("비밀번호 실패!");
+			isValidatePwd=false;
 		pwdLabel.style.color = "red";
 		pwd.style.color = "red";
 		return (false)
@@ -80,17 +106,18 @@ window.onload = function() {
 		checkPwd();
 		
 	}
-
+	
+	let ischeckPwd= false;
 	function checkPwd() {
 		const confirm = pwdCheck.value; //비밀번호 확인인데, 비밀번호 유효성검사와 변수명 겹침
 		
 		if (confirm == pwd.value) {
-			console.log("비밀번호 같다!!");
+			ischeckPwd= true;
 			pwdCheck.style.color = "#69BC80";
 			pwdCheckLabel.style.color = "#69BC80";
 			return true;
 		}
-		console.log("비밀번호 일치하지 않음");
+		ischeckPwd= false;
 		pwdCheck.style.color = "red";
 		pwdCheckLabel.style.color = "red";
 		return false;
@@ -98,11 +125,11 @@ window.onload = function() {
 	
 
 	
-
+	let isNicknameCheck =false;
 	function nicknameCheck() {
 		//중복확인 -> DB와 통신 필요함
 		
-	const NicknameReg = new RegExp(/^(?=.*[A-Za-z0-9])(?=.*\d)[A-Za-z0-9\d!@#$%^&*]{1,6}$/);		
+	const NicknameReg = new RegExp(/^\S{1,6}$/);		
 	
 	if(NicknameReg.test(nickName.value)){
 	const nickCheck={
@@ -112,47 +139,45 @@ window.onload = function() {
 	.then(response => response.text())	
 	.then(data=>{
 		if(nickName.value==""){
-			alert("빈문자열");
 			nicknameLabel.style.color ="red";
 		}
 		else if(data==="success"){
-			alert("성공!");
-			nicknameLabel.style.color = "#69BC80";
-			
+			nicknameLabel.style.color = "#69BC80";	
+			isNicknameCheck =true;
 		}
 		else{
-			alert("실패!");
 			nicknameLabel.style.color ="red";
 		}
 		
 		});	
 	}
 	else
-		console.log("유효성 검사 실패");
 			nicknameLabel.style.color ="red";
 	}
-
-	function ValidatePhone() {
-		const checkphone = phoneNum.value;
-		const phoneReg = new RegExp(/^\d{11}$/);
-		if (phoneReg.test(checkphone)) {
-			console.log("저나버노 완료!");
-			return true
-		}
-		console.log("저나버노 실패!");
-		return false
-	}
-
-
-	function ValidateEmailNumber() {
-			
-	}
+	let isValidatePhone =false;
 	
+function ValidatePhone() {
+  const checkphone = phoneNum.value.replace(/\D/g, "");
+  const phoneReg = /^(\d{3})(\d{3,4})(\d{4})$/;
+  const formattedPhone = checkphone.replace(phoneReg, "$1-$2-$3");
 
+  if (phoneReg.test(checkphone)) {
+    isValidatePhone = true;
+    phoneCheckLabel.style.color = "#69BC80";
+    return formattedPhone; // format된 번호를 반환
+  }
 
+  isValidatePhone = false;
+  phoneCheckLabel.style.color = "red";
+  return false;
+}
 
-
-
+phoneNum.addEventListener('input', () => {
+  const formattedPhone = ValidatePhone(); // format된 번호를 변수에 할당
+  if (formattedPhone) {
+    phoneNum.value = formattedPhone;
+  }
+});
 
 
 	emailCheckBtn.addEventListener('click', function() {
@@ -173,10 +198,11 @@ window.onload = function() {
 
 
 
+
 	email.addEventListener('change', ValidateEmail);
 	pwd.addEventListener('input', ValidatePwd);
 	pwdCheck.addEventListener('input', updatecheckPwd);
-	phoneNum.addEventListener('change', ValidatePhone);
-	nickName.addEventListener('change',nicknameCheck);
+	phoneNum.addEventListener('input', ValidatePhone);
+	nickName.addEventListener('input',nicknameCheck);
 
 };
