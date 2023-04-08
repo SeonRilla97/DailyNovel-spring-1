@@ -15,24 +15,24 @@
 	into diary
 	
 	(member_id,
-	reg_date,
+	<!-- reg_date, -->
 	title,
 	text,
 	template_id,
 	feeling_id,
 	weather_id,
-	honesty_id)
+	honesty)
 	
 	values
 	
 	(#{memberId},
-	#{regDate},
+	<!-- #{regDate}, -->
 	#{title},
 	#{content},
 	#{templateId},
 	#{feelingId},
 	#{weatherId},
-	#{honestyId});  
+	#{honesty});  
   </insert>  
   
 

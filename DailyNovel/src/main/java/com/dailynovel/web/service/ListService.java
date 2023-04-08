@@ -9,7 +9,12 @@ import com.dailynovel.web.entity.Weather;
 
 public interface ListService {
 
-	List<Diary> getDiarys(Integer id);
+	List<Diary> getDiarys(Integer memberId,
+			Integer tid,
+			Integer fid,
+			Integer wid,
+			String regDate 
+			);
 	public List<Template> getTemplateList();
 	public List<Weather> getWeatherList();
 	public List<Feeling> getFeelingList();
