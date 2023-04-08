@@ -11,6 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dailynovel.web.entity.DiaryPreview;
 import com.dailynovel.web.service.DiaryService;
+import com.dailynovel.web.entity.Diary;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+import com.dailynovel.web.service.DiaryService;
 
 @RestController("apiDiaryController")
 @RequestMapping("/diarys")
@@ -28,7 +37,18 @@ public class DiaryController {
 		
 		return list;
 	}
-	
-	
+
+	@PostMapping
+	public String insert(@RequestBody Diary diary) {
+		service.insertDiary(diary);
+		
+		diary.setMemberId(1);
+		diary.setRegDate("2023-01-27 21:50:50");
+		diary.setFeelingId(1);
+		diary.setWeatherId(1);
+		diary.setTemplateId(1);		
+		System.out.println(diary);
+		return "ㄷ...될까..?";
+	}
 
 }
