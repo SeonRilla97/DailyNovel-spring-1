@@ -43,10 +43,8 @@ public class DiaryController {
 		service.insertDiary(diary);
 		
 		diary.setMemberId(1);
-		diary.setRegDate("2023-01-27 21:50:50");
-		diary.setFeelingId(1);
-		diary.setWeatherId(1);
-		diary.setTemplateId(1);		
+		
+		
 		System.out.println(diary);
 		return "ㄷ...될까..?";
 	}

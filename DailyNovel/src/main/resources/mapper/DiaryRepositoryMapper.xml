@@ -23,7 +23,7 @@
 	into diary
 	
 	(member_id,
-	reg_date,
+	<!-- reg_date, -->
 	title,
 	text,
 	template_id,
@@ -34,7 +34,7 @@
 	values
 	
 	(#{memberId},
-	#{regDate},
+	<!-- #{regDate}, -->
 	#{title},
 	#{content},
 	#{templateId},

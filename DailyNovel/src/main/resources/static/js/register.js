@@ -12,13 +12,13 @@ let dateValue;
 let honestyValue;
 
 let diaryObj = {
-	member_id: 1,
-	date: null,
+	memberId: 1,
+	regDate: "",
 	title: null,
 	content: null,
-	tmp: null,
-	weather: null,
-	feeling: null, 
+	templateId: 1,
+	weatherId: 1,
+	feelingId: null, 
 	honesty: null	
 };
 
@@ -54,27 +54,26 @@ feelDiv.onclick = function (e){
 	// 리스트 태그가 아니면 돌아가
 	if(e.target.tagName != "LI")
 		return;			
-	let valueArr = ['happy','sad','excited','비','먼지'];
-	
+
+	let valueArr = ['angry','awkward','calm','disappointed','anxiety','happy','sad','tocuhed','excited'];	
 	let value = e.target.getAttribute('value');
-	
-	for(let e in valueArr){
-		if(e == value){
-			console.log(`${value}나온다아아아ㅏ`);
+
+	console.log(`선택한 리스트 : ${value}`)
+	for(let i=0; i< valueArr.length; i++){
+		
+		if(valueArr[i] === value){
+			diaryObj.feelingId = i+1;
 			break;
 		}		
 	}
 	
-	diaryObj.feeling = e.target.getAttribute('value');
-	
-	console.log("볼까: ", e.target.getAttribute('value'));
 	viewObj();
 };
 
 tmpDiv.onclick = function (e){
 	if(e.target.tagName != "LI")
 		return;			
-	
+	let valueArr = ['']
 	diaryObj.tmp = e.target.getAttribute('value');
 	viewObj();	
 }
