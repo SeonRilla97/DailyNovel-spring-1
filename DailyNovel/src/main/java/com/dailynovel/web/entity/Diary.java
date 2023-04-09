@@ -17,8 +17,10 @@ public class Diary {
 	private Integer weatherId;
 	private Integer honesty;
 	private String regDate;
+//	private String reg_date;
 	private String title;
 	private String content;
+//	private String text;
 
 
 

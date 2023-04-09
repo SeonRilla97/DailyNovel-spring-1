@@ -10,6 +10,15 @@
 <!--       <result property="memberId" column="member_id" /> -->
 	</resultMap>
 	
+	<resultMap id="DiaryResultMap" type="Diary">
+      <result property="memberId" column="member_id" />
+      <result property="templateId" column="template_id" />
+      <result property="feelingId" column="feeling_id" />
+      <result property="weatherId" column="weather_id" />
+      <result property="content" column="text" />
+      <result property="regDate" column="reg_date" />
+	</resultMap>
+	
 
   <select id="getAllDiaryById" resultType="Diary">
     select * 
@@ -66,4 +75,17 @@
 		year(reg_date) = ${year}
 		and month(reg_date) = ${month};
   </select>
+  
+  
+  <!-- 특정 다이어리 조회  -->
+  <select id="view" resultMap="DiaryResultMap">
+  	
+  	SELECT 
+  		* FROM diary 
+	where id = ${id};
+  </select>
+  
+  
+  
+  
 </mapper>

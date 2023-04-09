@@ -15,6 +15,7 @@ import com.dailynovel.web.entity.Order;
 import com.dailynovel.web.entity.Setting;
 import com.dailynovel.web.entity.Template;
 import com.dailynovel.web.entity.Weather;
+import com.dailynovel.web.service.DiaryService;
 import com.dailynovel.web.service.ListService;
 import com.dailynovel.web.service.SettingService;
 
@@ -27,6 +28,9 @@ public class MemberController {
 
 	@Autowired
 	private ListService listservice;
+	
+	@Autowired
+	private DiaryService diaryservice;
 	
 	@RequestMapping("main")
 	public String main() {
@@ -100,6 +104,36 @@ public class MemberController {
 		return "/member/diary/list";
 	}	
 	
+	
+	//수정 디테일 추가 
+		@RequestMapping("/diary/detail")
+		public String detail(
+				Model model,
+				@RequestParam(required = true, defaultValue = "1", name="id") Integer id
+//				@RequestParam(required = true, defaultValue = "1", name="id") Integer memberId,
+				) {
+			
+			Diary diary = diaryservice.viewDiary(id);
+			
+//			d.getRegDate();
+//			d.getTemplateId();
+//			d.getFeelingId();
+//			d.getWeatherId();
+//			d.getTitle();
+//			d.getContent();
+			
+			//객체 통째로 보내준다.
+			model.addAttribute("diary", diary);
+			
+			
+			
+			return "/member/diary/detail";
+		}
+		
+		@RequestMapping("/diary/edit")
+		public String edit() {
+			return "/member/diary/edit";
+		}
 
 	
 }

@@ -18,11 +18,16 @@ public class DefaultDiaryService implements DiaryService {
 	@Autowired
 	private DiaryRepository repository;
 	
+
+
 	@Override
-	public Diary viewDiary() {
+	public Diary viewDiary(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		Diary d = repository.view(id);
+		
+		return d;
 	}
+	
 	
 	@Override
 	public void insertDiary(Diary diary) {
@@ -62,5 +67,11 @@ public class DefaultDiaryService implements DiaryService {
 		}
 		return diaryMap;
 	}
+
+
+
+
+
+
 
 }

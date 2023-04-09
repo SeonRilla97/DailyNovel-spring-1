@@ -15,7 +15,7 @@ public interface DiaryRepository {
 	
 	//--Read--
 	List<Diary> getAllDiaryById();
-	Diary view();
+	Diary view(Integer id); //id 추가
 	Set<Integer> getDateByMonthly(int year, int month);
 	List<DiaryPreview> getDiaryByMonthly(int year, int month); 
 	
