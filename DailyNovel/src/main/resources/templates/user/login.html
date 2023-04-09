@@ -29,24 +29,21 @@
 
 		<main class="main lc-vertical-alignment mgt-6">
 			<div>당신의 하루를 보다 쉽게 정리하세요.</div>
-			<form id="form" class="lc-vertical-alignment mgt-4"
-				action="../member/main.html">
+			<form id="form" class="lc-vertical-alignment mgt-4">
 				<div id="idmiss" class=" blind mgt-3 color-red-1">계정이 올바르지
 					않습니다.</div>
-
 				<div class="outBox-id box-large  mgt-3">
 					<div class="inputBox">
-						<input id="id" class="sample-id" type="text" /> <label for="id">이메일
+						<input id="id" class="sample-id" type="text" name="email"/> <label for="id">이메일
 							또는 별명</label>
 					</div>
 				</div>
-
 				<div id="passwordmiss" class="blind mgt-3 color-red-1">비밀번호가
 					올바르지 않습니다.</div>
 				<div class="outBox-pass box-large  mgt-3">
 					<div class="inputBox">
-						<input id="passwd" class="sample-pass" type="password" /> <label
-							for="passwd">비밀번호</label>
+						<input id="passwd" class="sample-pass" type="password" name="password"/> 
+						<label	for="passwd">비밀번호</label>
 					</div>
 				</div>
 				<div class="lc-center mgt-5">
@@ -57,7 +54,7 @@
 						<a href="../user/account-recovery/password.html">비밀번호 찾기</a>
 					</div>
 				</div>
-				<input id="loginbtn" type="submit"
+				<input id="loginbtn" type="submit" 
 					class="btn3 mgt-5 input-boder-none color-bg-green-2 color-white-2 "
 					value="로그인" />
 			</form>
@@ -70,6 +67,6 @@
 			</div>
 		</main>
 	</div>
-	<script type="text/javascript" src="/js/validation.js"></script>
+	<script type="text/javascript" src="/js/validation.js" defer="defer"></script>
 </body>
 </html>

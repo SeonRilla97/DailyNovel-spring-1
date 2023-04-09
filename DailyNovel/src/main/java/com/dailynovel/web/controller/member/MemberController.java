@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.Feeling;
+import com.dailynovel.web.entity.Order;
+import com.dailynovel.web.entity.Setting;
 import com.dailynovel.web.entity.Template;
 import com.dailynovel.web.entity.Weather;
 import com.dailynovel.web.service.ListService;
@@ -23,7 +25,7 @@ public class MemberController {
 	@Autowired
 	private SettingService settingService;
 
-  @Autowired
+	@Autowired
 	private ListService listservice;
 	
 	@RequestMapping("main")
@@ -49,29 +51,52 @@ public class MemberController {
 	
 	@RequestMapping("/diary/list")
 	public String diarylist(Model model,
-			@RequestParam(required = true, defaultValue = "1", name="id") Integer id
-			,@RequestParam(required = false, name="wid", defaultValue="1")Integer weatherId 
-			,@RequestParam(required = false, name="tid", defaultValue="2")Integer templateId
-			,@RequestParam(required = false, name="fid", defaultValue="2")Integer feelingId
-			,@RequestParam(required = false, name="reg_date", defaultValue="2")String regDate){
+			@RequestParam(required = true, defaultValue = "1", name="id") Integer memberId
+			,@RequestParam(required = false, name="wid")Integer wid 
+			,@RequestParam(required = false, name="tid")Integer tid
+			,@RequestParam(required = false, name="fid")Integer fid
+			,@RequestParam(required = false, name="reg_date")String regDate){
 		//선유진-검색
-		
-		List<Diary> list =  listservice.getDiarys(id);
+		System.out.println("레그데이트 :" +regDate);
+		List<Diary> list =  listservice.getDiarys(memberId,tid,fid,wid,regDate);
 		 
 		List<Template> templateList = listservice.getTemplateList();
 		List<Feeling>	feelingList = listservice.getFeelingList();
 		List<Weather>	weatherList =listservice.getWeatherList();
-		
+		Template curTName;
+		Feeling curFName;
+		Weather curWName;
+		//======request로 부터 받은 id를 가지고 List collection에 저장되어있는 카테고리의 이름을 얻어온다.============
+		if(tid !=null) {
+		curTName = templateList.get(tid-1); //List 0 부터 시작(DB의 1번이 List에선 0번)
+		System.out.println(curTName);
+		model.addAttribute("curTmeplate",curTName);}
+		if(fid !=null) {
+		curFName = feelingList.get(fid-1);
+		System.out.println(curFName);
+		model.addAttribute("curFeeling",curFName);
+		}
+		if(wid !=null) {
+		curWName  = weatherList.get(wid-1);
+		System.out.println(curWName);
+		model.addAttribute("curWeather",curWName);
+		}
+		if(regDate != null) {
+			String curRegDate = regDate;
+//			System.out.println("날짜 삽입 완료!!");
+			model.addAttribute("curRegDate", curRegDate);		
+		}
+//		=======View로 이용하기 위해 Model에 데이터 삽입==============================
 		model.addAttribute("feeling", feelingList);
 		model.addAttribute("diaryList", list);
 		model.addAttribute("templateList", templateList);
 		model.addAttribute("weatherList", weatherList);
-		System.out.println(templateList);
-		System.out.println(list);
-		System.out.println(regDate +id +weatherId+templateId+feelingId);
-		System.out.println(weatherList);
-		System.out.println(feelingList);
 		model.addAttribute("list",list);
+		System.out.println(list);
+		
+		
+		
+		System.out.println(memberId.toString() + wid + tid + fid + regDate);
 		return "/member/diary/list";
 	}	
 	

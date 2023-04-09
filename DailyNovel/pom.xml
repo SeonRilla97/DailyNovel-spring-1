@@ -42,7 +42,6 @@
 			    <version>5.2.0</version>
 			</dependency>
 						
-				
 <!-- 		<dependency> -->
 <!-- 			<groupId>com.aspose</groupId> -->
 <!-- 			<artifactId>aspose-words</artifactId> -->
@@ -55,22 +54,11 @@
 <!-- 			<version>23.3</version> -->
 <!-- 		</dependency>   -->
 
-	
-	
-	
-	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
-
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
 		<dependency>
 		    <groupId>org.apache.tomcat.embed</groupId>
@@ -121,6 +109,18 @@
 		    <artifactId>mybatis-spring-boot-starter-test</artifactId>
 		    <version>3.0.1</version>
 		    <scope>test</scope>
+		</dependency>
+
+        <!-- Email 인증 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+				
+<!-- 		js, css 자동반영	:선유진 -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 		
 	</dependencies>

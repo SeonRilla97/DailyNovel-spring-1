@@ -3,9 +3,11 @@ package com.dailynovel.web.entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class Diary {
 	
@@ -13,8 +15,11 @@ public class Diary {
 	private int templateId;
 	private Integer feelingId;
 	private Integer weatherId;
-	private Integer honestyId;
+	private Integer honesty;
 	private String regDate;
 	private String title;
 	private String content;
+
+
+
 }
