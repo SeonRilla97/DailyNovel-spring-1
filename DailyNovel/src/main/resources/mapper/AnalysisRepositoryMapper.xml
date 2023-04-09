@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dailynovel.web.repository.AnalysisRepository">
-	<resultMap id="AnalysisMap" type="Analysis">
+	<resultMap id="HonestyMap" type="Honesty">
 		  <result property="honestyRange" column="honesty_range"/>
 		</resultMap>
 	
@@ -44,7 +44,7 @@
 		ORDER BY frequency DESC;
 	</select>
 	
-	<select id="findHonesty" resultMap="AnalysisMap">
+	<select id="findHonesty" resultMap="HonestyMap">
     SELECT
     CASE
         WHEN honesty BETWEEN 0 AND 20 THEN '0-20'
@@ -58,7 +58,16 @@
 		WHERE member_id = 1 AND honesty IS NOT NULL
 		GROUP BY honesty_range
 		ORDER BY honesty_range ASC;
-</select>
+	</select>
+	
+	<select id ="findHow" resultType="How">
+	select t.name, d.member_id, count(d.template_id) as count
+	from template t
+	inner join diary d on d.template_id = t.id
+	group by t.name, d.member_id
+	having d.member_id = 1
+	order by count DESC;
+	</select>
 	
 	
 	
