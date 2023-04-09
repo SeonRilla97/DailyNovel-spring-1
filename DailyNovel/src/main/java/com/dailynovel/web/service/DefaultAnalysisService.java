@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.Feeling;
-import com.dailynovel.web.entity.Analysis;
+import com.dailynovel.web.entity.Honesty;
+import com.dailynovel.web.entity.How;
 import com.dailynovel.web.repository.AnalysisRepository;
 
 @Service
@@ -55,16 +56,30 @@ public class DefaultAnalysisService implements AnalysisService {
 
 
 	@Override
-	public List<Analysis> getHonesty(String honestyRange, Integer count) {
+	public List<Honesty> getHonesty(String honestyRange, Integer count) {
 		// TODO Auto-generated method stub
 		return repository.findHonesty(honestyRange, count);
 	}
 
 
 	@Override
-	public List<Analysis> getHonesty() {
+	public List<Honesty> getHonesty() {
 		// TODO Auto-generated method stub
 		return repository.findHonesty(null, null);
+	}
+
+
+	@Override
+	public List<How> getHow(String name, Integer count) {
+		// TODO Auto-generated method stub
+		return repository.findHow(name, count);
+	}
+
+
+	@Override
+	public List<How> getHow() {
+		// TODO Auto-generated method stub
+		return repository.findHow(null, null);
 	}
 
 

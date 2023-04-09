@@ -5,7 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.dailynovel.web.entity.Feeling;
-import com.dailynovel.web.entity.Analysis;
+import com.dailynovel.web.entity.Honesty;
+import com.dailynovel.web.entity.How;
 
 @Mapper
 public interface AnalysisRepository {
@@ -28,9 +29,11 @@ public interface AnalysisRepository {
 							Integer frequency
 									);
 	
-	List<Analysis> findHonesty(String honestyRange, Integer count);
+	List<Honesty> findHonesty(String honestyRange, Integer count);
 	
 	List<Feeling> findValue(String name, Integer frequency);
+	
+	List<How> findHow(String name, Integer count);
 	
 	
 
