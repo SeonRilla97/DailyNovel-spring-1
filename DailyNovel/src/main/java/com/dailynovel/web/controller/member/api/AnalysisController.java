@@ -48,6 +48,7 @@ public class  AnalysisController {
 	public List<Analysis> getHonesty(
 			
 			@RequestParam(name = "honestyRange") String honestyRange,
+			
 			@RequestParam(name = "count") Integer count){					
 			List<Analysis> truely = service.getHonesty(honestyRange, count);
 			return truely;

@@ -1,5 +1,7 @@
 package com.dailynovel.web.service;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 
 
@@ -8,7 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.dailynovel.web.entity.Export;
-import com.dailynovel.web.entity.Font;
+import com.dailynovel.web.entity.setFont;
 import com.dailynovel.web.entity.Setting;
 import com.dailynovel.web.repository.SettingRepository;
 
@@ -36,7 +38,7 @@ public class SettingDefaultService implements SettingService {
 		return repository.findDiaryListById(id);
 	}
 	@Override
-	public List<Font> getByFontId() {
+	public List<setFont> getByFontId() {
 		// TODO Auto-generated method stub
 		return repository.findFontById();
 	}
@@ -57,5 +59,12 @@ public class SettingDefaultService implements SettingService {
 	public int deleteAcount(Integer id) {
 		
 		return repository.deleteAcount(id);
+	}
+	@Override
+	public void deleteBeforeImage(Path filePath) throws 파일없음예외 {
+	    if (!Files.exists(filePath)) {
+	        throw new 파일없음예외();
+	    }
+		
 	}
 }

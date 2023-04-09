@@ -27,6 +27,7 @@ fetch("http://localhost:8080/analysis1/feeling-chart?name=화남&frequency=1", r
             '#566270', 
             '#D7FFF1', 
             '#FBFFB9' 
+
           ],
           borderColor: [
             '#A593E0', 
@@ -38,6 +39,7 @@ fetch("http://localhost:8080/analysis1/feeling-chart?name=화남&frequency=1", r
             '#566270', 
             '#D7FFF1', 
             '#FBFFB9' 
+
           ],
           borderWidth: 1,
         }]

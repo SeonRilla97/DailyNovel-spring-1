@@ -28,7 +28,7 @@
         <div class="icon question-mark">?</div>
       </div>
       <div class="lc-center">
-        <div class="box-short ">2023년 01월 27일</div>
+        <div class="box-short "><span id="date">2023년 01월 27일</span></div>
       </div>
       <div class="lc-center">
         <div id="reg-cancel-btn" class="icon close-btn"></div>
@@ -153,5 +153,9 @@
     value.text = range.value;    
     rangeText.innerText = range.value;
   })
+
+  let nowDate = new Date();
+  let date = document.querySelector("#date");
+  date.innerText = nowDate;
 </script>
 </html>
