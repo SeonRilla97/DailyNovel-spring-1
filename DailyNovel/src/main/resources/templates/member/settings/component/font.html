@@ -26,7 +26,9 @@
             <div class="main-size overflow-auto">
                 <div class="mgt-4 l-box-middle">
                     <div class="name"><h1>미리보기</h1></div>
-                    <div class="content font-size-js">바람소리와 스산한 빗소리가 사무실 창밖을 때린다.</div>
+                    <!--<div class="content font-size-js">바람소리와 스산한 빗소리가 사무실 창밖을 때린다.</div>-->
+                    <div th:class="'content font-size-js ' + (${setting.fontFamily == '1' ? 'noto-sans-k' : setting.fontFamily == '2' ? 'nanum-pen-s' : setting.fontFamily == '3' ? 'sunflower' : setting.fontFamily == '4' ? 'dongle': 'btn'})">바람소리와 스산한 빗소리가 사무실 창밖을 때린다.</div>
+                    <div th:text="${setting.fontFamily}" class="dbFont d-none">1</div> <!-- JS에 DB값을 넘겨주기 위해 필요한 값 -->
                 </div>
 
 
