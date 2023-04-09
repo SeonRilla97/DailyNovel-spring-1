@@ -6,9 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
-import java.net.InetAddress;
 import java.net.URLEncoder;
 import java.net.UnknownHostException;
 import java.nio.file.DirectoryNotEmptyException;
@@ -32,10 +29,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 //import com.aspose.words.Document;
 import com.dailynovel.web.entity.Export;
-import com.dailynovel.web.entity.setFont;
 import com.dailynovel.web.entity.Setting;
+import com.dailynovel.web.entity.setFont;
 import com.dailynovel.web.service.SettingService;
 import com.dailynovel.web.service.파일없음예외;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -219,42 +222,62 @@ public class  SettingController {
 			
 			//Integer id = 1;
 			List<Export> export = settingService.getDiaryListByid(id);
-
-			Date date = new Date(System.currentTimeMillis()); // 현재 시간 측정
-			SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS"); // 시간 측정 포멧 지정
-			String time = format.format(date); // 측정한 시간을 포멧화 하기
-
-		// 바탕화면으로 경로 만들기 테스트
-			String deskTopPath = System.getProperty("user.home");
-			String filePath = deskTopPath + "/Desktop/" + time + "dailyNovel.txt";
-
-			FileOutputStream fos = new FileOutputStream(filePath);
-			PrintStream out = new PrintStream(fos);
-
-			for (Export aa : export) {
-				out.print(aa.getRegDate());
-				out.print(" [ ");
-				out.print(aa.getFeelingName());
-				out.print(" ] ");
-				out.println();
-				out.printf("제목: %s", aa.getTitle());
-				out.println();
-				out.print(aa.getText());
-				out.println();
-				out.println();
-			}
-			fos.close();
-			// 지연시간
-
-			// TXT 파일 로드
-			Document document = new Document(filePath);
-
-		// 바탕화면으로 TXT 파일을 PDF로 저장
-			document.save( deskTopPath + "/Desktop/" + time + "output.pdf");
 			
+			// 1) com.lowagie.text.Document 클래스 인스턴스를 생성합니다.
+		Document document = new Document();
+		Date makingTime = new Date(System.currentTimeMillis()); // 현재 시간 측정
+		SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS"); // 시간 측정 포멧 지정
+		String time = format.format(makingTime); // 측정한 시간을 포멧화 하기
+		File file = new File(time+"DailyNovel.PDF");
+		
+		try {
+			// 2) Writer와 Document 사이의 연관을 맺어줍니다.
+			PdfWriter.getInstance(document, new FileOutputStream(file));	
+			
+			// 3)  문서를 오픈합니다.
+			document.open();
+			
+			// 4) 한글 입력을 위해 폰트를 선택해줍니다. iTextAsian.jar에서는 다음 3개의 폰트를 사용할 수 있습니다.
+			// HYGoThic-Medium, HYSMyeongJo-Medium, HYSMyeongJoStd-Medium
+			String fontFace = "HYGoThic-Medium";
+			
+			// 5) 글자 방향을 결정하는 CMap은 두가지가 있습니다. 
+			// UniKS-UCS2-H : 가로, UniKS-UCS2-V : 세로
+			String fontNameH = "UniKS-UCS2-H";
 
+			// 6) 준비한 설정값들을 활용해 Font 객체를 생성해줍니다. 생성자에 들어가는 인자는 BaseFont 와 사이즈 입니다.
+			BaseFont bf = BaseFont.createFont(fontFace, fontNameH, BaseFont.NOT_EMBEDDED);
+			Font font = new Font(bf, 11);
+			
+			// 7) 문서에 2개의 paragraph를 각기 다른 본트로 첨부해 보겠습니다.		
+			for (Export aa : export) {
+				//out.print(aa.getRegDate());
+				
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+				String date = formatter.format(aa.getRegDate());
+				document.add(new Paragraph(date+" "+"  "+"["+aa.getFeelingName()+"]", font));
+				//document.add(new Paragraph("["+aa.getFeelingName()+"]", font));
+				document.add(new Paragraph("제목: "+aa.getTitle(), font));
+				document.add(new Paragraph("\n", font));
+				document.add(new Paragraph(aa.getText(), font));
+				document.add(new Paragraph("\n", font));
+				document.add(new Paragraph("\n", font));
+			}
+			
+			
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			document.close();	
+		}
+		
 		 // 바탕화면으로 전송
-			String path = deskTopPath + "/Desktop/" + time + "output.pdf";
+			String path = time + "DailyNovel.PDF";
 				
 				
 			FileInputStream fis = new FileInputStream(path);
@@ -263,7 +286,7 @@ public class  SettingController {
 			int size = 1024;
 			response.setContentType("application/octet-stream");
 			response.setHeader("Content-Disposition",
-					"attachment; fileName=\"" + URLEncoder.encode(time + "output.pdf", "UTF-8") + "\";");
+					"attachment; fileName=\"" + URLEncoder.encode(time + "DailyNovel.PDF", "UTF-8") + "\";");
 			response.setHeader("Content-Transfer-Encoding", "binary");
 			while ((size = fis.read(buf)) != -1) {
 				response.getOutputStream().write(buf, 0, size);
@@ -276,15 +299,11 @@ public class  SettingController {
 			// 지연시간
 
 			try {
-				// 파일 삭제
-				// 삭제
 			// 바탕화면 삭제
-				Path testPdf = Paths.get( deskTopPath + "/Desktop/" + time + "output.pdf");
+				Path testPdf = Paths.get(time + "DailyNovel.PDF");
 
 				Files.delete(testPdf);
-					Path testText = Paths.get(deskTopPath + "/Desktop/" + time + "dailyNovel.txt");
 				
-				Files.delete(testText);
 				// 디렉토리 삭제
 //		            Files.delete(directoryPath);
 
@@ -295,6 +314,93 @@ public class  SettingController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		
+		
+		
+		// 8) Chrome 으로 방금 작성한 파일을 바로 열어서 확인해봅니다.
+//		String chrome = "C:/Program Files/Google/Chrome/Application/chrome.exe";
+//		try {
+//			new ProcessBuilder(chrome,file.getAbsolutePath()).start();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+	
+			
+//			Date date = new Date(System.currentTimeMillis()); // 현재 시간 측정
+//			SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS"); // 시간 측정 포멧 지정
+//			String time = format.format(date); // 측정한 시간을 포멧화 하기
+//
+//		// 바탕화면으로 경로 만들기 테스트
+//			String deskTopPath = System.getProperty("user.home");
+//			String filePath = deskTopPath + "/Desktop/" + time + "dailyNovel.txt";
+//
+//			FileOutputStream fos = new FileOutputStream(filePath);
+//			PrintStream out = new PrintStream(fos);
+//
+//			for (Export aa : export) {
+//				out.print(aa.getRegDate());
+//				out.print(" [ ");
+//				out.print(aa.getFeelingName());
+//				out.print(" ] ");
+//				out.println();
+//				out.printf("제목: %s", aa.getTitle());
+//				out.println();
+//				out.print(aa.getText());
+//				out.println();
+//				out.println();
+//			}
+//			fos.close();
+//			// 지연시간
+//
+//			// TXT 파일 로드
+//			Document document = new Document(filePath);
+//
+//		// 바탕화면으로 TXT 파일을 PDF로 저장
+//			document.save( deskTopPath + "/Desktop/" + time + "output.pdf");
+//			
+//
+//		 // 바탕화면으로 전송
+//			String path = deskTopPath + "/Desktop/" + time + "output.pdf";
+//				
+//				
+//			FileInputStream fis = new FileInputStream(path);
+//			byte buf[] = new byte[1024];
+//
+//			int size = 1024;
+//			response.setContentType("application/octet-stream");
+//			response.setHeader("Content-Disposition",
+//					"attachment; fileName=\"" + URLEncoder.encode(time + "output.pdf", "UTF-8") + "\";");
+//			response.setHeader("Content-Transfer-Encoding", "binary");
+//			while ((size = fis.read(buf)) != -1) {
+//				response.getOutputStream().write(buf, 0, size);
+//			}
+//			response.getOutputStream().flush();
+//			response.getOutputStream().close();
+//
+//			fis.close();
+//
+//			// 지연시간
+//
+//			try {
+//				// 파일 삭제
+//				// 삭제
+//			// 바탕화면 삭제
+//				Path testPdf = Paths.get( deskTopPath + "/Desktop/" + time + "output.pdf");
+//
+//				Files.delete(testPdf);
+//					Path testText = Paths.get(deskTopPath + "/Desktop/" + time + "dailyNovel.txt");
+//				
+//				Files.delete(testText);
+//				// 디렉토리 삭제
+////		            Files.delete(directoryPath);
+//
+//			} catch (NoSuchFileException e) {
+//				System.out.println("삭제하려는 파일/디렉토리가 없습니다");
+//			} catch (DirectoryNotEmptyException e) {
+//				System.out.println("디렉토리가 비어있지 않습니다");
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
 		}
 
 		// 세팅-피드백-------------------------------------------------------------------
