@@ -113,6 +113,7 @@ public class MemberController {
 
 	}
 
+
 	// 수정 디테일 추가
 	@RequestMapping("/diary/detail")
 	public String detail(
@@ -137,9 +138,9 @@ public class MemberController {
 		return "/member/diary/detail";
 	}
 
+
 	@RequestMapping("/diary/edit")
 	public String edit() {
 		return "/member/diary/edit";
 	}
 
-}

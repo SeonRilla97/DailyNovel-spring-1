@@ -63,24 +63,27 @@ public class DiaryController {
 
 		String currentTimestampToString = "2022/12/12 08:03:15";
 
-		// String to Timestamp
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		dateFormat.setLenient(false);// 날짜와 시간을 엄격하게 확인
 
-		// try {
-		//
-		// System.out.println(stringToTimestamp);
-		// } catch (ParseException e) {
-		// e.printStackTrace();
-		// }
+	//  String to Timestamp
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	dateFormat.setLenient(false);// 날짜와 시간을 엄격하게 확인
+	
+	
+//	try {
+//	    
+//	    System.out.println(stringToTimestamp);
+//	} catch (ParseException e) {
+//	    e.printStackTrace();
+//	}
 
-		Date stringToDate = dateFormat.parse(regDate);
-		Timestamp stringToTimestamp = new Timestamp(stringToDate.getTime());
-
-		Diary diary = new Diary(memberId, templateId, feelingId, weatherId, honesty, stringToTimestamp, title, content,
-				null);
-
-		service.insertDiary(diary);
+	Date stringToDate = dateFormat.parse(regDate);
+    Timestamp stringToTimestamp = new Timestamp(stringToDate.getTime());  
+    
+    Diary diary = new Diary(memberId, templateId, feelingId, weatherId, honesty, stringToTimestamp, title, content, null);
+    
+	service.insertDiary(diary);
+			
+		
 
 		return "ㄷ...될까..?";
 	}
