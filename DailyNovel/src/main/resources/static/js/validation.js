@@ -31,7 +31,7 @@ loginbtn.addEventListener('click', ()=>{
             loginBoxPass.classList.remove('existence'); 
         
     }
-    eles if(data=='비밀번호를 다시입력하세요'){
+    else if(data=='비밀번호를 다시입력하세요'){
 	
 
             idmiss.classList.remove('blind');
@@ -45,7 +45,7 @@ loginbtn.addEventListener('click', ()=>{
 
 }
 
-);
+)
 
 loginInputBoxId.addEventListener('keyup', function(){
     if(!loginInputBoxId.value == ''){
@@ -84,7 +84,6 @@ loginInputBoxPass.addEventListener('keyup', function(){
             }
         });
     });
-    
     
     
     

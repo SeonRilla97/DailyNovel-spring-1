@@ -38,20 +38,22 @@
                     
                     <div class="mgt-4 lc-center">
                         <div class="l-box-short">
-                            <div class="name">닉네임</div>
-                            <input style="padding-left:1rem" type="text" class="content modalBtn" value="송지산" maxlength="10" th:value="${setting.nickName}" name="name">
+                            <div class="name"><h1>닉네임</h1></div>
+                            <input type="text" class="content modalBtn" value="송지산" maxlength="10" th:value="${setting.nickName}" name="name">
                         </div>
                     </div>
                     <div class="mgt-4 lc-center">
                         <div class="l-box-short color-bg-gray-1">
-                            <div class="name">E-mail</div>
-                            <div class="content color-bg-gray-1" th:text="${setting.email}">20.**.**.**.</div>
+                            <div class="name"><h1>E-mail</h1></div>
+                            <div style="justify-content: flex-start;" class="content color-bg-gray-1" th:text="${setting.email}">20.**.**.**.</div>
                         </div>
                     </div>   
+
+
                     <div class="mgt-4 lc-center">
                         <div class="l-box-middle">
-                            <div class="name">상태 메시지</div>
-                            <input type="text" class="content modalBtn" value="이슬람 마카체프 vs 악렉산더 볼카노프스키"  maxlength="10" th:value="${setting.statusMessage}"
+                            <div class="name"><h1>상태 메시지</h1></div>
+                            <input type="text" class="content modalBtn" value="이슬람 마카체프 vs 악렉산더 볼카노프스키"  maxlength="20" th:value="${setting.statusMessage}"
                             name= "stsMessage">
                         </div>
                     </div>   
@@ -82,36 +84,35 @@
 
         <div class="footer">
             <div class="container-nav color-white-1">
-                
                 <div class="nav-1 lc-center">
-                    <a href="../index.html" class="lc-vertical-alignment">
+                    <a href="/member/diary/list" class="lc-vertical-alignment">
                     <div class="nav-icon bookmark-btn"></div>
                     <div class="h6 mgt-2">모아보기</div>
                 </a>
                 </div>
                 
                 <div class="nav-2 lc-center">
-                    <a href="../index.html" class="lc-vertical-alignment">
+                    <a href="https://www.youtube.com/@newlec1" class="lc-vertical-alignment">
                         <div class=" nav-icon speech-bubble-btn"></div>
                         <div class="h6 mgt-2">커뮤니티</div>
                     </a>
                 </div>
 
                 <div class="nav-main lc-center">
-                    <a href="../../main.html" class="lc-vertical-alignment">
+                    <a href="/member/main" class="lc-vertical-alignment">
                         <div class="nav-icon book-btn"></div>
                         <div class="h6 mgt-2">메인화면</div>
                     </a>
                 </div>
     
                 <div class="nav-4 lc-center">
-                    <a href="../../analysis/main" class="lc-vertical-alignment" >
+                    <a href="/member/analysis/main" class="lc-vertical-alignment" >
                         <div class="nav-icon  hourglass-btn"></div>
                         <div class="h6 mgt-2">돌아보기</div>
                     </a>
                 </div>
                 <div class="nav-5 lc-center">
-                    <a href="../setting/main" class="lc-vertical-alignment">
+                    <a href="/member/setting/main" class="lc-vertical-alignment">
                         <div class="nav-icon gear-btn"></div>
                         <div class="h6 mgt-2">설정하기</div>
                     </a>

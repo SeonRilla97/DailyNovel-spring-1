@@ -64,13 +64,13 @@ function drawDate() {
 	  method: 'GET',
 	  redirect: 'follow'
 	};
-	console.log(year,month)
+//	console.log(year,month)
 	fetch(`/diarys/preview?year=${year}&month=${month+1}`, requestOptions)
 	  .then(response => response.json())
 	  .then(result => { //달력 그리기 부분이 여기에 다 묶여있음 ( 이유 : 데이터를 받아오고나서 그려야함 근데 사실 다 그려놓고 class 추가 시키는게 올바른것같긴한데....)
-		console.log(result);
+//		console.log(result);
 		let a = 6;
-		console.log(result[a]);
+//		console.log(result[a]);
 	    // =========== 날짜 그리기 위해 필요한 변수들 ===========
 	    let prevLastDay = new Date(year, month, 0).getDay(); //전달 끝 요일
 	    let prevLastDate = new Date(year, month, 0).getDate(); // 전달 말일

@@ -7,6 +7,7 @@
 	<resultMap id="DiaryPreviewResultMap" type="DiaryPreview">
       <result property="regDate" column="reg_date" />
       <result property="diaryDate" column="diary_date" />
+      <result property="diaryId" column="id" />
 <!--       <result property="memberId" column="member_id" /> -->
 	</resultMap>
 	
@@ -41,7 +42,7 @@
 	into diary
 	
 	(member_id,
-	<!-- reg_date, -->
+	reg_date,
 	title,
 	text,
 	template_id,
@@ -52,7 +53,7 @@
 	values
 	
 	(#{memberId},
-	<!-- #{regDate}, -->
+	#{regDate},
 	#{title},
 	#{content},
 	#{templateId},
@@ -66,7 +67,8 @@
 	  	substring(text, 1, 60) as content,
 	  	title,
 	 	str_to_date(reg_date,'%Y-%m-%d') as reg_date,
-	 	day(reg_date) as diary_date	
+	 	day(reg_date) as diary_date,
+	 	id
   	FROM 
   		dailynoveldb.diary
 	WHERE  		

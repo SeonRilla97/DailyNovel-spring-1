@@ -70,7 +70,7 @@ public class  SettingController {
 			model.addAttribute("setting", setting);		// 가지고 온 테이블 값을 model에 심기
 			System.out.println(setting);				// 삭제요망 제대로 가지고 왔는지 확인차 출력해 보기 삭제요망
 			imageName = setting.getProfileImage();		// 가지고 온 profile이미지의 명칭을 전역변수에 넣기
-
+			System.out.println(imageName);
 			return "member/settings/component/profile";
 		}
 
@@ -84,25 +84,25 @@ public class  SettingController {
 				HttpServletRequest request
 				) throws Exception {
 			
+			if (profile != null && !profile.isEmpty()) { // 사용자가 새로운 이미지를 등록 했을 때만 실행하기
 			// 전에 등록한 프로필 사진 사진파일 삭제하는 코드?
 			String beforeImagePath = System.getProperty("user.home"); // 컴퓨터의 사용자 경로 추출 
 // 노트북 경로 Path filePath = Paths.get( beforeImagePath + "/Desktop/proproprj/DailyNovel/src/main/webapp/img/profile/" + imageName);
-/*데스크톱경로*/Path filePath = Paths.get( beforeImagePath + "/Desktop/novelPrj(2)/noPrj/DailyNovel/src/main/webapp/img/profile/" + imageName); 
+/*데스크톱경로*/Path filePath = Paths.get( beforeImagePath + "/Desktop/novelPrj(2)/nav/DailyNovel/src/main/webapp/img/profile/" + imageName); 
 			
 			try {
 				// 삭제하는 클래스 생성(사실상 서비스를 호출) service.deleteImage(filePath);
 				// 서비스에 deleteImage매소드를 만들고, 그 안에서 filePath에 해당 이미지 파일잉 없으면 출력할 예외만들기 'throw new 사진없음예외();'
 				settingService.deleteBeforeImage(filePath);
-				Files.delete(filePath);				
+				if(!imageName.equals("pro-img.png"))
+					Files.delete(filePath);				
 			}
 			catch(파일없음예외 e){
 				System.out.println(e.getMessage());
 			}
 			
-
-			
 			String realPath= "";
-			if (profile != null && !profile.isEmpty()) { // 사용자가 새로운 이미지를 등록 했을 때만 실행하기
+			
 				Date date = new Date(System.currentTimeMillis()); // 현재 시간 측정
 				SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS"); // 시간 측정 포멧 지정
 				String time = format.format(date); // 측정한 시간을 포멧화 하기

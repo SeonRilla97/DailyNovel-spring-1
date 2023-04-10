@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Analysis {
+public class FeelingPercent {
 	
-	private String honestyRange;
-	private Integer count;
-	private Integer honesty;
-
+	private String name;
+	private Integer total;
+	private Integer frequency;
+	private Integer percent;
 }

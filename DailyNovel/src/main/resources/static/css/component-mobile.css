@@ -1172,6 +1172,7 @@ color: white;
 /* 메인블럭 overflow:auto를 하기위한 설정 */
 .main-size{
   min-height: 100px; max-height: auto; 
+/*  width:412px;*/
   padding-bottom: 0.5rem;
 }
 .overflow-auto{
@@ -1236,7 +1237,9 @@ color: white;
 /* feeling */
 
 
-
+.description-pont{
+	line-height: 1.5;
+}
 
 
 .feeling-rank-box{
