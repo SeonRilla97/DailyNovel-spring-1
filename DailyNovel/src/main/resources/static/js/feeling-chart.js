@@ -17,7 +17,8 @@ fetch("http://localhost:8080/analysis1/feeling-chart?name=화남&frequency=1", r
         labels: extractedData.map(emotion => emotion.name),
         datasets: [{
           data: extractedData.map(emotion => emotion.frequency),
-          backgroundColor: [
+         
+         backgroundColor: [
             '#B19CD9',
             '#C8A2DD', 
             '#D9B3FF', 
@@ -45,6 +46,7 @@ fetch("http://localhost:8080/analysis1/feeling-chart?name=화남&frequency=1", r
 
  
           ],
+
           borderWidth: 1,
         }]
       },

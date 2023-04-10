@@ -7,4 +7,7 @@ public interface MemberService{
 	
 	String loginCheck(String email,String password);
 
+
+	int FindSameEmail(String email);
+
 }
