@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dailynovel.web.entity.Diary;
+import com.dailynovel.web.entity.DiaryView;
 import com.dailynovel.web.entity.Feeling;
 import com.dailynovel.web.entity.Order;
 import com.dailynovel.web.entity.Setting;
@@ -109,11 +110,11 @@ public class MemberController {
 		@RequestMapping("/diary/detail")
 		public String detail(
 				Model model,
-				@RequestParam(required = true, defaultValue = "1", name="id") Integer id
+				@RequestParam(required = true, defaultValue = "1", name="diaryId") Integer diaryId
 //				@RequestParam(required = true, defaultValue = "1", name="id") Integer memberId,
 				) {
 			
-			Diary diary = diaryservice.viewDiary(id);
+			DiaryView diary = diaryservice.viewDiary(diaryId);
 			
 //			d.getRegDate();
 //			d.getTemplateId();

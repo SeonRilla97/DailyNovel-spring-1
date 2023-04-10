@@ -1,7 +1,6 @@
 package com.dailynovel.web.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -10,19 +9,20 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class Diary {
-	
+//public class DiaryView extends Diary{
+public class DiaryView {
+
 	private int memberId;
-	private int templateId;
-	private Integer feelingId;
-	private Integer weatherId;
 	private Integer honesty;
 	private String regDate;
-//	private String reg_date;
 	private String title;
 	private String content;
-//	private String text;
-
-
+	
+	
+	//기존 분 상속 
+	private String templateName;
+	private String feelingName;
+	private String weatherName;
+	
 
 }
