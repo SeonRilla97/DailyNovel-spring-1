@@ -61,7 +61,7 @@ public class DiaryController {
 		String title = (String) dry.get("title");
 		String content = (String) dry.get("content");
 
-		String currentTimestampToString = "2022/12/12 08:03:15";
+//		String currentTimestampToString = "2022/12/12 08:03:15";
 
 
 	//  String to Timestamp
