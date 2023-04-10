@@ -24,13 +24,13 @@
 
         <div class="main lc-center flex-column">
             <a href="#" class="modalBtn"><div class="btn3 out">회원탈퇴</div></a>
-            <div class="btn3 mgt-5">로그아웃</div>
+            <a  class="btn3 mgt-5" href="/">로그아웃</a>
             <div id="modal" class="modal">
                 <div class="modal-content ">
                 <span class="close">&times;</span>
                 <p>탈퇴 하시나요?</p>
                 <div style="display: flex;">
-                	<form action="./out/update" method="post">
+                	<form action="/member/setting/out/delete" method="post">
                     	<button id="submitBtn" class="box-short font-s-box out">회원탈퇴</button>
                 	</form>
                     	<button id="cancelBtn" class="box-short font-s-box">취소</button>
