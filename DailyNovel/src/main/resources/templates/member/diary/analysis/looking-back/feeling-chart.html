@@ -32,10 +32,9 @@
             
             </div>
                 <div class="">
-                    <p class="box-p font-size20 font-weight-bolder">
-                        이번달은 피곤해요가 기뻐요보다 33% 더 많이 차지했어요
-                        휴식이 필요해요
-                    </p>
+                    <p class="box-p font-size20 font-weight-bolder" th:text="${TopPercent != null and Percent != null} ? ${TopPercent.name + '이 ' + Percent.name + '보다 ' + (TopPercent.percent - Percent.percent) + '% 많이 차지했어요'} : ''">
+					</p>
+
                 </div>
 
                 <div class="lc-space-around pdb-5">
@@ -44,25 +43,25 @@
 
         </div>
 
-        <div class="footer">
+       <footer class="footer ">
             <div class="container-nav color-white-1">
                 
                 <div class="nav-1 lc-center">
-                    <a href="../index.html" class="lc-vertical-alignment">
+                    <a href="/member/diary/list" class="lc-vertical-alignment">
                     <div class="nav-icon bookmark-btn"></div>
                     <div class="h6 mgt-2">모아보기</div>
                 </a>
                 </div>
                 
                 <div class="nav-2 lc-center">
-                    <a href="../index.html" class="lc-vertical-alignment">
+                    <a href="/" class="lc-vertical-alignment">
                         <div class=" nav-icon speech-bubble-btn"></div>
                         <div class="h6 mgt-2">커뮤니티</div>
                     </a>
                 </div>
 
                 <div class="nav-main lc-center">
-                    <a href="../../../main.html" class="lc-vertical-alignment">
+                    <a href="/member/main" class="lc-vertical-alignment">
                         <div class="nav-icon book-btn"></div>
                         <div class="h6 mgt-2">메인화면</div>
                     </a>
@@ -75,12 +74,16 @@
                 </a>
                 </div>
                 <div class="nav-5 lc-center">
-                    <a href="../../../settings/main.html" class="lc-vertical-alignment">
+
+                    <a href="/member/setting/main" class="lc-vertical-alignment">
+
                     <div class="nav-icon gear-btn"></div>
                     <div class="h6 mgt-2">설정하기</div>
                 </a>
                 </div>
             </div>
+
+        </footer>
 </body>
 
 <script>
