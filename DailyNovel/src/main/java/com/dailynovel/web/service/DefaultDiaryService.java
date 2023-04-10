@@ -25,24 +25,24 @@ public class DefaultDiaryService implements DiaryService {
 	}
 	
 	@Override
-
 	public void insertDiary(Diary diary) {
 		repository.register(diary);		
+
+	}	
+	
+	@Override
+	public int modifyDiary() {
+		
+		return 0;
 	}
 	
+	@Override
+	public int removeDiary() {
+		
+		return 0;
+	}
+
 	
-
-	@Override
-	public int updateDiary() {
-		// TODO Auto-generated method stub
-		return 1;
-	}
-
-	@Override
-	public int deleteDiary() {
-		// TODO Auto-generated method stub
-		return 1;
-	}
 
 	public Map<Integer, ArrayList<DiaryPreview>> getPreview(int year,int month){
 	//담을 객체 선언만 한거
@@ -62,5 +62,6 @@ public class DefaultDiaryService implements DiaryService {
 		}
 		return diaryMap;
 	}
+
 
 }

@@ -5,17 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>폰트</title>
-    <link rel="stylesheet" href="../../../css/reset.css">
-    <link rel="stylesheet" href="../../../css/layout.css">
-    <link rel="stylesheet" href="../../../css/box.css">
-    <link rel="stylesheet" href="../../../css/button.css">
-    <link rel="stylesheet" href="../../../css/style.css">
-    <link rel="stylesheet" href="../../../css/icon.css">
-    <link rel="stylesheet" href="../../../css/component-mobile.css">
-    <link rel="stylesheet" href="../../../css/util.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/box.css">
+    <link rel="stylesheet" href="/css/button.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/icon.css">
+    <link rel="stylesheet" href="/css/component-mobile.css">
+    <link rel="stylesheet" href="/css/util.css">
 
-	<script src="/../js/setFont.js"></script>
-<!--     <script src="/../js/setting.js"></script> -->
+	<script src="/js/setFont.js" defer="defer"></script>
 </head>
 <body>
     <section class="container-1">
@@ -26,8 +25,10 @@
         <section class="main lc-center flex-column main-size">
             <div class="main-size overflow-auto">
                 <div class="mgt-4 l-box-middle">
-                    <div class="name">미리보기</div>
-                    <div class="content font-size-js">바람소리와 스산한 빗소리가 사무실 창밖을 때린다.</div>
+                    <div class="name"><h1>미리보기</h1></div>
+                    <!--<div class="content font-size-js">바람소리와 스산한 빗소리가 사무실 창밖을 때린다.</div>-->
+                    <div th:class="'content font-size-js ' + (${setting.fontFamily == '1' ? 'noto-sans-k' : setting.fontFamily == '2' ? 'nanum-pen-s' : setting.fontFamily == '3' ? 'sunflower' : setting.fontFamily == '4' ? 'dongle': 'btn'})">내가 만든 쿠키, 너를 위해 구웠지</div>
+                    <div th:text="${setting.fontFamily}" class="dbFont d-none">1</div> <!-- JS에 DB값을 넘겨주기 위해 필요한 값 -->
                 </div>
 
 
@@ -36,13 +37,13 @@
                     <form action="./font/update" method="post">
                         <div class="flex-jfy-center" style="width:288px; flex-wrap: wrap;">
                             <input class="radio-btn d-none" type="radio" name="font" id="font-1" th:value="${font[0].id}" value="1" checked th:checked="${font[0].id}==${setting.fontFamily}" >
-                            <label class="box-short font-s-box" for="font-1" th:text="${font[0].name}">노토 산스 코리아</label>
+                            <label class="box-short font-s-box noto-sans-k" for="font-1" th:text="${font[0].name}">노토 산스 코리아</label>
                             <input class="radio-btn d-none" type="radio" name="font" id="font-2" th:value="${font[1].id}" value="2" checked th:checked="${font[1].id}==${setting.fontFamily}">
-                            <label class="box-short font-s-box mgl-2" for="font-2" th:text="${font[1].name}">나눔 팬 스크립트</label>
+                            <label class="box-short font-s-box mgl-2 nanum-pen-s" for="font-2" th:text="${font[1].name}">나눔 팬 스크립트</label>
                             <input class="radio-btn d-none" type="radio" name="font" id="font-3" th:value="${font[2].id}" value="3" checked th:checked="${font[2].id}==${setting.fontFamily}">
-                            <label class="box-short font-s-box mgl-2" for="font-3" th:text="${font[2].name}">선프라워</label>
+                            <label class="box-short font-s-box mgl-2 sunflower" for="font-3" th:text="${font[2].name}">선프라워</label>
                             <input class="radio-btn d-none" type="radio" name="font" id="font-4" th:value="${font[3].id}" value="4" checked th:checked="${font[3].id}==${setting.fontFamily}">
-                            <label class="box-short font-s-box mgl-2" for="font-4" th:text="${font[3].name}">동글</label>j
+                            <label class="box-short font-s-box mgl-2 dongle" for="font-4" th:text="${font[3].name}">동글</label>
                         </div>
                         <div class="l-box-short mgt-4">
                             <h1 class="name">글꼴크기</h1>
@@ -51,46 +52,45 @@
                             <input name="fontSize" class="font-adjuster" type="range" min="16" max="28" value="16" step="6" th:value="${#strings.equals(setting.fontSize,'1') ? 16 : (#strings.equals(setting.fontSize,'2') ? 22 : 28)}" />
                         </div>
                         <div class="mgt-4 lc-center">
-                            <input class="btn3" type="submit" value="적용">
-                            <input class="btn3 font-s-box mgl-6-f" type="reset" value="초기화">
+                            <input class="btn3 cursor-p" type="submit" value="적용">
+                            <input class="btn3 font-s-box mgl-6-f cursor-p" type="reset" value="초기화">
                         </div>   
                     </form>
                 </div>
             </div>
         </section>
 
-        <div class="footer">
+		<div class="footer">
             <div class="container-nav color-white-1">
-                
                 <div class="nav-1 lc-center">
-                    <a href="../index.html" class="lc-vertical-alignment">
+                    <a href="/member/diary/list" class="lc-vertical-alignment">
                     <div class="nav-icon bookmark-btn"></div>
                     <div class="h6 mgt-2">모아보기</div>
                 </a>
                 </div>
                 
                 <div class="nav-2 lc-center">
-                    <a href="../index.html" class="lc-vertical-alignment">
+                    <a href="https://www.youtube.com/@newlec1" class="lc-vertical-alignment">
                         <div class=" nav-icon speech-bubble-btn"></div>
                         <div class="h6 mgt-2">커뮤니티</div>
                     </a>
                 </div>
 
                 <div class="nav-main lc-center">
-                    <a href="../../main.html" class="lc-vertical-alignment">
+                    <a href="/member/main" class="lc-vertical-alignment">
                         <div class="nav-icon book-btn"></div>
                         <div class="h6 mgt-2">메인화면</div>
                     </a>
                 </div>
     
                 <div class="nav-4 lc-center">
-                    <a href="../../analysis/main" class="lc-vertical-alignment" >
+                    <a href="/member/analysis/main" class="lc-vertical-alignment" >
                         <div class="nav-icon  hourglass-btn"></div>
                         <div class="h6 mgt-2">돌아보기</div>
                     </a>
                 </div>
                 <div class="nav-5 lc-center">
-                    <a href="../setting/main" class="lc-vertical-alignment">
+                    <a href="/member/setting/main" class="lc-vertical-alignment">
                         <div class="nav-icon gear-btn"></div>
                         <div class="h6 mgt-2">설정하기</div>
                     </a>

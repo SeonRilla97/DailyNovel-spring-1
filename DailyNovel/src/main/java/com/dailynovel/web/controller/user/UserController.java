@@ -86,20 +86,25 @@ public class UserController {
 	
 	@RequestMapping("mailCheck")
 	@ResponseBody
-	public String mailCheck(String email) throws Exception{
+	public String mailCheck(String email , HttpSession session) throws Exception{
 		
+		int checkEmail = service.FindSameEmail(email);
+		if(checkEmail != 1) {
 		Random rand = new Random();
-		int checkNum = rand.nextInt(999999);
+		int authCode = rand.nextInt(999999);
+		session.setAttribute("authCode",authCode);
 	    MimeMessage message = sender.createMimeMessage();
 	    // use the true flag to indicate you need a multipart message
 	    MimeMessageHelper helper = new MimeMessageHelper(message, false);
 	    helper.setTo(email);
 	    helper.setSubject("DailyNovel 회원가입 인증 메일입니다.");
 	    // use the true flag to indicate the text included is HTML
-	    helper.setText("<html><body>인증번호:"+checkNum+"</body></html>",true);
+	    helper.setText("<html><body>인증번호:"+authCode+"</body></html>",true);
 	    // let's include the infamous windows Sample file (this time copied to c:/)
 	    sender.send(message);
-	    return "success";
+	    return "true";
+		}
+		return "false";
 	  }
 	
 	@RequestMapping("nicknameCheck")
@@ -113,4 +118,23 @@ public class UserController {
 		}		
 		return "false";
 	}
+	
+	@RequestMapping("emailCheckNum")
+	@ResponseBody
+	public String emailCheckNum(int emailCheckNum , HttpSession session){
+
+		int authCode =(int) session.getAttribute("authCode");
+		System.out.println(authCode);
+		System.out.println(emailCheckNum);
+		if(emailCheckNum==authCode) {	
+			  Random rand = new Random();
+		      int  checkNum = rand.nextInt(999999);
+		    session.setAttribute("authCode", checkNum);
+			return "true";
+		}
+
+		return "false";
+	};
+	
+	
 }

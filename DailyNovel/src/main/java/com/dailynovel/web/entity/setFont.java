@@ -5,15 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-@Builder
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-public class Analysis {
-	
-	private String honestyRange;
-	private Integer count;
-	private Integer honesty;
-
+@Builder
+public class setFont {
+	private int id;
+	private String name;
 }
