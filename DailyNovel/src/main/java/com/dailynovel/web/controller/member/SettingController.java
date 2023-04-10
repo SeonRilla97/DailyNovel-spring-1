@@ -84,6 +84,7 @@ public class  SettingController {
 				HttpServletRequest request
 				) throws Exception {
 			
+			if (profile != null && !profile.isEmpty()) { // 사용자가 새로운 이미지를 등록 했을 때만 실행하기
 			// 전에 등록한 프로필 사진 사진파일 삭제하는 코드?
 			String beforeImagePath = System.getProperty("user.home"); // 컴퓨터의 사용자 경로 추출 
 // 노트북 경로 Path filePath = Paths.get( beforeImagePath + "/Desktop/proproprj/DailyNovel/src/main/webapp/img/profile/" + imageName);
@@ -100,10 +101,8 @@ public class  SettingController {
 				System.out.println(e.getMessage());
 			}
 			
-
-			
 			String realPath= "";
-			if (profile != null && !profile.isEmpty()) { // 사용자가 새로운 이미지를 등록 했을 때만 실행하기
+			
 				Date date = new Date(System.currentTimeMillis()); // 현재 시간 측정
 				SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS"); // 시간 측정 포멧 지정
 				String time = format.format(date); // 측정한 시간을 포멧화 하기

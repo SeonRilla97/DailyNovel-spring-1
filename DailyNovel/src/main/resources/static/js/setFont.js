@@ -3,21 +3,20 @@
 
 let fontRadios = document.querySelectorAll(".flex-jfy-center input[type=radio]");
 
-const dbFont = document.querySelector('.dbFont').textContent;
+const dbFont = document.querySelector('.dbFont').textContent;/* 초기화를 누를 때 db의 값으로 변경하기 위해 만들어 둔 변수 */
 //console.log(dbFont);
 
 fontRadios.forEach(radio => {
   radio.onchange = () => {
-    // 선택된 체크박스의 값을 가져옵니다.
+    // 선택된 체크박스의 값을 가져옵니다. (radio버튼에 설정된 번호 호출)
     var selectedFontId = radio.value;
-
     // 폰트 변경 함수 호출
     changeFont(selectedFontId);
   };
 });
 
 
-function changeFont(selectedFontId) {
+function changeFont(selectedFontId) { // 라디오 버튼에 해당하는 폰트의 css용 클래스명 뽑아오기
   // 선택된 체크박스에 맞는 클래스 이름을 생성합니다.
   var selectedFontClass = "";
   switch(selectedFontId) {
@@ -36,8 +35,8 @@ function changeFont(selectedFontId) {
   }
 
   // "content" 요소에 선택된 폰트 클래스를 추가합니다.
-  var contentElem = document.querySelector(".content");
-  contentElem.classList.remove("noto-sans-k", "nanum-pen-s", "sunflower", "dongle"); // 기존 클래스 제거
+  var contentElem = document.querySelector(".content"); // class=""를 적기위한 태그
+  contentElem.classList.remove("noto-sans-k", "nanum-pen-s", "sunflower", "dongle"); // 기존 폰트관련 클래스 제거
   contentElem.classList.add(selectedFontClass); // 선택한 폰트 클래스 추가
 }
 
