@@ -22,4 +22,5 @@ public class DiaryPreview {
 	private String title;
 	private String content;
 	private int diaryDate;
+	private int diaryId;
 }

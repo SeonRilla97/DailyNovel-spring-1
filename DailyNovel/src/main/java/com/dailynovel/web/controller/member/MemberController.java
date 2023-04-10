@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.Feeling;
-import com.dailynovel.web.entity.Order;
-import com.dailynovel.web.entity.Setting;
 import com.dailynovel.web.entity.Template;
 import com.dailynovel.web.entity.Weather;
 import com.dailynovel.web.service.ListService;

@@ -38,7 +38,7 @@
 	<select id="findAllById" resultMap="DiaryResultMap">
 		select id, title, text as content,
 		date_format(reg_date, '%Y-%m-%d') as reg_date,
-		feeling_id,weather_id, member_id,template_id
+		feeling_id,weather_id, member_id,template_id,id
 		FROM dailynoveldb.diary
 		<trim prefix="where" prefixOverrides="AND |OR ">
 			<if test="date != null">
