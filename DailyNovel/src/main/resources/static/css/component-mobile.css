@@ -807,7 +807,7 @@ color: white;
 .l-box-mini > .value {
   height: 3.75rem;
   
-  background-size: 60%;
+  background-size: 55%;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -1172,7 +1172,8 @@ color: white;
 /* 메인블럭 overflow:auto를 하기위한 설정 */
 .main-size{
   min-height: 100px; max-height: auto; 
-/*  width:412px;*/
+/*  width:412px;
+*/
   padding-bottom: 0.5rem;
 }
 .overflow-auto{
