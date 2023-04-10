@@ -27,5 +27,7 @@ public interface AnalysisService {
 	List<How> getHow(String name, Integer count);
 
 	List<How> getHow();
+	
+	List<How> getHowTop();
 
 }

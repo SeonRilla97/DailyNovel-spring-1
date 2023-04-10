@@ -15,4 +15,5 @@ public class How {
 
 	private String name;
 	private Integer count;
+	private String description;
 }

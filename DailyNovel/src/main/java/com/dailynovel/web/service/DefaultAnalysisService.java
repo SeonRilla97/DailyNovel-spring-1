@@ -83,6 +83,13 @@ public class DefaultAnalysisService implements AnalysisService {
 	}
 
 
+	@Override
+	public List<How> getHowTop() {
+		// TODO Auto-generated method stub
+		return repository.findTopHow(null, null);
+	}
+
+
 	
 
 

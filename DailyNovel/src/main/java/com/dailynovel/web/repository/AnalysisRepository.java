@@ -35,6 +35,8 @@ public interface AnalysisRepository {
 	
 	List<How> findHow(String name, Integer count);
 	
+	List<How> findTopHow(String description, Integer count);
+	
 	
 
 	 
