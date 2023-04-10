@@ -16,9 +16,24 @@ function callbackforDiaryPreview(result) {
 //            console.log(acDate.textContent);
             let curDate = acDate.textContent;
             htmlText = "";
+
+            let firstDiaryPreviewContent;
             //미리보기에 값 넣기
             if(diaryData[curDate]){ 
-                for(let diary of diaryData[curDate]){
+                // for(let diary of diaryData[curDate]){
+                for (let index = 0 ; index < diaryData[curDate].length ; index++){
+                    diary = diaryData[curDate][index];
+                    // if(index ==0 ){폐기 - 1 조장님이 꺼지랭}
+                    //     //미리보기의 첫번째 텍스트 컨텐츠를 효과를 주기 위해 뺀다.
+                    //     firstDiaryPreviewContent = diary.content;
+                    //     console.log(diary.content);
+                    //     htmlText += `<div class="item item-diary" onClick ="location.href='/member/diary/detail?diaryId=${diary.diaryId}'">
+                    //     <div class="h2">${diary.title}</div>
+                    //     <div class ="active" id="preview-content">
+                    //     </div>
+                    //    </div>`;
+                    //    continue;
+                    // }
                     htmlText += `<div class="item item-diary" onClick ="location.href='/member/diary/detail?diaryId=${diary.diaryId}'">
                     <div class="h2">${diary.title}</div>
                     <div>
@@ -44,11 +59,34 @@ function callbackforDiaryPreview(result) {
                 ".slider .pagination",
                 ".slider .pagination > li" 
                 );
+            let PreviewOne = sliderAboutDate.querySelector(".slider .item-diary:nth-child(1) div:nth-child(1)");
+            let PreviewTwo = sliderAboutDate.querySelector(".slider .item-diary:nth-child(1) div:nth-child(2)");
+            if(PreviewOne){
+                PreviewOne.classList.add("active");
+                PreviewTwo.classList.add("active");
+            }
+                //첫번째 미리보기 글쓰기 위한 코드(폐기-1 조장님이 꺼지랭)
+            // if(diaryData[curDate]){
+            //     //그릴곳 지정
+            //     let firstPreview = sliderAboutDate.querySelector("#preview-content");
+            //     //그릴 텍스트 받아오기
+            //     let content = firstDiaryPreviewContent;
+            //     //텍스트가 null이라면 안그리고 return
+            //     if(content == null) return;
+            //     //글자 하나씩 setTimeout에 각자의 지연시간을 줘서 서서히 나타나게 동작
+            //     /* 사실 글씨 다 지우고 새로 그리는 방식이라서 안하고 싶지만,
+            //     이게 아니면  appendChild 이용해서 태그를 추가하는 방식으로 span태그가 마구마구 생기는 방식인데
+            //     그건 또 하기싫어서 그냥 지우고 새로 그리는 방식으로 합니다.*/
+            //     for(let tIdx = 0 ; tIdx <content.length; tIdx++){
+            //         setTimeout(function(){
+            //         firstPreview.innerHTML += content[tIdx];
+            //         },tIdx*50);
+            //     }
+            // }
         }
+
     }
 }
-
-new Date()
 /*
  //일기 미리보기
  <div class="item item-diary">
@@ -66,3 +104,25 @@ new Date()
  <!-- <div class="ic-add-diary"></div> -->
 </div>
 */
+
+
+
+//=========== 태그가  변화될때 이벤트 붙는거 =======
+// let mutationCounter = 0;
+// let sliderAboutDate = document.querySelector("#previewSlider")
+// var observer = new MutationObserver(function(mutations) {
+//     mutations.forEach(function(mutation) {
+//     mutationCounter++;
+//     console.log('태그 구성요소가 변경되었습니다.');
+
+//     if(mutationCounter==2){
+//         console.log("2번째 태그 변화 발생(태그생성)");
+//         mutationCounter=0;
+//     }
+//     });
+//   });
+  
+//   var target = document.querySelector('div');
+//   var config = { childList: true, subtree: true };
+  
+//   observer.observe(sliderAboutDate, config);

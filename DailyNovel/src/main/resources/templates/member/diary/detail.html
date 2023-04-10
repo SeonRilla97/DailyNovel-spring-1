@@ -48,7 +48,8 @@
         <div class="icon question-mark">?</div>
       </div>
       <div class="lc-center">
-        <div class="box-short " th:text="${diary.regDate}" >2023년 01월 27일</div>
+        <div class="box-short " th:text="${#dates.format(diary.regDate, 'yyyy년 MM월 dd일')}" >2023년 01월 27일</div>
+        <!-- <div class="box-short " th:text="${diary.regDate}" >2023년 01월 27일</div> -->
       </div>
       <div class="lc-center">
         <div class="icon close-btn"></div>
@@ -63,7 +64,12 @@
         </div>
         <div class="l-box-mini">
           <div class="name lc-center color-white-1">기분</div>
-          <div class="value touched-img" th:text="${diary.feelingName}">햇님</div>
+          <div class="value touched-img" th:switch="${diary.feelingName}" th:style="'background-image:url('+ @{/image/feeling/{img}(img=${diary.feelingImg})} +');'">
+            <!-- <span class="value" th:case="화남" 
+              >
+            </span>
+              햇님 -->
+          </div>
         </div>
         <div class="l-box-mini">
           <div class="name lc-center color-white-1">날씨</div>
@@ -77,9 +83,7 @@
           <div class="editor-title pdl-3 pdr-3 flex-aln-center" th:text="${diary.title}"></div>
         </div>
         
-        <div id="content-editor" class="editor-base mgt-2 pdt-3 pdl-3 pdr-3" th:text="${diary.content}">
-        	나마자기 구조개와 함께 하와이에 가고싶다.
-        </div>
+        	<textarea readonly id="content-editor" class="detail editor-base-detail mgt-2 pdt-4 pdl-4 pdr-4 " th:text="${diary.content}">나마자기 구조개와 함께 하와이에 가고싶다.</textarea>
 
       </div>
     

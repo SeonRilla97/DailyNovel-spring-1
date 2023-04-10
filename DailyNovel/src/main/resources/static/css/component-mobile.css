@@ -454,13 +454,23 @@
 
   text-align: center;
   font-size: large;
-
   white-space: normal;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.slider .item-diary:nth-child(1) div:nth-child(1),
+.slider .item-diary:nth-child(1) div:nth-child(2){
+  opacity : 0;
+  transition : all 1.5s;
+}
+.slider .item-diary:nth-child(1) div:nth-child(1).active,
+.slider .item-diary:nth-child(1) div:nth-child(2).active{
+  /* background-color: #267191; */
+  opacity: 1;
+}
+
 /* mainpage 미리보기 부분 끝 */
 .slider .write-btn {
   background-color: #99999920;
@@ -843,6 +853,7 @@ color: white;
   
   /* background-color: #cecece; */
 }
+
 
 /* 모달 파트 */
 .reg-select-modal{
@@ -1530,3 +1541,27 @@ feeling view
 
 
 
+/* 모재영 화이트 스페이스 */
+.detail{
+    white-space: pre-line;
+}
+
+
+.editor-base-detail{
+
+  box-sizing:border-box;
+
+  width: 100%;
+  height: 85%;
+
+  border-spacing: 30px;
+  
+  border: none;
+  border-width: 0;
+  border-radius: 10px;
+
+  background-color: #f3f3f3;
+
+  
+  /* background-color: #cecece; */
+}
