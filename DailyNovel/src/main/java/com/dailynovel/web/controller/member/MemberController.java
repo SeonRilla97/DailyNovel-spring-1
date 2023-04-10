@@ -121,26 +121,26 @@ public class MemberController {
 	//수정 디테일 추가 
 		@RequestMapping("/diary/detail")
 		public String detail(
-				Model model,
-				@RequestParam(required = true, defaultValue = "1", name="diaryId") Integer diaryId
+			Model model,
+			@RequestParam(required = true, defaultValue = "1", name="diaryId") Integer diaryId
 //				@RequestParam(required = true, defaultValue = "1", name="id") Integer memberId,
-				) {
-			
-			DiaryView diary = diaryservice.viewDiary(diaryId);
-			
+			) {
+		
+		DiaryView diary = diaryservice.viewDiary(diaryId);
+		
 //			d.getRegDate();
 //			d.getTemplateId();
 //			d.getFeelingId();
 //			d.getWeatherId();
 //			d.getTitle();
 //			d.getContent();
-			
-			//객체 통째로 보내준다.
-			model.addAttribute("diary", diary);
-			
-			
-			
-			return "/member/diary/detail";
+		
+		//객체 통째로 보내준다.
+		model.addAttribute("diary", diary);
+		
+		
+		
+		return "/member/diary/detail";
 		}
 		
 		@RequestMapping("/diary/edit")
@@ -148,7 +148,6 @@ public class MemberController {
 			return "/member/diary/edit";
 		}
 
-	}
-
-
 }
+
+
