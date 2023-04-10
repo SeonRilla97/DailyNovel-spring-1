@@ -27,5 +27,6 @@ public class Setting {
 	private String kakaoAlarmSwitch;
 	private String alarmTime;
 	//private MultipartFile profileImage2;
+
 }
 

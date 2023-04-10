@@ -4,7 +4,8 @@ import java.util.List;
 
 import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.Feeling;
-import com.dailynovel.web.entity.Analysis;
+import com.dailynovel.web.entity.Honesty;
+import com.dailynovel.web.entity.How;
 
 public interface AnalysisService {
 	
@@ -19,8 +20,12 @@ public interface AnalysisService {
 
 	List<Feeling> getValue(String name, Integer frequency);
 
-	List<Analysis> getHonesty();
+	List<Honesty> getHonesty();
 
-	List<Analysis> getHonesty(String honestyRange, Integer count);
+	List<Honesty> getHonesty(String honestyRange, Integer count);
+	
+	List<How> getHow(String name, Integer count);
+
+	List<How> getHow();
 
 }

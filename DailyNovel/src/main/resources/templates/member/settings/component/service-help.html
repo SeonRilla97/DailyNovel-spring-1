@@ -5,15 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>고객지원</title>
-    <link rel="stylesheet" href="../../../css/reset.css">
-    <link rel="stylesheet" href="../../../css/layout.css">
-    <link rel="stylesheet" href="../../../css/box.css">
-    <link rel="stylesheet" href="../../../css/button.css">
-    <link rel="stylesheet" href="../../../css/style.css">
-    <link rel="stylesheet" href="../../../css/icon.css">
-    <link rel="stylesheet" href="../../../css/component-mobile.css">
-    <link rel="stylesheet" href="../../../css/util.css">
-
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/box.css">
+    <link rel="stylesheet" href="/css/button.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/icon.css">
+    <link rel="stylesheet" href="/css/component-mobile.css">
+    <link rel="stylesheet" href="/css/util.css">
+	
+	<script src="/js/setService.js" defer=defer="defer"></script>
 </head>
 
 <body>
@@ -33,6 +34,8 @@
 	                <input type="text" name="name" placeholder="이름을 적어주세요." maxlength='5' th:value="${setting.nickName}" readonly>
 	                <label for="email">이메일</label>
 	                <input type="text" name="email" placeholder="이메일을 적어주세요." maxlength='30'th:value="${setting.email}" readonly>
+	                <label for="id">id</label>
+	                <input type="text" name="id" placeholder="아이디." maxlength='30'th:value="${setting.id}" readonly>
                 </div>
                 <div class="l-box-short mgt-5">
                     <fieldset class="name">문의종류</fieldset>
@@ -45,13 +48,9 @@
                             <input type="radio" name="kind" id="" value="그외" checked>
                         </div>
                 </div>
-                <div class="flex-jfy-center mgt-5">
-                    <input class="btn3" type="submit" value="보내기">
-                </div>
-
-
-
-
+                    <div class="flex-jfy-center mgt-5">
+                        <input class="btn3" type="submit" value="보내기" style="cursor: pointer;">
+                    </div>
             </form>
             <iframe id="iframe1" name="iframe1" class="d-none"></iframe>
         </div>

@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dailynovel.web.entity.Feeling;
-import com.dailynovel.web.entity.Analysis;
+import com.dailynovel.web.entity.Honesty;
+import com.dailynovel.web.entity.How;
 import com.dailynovel.web.service.AnalysisService;
 
 @RestController("apiAnalysisController")
@@ -45,41 +46,24 @@ public class  AnalysisController {
 			
 }
 	@GetMapping("honesty")
-	public List<Analysis> getHonesty(
+	public List<Honesty> getHonesty(
 			
 			@RequestParam(name = "honestyRange") String honestyRange,
 			@RequestParam(name = "count") Integer count){					
-			List<Analysis> truely = service.getHonesty(honestyRange, count);
-			return truely;
+			List<Honesty> list = service.getHonesty(honestyRange, count);
+			return list;
 			
 }
-//	@GetMapping("feeling-view-detail")
-//	public String feelingViewDetail(Model model) {
-//		List<Feeling> list = service.getCount();
-//		System.out.println(list);
-//		model.addAttribute("list", list);
-//		return "member/diary/analysis/looking-back/feeling-view-details";
-//	}
+
 //	
-//		@GetMapping("honesty")
-//		public String honesty(Model model) {
-//			List<Feeling> list = service.getList();
-//			model.addAttribute("list", list);
-//			return "analysis/honesty";
-//		}
-//	
-//	@GetMapping("How")
-//	public String How(Model model) {
-//		List<Feeling> list = service.getList();
-//		model.addAttribute("list", list);
-//		return "analysis/How";
-//	}
-//	
-		@GetMapping("main")
-		public String main() {
+	@GetMapping("how")
+	public List<How> getHowChart(
 			
-			return "member/diary/analysis/main";
-		}
+			@RequestParam(name = "name", defaultValue = "자유") String name,
+			@RequestParam(name = "count") Integer count){					
+			List<How> list = service.getHow(name, count);
+			return list;
+	}
 	
 
 

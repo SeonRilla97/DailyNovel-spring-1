@@ -16,10 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     
-    <script th:inline="javascript">
-    var feelingname = /*[[${Name}]]*/ '';
-    var feelingdata = /*[[${Value}]]*/ '';
-	</script>
+  
     
 </head>
 <body class="container-1" id="app">
@@ -42,7 +39,7 @@
                 </div>
 
                 <div class="lc-space-around pdb-5">
-                    <div class="btn-feeling"><a class="" href="/analysis/feeling"> 이전</a></div>
+                    <div class="btn-feeling"><a class="" href="/member/analysis/feeling"> 이전</a></div>
                 </div>
 
         </div>
@@ -72,7 +69,7 @@
                 </div>
     
                 <div class="nav-4 lc-center">
-                    <a href="/analysis/main" class="lc-vertical-alignment" >
+                    <a href="/member/analysis/main" class="lc-vertical-alignment" >
                     <div class="nav-icon  hourglass-btn"></div>
                     <div class="h6 mgt-2">돌아보기</div>
                 </a>

@@ -8,13 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class  AccountRecoveryController {
 
-	@RequestMapping("login")
+	@RequestMapping("email")
 	public String login() {
-		return "/WEB-INF/view/user/login.jsp";
+		return "/user/account-recovery/email";
 	}
 
-	@RequestMapping("signup")
+	@RequestMapping("password")
 	public String signUp() {
-		return "/WEB-INF/view/user/sign_up.jsp";
+		return "/user/account-recovery/password";
 	}
+	
+	
+	
+	
 }

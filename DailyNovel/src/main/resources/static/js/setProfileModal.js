@@ -9,20 +9,12 @@ window.addEventListener("load", function() {
 		modal.style.display = "flex";
 		setTimeout(function(){
 			modal.style.display = "none";
-		cleanclearInterval(setTime);
+			console.log("없으면 어떻게 됩니까?");
+		//cleanclearInterval(setTime);   // 셋타임아웃 반복 끄기, 근데 없어도 그냥 꺼지는 거 같다.
 		},5000);
 };
 		
-	closeBtn.onclick = function() {
-		modal.style.display = "none";
-	}
-
-
-/*	// 추가: 모달창 열어서 텍스트 변경하기
-	modal.addEventListener("click", function(e) {
-		// 모달창 바깥을 클릭했을 때 모달창 닫기
-		if (e.target == this) {
-			modal.style.display = "none";
-		}
-	});*/
+//	closeBtn.onclick = function() {
+//		modal.style.display = "none";
+//	}
 });
