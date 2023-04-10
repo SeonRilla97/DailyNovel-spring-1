@@ -69,6 +69,15 @@
 	order by count DESC;
 	</select>
 	
+	<select id ="findTopHow" resultType="How">
+	select t.name, d.member_id, count(d.template_id) as count, t.description
+	from template t
+	inner join diary d on d.template_id = t.id
+	group by t.name, d.member_id
+	having d.member_id = 1
+	order by count DESC;
+	</select>
+	
 	
 	
 

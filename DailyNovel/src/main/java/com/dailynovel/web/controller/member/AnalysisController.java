@@ -58,7 +58,9 @@ public class  AnalysisController {
 	@GetMapping("member/analysis/how")
 	public String How(Model model) {
 		List<How> list = service.getHow();
+		How Tophow = service.getHowTop().get(0); // 첫 번째 요소만 가져오기
 		model.addAttribute("list", list);
+		model.addAttribute("Tophow", Tophow);
 		return "member/diary/analysis/looking-back/how";
 	}
 //	
