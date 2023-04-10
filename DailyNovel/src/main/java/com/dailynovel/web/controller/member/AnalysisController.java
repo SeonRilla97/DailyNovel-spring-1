@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.dailynovel.web.entity.Feeling;
-import com.dailynovel.web.entity.Analysis;
+import com.dailynovel.web.entity.Honesty;
+import com.dailynovel.web.entity.How;
 import com.dailynovel.web.service.AnalysisService;
 
 @Controller
-@RequestMapping("/analysis")
+@RequestMapping("/")
 public class  AnalysisController {
 
 	@Autowired
@@ -21,7 +22,7 @@ public class  AnalysisController {
 	
 	
 	
-	@GetMapping("feeling")
+	@GetMapping("member/analysis/feeling")
 	public String feeling(Model model) {
 		List<Feeling> rank = service.getFeelingRank();
 		Feeling Toprank = service.getFeelingTopRank().get(0); // 첫 번째 요소만 가져오기
@@ -32,14 +33,14 @@ public class  AnalysisController {
 	}
 	
 	
-	@GetMapping("feeling-chart")
+	@GetMapping("member/analysis/feeling-chart")
 		public String feelingChart(Model model) {
 		List<Feeling> Value = service.getValue();
 		model.addAttribute("Value", Value);
 		return "member/diary/analysis/looking-back/feeling-chart";
 	}
 	
-	@GetMapping("feeling-view-detail")
+	@GetMapping("member/analysis/feeling-view-detail")
 	public String feelingViewDetail(Model model) {
 		List<Feeling> list = service.getCount();
 		System.out.println(list);
@@ -47,21 +48,23 @@ public class  AnalysisController {
 		return "member/diary/analysis/looking-back/feeling-view-details";
 	}
 	
-		@GetMapping("honesty")
+		@GetMapping("member/analysis/honesty")
 		public String honesty(Model model) {
-			List<Analysis> list = service.getHonesty();
+			List<Honesty> list = service.getHonesty();
 			model.addAttribute("list", list);
 			return "member/diary/analysis/looking-back/honesty";
 		}
 //	
-//	@GetMapping("How")
-//	public String How(Model model) {
-//		List<Feeling> list = service.getList();
-//		model.addAttribute("list", list);
-//		return "analysis/How";
-//	}
+	@GetMapping("member/analysis/how")
+	public String How(Model model) {
+		List<How> list = service.getHow();
+		How Tophow = service.getHowTop().get(0); // 첫 번째 요소만 가져오기
+		model.addAttribute("list", list);
+		model.addAttribute("Tophow", Tophow);
+		return "member/diary/analysis/looking-back/how";
+	}
 //	
-		@GetMapping("main")
+		@GetMapping("member/analysis/main")
 		public String main() {
 			
 			return "member/diary/analysis/main";

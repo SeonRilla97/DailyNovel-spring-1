@@ -66,3 +66,9 @@ a:hover{
 input:focus {
 	outline: none;
 }
+/* 추가자: 이동혀우 -> input tag에 type이 number일시 옆에 증가 감소 버튼 사라지게*/
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}

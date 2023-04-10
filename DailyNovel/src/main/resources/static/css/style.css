@@ -1,5 +1,8 @@
 /* 나눔 글꼴 임포트 */
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+/* 설정 폰트 임포트 */
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Sunflower:wght@300;500;700&display=swap');
+
 /* -------------------------------------------------------------  */
 
 /* 앱 기본 폰트 */
@@ -8,6 +11,23 @@ html {
 	font: inherit;
 	font-family: 'Nanum Gothic', sans-serif;
 	vertical-align: baseline;
+}
+/* 설정 폰트 */
+.noto-sans-k{
+    font-size: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.nanum-pen-s{
+    font-size: 100%;
+    font-family: 'Nanum Pen Script', cursive;
+}
+.sunflower{
+    font-size: 100%;
+    font-family: 'Sunflower', sans-serif;
+}
+.dongle{
+    font-size: 100%;
+    font-family: 'Dongle', sans-serif;
 }
 /* color - 값이 오를수록 진해짐.*/
 

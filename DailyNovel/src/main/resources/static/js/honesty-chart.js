@@ -14,7 +14,7 @@ fetch("http://localhost:8080/analysis1/honesty?honestyRange=10&count=5", request
     const myChart = new Chart(ctx, {
       type: 'polarArea',
       data: {
-        labels: ['0 ~ 20', '21 ~ 40', '41 ~ 60', '61 ~ 80', '81 ~ 100'],
+        labels: extractedData.map(honesty => honesty.honestyRange),
         datasets: [{
           data: extractedData.map(honesty => honesty.count),
           backgroundColor: [

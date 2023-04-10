@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Analysis {
+public class Honesty {
 	
 	private String honestyRange;
 	private Integer count;

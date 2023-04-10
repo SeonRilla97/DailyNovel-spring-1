@@ -55,13 +55,12 @@ window.onload = function() {
 		const checkMail = email.value;
 		const emailReg = new RegExp(/^[a-zA-Z0-9+-_.]+@[a-zA-Z-]+\.[a-zA-Z-.]+$/);
 		if (emailReg.test(checkMail)) {
-			emailLabel.textContent = "이메일";
 			emailLabel.style.color = "#69BC80";
 			isEamilValidate = true;
 			emailCheckBtn.disabled = false;
 			return (true);
 		}
-		emailLabel.textContent = "이메일";
+
 		emailLabel.style.color = "red";
 		isEamilValidate = true;
 		emailCheckBtn.disabled = true;
@@ -69,19 +68,6 @@ window.onload = function() {
 	}
 
 
-
-	//이메일 인증번호 눌렀을때, 서버로 인증번호 전송해달라고 확인하는 이메일을 보내야함
-	function CheckEmailVerify() {
-		//서버로부터 확인받아야 하는것
-		//0. 이메일 형식이 맞는지 페이지에서 확인해야함 (이때부터는 이메일 변경 하면 안됨)
-
-		//1. 내가 쓴 이메일이 DB에 저장되어 있는 이메일인지 확인해야함 (중복확인)
-
-		//2. 서버는 인증번호를 가지고 있으며 이를 사용자 에게 보내줘야함 (서버도 가지고 있어야함)
-
-		//3. 인증확인은 input 태그가 변화할 시 마다 서버로 확인을 받게 할 예정
-
-	}
 	let isValidatePwd =false;
 	
 	function ValidatePwd() {
@@ -90,13 +76,12 @@ window.onload = function() {
 		checkPwd();
 		const PwdReg = new RegExp(/^(?=.*[A-Za-z0-9])(?=.*\d)[A-Za-z0-9\d!@#$%^&*]{8,25}$/);		
 		if (PwdReg.test(validatePwd)) {
-			console.log("비밀번호 완료!");
+	
 			pwdLabel.style.color = "#69BC80";
 			pwd.style.color = "#69BC80";
 			isValidatePwd=true;
 			return (true)
 		}
-		console.log("비밀번호 실패!");
 			isValidatePwd=false;
 		pwdLabel.style.color = "red";
 		pwd.style.color = "red";
@@ -180,7 +165,7 @@ phoneNum.addEventListener('input', () => {
   }
 });
 
-
+  	let isEmailCheck = false;
 	emailCheckBtn.addEventListener('click', function() {
 
 		let emailCheck = email.value;
@@ -190,13 +175,22 @@ phoneNum.addEventListener('input', () => {
 			if (xhr.status === 200) {
 				console.log('data: ' + xhr.responseText);
 				code = xhr.responseText;
+				if(code=='false'){
+					isEmailCheck = false;
+					emailLabel.style.color = "red";
+					alert("중복된 이메일 입니다. ");
+				}
+				else{
+					emailLabel.style.color = "#69BC80";
+					isEmailCheck = true;
+				alert('인증번호가 전송되었습니다.');
+				}
 			}
 
 		};
 		xhr.send();
-		alert('인증번호가 전송되었습니다.');
 	});
-	const 	isemailCheckNum =false;
+	let 	isemailCheckNum =false;
 	function ValidateEmailNumber(){
 		emailCheckNumber = emailCheckNum.value;
 		

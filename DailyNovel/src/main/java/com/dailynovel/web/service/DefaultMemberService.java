@@ -41,4 +41,10 @@ public class DefaultMemberService implements MemberService {
 		return check;
 	}
 
+	@Override
+	public int FindSameEmail(String email) {
+		int checkEmail = repository.getFindId(email);
+		return checkEmail;
+	}
+
 }
