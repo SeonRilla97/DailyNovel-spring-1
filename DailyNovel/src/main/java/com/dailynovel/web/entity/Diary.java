@@ -22,7 +22,7 @@ public class Diary {
 //	private String regDate;
 	private String title;
 	private String content;
-	private int id; // diary Id 추가자 : 선유진
+	private Integer id; // diary Id 추가자 : 선유진
 
 
 }
