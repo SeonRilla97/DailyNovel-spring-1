@@ -44,7 +44,7 @@ public class DefaultDiaryService implements DiaryService {
 	}	
 	
 	@Override
-	public int modifyDiary() {
+	public int modifyDiary(Diary diary) {
 		
 		return 0;
 	}

@@ -7,8 +7,10 @@ fetch("http://localhost:8080/analysis1/honesty?honestyRange=10&count=5", request
   .then(response => response.json())
   .then(data => {
     const extractedData = data.map(honesty => {
-      return {count: honesty.count};
+      return {honestyRange: honesty.honestyRange, count: honesty.count};
     });
+    
+    console.log(extractedData);
 
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {

@@ -1222,6 +1222,9 @@ color: white;
 .cursor-p{
 	cursor: pointer;
 }
+.nondrag{
+	user-select: none;
+}
 
 /*통계 - 권주형 ------------------------------------------------*/
 
