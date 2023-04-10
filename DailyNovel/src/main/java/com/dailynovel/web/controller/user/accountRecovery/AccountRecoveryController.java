@@ -14,7 +14,7 @@ public class  AccountRecoveryController {
 	}
 
 	@RequestMapping("password")
-	public String signUp() {
+	public String password() {
 		return "/user/account-recovery/password";
 	}
 	
