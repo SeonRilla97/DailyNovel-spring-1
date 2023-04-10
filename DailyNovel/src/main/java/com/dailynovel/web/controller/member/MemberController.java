@@ -144,4 +144,5 @@ public class MemberController {
 	public String edit() {
 		return "/member/diary/edit";
 	}
+
 }
