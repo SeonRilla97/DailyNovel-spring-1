@@ -148,7 +148,7 @@ public class MemberController {
 			return "/member/diary/edit";
 		}
 
-	}
-
-
 }
+
+
+
