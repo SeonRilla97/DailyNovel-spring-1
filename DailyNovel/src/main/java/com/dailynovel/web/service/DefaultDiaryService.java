@@ -31,7 +31,7 @@ public class DefaultDiaryService implements DiaryService {
 	@Override
 	public DiaryView viewDiary(Integer id) {
 		// TODO Auto-generated method stub
-		DiaryView d2 = repository.diaryRead(id);
+		DiaryView d2 = repository.findDiaryView(id);
 		
 		return d2;
 	}

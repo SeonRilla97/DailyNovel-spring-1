@@ -1,5 +1,7 @@
 package com.dailynovel.web.entity;
 
+import java.sql.Timestamp;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +16,7 @@ public class DiaryView {
 
 	private int memberId;
 	private Integer honesty;
-	private String regDate;
+	private Timestamp regDate;
 	private String title;
 	private String content;
 	
@@ -22,6 +24,7 @@ public class DiaryView {
 	//기존 분 상속 
 	private String templateName;
 	private String feelingName;
+	private String feelingImg;
 	private String weatherName;
 	
 

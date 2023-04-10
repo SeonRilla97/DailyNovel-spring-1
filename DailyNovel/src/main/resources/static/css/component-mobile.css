@@ -454,13 +454,23 @@
 
   text-align: center;
   font-size: large;
-
   white-space: normal;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.slider .item-diary:nth-child(1) div:nth-child(1),
+.slider .item-diary:nth-child(1) div:nth-child(2){
+  opacity : 0;
+  transition : all 1.5s;
+}
+.slider .item-diary:nth-child(1) div:nth-child(1).active,
+.slider .item-diary:nth-child(1) div:nth-child(2).active{
+  /* background-color: #267191; */
+  opacity: 1;
+}
+
 /* mainpage 미리보기 부분 끝 */
 .slider .write-btn {
   background-color: #99999920;
@@ -1172,7 +1182,8 @@ color: white;
 /* 메인블럭 overflow:auto를 하기위한 설정 */
 .main-size{
   min-height: 100px; max-height: auto; 
-/*  width:412px;*/
+/*  width:412px;
+*/
   padding-bottom: 0.5rem;
 }
 .overflow-auto{
@@ -1221,6 +1232,9 @@ color: white;
 }
 .cursor-p{
 	cursor: pointer;
+}
+.nondrag{
+	user-select: none;
 }
 
 /*통계 - 권주형 ------------------------------------------------*/
