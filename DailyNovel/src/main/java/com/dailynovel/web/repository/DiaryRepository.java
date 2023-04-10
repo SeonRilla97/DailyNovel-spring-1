@@ -20,7 +20,7 @@ public interface DiaryRepository {
 	Diary view(Integer id); //id 추가
 	
 	//detail_view 이용하기s
-	DiaryView diaryRead(Integer id); //id 추가
+	DiaryView findDiaryView(Integer id); //id 추가
 	
 	
 	Set<Integer> getDateByMonthly(int year, int month);

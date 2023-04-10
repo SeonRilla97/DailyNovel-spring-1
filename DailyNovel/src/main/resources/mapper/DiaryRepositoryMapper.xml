@@ -24,6 +24,7 @@
       <result property="memberId" column="member_id" />
       <result property="templateName" column="t_name" />
       <result property="feelingName" column="f_name" />
+      <result property="feelingImg" column="f_img" />
       <result property="weatherName" column="w_name" />
       <result property="content" column="text" />
       <result property="regDate" column="reg_date" />
@@ -96,7 +97,7 @@
 	where id = ${id};
   </select>
   
-  <select id="diaryRead" resultMap="DiaryReadResultMap">
+  <select id="findDiaryView" resultMap="DiaryReadResultMap">
   	
   	SELECT 
   		* 
