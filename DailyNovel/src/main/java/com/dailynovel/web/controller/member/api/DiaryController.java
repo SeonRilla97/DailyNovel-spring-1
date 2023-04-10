@@ -79,7 +79,7 @@ public class DiaryController {
 	Date stringToDate = dateFormat.parse(regDate);
     Timestamp stringToTimestamp = new Timestamp(stringToDate.getTime());  
     
-    Diary diary = new Diary(memberId, templateId, feelingId, weatherId, honesty, stringToTimestamp, title, content);
+    Diary diary = new Diary(memberId, templateId, feelingId, weatherId, honesty, stringToTimestamp, title, content, null);
     
 	service.insertDiary(diary);
 			
