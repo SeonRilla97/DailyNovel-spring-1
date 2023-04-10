@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.dailynovel.web.entity.Feeling;
+import com.dailynovel.web.entity.FeelingPercent;
 import com.dailynovel.web.entity.Honesty;
 import com.dailynovel.web.entity.How;
 import com.dailynovel.web.service.AnalysisService;
@@ -36,6 +37,10 @@ public class  AnalysisController {
 	@GetMapping("member/analysis/feeling-chart")
 		public String feelingChart(Model model) {
 		List<Feeling> Value = service.getValue();
+		FeelingPercent TopPercent = service.getPercent().get(0); // 첫 번째 요소만 가져오기
+		FeelingPercent Percent = service.getPercent().get(3); 
+		model.addAttribute("TopPercent", TopPercent);
+		model.addAttribute("Percent", Percent);
 		model.addAttribute("Value", Value);
 		return "member/diary/analysis/looking-back/feeling-chart";
 	}

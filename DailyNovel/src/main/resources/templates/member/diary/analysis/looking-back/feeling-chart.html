@@ -32,10 +32,9 @@
             
             </div>
                 <div class="">
-                    <p class="box-p font-size20 font-weight-bolder">
-                        이번달은 피곤해요가 기뻐요보다 33% 더 많이 차지했어요
-                        휴식이 필요해요
-                    </p>
+                    <p class="box-p font-size20 font-weight-bolder" th:text="${TopPercent != null and Percent != null} ? ${TopPercent.name + '이 ' + Percent.name + '보다 ' + (TopPercent.percent - Percent.percent) + '% 많이 차지했어요'} : ''">
+					</p>
+
                 </div>
 
                 <div class="lc-space-around pdb-5">

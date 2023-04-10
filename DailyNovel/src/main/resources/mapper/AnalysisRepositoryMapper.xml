@@ -79,6 +79,17 @@
 	order by count DESC;
 	</select>
 	
+	<select id ="findpercent" resultType="Feelingpercent">
+	select 
+	name, 
+	frequency,
+	(select count(d.feeling_id) from diary d where d.member_id = 1) as total,
+	round(frequency / (select count(d.feeling_id) from diary d where d.member_id = 1)*100, 0) as percent
+	from feeling_view
+	where member_id = 1
+	order by percent DESC;
+	</select>
+	
 	
 	
 

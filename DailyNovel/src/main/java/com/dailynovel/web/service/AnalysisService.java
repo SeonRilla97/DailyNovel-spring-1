@@ -2,8 +2,8 @@ package com.dailynovel.web.service;
 
 import java.util.List;
 
-import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.Feeling;
+import com.dailynovel.web.entity.FeelingPercent;
 import com.dailynovel.web.entity.Honesty;
 import com.dailynovel.web.entity.How;
 
@@ -19,6 +19,8 @@ public interface AnalysisService {
 	List<Feeling> getFeelingTopRank();
 
 	List<Feeling> getValue(String name, Integer frequency);
+	
+	List<FeelingPercent> getPercent();
 
 	List<Honesty> getHonesty();
 
