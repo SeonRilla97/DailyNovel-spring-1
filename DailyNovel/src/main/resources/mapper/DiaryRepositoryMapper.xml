@@ -62,6 +62,8 @@
 	#{honesty});  
   </insert>  
   
+
+  
   <select id="getDiaryByMonthly" resultMap="DiaryPreviewResultMap">
   	SELECT 
 	  	substring(text, 1, 60) as content,
