@@ -88,7 +88,6 @@ loginInputBoxPass.addEventListener('keyup', function(){
     
     
     
-    
 //
 //////////////스크롤 이벤트/////////////////////
 //let html = document.querySelector("html");
