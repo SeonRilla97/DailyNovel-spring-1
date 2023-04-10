@@ -138,9 +138,7 @@ public class MemberController {
 		return "/member/diary/detail";
 	}
 
-
 	@RequestMapping("/diary/edit")
 	public String edit() {
 		return "/member/diary/edit";
 	}
-
