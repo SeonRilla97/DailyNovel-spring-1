@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.DiaryPreview;
+import com.dailynovel.web.entity.DiaryView;
 import com.dailynovel.web.repository.DiaryRepository;
 
 @Service
@@ -18,11 +19,23 @@ public class DefaultDiaryService implements DiaryService {
 	@Autowired
 	private DiaryRepository repository;
 	
+
 	@Override
-	public Diary viewDiary() {
+	public Diary Diary(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		Diary d = repository.view(id);
+		
+		return d;
 	}
+
+	@Override
+	public DiaryView viewDiary(Integer id) {
+		// TODO Auto-generated method stub
+		DiaryView d2 = repository.diaryRead(id);
+		
+		return d2;
+	}
+	
 	
 	@Override
 	public void insertDiary(Diary diary) {
@@ -62,6 +75,4 @@ public class DefaultDiaryService implements DiaryService {
 		}
 		return diaryMap;
 	}
-
-
 }

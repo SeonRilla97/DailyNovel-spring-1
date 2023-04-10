@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dailynovel.web.entity.Diary;
+import com.dailynovel.web.entity.DiaryView;
 import com.dailynovel.web.entity.Feeling;
 import com.dailynovel.web.entity.Template;
 import com.dailynovel.web.entity.Weather;
+import com.dailynovel.web.service.DiaryService;
 import com.dailynovel.web.service.ListService;
 import com.dailynovel.web.service.SettingService;
 
@@ -24,6 +26,11 @@ public class MemberController {
 
 	@Autowired
 	private ListService listservice;
+
+	
+	@Autowired
+	private DiaryService diaryservice;
+	
 
 	@RequestMapping("main")
 	public String main() {
@@ -106,6 +113,41 @@ public class MemberController {
 
 		System.out.println(memberId.toString() + wid + tid + fid + regDate);
 		return "/member/diary/list";
+
+	}	
+	
+	
+	//수정 디테일 추가 
+		@RequestMapping("/diary/detail")
+		public String detail(
+				Model model,
+				@RequestParam(required = true, defaultValue = "1", name="diaryId") Integer diaryId
+//				@RequestParam(required = true, defaultValue = "1", name="id") Integer memberId,
+				) {
+			
+			DiaryView diary = diaryservice.viewDiary(diaryId);
+			
+//			d.getRegDate();
+//			d.getTemplateId();
+//			d.getFeelingId();
+//			d.getWeatherId();
+//			d.getTitle();
+//			d.getContent();
+			
+			//객체 통째로 보내준다.
+			model.addAttribute("diary", diary);
+			
+			
+			
+			return "/member/diary/detail";
+		}
+		
+		@RequestMapping("/diary/edit")
+		public String edit() {
+			return "/member/diary/edit";
+		}
+
 	}
+
 
 }
