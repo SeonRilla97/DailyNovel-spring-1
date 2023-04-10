@@ -844,6 +844,7 @@ color: white;
   /* background-color: #cecece; */
 }
 
+
 /* 모달 파트 */
 .reg-select-modal{
   z-index:1;
@@ -1172,7 +1173,8 @@ color: white;
 /* 메인블럭 overflow:auto를 하기위한 설정 */
 .main-size{
   min-height: 100px; max-height: auto; 
-/*  width:412px;*/
+/*  width:412px;
+*/
   padding-bottom: 0.5rem;
 }
 .overflow-auto{
@@ -1529,3 +1531,27 @@ feeling view
 
 
 
+/* 모재영 화이트 스페이스 */
+.detail{
+    white-space: pre-line;
+}
+
+
+.editor-base-detail{
+
+  box-sizing:border-box;
+
+  width: 100%;
+  height: 85%;
+
+  border-spacing: 30px;
+  
+  border: none;
+  border-width: 0;
+  border-radius: 10px;
+
+  background-color: #f3f3f3;
+
+  
+  /* background-color: #cecece; */
+}
