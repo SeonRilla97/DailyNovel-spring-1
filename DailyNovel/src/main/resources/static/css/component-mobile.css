@@ -1219,7 +1219,9 @@ color: white;
 /* feeling */
 
 
-
+.description-pont{
+	line-height: 1.5;
+}
 
 
 .feeling-rank-box{
