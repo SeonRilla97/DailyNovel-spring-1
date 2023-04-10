@@ -61,8 +61,8 @@
 			</div>
 	<hr>
 			<ul class="lists">
-				<li class="list-box" th:each="diary : ${list}">
-					<div class="list-date lc-center h2 font-weight-bolder mgt-2" th:text="${diary.regDate}">2022-22-22</div>
+				<li class="list-box" th:each="diary : ${list}" th:onclick="|location.href='@{/member/diary/detail(diaryId=${diary.id})}'|">
+					<div class="list-date lc-center h2 font-weight-bolder mgt-2" th:text="${#dates.format(diary.regDate, 'yyyy-MM-dd')}">2022-22-22</div>
 					<div class="list-title mgt-3" th:text="${diary.title}">오늘은 힘든 하루</div>
 					<!-- <div class="title"><span class="ib diary">노는게 젤 좋아 친구들 모여라</span><span class="ib date">2022-22-22</span></div> -->
 					<div class="content mgt-2" th:text=${diary.content}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea eum labore eos a deleniti tenetur, libero minima hic at, vel necessitatibus nemo, suscipit rerum vitae expedita porro obcaecati quibusdam repellat.</div>

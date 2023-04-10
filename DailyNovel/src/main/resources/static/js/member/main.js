@@ -8,6 +8,7 @@ function callbackforDiaryPreview(result) {
     const diaryData = result;
     let activedDate =document.querySelectorAll(".calender .date .circle-li");
     let sliderAboutDate = document.querySelector("#previewSlider")
+    console.log(diaryData);
 //    console.log(activedDate);
     for(let acDate of activedDate){
         
@@ -16,10 +17,9 @@ function callbackforDiaryPreview(result) {
             let curDate = acDate.textContent;
             htmlText = "";
             //미리보기에 값 넣기
-            if(diaryData[curDate]){
-                
+            if(diaryData[curDate]){ 
                 for(let diary of diaryData[curDate]){
-                    htmlText += `<div class="item item-diary">
+                    htmlText += `<div class="item item-diary" onClick ="location.href='/member/diary/detail?diaryId=${diary.diaryId}'">
                     <div class="h2">${diary.title}</div>
                     <div>
                         ${diary.content}
@@ -27,7 +27,6 @@ function callbackforDiaryPreview(result) {
                    </div>`;
                 }
             }   
-
             htmlText+= `<div class="item lc-center" >
             <div class="icon-plus" onClick="location.href='/member/diary/guide'"></div>
             <!-- <div class="ic-add-diary"></div> -->
