@@ -53,6 +53,7 @@ public class MemberController {
 	public String modify(Model model,
 			@RequestParam(name = "diaryId") Integer diaryId) {
 		
+		// 		
 		
 		
 		
