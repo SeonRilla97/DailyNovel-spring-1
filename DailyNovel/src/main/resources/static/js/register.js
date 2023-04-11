@@ -1,5 +1,4 @@
 window.addEventListener("load", function(){
-
 	let diaryObj = {
 		memberId: 1,
 		regDate: "",
@@ -10,6 +9,22 @@ window.addEventListener("load", function(){
 		feelingId: null, 
 		honesty: 100	
 	};	
+	
+	const queryString = this.window.location.search;
+	const params = new URLSearchParams(queryString);
+	const tmpName = params.get('tmp');
+	let tmpValueArr = ['free-form','thanks-form','meat-form', 'question-form', 'movie-form','trip-form'];
+	let tmpValueKrArr = ['자유', '감사', '밥', '질문', '영화', '여행'];
+	let tmpTxt = document.querySelector(".reg-tmp-txt");
+
+	for(let i=0; i < tmpValueArr.length; i++){
+		if(tmpName == tmpValueArr[i]){
+			tmpTxt.innerText = tmpValueKrArr[i];				
+			break;
+		}
+	}	
+	diaryObj.templateId = getValueIndex(tmpName,tmpValueArr);
+
 
 	//let diaryObj = {
 	//	"member": null,

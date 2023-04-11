@@ -47,7 +47,10 @@ public class MemberController {
 	}
 
 	@RequestMapping("/diary/register")
-	public String register() {
+	public String register(Model model,
+			@RequestParam(required = true, defaultValue = "free-form", name="tmp") String tmp) {
+			
+			model.addAttribute("tmp", tmp);
 		return "/member/diary/register";
 	}
 
@@ -113,7 +116,6 @@ public class MemberController {
 
 	}
 
-
 	// 수정 디테일 추가
 	@RequestMapping("/diary/detail")
 	public String detail(
@@ -134,7 +136,7 @@ public class MemberController {
 
 		// 객체 통째로 보내준다.
 		model.addAttribute("diary", diary);
-		
+
 		System.out.println(diary.getContent());
 
 		return "/member/diary/detail";
@@ -145,5 +147,3 @@ public class MemberController {
 		return "/member/diary/edit";
 	}
 }
-
-
