@@ -99,7 +99,7 @@ public class UserController {
 	    helper.setTo(email);
 	    helper.setSubject("DailyNovel 회원가입 인증 메일입니다.");
 	    // use the true flag to indicate the text included is HTML
-	    helper.setText("<html><body>인증번호:"+authCode+"</body></html>",true);
+	    helper.setText("<html><body>회원가입 인증번호:"+authCode+"</body></html>",true);
 	    // let's include the infamous windows Sample file (this time copied to c:/)
 	    sender.send(message);
 	    return "true";
@@ -123,18 +123,19 @@ public class UserController {
 	@ResponseBody
 	public String emailCheckNum(int emailCheckNum , HttpSession session){
 
-		int authCode =(int) session.getAttribute("authCode");
-		System.out.println(authCode);
+		int passwordChangeAuthCode =(int) session.getAttribute("authCode");
+		System.out.println(passwordChangeAuthCode);
 		System.out.println(emailCheckNum);
-		if(emailCheckNum==authCode) {	
+		if(emailCheckNum==passwordChangeAuthCode) {	
 			  Random rand = new Random();
 		      int  checkNum = rand.nextInt(999999);
-		    session.setAttribute("authCode", checkNum);
+		    session.setAttribute("passwordChangeauthCode", checkNum);
 			return "true";
 		}
 
 		return "false";
 	};
 	
+
 	
 }

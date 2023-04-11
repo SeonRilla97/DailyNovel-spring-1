@@ -10,4 +10,10 @@ public interface MemberService{
 
 	int FindSameEmail(String email);
 
+
+	String findEmailByNickname(String nickname);
+
+
+	int passwordChange(String password, String email);
+
 }
