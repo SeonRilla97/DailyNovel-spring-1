@@ -809,6 +809,16 @@ color: white;
 
   box-shadow: 0 0.25rem 0.25rem rgba(0, 4, 4, 0.1);
 }
+
+#tmp-value{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reg-tmp-txt{
+  font-size: 22px;
+}
 .l-box-mini > .name {
   height: 1.5rem;
   background-color: #69bc80;
