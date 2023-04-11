@@ -39,17 +39,19 @@
       <div class="flex-jty-spacebtw pdl-3 pdr-3">
         <div class="l-box-mini">
           <div class="name lc-center color-white-1">HOW</div>
-          <div id="tmp-value" class="value"></div>
+          <div id="tmp-value" class="value">
+            <span class="reg-tmp-txt">자유</span>
+          </div>
         </div>
         <div class="l-box-mini">
           <div class="name lc-center color-white-1">기분</div>
-          <div id="feel-value" class="value null-circle-img ">
+          <div id="feel-value" class="value">
             <!-- <div class="feel-circle-box happy-img"></div> -->
           </div>
         </div>
         <div class="l-box-mini">
           <div class="name lc-center color-white-1">날씨</div>
-          <div id="weather-value" class="value null-circle-img"></div>
+          <div id="weather-value" class="value"></div>
         </div>
       </div>
 
@@ -130,7 +132,7 @@
 		<span id="range-text-test"></span>      
         <input class="reg-honesty-test" type="range" min="0" max="100" step="10" value="100">
         
-      <div id="submit-test" class="btn3">바로 저장하기</div>
+      <div id="submit-test" class="btn3"><a th:href="@{/member/main}">바로 저장하기</a></div>
       <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</div>
     </div>
   </div>
@@ -149,6 +151,7 @@
   const range = document.querySelector(".reg-honesty-test");
   const value = document.querySelector(".reg-range-value");
   const rangeText = document.querySelector("#range-text-test");
+  rangeText.innerText = range.value;
   range.addEventListener("input",()=>{
     value.text = range.value;    
     rangeText.innerText = range.value;
