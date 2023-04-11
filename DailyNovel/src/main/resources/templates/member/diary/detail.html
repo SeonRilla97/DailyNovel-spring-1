@@ -28,15 +28,9 @@
 <link rel="stylesheet" href="../../../static/css/util.css">
 <link rel="stylesheet" href="../../../static/css/style.css"> -->
 
-  <script>
+<script src="/js/member/diary/detail.js" defer="defer"></script>
+<!-- DailyNovel/src/main/resources/static/js/member/diary/detail.js -->
 
-// function addURL(url_, flag){
-//   let url = url_;
-//   url + "?" + "..va";
-//   return url;
-// }
-
-  </script>
   <title>일기 보기</title>
 </head>
 <body>
@@ -80,10 +74,15 @@
       <div class="mgt-3">
         <div class="reg-title-section">
           <div class="lc-center font-bold">제목</div>
-          <div class="editor-title pdl-3 pdr-3 flex-aln-center" th:text="${diary.title}"></div>
+          <div class="font-set editor-title pdl-3 pdr-3 flex-aln-center" 
+              th:classappend ="${font}"
+              th:text="${diary.title}"></div>
         </div>
         
-        	<textarea readonly id="content-editor" class="detail editor-base-detail mgt-2 pdt-4 pdl-4 pdr-4 " th:text="${diary.content}">나마자기 구조개와 함께 하와이에 가고싶다.</textarea>
+        	<textarea readonly id="content-editor" 
+                class="font-set2 detail editor-base-detail mgt-2 pdt-4 pdl-4 pdr-4 " 
+                th:classappend ="${font}"
+                th:text="${diary.content}">나마자기 구조개와 함께 하와이에 가고싶다.</textarea>
 
       </div>
     
