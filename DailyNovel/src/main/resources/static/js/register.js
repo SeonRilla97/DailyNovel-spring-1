@@ -63,11 +63,24 @@ window.addEventListener("load", function(){
 	let weatherDiv = document.querySelector("#reg-weather-modal");
 	let honestyDiv = document.querySelector("#reg-honesty-modal");
 	
+	// 아이콘 나오는 상자들
+	let feelBox = this.document.querySelector("#feel-value");
+	let weatherBox = this.document.querySelector("#weather-value");
+	let feelArr = ['null','angry','awkward','calm','disappointed','anxiety','happy','sad','tocuhed','excited'];	
+	let weatherArr = ['null','sunny','cloudy','snow','rain','dust'];
+
+	if((diaryObj.feelingId == null && diaryObj.weatherId == null)){
+		feelBox.classList.add("null-circle-img");
+		weatherBox.classList.add("null-circle-img");
+	}
+
+
+	// json 콘솔로 확인용
 	function viewObj() {
 		console.log(diaryObj);
-	}
+	}	
 	
-	
+
 	//기분 옵션을 눌렀을때
 	feelDiv.onclick = function (e){
 		
@@ -75,20 +88,29 @@ window.addEventListener("load", function(){
 		if(e.target.tagName != "LI")
 			return;			
 	
-		let valueArr = ['angry','awkward','calm','disappointed','anxiety','happy','sad','tocuhed','excited'];	
+		let valueArr = ['angry','awkward','calm','disappointed','anxiety','happy','sad','touched','excited'];	
 		let value = e.target.getAttribute('value');
-	
-		console.log(`선택한 리스트 : ${value}`);
 		
-		for(let i=0; i< valueArr.length; i++){
-			
-			if(valueArr[i] === value){
-				diaryObj.feelingId = i+1;
+		// li를 선택했다면 닷트 원 없어지도록
+		if(diaryObj.feelingId === null){
+			feelBox.classList.remove("null-circle-img");
+		}
+
+		for(let i=0; i < valueArr.length; i++){
+			if(value == valueArr[i]){
+				let classNames = feelBox.classList;
+				feelBox.classList.remove(classNames[1]);
+				feelBox.classList.add(`${value}-img`);
+				// feelBox.classList.replace(classNames[1],`${value}-img`);
 				break;
-			}		
+			}
 		}
 		
-		// getValueIndex(value, valueArr, diaryObj.feelingId);
+
+		console.log(`선택한 리스트 : ${value}`);		
+		diaryObj.feelingId = getValueIndex(value, valueArr);
+		
+
 		viewObj();
 	};
 	
@@ -96,17 +118,12 @@ window.addEventListener("load", function(){
 		if(e.target.tagName != "LI")
 			return;			
 		let valueArr = ['free-form','thanks-form','meat-form', 'question-form', 'movie-form','trip-form'];
-		let value = e.target.getAttribute('value');
+		let valueKrArr = ['자유', '감사', '밥', '질문', '영화', '여행'];
 		
-		for(let i=0; i< valueArr.length; i++){
+		let value = e.target.getAttribute('value');
 			
-			if(valueArr[i] === value){
-				diaryObj.templateId = i+1;
-				break;
-			}		
-		}
-			
-		// getValueIndex(value, valueArr, id);		
+		diaryObj.templateId = getValueIndex(value,valueArr);
+		
 		viewObj();	
 	}	
 	
@@ -118,15 +135,22 @@ window.addEventListener("load", function(){
 		let valueArr = ['sunny','cloudy','snow','rain','dust'];
 		let value = e.target.getAttribute('value');
 		
-		for(let i=0; i< valueArr.length; i++){
-			
-			if(valueArr[i] === value){
-				diaryObj.weatherId = i+1;
-				break;
-			}		
+		// li를 선택했다면 닷트 원 없어지도록
+		if(diaryObj.weatherId === null){
+			weatherBox.classList.remove("null-circle-img");
 		}
-		
-		// getValueIndex(value, valueArr, weatherId);		
+
+		for(let i=0; i < valueArr.length; i++){
+			if(value == valueArr[i]){
+				let classNames = weatherBox.classList;
+				weatherBox.classList.remove(classNames[1]);
+				weatherBox.classList.add(`${value}-img`);
+				// feelBox.classList.replace(classNames[1],`${value}-img`);
+				break;
+			}
+		}
+
+		diaryObj.weatherId = getValueIndex(value,valueArr);
 		viewObj();
 	}
 	
@@ -172,11 +196,12 @@ window.addEventListener("load", function(){
 	})
 	
 	// db 인덱스 구하는 메서드. 
-	function getValueIndex(value, arr, id){
+	function getValueIndex(value, arr){
+		let id = 0;
 		for(let i=0; i < arr.length; i++){
 			if(arr[i] === value){
 				id = i+1;
-				break;
+				return id;
 			}
 		}
 	};

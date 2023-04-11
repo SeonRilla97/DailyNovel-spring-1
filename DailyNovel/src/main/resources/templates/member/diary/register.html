@@ -39,17 +39,19 @@
       <div class="flex-jty-spacebtw pdl-3 pdr-3">
         <div class="l-box-mini">
           <div class="name lc-center color-white-1">HOW</div>
-          <div id="tmp-value" class="value"></div>
+          <div id="tmp-value" class="value">
+            <span class="reg-tmp-txt">자유</span>
+          </div>
         </div>
         <div class="l-box-mini">
           <div class="name lc-center color-white-1">기분</div>
-          <div id="feel-value" class="value null-circle-img ">
+          <div id="feel-value" class="value">
             <!-- <div class="feel-circle-box happy-img"></div> -->
           </div>
         </div>
         <div class="l-box-mini">
           <div class="name lc-center color-white-1">날씨</div>
-          <div id="weather-value" class="value null-circle-img"></div>
+          <div id="weather-value" class="value"></div>
         </div>
       </div>
 
@@ -149,6 +151,7 @@
   const range = document.querySelector(".reg-honesty-test");
   const value = document.querySelector(".reg-range-value");
   const rangeText = document.querySelector("#range-text-test");
+  rangeText.innerText = range.value;
   range.addEventListener("input",()=>{
     value.text = range.value;    
     rangeText.innerText = range.value;
