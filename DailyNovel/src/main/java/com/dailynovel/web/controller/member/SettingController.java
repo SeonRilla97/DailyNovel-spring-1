@@ -20,6 +20,8 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -42,6 +44,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -51,6 +54,9 @@ public class  SettingController {
 
 	@Autowired
 	private SettingService settingService;
+	
+	@Autowired
+	private JavaMailSender mailSender; //일기 email전송을 위해 필요한 api?
 	
 	private String imageName;
 	private Integer id;
@@ -155,7 +161,7 @@ public class  SettingController {
 			
 			/* 폰트 미리보기 문구 및 선택하기(?)*/
 			Random rand = new Random();
-			int x = rand.nextInt(8);
+			int x = rand.nextInt(9);
 			List<String> preview = new ArrayList<>();
 			preview.add("푸른 물망초의 꽃말을 아시나요?");
 			preview.add("내가 만든 쿠키, 너를 위해 구웠지.");
@@ -165,6 +171,7 @@ public class  SettingController {
 			preview.add("첫눈에 반한다는 말을 믿나요? 아니면 제가 다시 걸어와 볼까요?");
 			preview.add("바람소리와 스산한 빗소리가 사무실 창밖을 때린다.");
 			preview.add("정말 좋아합니다. 이번엔 거짓이 아니라고요");
+			preview.add("뜨거운 사람 함부로 발로 차지마라, 너는 누구에게..");
 			
 			System.out.println(preview.get(x));
 			
@@ -238,6 +245,31 @@ public class  SettingController {
 			return "member/settings/component/export";
 		}
 
+		@RequestMapping("/export/email")
+		public void exportEmail(Model model, HttpServletResponse response) throws Exception {
+			//Integer id = 1;
+			Setting setting = settingService.getById(id);
+			List<Export> export = settingService.getDiaryListByid(id);
+
+		    MimeMessage mail = mailSender.createMimeMessage();
+		    // use the true flag to indicate you need a multipart message
+		    MimeMessageHelper helper = new MimeMessageHelper(mail, true, "UTF-8");// 메일 보내는 것 형식?
+		    helper.setTo(setting.getEmail());                                     // 받는 사람 메일
+		    helper.setSubject("DailyNovel 일기목록 메일입니다.");						  // 메일 제목
+		    
+		    String content = "<html><body>\n";									  // 메일 내용~
+		    for (Export aa : export) {
+		    	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+				String date = formatter.format(aa.getRegDate());
+		    	content += date+" ["+aa.getFeelingName()+"]<br>"+aa.getText()+"<br><br><hr>"; 	
+		    	
+		    }
+		    content+="</body></html>";											  // ~메일 내용
+		    helper.setText(content,true);
+		    
+		    mailSender.send(mail);
+		  }
+		
 		@RequestMapping("/export/text")
 		public void exportText(Model model, HttpServletResponse response) throws Exception {
 			
@@ -270,7 +302,7 @@ public class  SettingController {
 			BaseFont bf = BaseFont.createFont(fontFace, fontNameH, BaseFont.NOT_EMBEDDED);
 			Font font = new Font(bf, 11);
 			
-			// 7) 문서에 2개의 paragraph를 각기 다른 본트로 첨부해 보겠습니다.		
+			// 7) 문서에 일기 내용 첨부	
 			for (Export aa : export) {
 				//out.print(aa.getRegDate());
 				
@@ -285,8 +317,6 @@ public class  SettingController {
 				document.add(new Paragraph("\n", font));
 			}
 			
-			
-			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (DocumentException e) {
@@ -299,7 +329,6 @@ public class  SettingController {
 		
 		 // 바탕화면으로 전송
 			String path = time + "DailyNovel.PDF";
-				
 				
 			FileInputStream fis = new FileInputStream(path);
 			byte buf[] = new byte[1024];
@@ -336,8 +365,6 @@ public class  SettingController {
 				e.printStackTrace();
 			}
 		
-		
-		
 		// 8) Chrome 으로 방금 작성한 파일을 바로 열어서 확인해봅니다.
 //		String chrome = "C:/Program Files/Google/Chrome/Application/chrome.exe";
 //		try {
@@ -345,7 +372,6 @@ public class  SettingController {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-	
 			
 //			Date date = new Date(System.currentTimeMillis()); // 현재 시간 측정
 //			SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS"); // 시간 측정 포멧 지정
@@ -370,6 +396,7 @@ public class  SettingController {
 //				out.println();
 //				out.println();
 //			}
+			
 //			fos.close();
 //			// 지연시간
 //
