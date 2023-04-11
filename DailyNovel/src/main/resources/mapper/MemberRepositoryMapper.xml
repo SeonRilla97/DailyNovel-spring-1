@@ -32,6 +32,16 @@
 	
 	</update>
 	
+	<select id="findMemberSetting" resultType="int">
+		SELECT 
+			font_family
+ 		FROM 
+			dailynoveldb.member
+		where
+			id = #{uid}
+	</select>
+
+	
 
 	
 
