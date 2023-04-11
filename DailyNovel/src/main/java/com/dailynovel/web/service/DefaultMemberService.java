@@ -50,7 +50,7 @@ public class DefaultMemberService implements MemberService {
 	@Override
 	public String findEmailByNickname(String nickname) {
 
-		String email="존재하지 않는 이메일 입니다.";
+		String email="false";
 		int checkNickname = repository.FindSameNickname(nickname);
 		if(checkNickname==1) {
 			email = repository.getFindEmail(nickname);
