@@ -134,6 +134,8 @@ public class MemberController {
 
 		// 객체 통째로 보내준다.
 		model.addAttribute("diary", diary);
+		
+		System.out.println(diary.getContent());
 
 		return "/member/diary/detail";
 	}
@@ -142,5 +144,6 @@ public class MemberController {
 	public String edit() {
 		return "/member/diary/edit";
 	}
-	
 }
+
+
