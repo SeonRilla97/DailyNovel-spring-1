@@ -18,8 +18,28 @@ window.onload = function() {
 	const nicknameLabel = document.querySelector("label[for='nickname']");
 	const phoneCheckLabel = document.querySelector("label[for='phone']");
 	
-	
-	emailCheckBtn.disabled = true;
+	// ===============회원가입 css 스타일==========
+	const outBox = document.querySelectorAll(".outBox");
+	//여기에 유효성검사 까지 들어간다면 어떻게 되는거지???
+	//이거 쓸 경우, outbox 내부에는 input이 하나만 있어야 합니다.
+	outBox.forEach(e => {
+		e.addEventListener("keyup", ()=>{
+			let value = e.querySelector("input").value
+
+			if(!value== ''){
+				//빈 값이 아닌 경우
+				e.classList.add('existence');   
+			}else{
+				//빈 값인 경우
+				e.classList.remove('existence');   
+			}
+		});
+	});
+
+
+//==============================================
+	if(emailCheckBtn)
+		emailCheckBtn.disabled = true;
 
 	signUpForm.addEventListener('keydown', (e) => {
 		if (e.key === "Enter") {
@@ -158,14 +178,18 @@ function ValidatePhone() {
   return false;
 }
 
-phoneNum.addEventListener('input', () => {
-  const formattedPhone = ValidatePhone(); // format된 번호를 변수에 할당
-  if (formattedPhone) {
-    phoneNum.value = formattedPhone;
-  }
-});
+
+if(phoneNum)
+	phoneNum.addEventListener('input', () => {
+	const formattedPhone = ValidatePhone(); // format된 번호를 변수에 할당
+	if (formattedPhone) {
+		phoneNum.value = formattedPhone;
+	}
+	});
 
   	let isEmailCheck = false;
+
+if(emailCheckBtn)
 	emailCheckBtn.addEventListener('click', function() {
 
 		let emailCheck = email.value;
@@ -190,6 +214,8 @@ phoneNum.addEventListener('input', () => {
 		};
 		xhr.send();
 	});
+
+
 	let 	isemailCheckNum =false;
 	function ValidateEmailNumber(){
 		emailCheckNumber = emailCheckNum.value;
@@ -214,11 +240,11 @@ phoneNum.addEventListener('input', () => {
 
 
 
-	emailCheckNum.addEventListener('change',ValidateEmailNumber);
-	email.addEventListener('change', ValidateEmail);
-	pwd.addEventListener('input', ValidatePwd);
-	pwdCheck.addEventListener('input', updatecheckPwd);
-	phoneNum.addEventListener('input', ValidatePhone);
-	nickName.addEventListener('input',nicknameCheck);
+if(emailCheckNum)	emailCheckNum.addEventListener('change',ValidateEmailNumber);
+if(email)			email.addEventListener('change', ValidateEmail);
+if(pwd)				pwd.addEventListener('input', ValidatePwd);
+if(pwdCheck)		pwdCheck.addEventListener('input', updatecheckPwd);
+if(phoneNum)		phoneNum.addEventListener('input', ValidatePhone);
+if(nickName)		nickName.addEventListener('input',nicknameCheck);
 
 };

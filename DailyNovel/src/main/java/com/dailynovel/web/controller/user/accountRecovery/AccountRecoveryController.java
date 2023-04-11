@@ -31,7 +31,6 @@ public class  AccountRecoveryController {
 	public String login() {
 		return "/user/account-recovery/email";
 	}
-
 	@RequestMapping("password")
 	public String password() {
 		return "/user/account-recovery/password";
@@ -103,5 +102,12 @@ public class  AccountRecoveryController {
 		}
 		
 		
+
+	@RequestMapping("update-password")
+	public String renew() {
+		return "/user/account-recovery/update-password";
+	}
+	
+
 	
 }

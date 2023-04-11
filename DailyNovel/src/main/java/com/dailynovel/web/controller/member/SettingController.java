@@ -14,8 +14,10 @@ import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -65,12 +67,12 @@ public class  SettingController {
 		@RequestMapping("profile")
 		public String profile(Model model) {
 	        
-			//Integer id = 1;
+			//Integer id = 60;
 			Setting setting = settingService.getById(id); // id 1번의 member테이블의 값 가지고 오기
 			model.addAttribute("setting", setting);		// 가지고 온 테이블 값을 model에 심기
 			System.out.println(setting);				// 삭제요망 제대로 가지고 왔는지 확인차 출력해 보기 삭제요망
 			imageName = setting.getProfileImage();		// 가지고 온 profile이미지의 명칭을 전역변수에 넣기
-
+			System.out.println(imageName);
 			return "member/settings/component/profile";
 		}
 
@@ -84,25 +86,26 @@ public class  SettingController {
 				HttpServletRequest request
 				) throws Exception {
 			
+			if (profile != null && !profile.isEmpty()) { // 사용자가 새로운 이미지를 등록 했을 때만 실행하기
 			// 전에 등록한 프로필 사진 사진파일 삭제하는 코드?
 			String beforeImagePath = System.getProperty("user.home"); // 컴퓨터의 사용자 경로 추출 
+/*노트북 경로*/ Path filePath = Paths.get( beforeImagePath + "/Desktop/novelPrj/mon/DailyNovel/src/main/webapp/img/profile/" + imageName);
 // 노트북 경로 Path filePath = Paths.get( beforeImagePath + "/Desktop/proproprj/DailyNovel/src/main/webapp/img/profile/" + imageName);
-/*데스크톱경로*/Path filePath = Paths.get( beforeImagePath + "/Desktop/novelPrj(2)/noPrj/DailyNovel/src/main/webapp/img/profile/" + imageName); 
+///*데스크톱경로*/Path filePath = Paths.get( beforeImagePath + "/Desktop/novelPrj(2)/nav/DailyNovel/src/main/webapp/img/profile/" + imageName); 
 			
 			try {
 				// 삭제하는 클래스 생성(사실상 서비스를 호출) service.deleteImage(filePath);
 				// 서비스에 deleteImage매소드를 만들고, 그 안에서 filePath에 해당 이미지 파일잉 없으면 출력할 예외만들기 'throw new 사진없음예외();'
 				settingService.deleteBeforeImage(filePath);
-				Files.delete(filePath);				
+				if(!imageName.equals("pro-img.png"))
+					Files.delete(filePath);				
 			}
 			catch(파일없음예외 e){
 				System.out.println(e.getMessage());
 			}
 			
-
-			
 			String realPath= "";
-			if (profile != null && !profile.isEmpty()) { // 사용자가 새로운 이미지를 등록 했을 때만 실행하기
+			
 				Date date = new Date(System.currentTimeMillis()); // 현재 시간 측정
 				SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS"); // 시간 측정 포멧 지정
 				String time = format.format(date); // 측정한 시간을 포멧화 하기
@@ -141,7 +144,7 @@ public class  SettingController {
 
 		// 세팅-폰트-------------------------------------------------------------------
 		@RequestMapping("/font")
-		public String font(Model model, Model model2) {
+		public String font(Model model, Model model2, Model model3) {
 
 			Setting setting = settingService.getById(id);
 			
@@ -149,8 +152,26 @@ public class  SettingController {
 			
 			model2.addAttribute("setting", setting);
 			model.addAttribute("font", font);
-			System.out.printf("폰트패밀리 %s\n",setting.getFontFamily());
-			System.out.printf("폰트사이즈 %s\n",setting.getFontSize());
+			
+			/* 폰트 미리보기 문구 및 선택하기(?)*/
+			Random rand = new Random();
+			int x = rand.nextInt(8);
+			List<String> preview = new ArrayList<>();
+			preview.add("푸른 물망초의 꽃말을 아시나요?");
+			preview.add("내가 만든 쿠키, 너를 위해 구웠지.");
+			preview.add("오, 캡틴 마이 캡틴");
+			preview.add("비를 맞고 걷는 사람에게 필요한 것은 우산이 아니라..");
+			preview.add("앗,김흥식 법률사무소 뽀식이네 감자탕 보다 싸다.");
+			preview.add("첫눈에 반한다는 말을 믿나요? 아니면 제가 다시 걸어와 볼까요?");
+			preview.add("바람소리와 스산한 빗소리가 사무실 창밖을 때린다.");
+			preview.add("정말 좋아합니다. 이번엔 거짓이 아니라고요");
+			
+			System.out.println(preview.get(x));
+			
+			model3.addAttribute("preview", preview.get(x));
+			
+			//System.out.printf("폰트패밀리 %s\n",setting.getFontFamily());
+			//System.out.printf("폰트사이즈 %s\n",setting.getFontSize());
 
 			return "member/settings/component/font";
 		}
@@ -165,7 +186,7 @@ public class  SettingController {
 			
 			setting.setId(id);
 			setting.setFontFamily((font));
-			setting.setFontSize((fontSize==16 ? "1" : fontSize==22?"2":"3"));
+			setting.setFontSize((fontSize==16 ? "16" : fontSize==22?"22":"28"));
 			System.out.println(setting);
 			
 			int a = settingService.updateFont(setting);
@@ -417,18 +438,18 @@ public class  SettingController {
 		@RequestMapping("/out")
 		public String out() {
 			
-			Integer id = 39;
+			Integer id = 63;
 			Setting setting = settingService.getById(id);
 			System.out.println(setting);
 			
 			return "member/settings/component/out";
 		}
 
-		@PostMapping("/out/update")
+		@PostMapping("/out/delete")
 		public String acountOut(Model model, 
 				@ModelAttribute Setting setting) {
 
-			Integer id = 39;
+			Integer id = 63;
 			setting.setId(id);
 
 			int a = settingService.deleteAcount(id);

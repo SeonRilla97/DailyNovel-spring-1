@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.dailynovel.web.entity.Feeling;
+import com.dailynovel.web.entity.FeelingPercent;
 import com.dailynovel.web.entity.Honesty;
 import com.dailynovel.web.entity.How;
 
@@ -33,7 +34,14 @@ public interface AnalysisRepository {
 	
 	List<Feeling> findValue(String name, Integer frequency);
 	
+	List<FeelingPercent> findpercent(String name,
+								Integer frequency,
+								Integer Count,
+								Integer total);
+	
 	List<How> findHow(String name, Integer count);
+	
+	List<How> findTopHow(String description, Integer count);
 	
 	
 
