@@ -119,9 +119,15 @@ window.addEventListener("load", function(){
 			return;			
 		let valueArr = ['free-form','thanks-form','meat-form', 'question-form', 'movie-form','trip-form'];
 		let valueKrArr = ['자유', '감사', '밥', '질문', '영화', '여행'];
-		
+
 		let value = e.target.getAttribute('value');
-			
+		let txt = document.querySelector(".reg-tmp-txt");
+		for(let i=0; i < valueArr.length; i++){
+			if(value == valueArr[i]){
+				txt.innerText = valueKrArr[i];				
+				break;
+			}
+		}	
 		diaryObj.templateId = getValueIndex(value,valueArr);
 		
 		viewObj();	
