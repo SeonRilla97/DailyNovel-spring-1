@@ -1094,7 +1094,8 @@ color: white;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    border-radius:5rem;
+	width:6rem;
+    height:6rem;
 }
 
 /*체크박스*/
