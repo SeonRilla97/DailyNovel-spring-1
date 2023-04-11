@@ -66,8 +66,7 @@ public class  AccountRecoveryController {
 		
 		String email=  service.findEmailByNickname(nickname);
 		if(email!=null) {
-		System.out.println(email);
-		return "success";
+		return email;
 		}		
 		return "false";
 	}
