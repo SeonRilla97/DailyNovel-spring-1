@@ -35,6 +35,7 @@ public class  AccountRecoveryController {
 	public String password() {
 		return "/user/account-recovery/password";
 	}
+	
 	@RequestMapping("mailCheck")
 	@ResponseBody
 	public String mailCheck(String email , HttpSession session) throws Exception{
