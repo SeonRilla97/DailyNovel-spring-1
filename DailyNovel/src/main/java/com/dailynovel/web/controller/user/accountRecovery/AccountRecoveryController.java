@@ -12,13 +12,15 @@ public class  AccountRecoveryController {
 	public String login() {
 		return "/user/account-recovery/email";
 	}
-
 	@RequestMapping("password")
 	public String signUp() {
 		return "/user/account-recovery/password";
 	}
 	
-	
+	@RequestMapping("update-password")
+	public String renew() {
+		return "/user/account-recovery/update-password";
+	}
 	
 	
 }
