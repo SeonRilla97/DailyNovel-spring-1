@@ -9,15 +9,16 @@ function callbackforDiaryPreview(result) {
     let activedDate =document.querySelectorAll(".calender .date .circle-li");
     let sliderAboutDate = document.querySelector("#previewSlider")
     console.log(diaryData);
+    let htmlText = "";
 //    console.log(activedDate);
     for(let acDate of activedDate){
-        
+        //클릭 이벤트 달기
         acDate.onclick = function() {
 //            console.log(acDate.textContent);
             let curDate = acDate.textContent;
             htmlText = "";
 
-            let firstDiaryPreviewContent;
+            // let firstDiaryPreviewContent;
             //미리보기에 값 넣기
             if(diaryData[curDate]){ 
                 // for(let diary of diaryData[curDate]){
@@ -50,7 +51,9 @@ function callbackforDiaryPreview(result) {
             htmlText+=` <div class="prev-btn btn">◀</div>
             <div class="next-btn btn">▶</div>
             <ul class="pagination pagination-main"></ul>`
+            //미리보기 그리기
             sliderAboutDate.innerHTML=htmlText;
+            //미리보기에 슬라이더 (페이지네이션) 붙이기
             new slide(
                 ".slider", //
                 ".slider .prev-btn",
@@ -59,6 +62,8 @@ function callbackforDiaryPreview(result) {
                 ".slider .pagination",
                 ".slider .pagination > li" 
                 );
+
+                //미리보기 첫 데이터 transition 발생
             let PreviewOne = sliderAboutDate.querySelector(".slider .item-diary:nth-child(1) div:nth-child(1)");
             let PreviewTwo = sliderAboutDate.querySelector(".slider .item-diary:nth-child(1) div:nth-child(2)");
             if(PreviewOne){
@@ -84,11 +89,59 @@ function callbackforDiaryPreview(result) {
             //     }
             // }
         }
+    }//클릭이벤트 달기 끝
 
+
+    //오늘 날짜 그리기
+    let today = new Date().getDate();
+    console.log(diaryData[today]);
+    for (let index = 0 ; index < diaryData[today].length ; index++){
+            diary = diaryData[today][index];
+            // if(index ==0 ){폐기 - 1 조장님이 꺼지랭}
+            //     //미리보기의 첫번째 텍스트 컨텐츠를 효과를 주기 위해 뺀다.
+            //     firstDiaryPreviewContent = diary.content;
+            //     console.log(diary.content);
+            //     htmlText += `<div class="item item-diary" onClick ="location.href='/member/diary/detail?diaryId=${diary.diaryId}'">
+            //     <div class="h2">${diary.title}</div>
+            //     <div class ="active" id="preview-content">
+            //     </div>
+            //    </div>`;
+            //    continue;
+            // }
+            htmlText += `<div class="item item-diary" onClick ="location.href='/member/diary/detail?diaryId=${diary.diaryId}'">
+            <div class="h2">${diary.title}</div>
+            <div>
+                ${diary.content}
+            </div>
+        </div>`;
+        }   
+    htmlText+= `<div class="item lc-center" >
+    <div class="icon-plus" onClick="location.href='/member/diary/guide'"></div>
+    <!-- <div class="ic-add-diary"></div> -->
+    </div>`
+    // 페이지 네이션 달기
+    htmlText+=` <div class="prev-btn btn">◀</div>
+    <div class="next-btn btn">▶</div>
+    <ul class="pagination pagination-main"></ul>`
+    sliderAboutDate.innerHTML=htmlText;
+    new slide(
+        ".slider", //
+        ".slider .prev-btn",
+        ".slider .next-btn",
+        ".slider .item",
+        ".slider .pagination",
+        ".slider .pagination > li" 
+        );
+    let PreviewOne = sliderAboutDate.querySelector(".slider .item-diary:nth-child(1) div:nth-child(1)");
+    let PreviewTwo = sliderAboutDate.querySelector(".slider .item-diary:nth-child(1) div:nth-child(2)");
+    if(PreviewOne){
+        PreviewOne.classList.add("active");
+        PreviewTwo.classList.add("active");
     }
 }
 
 
+//Main 배경화면 그리기
 const header = document.querySelector("header");
 const mainheader = document.querySelector("#add-hello");
 console.log("전체높이 : " + ((header.offsetHeight)+(mainheader.offsetHeight)))
