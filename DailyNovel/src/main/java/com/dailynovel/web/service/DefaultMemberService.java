@@ -70,8 +70,7 @@ public class DefaultMemberService implements MemberService {
 	}
 
 	@Override
-
-	public int [] getMemberSetting(int uid) {
+//	public int [] getMemberSetting(int uid) {
 
 
 	public boolean temporaryPassword(String email, String uuid) {
