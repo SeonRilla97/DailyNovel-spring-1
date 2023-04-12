@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +20,7 @@
     <div class="container-1" style="position:relative;">
         <!-- 헤더 -->
         <div class="header" >
-          <div class="icon close-btn" style="position:absolute; top:5vh;right:10vw;"></div>
+          <div class="icon close-btn" style="position:absolute; top:5vh;right:10vw;" onclick="window.location.href='/member/main'"></div>
         </div>
         <!-- 메인  -->
         <div class="main guide-main slider">
@@ -65,7 +65,7 @@
 
       <!-- 푸터 -->
       <div class="footer lc-center">
-          <a href="../diary/select-tmp.html" style="text-align: center;">바로 작성을 하고 싶으신가요?<br>여기를 클릭하세요.</a>
+          <a th:href="@{/member/diary/selecttmp}" style="text-align: center;">바로 작성을 하고 싶으신가요?<br>여기를 클릭하세요.</a>
       </div>
     </div>  
     <script src="/js/slider.js"></script>

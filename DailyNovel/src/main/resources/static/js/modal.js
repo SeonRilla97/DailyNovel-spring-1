@@ -1,6 +1,7 @@
 window.addEventListener('load',()=>{
   const tmpSelectBox = document.querySelector(".tmp-select-box");   
   const simpleTmp = document.querySelector("#simple-tmp");
+  
   let container = document.querySelector(".container-2");
 
   const tmpBox = document.querySelector("#tmp-value");
@@ -40,6 +41,23 @@ window.addEventListener('load',()=>{
     modalOpen(regWeatherModal,container);
   })
 
+  regTmpModal.addEventListener('click', (e)=> {
+      if(e.target.tagName != "LI")
+        return;      
+      modalClose(regTmpModal,container);      
+  })
+
+  regFeelModal.addEventListener('click',(e)=>{
+      if(e.target.tagName != "LI")
+        return;      
+      modalClose(regFeelModal,container);      
+  })
+
+  regWeatherModal.addEventListener('click',(e)=>{
+      if(e.target.tagName != "LI")
+        return;      
+      modalClose(regWeatherModal,container);      
+  })
   
 
   for(let e of modalCloseBtn){
@@ -49,17 +67,8 @@ window.addEventListener('load',()=>{
       modalClose(activeModal,container);
       // modalClose(regmodal,container);  
     })
-  }
-/*
-  modalCloseBtn.addEventListener('click', ()=>{
-    let activeModal = document.querySelector(".reg-select-modal.active");
-    activeModal.addEventListener('click', ()=> {
-      console.log("ghkrls");
-    })
-    modalClose(activeModal,container);
-    modalClose(regmodal,container);
-  })
-*/
+  }  
+
   function modalOpen(modal, container){
     modal.classList.add('active');        
     container.classList.toggle('position-fixed');

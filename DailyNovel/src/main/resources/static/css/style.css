@@ -98,6 +98,8 @@ html {
 
 
 .font-size30{font-size: 1.875rem;}
+/* detail 에 폰트 사이즈 특정하기 위해서 추가함 */
+.font-size22{font-size: 1.375rem;} 
 .font-size20{font-size: 1.25rem;}
 
 /*font-size 새로 만들려고 합니다.  index에서 사용중*/

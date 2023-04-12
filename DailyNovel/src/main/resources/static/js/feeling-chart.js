@@ -17,29 +17,36 @@ fetch("http://localhost:8080/analysis1/feeling-chart?name=화남&frequency=1", r
         labels: extractedData.map(emotion => emotion.name),
         datasets: [{
           data: extractedData.map(emotion => emotion.frequency),
-          backgroundColor: [
+         
+         backgroundColor: [
+            '#fecd50', //(Navy blue)
+			'#a0d4cd', //(Medium purple)
+			'#ef7d00', //(Magenta)
+			'#e42313', //(Vivid red)
+			'#dca8ad', //(Bright yellow)
+			'#b482c2', //(Salmon)
+			'#68739b', //(Light green)
+			'#6495ed', //(Cornflower blue)
+			'#d45087' //(Pinkish red)
 
-            '#A593E0',
-            '#81C147', 
-            '#f100e5', 
-            '#E53A40', 
-            '#f94e3f', 
-            '#FFFF66', 
-            '#566270', 
-            '#D7FFF1',
-            '#FBFFB9'
+ 
+
           ],
           borderColor: [
-            '#A593E0', 
-            '#E0E3DA', 
-            '#f100e5', 
-            '#E53A40', 
-            '#f94e3f', 
-            '#FFFF66', 
-            '#566270', 
-            '#D7FFF1', 
-            '#FBFFB9' 
-    ],
+            '#fecd50', //(Navy blue)
+			'#a0d4cd', //(Medium purple)
+			'#ef7d00', //(Magenta)
+			'#e42313', //(Vivid red)
+			'#dca8ad', //(Bright yellow)
+			'#b482c2', //(Salmon)
+			'#68739b', //(Light green)
+			'#6495ed', //(Cornflower blue)
+			'#d45087' //(Pinkish red)
+
+
+ 
+          ],
+
           borderWidth: 1,
         }]
       },

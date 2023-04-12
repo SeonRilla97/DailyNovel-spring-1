@@ -18,8 +18,28 @@ window.onload = function() {
 	const nicknameLabel = document.querySelector("label[for='nickname']");
 	const phoneCheckLabel = document.querySelector("label[for='phone']");
 	
-	
-	emailCheckBtn.disabled = true;
+	// ===============회원가입 css 스타일==========
+	const outBox = document.querySelectorAll(".outBox");
+	//여기에 유효성검사 까지 들어간다면 어떻게 되는거지???
+	//이거 쓸 경우, outbox 내부에는 input이 하나만 있어야 합니다.
+	outBox.forEach(e => {
+		e.addEventListener("keyup", ()=>{
+			let value = e.querySelector("input").value
+
+			if(!value== ''){
+				//빈 값이 아닌 경우
+				e.classList.add('existence');   
+			}else{
+				//빈 값인 경우
+				e.classList.remove('existence');   
+			}
+		});
+	});
+
+
+//==============================================
+	if(emailCheckBtn)
+		emailCheckBtn.disabled = true;
 
 	signUpForm.addEventListener('keydown', (e) => {
 		if (e.key === "Enter") {
@@ -68,104 +88,11 @@ window.onload = function() {
 	}
 
 
-	let isValidatePwd =false;
 	
-	function ValidatePwd() {
-		
-		const validatePwd = pwd.value;
-		checkPwd();
-		const PwdReg = new RegExp(/^(?=.*[A-Za-z0-9])(?=.*\d)[A-Za-z0-9\d!@#$%^&*]{8,25}$/);		
-		if (PwdReg.test(validatePwd)) {
-	
-			pwdLabel.style.color = "#69BC80";
-			pwd.style.color = "#69BC80";
-			isValidatePwd=true;
-			return (true)
-		}
-			isValidatePwd=false;
-		pwdLabel.style.color = "red";
-		pwd.style.color = "red";
-		return (false)
-	}
-	
-	function updatecheckPwd(){
-		checkPwd();
-		
-	}
-	
-	let ischeckPwd= false;
-	function checkPwd() {
-		const confirm = pwdCheck.value; //비밀번호 확인인데, 비밀번호 유효성검사와 변수명 겹침
-		
-		if (confirm == pwd.value) {
-			ischeckPwd= true;
-			pwdCheck.style.color = "#69BC80";
-			pwdCheckLabel.style.color = "#69BC80";
-			return true;
-		}
-		ischeckPwd= false;
-		pwdCheck.style.color = "red";
-		pwdCheckLabel.style.color = "red";
-		return false;
-	}
-	
-
-	
-	let isNicknameCheck =false;
-	function nicknameCheck() {
-		//중복확인 -> DB와 통신 필요함
-		
-	const NicknameReg = new RegExp(/^\S{1,6}$/);		
-	
-	if(NicknameReg.test(nickName.value)){
-	const nickCheck={
-		method:"get"
-	};
-	fetch("http://localhost:8080/user/nicknameCheck?nickname="+nickName.value)
-	.then(response => response.text())	
-	.then(data=>{
-		if(nickName.value==""){
-			nicknameLabel.style.color ="red";
-		}
-		else if(data==="success"){
-			nicknameLabel.style.color = "#69BC80";	
-			isNicknameCheck =true;
-		}
-		else{
-			nicknameLabel.style.color ="red";
-		}
-		
-		});	
-	}
-	else
-			nicknameLabel.style.color ="red";
-	}
-	let isValidatePhone =false;
-	
-function ValidatePhone() {
-  const checkphone = phoneNum.value.replace(/\D/g, "");
-  const phoneReg = /^(\d{3})(\d{3,4})(\d{4})$/;
-  const formattedPhone = checkphone.replace(phoneReg, "$1-$2-$3");
-
-  if (phoneReg.test(checkphone)) {
-    isValidatePhone = true;
-    phoneCheckLabel.style.color = "#69BC80";
-    return formattedPhone; // format된 번호를 반환
-  }
-
-  isValidatePhone = false;
-  phoneCheckLabel.style.color = "red";
-  return false;
-}
-
-phoneNum.addEventListener('input', () => {
-  const formattedPhone = ValidatePhone(); // format된 번호를 변수에 할당
-  if (formattedPhone) {
-    phoneNum.value = formattedPhone;
-  }
-});
 
   	let isEmailCheck = false;
+
+if(emailCheckBtn)
 	emailCheckBtn.addEventListener('click', function() {
 
 		let emailCheck = email.value;
@@ -190,6 +117,8 @@ phoneNum.addEventListener('input', () => {
 		};
 		xhr.send();
 	});
+
+
 	let 	isemailCheckNum =false;
 	function ValidateEmailNumber(){
 		emailCheckNumber = emailCheckNum.value;
@@ -214,11 +143,11 @@ phoneNum.addEventListener('input', () => {
 
 
 
-	emailCheckNum.addEventListener('change',ValidateEmailNumber);
-	email.addEventListener('change', ValidateEmail);
-	pwd.addEventListener('input', ValidatePwd);
-	pwdCheck.addEventListener('input', updatecheckPwd);
-	phoneNum.addEventListener('input', ValidatePhone);
-	nickName.addEventListener('input',nicknameCheck);
+if(emailCheckNum)	emailCheckNum.addEventListener('change',ValidateEmailNumber);
+if(email)			email.addEventListener('change', ValidateEmail);
+if(pwd)				pwd.addEventListener('input', ValidatePwd);
+if(pwdCheck)		pwdCheck.addEventListener('input', updatecheckPwd);
+if(phoneNum)		phoneNum.addEventListener('input', ValidatePhone);
+if(nickName)		nickName.addEventListener('input',nicknameCheck);
 
 };

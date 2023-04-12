@@ -2,6 +2,8 @@ package com.dailynovel.web.repository;
 
 import org.apache.ibatis.annotations.Mapper;
 
+
+
 @Mapper
 public interface MemberRepository {
 
@@ -17,5 +19,21 @@ public interface MemberRepository {
 
 	public int getFindId(String email);
 	public int getFindPwd(String email,String password);
+
+
+	public String getFindEmail(String nickname);
+
+
+	public int updatePassword(String password, String email);
+
+
+
+	public int updateTemporaryPassword(String uuid, String email);
+
+
+	public int getFindIdByEmail(String email);
+
+	public int findMemberSetting(int uid);
+
 
 }

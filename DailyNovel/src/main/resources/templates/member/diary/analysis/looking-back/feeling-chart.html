@@ -22,7 +22,7 @@
 <body class="container-1" id="app">
     
     <header class="header lc-center">
-        <div class="box-large color-bg-green-2 h1 font-weight-bold color-white-1 ">기분</div>
+        <div class="box-large color-bg-green-2 h2 font-weight-700 color-white-1 ">기분</div>
     </header>
 
 
@@ -32,10 +32,9 @@
             
             </div>
                 <div class="">
-                    <p class="box-p font-size20 font-weight-bolder">
-                        이번달은 피곤해요가 기뻐요보다 33% 더 많이 차지했어요
-                        휴식이 필요해요
-                    </p>
+                    <p class="box-p font-size20 font-weight-bolder" th:text="${TopPercent != null and Percent != null} ? ${TopPercent.name + '이 ' + Percent.name + '보다 ' + (TopPercent.percent - Percent.percent) + '% 많이 차지했어요'} : ''">
+					</p>
+
                 </div>
 
                 <div class="lc-space-around pdb-5">
@@ -70,7 +69,7 @@
     
                 <div class="nav-4 lc-center">
                     <a href="/member/analysis/main" class="lc-vertical-alignment" >
-                    <div class="nav-icon  hourglass-btn"></div>
+                    <div class="nav-icon  hourglass-dark-btn"></div>
                     <div class="h6 mgt-2">돌아보기</div>
                 </a>
                 </div>

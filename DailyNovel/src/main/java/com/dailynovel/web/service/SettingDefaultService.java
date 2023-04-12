@@ -67,4 +67,26 @@ public class SettingDefaultService implements SettingService {
 	    }
 		
 	}
+	@Override
+	public String getfontNameforCSS(int fid) {
+		// TODO Auto-generated method stub
+		setFont sf = repository.findFontId(fid);
+		String fontCSSName = "";
+		
+		if(sf.getId() == 1) {
+			fontCSSName = "noto-sans-k";
+		}
+		else if(sf.getId() == 2) {
+			fontCSSName = "nanum-pen-s";
+		}
+		else if(sf.getId() == 3) {
+			fontCSSName = "sunflower";
+		}
+		else if(sf.getId() == 4) {
+			fontCSSName = "dongle";
+		}
+		
+		
+		return fontCSSName;
+	}
 }

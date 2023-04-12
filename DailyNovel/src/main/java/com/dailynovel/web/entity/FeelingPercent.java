@@ -5,16 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class Member {
-	private int id;
-	private	String email;
-	private	String password;
-	private String nickname;
+@Data
+public class FeelingPercent {
 	
-	private int fontFamily;
-
+	private String name;
+	private Integer total;
+	private Integer frequency;
+	private Integer percent;
 }

@@ -19,5 +19,8 @@ public interface SettingRepository {
 	int updateFont(Setting setting);
 	int deleteAcount(Integer id);
 	
+	
+	setFont findFontId(int fid);
+	
 }
 

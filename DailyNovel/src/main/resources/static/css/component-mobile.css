@@ -98,7 +98,6 @@
 .main-bg{
   position:absolute;
   width:100vw;
-  height: 100vh;
   z-index: -1;
   opacity: 0.8;
 }
@@ -317,6 +316,8 @@
   display: flex;
   justify-content: space-between;
   font-size: 1.5rem;
+  width:95%;
+  margin:auto;
 }
 .calender > .main {
   flex-grow: 1;
@@ -393,7 +394,12 @@
 .calender .inactive {
   color: #dadada;
 }
-
+.calendar .header .icon{
+  width: 2.5rem;
+  height: 2.5rem;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 /* 슬라이드 */
 .slider {
   /* 옆으로 넘기는 슬라이드 */
@@ -454,13 +460,23 @@
 
   text-align: center;
   font-size: large;
-
   white-space: normal;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.slider .item-diary:nth-child(1) div:nth-child(1),
+.slider .item-diary:nth-child(1) div:nth-child(2){
+  opacity : 0;
+  transition : all 1.5s;
+}
+.slider .item-diary:nth-child(1) div:nth-child(1).active,
+.slider .item-diary:nth-child(1) div:nth-child(2).active{
+  /* background-color: #267191; */
+  opacity: 1;
+}
+
 /* mainpage 미리보기 부분 끝 */
 .slider .write-btn {
   background-color: #99999920;
@@ -799,6 +815,16 @@ color: white;
 
   box-shadow: 0 0.25rem 0.25rem rgba(0, 4, 4, 0.1);
 }
+
+#tmp-value{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reg-tmp-txt{
+  font-size: 22px;
+}
 .l-box-mini > .name {
   height: 1.5rem;
   background-color: #69bc80;
@@ -807,7 +833,7 @@ color: white;
 .l-box-mini > .value {
   height: 3.75rem;
   
-  background-size: 60%;
+  background-size: 55%;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -843,6 +869,7 @@ color: white;
   
   /* background-color: #cecece; */
 }
+
 
 /* 모달 파트 */
 .reg-select-modal{
@@ -1173,7 +1200,8 @@ color: white;
 /* 메인블럭 overflow:auto를 하기위한 설정 */
 .main-size{
   min-height: 100px; max-height: auto; 
-/*  width:412px;*/
+/*  width:412px;
+*/
   padding-bottom: 0.5rem;
 }
 .overflow-auto{
@@ -1243,7 +1271,9 @@ color: white;
 /* feeling */
 
 
-
+.description-pont{
+	line-height: 1.5;
+}
 
 
 .feeling-rank-box{
@@ -1348,7 +1378,7 @@ color: white;
 
 .lc-space-around{
     display: flex;
-    width: 20rem;
+    width: 22rem;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
@@ -1530,3 +1560,27 @@ feeling view
 
 
 
+/* 모재영 화이트 스페이스 */
+.detail{
+    white-space: pre-line;
+}
+
+
+.editor-base-detail{
+
+  box-sizing:border-box;
+
+  width: 100%;
+  height: 85%;
+
+  border-spacing: 30px;
+  
+  border: none;
+  border-width: 0;
+  border-radius: 10px;
+
+  background-color: #f3f3f3;
+
+  
+  /* background-color: #cecece; */
+}
