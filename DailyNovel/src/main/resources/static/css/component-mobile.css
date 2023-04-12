@@ -936,8 +936,15 @@ color: white;
   background-color: #fff241;
 }
 
+.weather-section{
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
 .reg-weather-select-box{
   display: grid;
+  width:20rem;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 0.3rem;
   height: fit-content;
@@ -945,10 +952,20 @@ color: white;
 
 .weather-box{
   position: relative;
-  height: 25rem;
-  background-color: orange;
+  height: 20rem;
+  background-color: #FCFCFC;
   border-radius: 10px;
   transition: 0.3s;
+}
+
+/* 날씨 선택 창에서 보일 날씨들 */
+.weather-mini{
+  
+  height: 3.75rem;
+    
+  background-size: 55%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .weather-box:active{
