@@ -17,12 +17,13 @@
 
 </head>
 <body>
-    <!-- <img src="/res/img/DiaryMainPage/flower_1.jpg" class="main-bg"> -->
+    <img src="/img/DiaryMainPage/Summer.png" class="main-bg" id="background">
     <div class="container-1">
       <!-- 헤더 -->
       <header class="header horizon-center">
-        <div class="monthly-gauge font-weight-700 mgt-4 horizon-center">
-          <h1 class="h5">Food for thought</h1>
+
+        <div class="monthly-gauge mgt-4 horizon-center">
+          <!-- <h1 class="h5">Food for thought</h1> -->
           <!-- 문장이 아닐 경우에는 p 금지 -->
           <!-- 제목: h 문장: p 목록 표 폼 -->
           <!-- <div class="mgt-4">
@@ -40,12 +41,12 @@
         <!-- 달력 오타... 하아....-->
         <div class="calender">
           <div class="header" id="calendar-header">
-            <div class="prev-month" id="prev-btn">&#60;</div>
-            <div class="h3 lc-center" id="date-config"></div>
-            <div class="next-month" id="next-btn">&#62;</div>
+            <div class="prev-month arrow-left icon" id="prev-btn"></div>
+            <div class="h3 lc-center " id="date-config"></div>
+            <div class="next-month arrow-right icon" id="next-btn"></div>
           </div>
 
-          <div class="main">
+          <div class="main mgt-3">
             <ul class="day mgt-3">
               <li>SUN</li>
               <li>MON</li>
@@ -130,7 +131,6 @@
     </div>
     <script src="/js/calendar.js"></script>
     <script src="/js/slider.js"></script>
-    <script src="/js/mainLetter.js"></script>
     <script src="/js/member/main.js"></script>
 </body>
 </html>
