@@ -71,6 +71,9 @@ public class DefaultMemberService implements MemberService {
 
 	@Override
 
+	public int [] getMemberSetting(int uid) {
+
+
 	public boolean temporaryPassword(String email, String uuid) {
 		int checkEmail = repository.getFindId(email);
 		if(checkEmail ==1) {
@@ -92,10 +95,16 @@ public class DefaultMemberService implements MemberService {
 	}
 
 	public int getMemberSetting(int uid) {
+
 		// TODO Auto-generated method stub
-		int fontId = repository.findMemberSetting(uid);
 		
-		return fontId;
+		int[] fontSet = new int[2]; 
+		
+		Member m = repository.findMemberSetting(uid);
+		fontSet[0] = m.getFont_family();
+		fontSet[1] = m.getFont_size();
+		
+		return fontSet;
 	}
 
 
