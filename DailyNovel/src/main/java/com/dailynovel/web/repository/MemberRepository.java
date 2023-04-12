@@ -18,4 +18,13 @@ public interface MemberRepository {
 	public int getFindId(String email);
 	public int getFindPwd(String email,String password);
 
+
+	public String getFindEmail(String nickname);
+
+
+	public int updatePassword(String password, String email);
+
+
+	public int findMemberSetting(int uid);
+
 }

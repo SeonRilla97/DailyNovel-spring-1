@@ -11,6 +11,25 @@
 <!--       <result property="memberId" column="member_id" /> -->
 	</resultMap>
 	
+	<resultMap id="DiaryResultMap" type="Diary">
+      <result property="memberId" column="member_id" />
+      <result property="templateId" column="template_id" />
+      <result property="feelingId" column="feeling_id" />
+      <result property="weatherId" column="weather_id" />
+      <result property="content" column="text" />
+      <result property="regDate" column="reg_date" />
+	</resultMap>
+	
+	<resultMap id="DiaryReadResultMap" type="DiaryView">
+      <result property="memberId" column="member_id" />
+      <result property="templateName" column="t_name" />
+      <result property="feelingName" column="f_name" />
+      <result property="feelingImg" column="f_img" />
+      <result property="weatherName" column="w_name" />
+      <result property="content" column="text" />
+      <result property="regDate" column="reg_date" />
+	</resultMap>
+	
 
   <select id="getAllDiaryById" resultType="Diary">
     select * 
@@ -44,6 +63,8 @@
 	#{honesty});  
   </insert>  
   
+
+  
   <select id="getDiaryByMonthly" resultMap="DiaryPreviewResultMap">
   	SELECT 
 	  	substring(text, 1, 60) as content,
@@ -68,4 +89,25 @@
 		year(reg_date) = ${year}
 		and month(reg_date) = ${month};
   </select>
+  
+  
+  <!-- 특정 다이어리 조회  -->
+  <select id="view" resultMap="DiaryResultMap">
+  	
+  	SELECT 
+  		* FROM diary 
+	where id = ${id};
+  </select>
+  
+  <select id="findDiaryView" resultMap="DiaryReadResultMap">
+  	
+  	SELECT 
+  		* 
+  		FROM diary_view 
+	where id = ${id};
+  </select>
+  
+  
+  
+  
 </mapper>

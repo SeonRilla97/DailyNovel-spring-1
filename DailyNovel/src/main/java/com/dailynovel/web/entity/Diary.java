@@ -6,23 +6,24 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 public class Diary {
-	
+
 	private int memberId;
 	private int templateId;
 	private Integer feelingId;
 	private Integer weatherId;
 	private Integer honesty;
+
 	private Timestamp regDate;
-//	private String regDate;
+	// private String regDate;
 	private String title;
 	private String content;
-	private int id; // diary Id 추가자 : 선유진
-
+	private Integer id; // diary Id 추가자 : 선유진
 
 }

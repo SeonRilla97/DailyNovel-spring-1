@@ -16,12 +16,33 @@
 	<select id="FindSameNickname" parameterType="String" resultType="int">
 		select count(nickname) samenickname from member where nickname =#{nickname};
 	</select>
-	
+				
+	<select id="getFindEmail" parameterType="String" resultType="String"> 
+		select email from member where nickname =#{nickname};
+	</select>
+
 
 	<insert id="insert">
 		Insert into dailynoveldb.member(email, password, nickname)
 		values (#{id},#{pwd}, #{nickname});
 	</insert>
+	
+	<update id="updatePassword" parameterType="String">
+		update member set password = "#{password}" where email = #{email}; 
+	
+	</update>
+	
+	<select id="findMemberSetting" resultType="int">
+		SELECT 
+			font_family 
+ 		FROM 
+			member
+		where
+			id = #{uid}
+	</select>
+
+	
+
 	
 
 </mapper>
