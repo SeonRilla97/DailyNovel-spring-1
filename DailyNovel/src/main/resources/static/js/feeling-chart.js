@@ -19,29 +19,29 @@ fetch("http://localhost:8080/analysis1/feeling-chart?name=화남&frequency=1", r
           data: extractedData.map(emotion => emotion.frequency),
          
          backgroundColor: [
-            '#B19CD9',
-            '#C8A2DD', 
-            '#D9B3FF', 
-            '#E2B5FF', 
-            '#F2C6FF', 
-            '#FFD9F5', 
-            '#ADD8E6',
-            '#B0E0E6', 
-            '#87CEFA'
+            '#fecd50', //(Navy blue)
+			'#a0d4cd', //(Medium purple)
+			'#ef7d00', //(Magenta)
+			'#e42313', //(Vivid red)
+			'#dca8ad', //(Bright yellow)
+			'#b482c2', //(Salmon)
+			'#68739b', //(Light green)
+			'#6495ed', //(Cornflower blue)
+			'#d45087' //(Pinkish red)
 
  
 
           ],
           borderColor: [
-            '#B19CD9',
-            '#C8A2DD', 
-            '#D9B3FF', 
-            '#E2B5FF', 
-            '#F2C6FF', 
-            '#FFD9F5', 
-            '#ADD8E6',
-            '#B0E0E6', 
-            '#87CEFA'
+            '#fecd50', //(Navy blue)
+			'#a0d4cd', //(Medium purple)
+			'#ef7d00', //(Magenta)
+			'#e42313', //(Vivid red)
+			'#dca8ad', //(Bright yellow)
+			'#b482c2', //(Salmon)
+			'#68739b', //(Light green)
+			'#6495ed', //(Cornflower blue)
+			'#d45087' //(Pinkish red)
 
 
  

@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.DiaryView;
 import com.dailynovel.web.entity.Feeling;
+import com.dailynovel.web.entity.Member;
 import com.dailynovel.web.entity.Template;
 import com.dailynovel.web.entity.Weather;
 import com.dailynovel.web.service.DiaryService;
 import com.dailynovel.web.service.ListService;
+import com.dailynovel.web.service.MemberService;
 import com.dailynovel.web.service.SettingService;
 
 @Controller
@@ -29,6 +31,9 @@ public class MemberController {
 
 	@Autowired
 	private DiaryService diaryservice;
+	
+	@Autowired
+	private MemberService memberservice;
 
 	@RequestMapping("main")
 	public String main() {
@@ -47,19 +52,13 @@ public class MemberController {
 	}
 
 	@RequestMapping("/diary/register")
-	public String register() {
+	public String register(Model model,
+			@RequestParam(required = true, defaultValue = "free-form", name="tmp") String tmp) {
+			
+			model.addAttribute("tmp", tmp);
 		return "/member/diary/register";
 	}
 
-	// 수정 부분
-	@RequestMapping("/diary/modify")
-	public String modify(Model model,
-			@RequestParam(name = "diaryId") Integer diaryId) {
-
-		//
-
-		return "/member/diary/modify";
-	}
 
 	@RequestMapping("/diary/list")
 	public String diarylist(Model model,
@@ -113,7 +112,6 @@ public class MemberController {
 
 	}
 
-
 	// 수정 디테일 추가
 	@RequestMapping("/diary/detail")
 	public String detail(
@@ -122,9 +120,32 @@ public class MemberController {
 	// @RequestParam(required = true, defaultValue = "1", name="id") Integer
 	// memberId,
 	) {
+		//임시 
+		int uid = 1;
 
-		DiaryView diary = diaryservice.viewDiary(diaryId);
-
+		DiaryView diary = diaryservice.viewDiary(diaryId); 
+		String fontnameCSS = settingService.getfontNameforCSS(memberservice.getMemberSetting(uid));
+		
+		System.out.println(fontnameCSS);
+		
+//		.noto-sans-k{
+//		    font-size: 100%;
+//		    font-family: 'Noto Sans KR', sans-serif;
+//		}
+//		.nanum-pen-s{
+//		    font-size: 100%;
+//		    font-family: 'Nanum Pen Script', cursive;
+//		}
+//		.sunflower{
+//		    font-size: 100%;
+//		    font-family: 'Sunflower', sans-serif;
+//		}
+//		.dongle{
+//		    font-size: 100%;
+//		    font-family: 'Dongle', sans-serif;
+//		}
+		
+		
 		// d.getRegDate();
 		// d.getTemplateId();
 		// d.getFeelingId();
@@ -134,16 +155,57 @@ public class MemberController {
 
 		// 객체 통째로 보내준다.
 		model.addAttribute("diary", diary);
-		
+		model.addAttribute("font", fontnameCSS);
+
 		System.out.println(diary.getContent());
 
 		return "/member/diary/detail";
 	}
 
-	@RequestMapping("/diary/edit")
-	public String edit() {
-		return "/member/diary/edit";
+	@RequestMapping("/diary/modify")
+	public String modify(
+			Model model,
+			@RequestParam(required = true, defaultValue = "1", name = "diaryId") Integer diaryId
+	// @RequestParam(required = true, defaultValue = "1", name="id") Integer
+	// memberId,
+	) {
+		//임시 
+		int uid = 1;
+
+		DiaryView diary = diaryservice.viewDiary(diaryId); 
+		String fontnameCSS = settingService.getfontNameforCSS(memberservice.getMemberSetting(uid));
+		
+		System.out.println(fontnameCSS);
+		
+//		.noto-sans-k{
+//		    font-size: 100%;
+//		    font-family: 'Noto Sans KR', sans-serif;
+//		}
+//		.nanum-pen-s{
+//		    font-size: 100%;
+//		    font-family: 'Nanum Pen Script', cursive;
+//		}
+//		.sunflower{
+//		    font-size: 100%;
+//		    font-family: 'Sunflower', sans-serif;
+//		}
+//		.dongle{
+//		    font-size: 100%;
+//		    font-family: 'Dongle', sans-serif;
+//		}
+		
+		
+		// d.getRegDate();
+		// d.getTemplateId();
+		// d.getFeelingId();
+		// d.getWeatherId();
+		// d.getTitle();
+		// d.getContent();
+
+		// 객체 통째로 보내준다.
+		model.addAttribute("diary", diary);
+		model.addAttribute("font", fontnameCSS);
+
+		return "/member/diary/modify";
 	}
 }
-
-

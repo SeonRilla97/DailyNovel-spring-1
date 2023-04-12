@@ -54,10 +54,19 @@ public class DiaryController {
 		// service.insertDiary(diary);
 		//
 		// diary.setMemberId(1);
+		Integer feelingId = 0;
+		Integer weatherId = 0;
+		
 		int memberId = Integer.parseInt(String.valueOf(dry.get("memberId")));
 		int templateId = Integer.parseInt(String.valueOf(dry.get("templateId")));
-		Integer feelingId = Integer.parseInt(String.valueOf(dry.get("feelingId")));
-		Integer weatherId = Integer.parseInt(String.valueOf(dry.get("weatherId")));
+		if(String.valueOf(dry.get("feelingId")).equals("null")) {
+			feelingId = null;
+		}
+		else
+			feelingId = Integer.parseInt(String.valueOf(dry.get("feelingId")));
+//		Integer feelingId = 
+//		Integer 
+		weatherId = Integer.parseInt(String.valueOf(dry.get("weatherId")));
 		Integer honesty = Integer.parseInt(String.valueOf(dry.get("honesty")));
 		String regDate = (String) dry.get("regDate");
 		String title = (String) dry.get("title");

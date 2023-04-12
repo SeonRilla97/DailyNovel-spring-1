@@ -24,6 +24,11 @@
 <!-- 	  <result property="feelingName" column="name"/> -->
 <!-- 	</resultMap> -->
 
+	<select id="getFont" resultType="setFont">
+		
+	
+	</select>
+
 	
 	<select id="findById" resultMap="settingId">
 		select * from member 
@@ -86,5 +91,16 @@
 	<delete id="deleteAcount" parameterType="Setting">
 		delete from member where id = #{id};
 	</delete>
+	
+		<select id="findFontId" resultType="setFont">
+		SELECT 
+			*
+ 		FROM 
+			font_family
+		where
+			id = #{fid}
+	</select>
+	
+
 
 </mapper>

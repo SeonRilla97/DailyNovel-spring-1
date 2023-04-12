@@ -815,6 +815,16 @@ color: white;
 
   box-shadow: 0 0.25rem 0.25rem rgba(0, 4, 4, 0.1);
 }
+
+#tmp-value{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reg-tmp-txt{
+  font-size: 22px;
+}
 .l-box-mini > .name {
   height: 1.5rem;
   background-color: #69bc80;
@@ -1111,7 +1121,8 @@ color: white;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    border-radius:5rem;
+	width:6rem;
+    height:6rem;
 }
 
 /*체크박스*/
@@ -1365,7 +1376,7 @@ color: white;
 
 .lc-space-around{
     display: flex;
-    width: 20rem;
+    width: 22rem;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;

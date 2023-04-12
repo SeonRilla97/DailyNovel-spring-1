@@ -67,17 +67,8 @@ window.addEventListener('load',()=>{
       modalClose(activeModal,container);
       // modalClose(regmodal,container);  
     })
-  }
-/*
-  modalCloseBtn.addEventListener('click', ()=>{
-    let activeModal = document.querySelector(".reg-select-modal.active");
-    activeModal.addEventListener('click', ()=> {
-      console.log("ghkrls");
-    })
-    modalClose(activeModal,container);
-    modalClose(regmodal,container);
-  })
-*/
+  }  
+
   function modalOpen(modal, container){
     modal.classList.add('active');        
     container.classList.toggle('position-fixed');

@@ -43,9 +43,13 @@ loginbtn.addEventListener('click', ()=>{
 		console.log("나 로그인 성공했나");
     }
 
+
+});
+
 }
 
 )
+
 
 loginInputBoxId.addEventListener('keyup', function(){
     if(!loginInputBoxId.value == ''){
