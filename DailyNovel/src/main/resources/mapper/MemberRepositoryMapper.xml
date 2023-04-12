@@ -40,5 +40,15 @@
 	
 	</update>
 	
+	<select id="findMemberSetting" resultType="int">
+		SELECT 
+			font_family 
+ 		FROM 
+			member
+		where
+			id = #{uid}
+	</select>
+
+	
 
 </mapper>

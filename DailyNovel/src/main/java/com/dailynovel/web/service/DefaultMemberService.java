@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.dailynovel.web.entity.Member;
 import com.dailynovel.web.repository.MemberRepository;
 
 @Service
@@ -69,6 +70,7 @@ public class DefaultMemberService implements MemberService {
 	}
 
 	@Override
+
 	public boolean temporaryPassword(String email, String uuid) {
 		int checkEmail = repository.getFindId(email);
 		if(checkEmail ==1) {
@@ -88,5 +90,14 @@ public class DefaultMemberService implements MemberService {
 		
 		return repository.getFindIdByEmail(email);
 	}
+
+	public int getMemberSetting(int uid) {
+		// TODO Auto-generated method stub
+		int fontId = repository.findMemberSetting(uid);
+		
+		return fontId;
+	}
+
+
 
 }
