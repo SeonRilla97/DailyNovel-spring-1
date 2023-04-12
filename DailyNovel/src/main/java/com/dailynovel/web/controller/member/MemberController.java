@@ -124,9 +124,13 @@ public class MemberController {
 		int uid = 1;
 
 		DiaryView diary = diaryservice.viewDiary(diaryId); 
-		String fontnameCSS = settingService.getfontNameforCSS(memberservice.getMemberSetting(uid));
+		//font 설정 관련 배열
+		int[] fontset = memberservice.getMemberSetting(uid);
+		System.out.println(fontset[0]);
 		
-		System.out.println(fontnameCSS);
+		//폰트 명 스타일과 사이즈 지정
+		String fontnameCSS = settingService.getfontNameforCSS(fontset[0]);
+		int fontsize = fontset[1];
 		
 //		.noto-sans-k{
 //		    font-size: 100%;
@@ -156,8 +160,7 @@ public class MemberController {
 		// 객체 통째로 보내준다.
 		model.addAttribute("diary", diary);
 		model.addAttribute("font", fontnameCSS);
-
-		System.out.println(diary.getContent());
+		model.addAttribute("fontsize", fontsize);
 
 		return "/member/diary/detail";
 	}
@@ -173,9 +176,13 @@ public class MemberController {
 		int uid = 1;
 
 		DiaryView diary = diaryservice.viewDiary(diaryId); 
-		String fontnameCSS = settingService.getfontNameforCSS(memberservice.getMemberSetting(uid));
+		//font 설정 관련 배열
+		int[] fontset = memberservice.getMemberSetting(uid);
+		System.out.println(fontset[0]);
 		
-		System.out.println(fontnameCSS);
+		//폰트 명 스타일과 사이즈 지정
+		String fontnameCSS = settingService.getfontNameforCSS(fontset[0]);
+		int fontsize = fontset[1];
 		
 //		.noto-sans-k{
 //		    font-size: 100%;
@@ -205,6 +212,7 @@ public class MemberController {
 		// 객체 통째로 보내준다.
 		model.addAttribute("diary", diary);
 		model.addAttribute("font", fontnameCSS);
+		model.addAttribute("fontsize", fontsize);
 
 		return "/member/diary/modify";
 	}

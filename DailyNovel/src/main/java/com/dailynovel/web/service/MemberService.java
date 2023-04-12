@@ -19,7 +19,7 @@ public interface MemberService{
 	int passwordChange(String password, String email);
 
 
-	int getMemberSetting(int uid);
+	int[] getMemberSetting(int uid);
 
 
 

@@ -1560,10 +1560,12 @@ feeling view
 
 .editor-base-detail{
 
+  
+
   box-sizing:border-box;
 
   width: 100%;
-  height: 85%;
+  height: 100%;
 
   border-spacing: 30px;
   
@@ -1575,4 +1577,22 @@ feeling view
 
   
   /* background-color: #cecece; */
+}
+
+.detail-font-size16{
+
+  font-size: 16px;
+
+}
+
+.detail-font-size22{
+
+  font-size: 22px;
+
+}
+
+.detail-font-size28{
+
+  font-size: 28px;
+
 }
