@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	<mapper namespace="com.dailynovel.web.repository.AnalysisRepository">
+<mapper namespace="com.dailynovel.web.repository.AnalysisRepository">
 
 	<resultMap id="HonestyMap" type="Honesty">
 		 <result property="honestyRange" column="honesty_range"/>
@@ -41,7 +41,7 @@
 		where member_id = 1
 		GROUP BY name
 		ORDER BY frequency DESC;
-	</select>S
+	</select>
 	
 	<select id="findHonesty" resultMap="HonestyMap">
     SELECT
@@ -54,7 +54,7 @@
 	    END AS honesty_range,
 	    COUNT(*) AS count
 		FROM diary
-		WHERE member_id = 1 AND honesty IS NOT NULL AND MONTH(reg_date) = month(current_date())
+		WHERE member_id = 1 AND honesty IS NOT NULL AND MONTH(reg_date) = 4
 		GROUP BY honesty_range
 		ORDER BY honesty_range ASC;
 	</select>
