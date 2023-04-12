@@ -2,6 +2,7 @@ package com.dailynovel.web.controller.member;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -113,24 +114,24 @@ public class MemberController {
 	}
 
 	// 수정 디테일 추가
-	@RequestMapping("/diary/detail")
-	public String detail(
-			Model model,
-			@RequestParam(required = true, defaultValue = "1", name = "diaryId") Integer diaryId
-	// @RequestParam(required = true, defaultValue = "1", name="id") Integer
-	// memberId,
-	) {
+//	@RequestMapping("/diary/detail")
+//	public String detail(
+//			Model model,
+//			@RequestParam(required = true, defaultValue = "1", name = "diaryId") Integer diaryId
+//	// @RequestParam(required = true, defaultValue = "1", name="id") Integer
+//	// memberId,
+//	) {
 		//임시 
-		int uid = 1;
-
-		DiaryView diary = diaryservice.viewDiary(diaryId); 
+//		int uid = 1;
+//
+//		DiaryView diary = diaryservice.viewDiary(diaryId); 
 		//font 설정 관련 배열
-		int[] fontset = memberservice.getMemberSetting(uid);
-		System.out.println(fontset[0]);
-		
-		//폰트 명 스타일과 사이즈 지정
-		String fontnameCSS = settingService.getfontNameforCSS(fontset[0]);
-		int fontsize = fontset[1];
+	//	int[] fontset = memberservice.getMemberSetting(uid);
+//		System.out.println(fontset[0]);
+//		
+//		//폰트 명 스타일과 사이즈 지정
+//		String fontnameCSS = settingService.getfontNameforCSS(fontset[0]);
+//		int fontsize = fontset[1];
 		
 //		.noto-sans-k{
 //		    font-size: 100%;
@@ -158,62 +159,62 @@ public class MemberController {
 		// d.getContent();
 
 		// 객체 통째로 보내준다.
-		model.addAttribute("diary", diary);
-		model.addAttribute("font", fontnameCSS);
-		model.addAttribute("fontsize", fontsize);
+//		model.addAttribute("diary", diary);
+//		model.addAttribute("font", fontnameCSS);
+//		model.addAttribute("fontsize", fontsize);
+//
+//		return "/member/diary/detail";
+//	}
 
-		return "/member/diary/detail";
-	}
-
-	@RequestMapping("/diary/modify")
-	public String modify(
-			Model model,
-			@RequestParam(required = true, defaultValue = "1", name = "diaryId") Integer diaryId
-	// @RequestParam(required = true, defaultValue = "1", name="id") Integer
-	// memberId,
-	) {
-		//임시 
-		int uid = 1;
-
-		DiaryView diary = diaryservice.viewDiary(diaryId); 
-		//font 설정 관련 배열
-		int[] fontset = memberservice.getMemberSetting(uid);
-		System.out.println(fontset[0]);
-		
-		//폰트 명 스타일과 사이즈 지정
-		String fontnameCSS = settingService.getfontNameforCSS(fontset[0]);
-		int fontsize = fontset[1];
-		
-//		.noto-sans-k{
-//		    font-size: 100%;
-//		    font-family: 'Noto Sans KR', sans-serif;
-//		}
-//		.nanum-pen-s{
-//		    font-size: 100%;
-//		    font-family: 'Nanum Pen Script', cursive;
-//		}
-//		.sunflower{
-//		    font-size: 100%;
-//		    font-family: 'Sunflower', sans-serif;
-//		}
-//		.dongle{
-//		    font-size: 100%;
-//		    font-family: 'Dongle', sans-serif;
-//		}
-		
-		
-		// d.getRegDate();
-		// d.getTemplateId();
-		// d.getFeelingId();
-		// d.getWeatherId();
-		// d.getTitle();
-		// d.getContent();
-
-		// 객체 통째로 보내준다.
-		model.addAttribute("diary", diary);
-		model.addAttribute("font", fontnameCSS);
-		model.addAttribute("fontsize", fontsize);
-
-		return "/member/diary/modify";
-	}
+//	@RequestMapping("/diary/modify")
+//	public String modify(
+//			Model model,
+//			@RequestParam(required = true, defaultValue = "1", name = "diaryId") Integer diaryId
+//	// @RequestParam(required = true, defaultValue = "1", name="id") Integer
+//	// memberId,
+//	) {
+//		//임시 
+//		int uid = 1;
+//
+//		DiaryView diary = diaryservice.viewDiary(diaryId); 
+//		//font 설정 관련 배열
+//		int[] fontset = memberservice.getMemberSetting(uid);
+//		System.out.println(fontset[0]);
+//		
+//		//폰트 명 스타일과 사이즈 지정
+//		String fontnameCSS = settingService.getfontNameforCSS(fontset[0]);
+//		int fontsize = fontset[1];
+//		
+////		.noto-sans-k{
+////		    font-size: 100%;
+////		    font-family: 'Noto Sans KR', sans-serif;
+////		}
+////		.nanum-pen-s{
+////		    font-size: 100%;
+////		    font-family: 'Nanum Pen Script', cursive;
+////		}
+////		.sunflower{
+////		    font-size: 100%;
+////		    font-family: 'Sunflower', sans-serif;
+////		}
+////		.dongle{
+////		    font-size: 100%;
+////		    font-family: 'Dongle', sans-serif;
+////		}
+//		
+//		
+//		// d.getRegDate();
+//		// d.getTemplateId();
+//		// d.getFeelingId();
+//		// d.getWeatherId();
+//		// d.getTitle();
+//		// d.getContent();
+//
+//		// 객체 통째로 보내준다.
+//		model.addAttribute("diary", diary);
+//		model.addAttribute("font", fontnameCSS);
+//		model.addAttribute("fontsize", fontsize);
+//
+//		return "/member/diary/modify";
+//	}
 }
