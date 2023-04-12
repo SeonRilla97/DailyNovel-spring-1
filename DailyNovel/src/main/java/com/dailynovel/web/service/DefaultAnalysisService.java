@@ -18,87 +18,72 @@ public class DefaultAnalysisService implements AnalysisService {
 	
 	@Autowired
 	private AnalysisRepository repository;
-	
 
 	@Override
-	public List<Feeling> getCount() {
+	public List<Feeling> getFeelingTopRank(Integer id) {
 		// TODO Auto-generated method stub
-		return repository.findCount(null, null, null, null);
-	}
-
-
-	@Override
-	public List<Feeling> getFeelingTopRank() {
-		// TODO Auto-generated method stub
-		return repository.findFeelingTopRank(null, null, null, null);
-	}
-
-	@Override
-	public List<Feeling> getValue() {
-		// TODO Auto-generated method stub
-		return repository.findCount(null, null, null, null);
-	}
-
-	@Override
-	public List<Feeling> getFeelingRank() {
-		// TODO Auto-generated method stub
-		return repository.findFeelingRank(null, null, null);
-	}
-
-
-	@Override
-	public List<Feeling> getValue(String name, Integer frequency) {
-		// TODO Auto-generated method stub
-		return repository.findValue(name, frequency);
+		return repository.findFeelingTopRank(null, null, null, null, id);
 	}
 
 
 
-
-
 	@Override
-	public List<Honesty> getHonesty(String honestyRange, Integer count) {
+	public List<Feeling> getFeelingRank(Integer id) {
 		// TODO Auto-generated method stub
-		return repository.findHonesty(honestyRange, count);
+		return repository.findFeelingRank(null, null, null, id);
 	}
 
 
 	@Override
-	public List<Honesty> getHonesty() {
+	public List<Feeling> getValue(String name, Integer frequency, Integer id) {
 		// TODO Auto-generated method stub
-		return repository.findHonesty(null, null);
+		return repository.findValue(name, frequency ,id);
+	}
+
+	@Override
+	public List<FeelingPercent> getPercent(Integer id) {
+		// TODO Auto-generated method stub
+		return repository.findpercent(null, null, null, null, id);
 	}
 
 
-	@Override
-	public List<How> getHow(String name, Integer count) {
-		// TODO Auto-generated method stub
-		return repository.findHow(name, count);
-	}
-
 
 	@Override
-	public List<How> getHow() {
+	public List<Feeling> getCount(Integer id) {
 		// TODO Auto-generated method stub
-		return repository.findHow(null, null);
-	}
-
-
-	@Override
-	public List<How> getHowTop() {
-		// TODO Auto-generated method stub
-		return repository.findTopHow(null, null);
-	}
-
-
-	@Override
-	public List<FeelingPercent> getPercent() {
-		// TODO Auto-generated method stub
-		return repository.findpercent(null, null, null, null);
+		return repository.findCount(null, null, null, null, id);
 	}
 
 
 	
+	
+
+	@Override
+	public List<Honesty> getHonesty(String honestyRange, Integer count, Integer id) {
+		// TODO Auto-generated method stub
+		return repository.findHonesty(honestyRange, count, id);
+	}
+
+
+
+
+	@Override
+	public List<How> getHow(String name, Integer count, Integer id) {
+		// TODO Auto-generated method stub
+		return repository.findHow(name, count, id);
+	}
+
+
+
+
+	@Override
+	public List<How> getHowTop(Integer id) {
+		// TODO Auto-generated method stub
+		return repository.findTopHow(null, null, id);
+	}
+
+
+
 
 
 

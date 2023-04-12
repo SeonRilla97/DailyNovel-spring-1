@@ -45,7 +45,7 @@ html{
 
     
   }
-  
+
   /* ------------------------------------ 두 번째 레이아웃 */
   /* 작성(register) 창에서 시작됨. */
   .container-2{
@@ -138,7 +138,7 @@ html{
   /* 각 페이지 별로 만들고 싶을 때 */
   /* 로그인, 메인 팀 */
   .container-1-nmg{
-
+	
     width: 100vw;
     height: 100vh;
       
@@ -149,7 +149,7 @@ html{
   
   .container-1-nmg > .header{
 
-    grid-column: 1/4;
+    grid-column: 2/3;
     grid-row:1/2;
   }
   
@@ -163,6 +163,14 @@ html{
     grid-column: 1/4;
     grid-row:3/4;
   }
+  
+ .container-1-nmg > .header-exit{
+
+    grid-column: 3/4;
+    grid-row:1/2;
+  }
+  
+  
   
   /* 일기 작성, 목록 팀 */
 

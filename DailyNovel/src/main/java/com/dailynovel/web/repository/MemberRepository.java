@@ -28,7 +28,7 @@ public interface MemberRepository {
 	public int updatePassword(String password, String email);
 
 
-	public Member findMemberSetting(int uid);
+//	public Member findMemberSetting(int uid);
 
 
 	public int updateTemporaryPassword(String uuid, String email);

@@ -31,11 +31,10 @@
                 </div>
 
                 <div class="">
-                    <p class="box-p font-size20 font-weight-bolder description-pont pdb-5"  th:text="${Tophow.description}">
-                        
-                    </p>
-                </div>
-                
+			    <p class="box-p font-size20 font-weight-bolder description-pont pdb-5" th:if="${Tophow != null}" th:text="${Tophow.description}">
+			    </p>
+			</div>
+			                
                 
                 <div class="lc-space-around pdb-5">
                     <div class="btn-feeling"><a class="" href="./main"> 이전</a></div>

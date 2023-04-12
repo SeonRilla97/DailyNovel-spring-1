@@ -69,7 +69,6 @@ public class DefaultMemberService implements MemberService {
 		return repository.updatePassword(password , email);
 	}
 
-
 	public boolean temporaryPassword(String email, String uuid) {
 		int checkEmail = repository.getFindId(email);
 		if(checkEmail ==1) {
@@ -90,6 +89,7 @@ public class DefaultMemberService implements MemberService {
 		return repository.getFindIdByEmail(email);
 	}
 
+
 	
 	
 	@Override
@@ -104,6 +104,7 @@ public class DefaultMemberService implements MemberService {
 		
 		return fontSet;
 	}
+
 
 
 

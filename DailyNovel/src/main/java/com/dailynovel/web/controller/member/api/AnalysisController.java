@@ -16,6 +16,8 @@ import com.dailynovel.web.entity.Honesty;
 import com.dailynovel.web.entity.How;
 import com.dailynovel.web.service.AnalysisService;
 
+import jakarta.servlet.http.HttpSession;
+
 @RestController("apiAnalysisController")
 @RequestMapping("/analysis1")
 public class  AnalysisController {
@@ -40,8 +42,11 @@ public class  AnalysisController {
 	public List<Feeling> getList(
 			
 			@RequestParam(name = "name") String name,
-			@RequestParam(name = "frequency", defaultValue = "0") Integer frequency){					
-			List<Feeling> List = service.getValue(name, frequency);
+			@RequestParam(name = "frequency", defaultValue = "0") Integer frequency,
+			HttpSession session
+			){		
+			Integer id = (Integer) session.getAttribute("id");
+			List<Feeling> List = service.getValue(name, frequency, id);
 			return List;
 			
 }
@@ -50,8 +55,11 @@ public class  AnalysisController {
 			
 			@RequestParam(name = "honestyRange") String honestyRange,
 			
-			@RequestParam(name = "count") Integer count){					
-			List<Honesty> list = service.getHonesty(honestyRange, count);
+			@RequestParam(name = "count") Integer count,
+			HttpSession session
+			){		
+			Integer id = (Integer) session.getAttribute("id");				
+			List<Honesty> list = service.getHonesty(honestyRange, count, id);
 			return list;
 			
 }
@@ -61,8 +69,11 @@ public class  AnalysisController {
 	public List<How> getHowChart(
 			
 			@RequestParam(name = "name", defaultValue = "자유") String name,
-			@RequestParam(name = "count") Integer count){					
-			List<How> list = service.getHow(name, count);
+			@RequestParam(name = "count") Integer count,
+			HttpSession session
+			){		
+			Integer id = (Integer) session.getAttribute("id");					
+			List<How> list = service.getHow(name, count, id);
 			return list;
 	}
 	
