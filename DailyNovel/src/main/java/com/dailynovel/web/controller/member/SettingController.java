@@ -246,7 +246,8 @@ public class  SettingController {
 		}
 
 		@RequestMapping("/export/email")
-		public void exportEmail(Model model, HttpServletResponse response) throws Exception {
+		//public void exportEmail(Model model, HttpServletResponse response) throws Exception {
+		public String exportEmail(Model model, HttpServletResponse response) throws Exception {
 			//Integer id = 1;
 			Setting setting = settingService.getById(id);
 			List<Export> export = settingService.getDiaryListByid(id);
@@ -268,6 +269,8 @@ public class  SettingController {
 		    helper.setText(content,true);
 		    
 		    mailSender.send(mail);
+		    //return "member/settings/component/export";
+		    return "true";
 		  }
 		
 		@RequestMapping("/export/text")

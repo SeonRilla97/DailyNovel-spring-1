@@ -13,6 +13,7 @@ public interface SettingService {
 	List<Export> getDiaryListByid(Integer id);
 	
 	List<setFont> getByFontId();
+	String getfontNameforCSS(int fid);
 	
 	int updateProfile(Setting setting);
 	int updateFont(Setting setting);
