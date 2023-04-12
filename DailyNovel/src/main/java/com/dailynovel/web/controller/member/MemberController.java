@@ -20,6 +20,8 @@ import com.dailynovel.web.service.SettingService;
 import com.dailynovel.web.service.TemplateService;
 import com.dailynovel.web.service.WeatherService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/member/")
 public class MemberController {
@@ -73,14 +75,17 @@ public class MemberController {
 			@RequestParam(required = false, name = "wid") Integer wid,
 			@RequestParam(required = false, name = "tid") Integer tid,
 			@RequestParam(required = false, name = "fid") Integer fid,
-			@RequestParam(required = false, name = "reg_date") String regDate) {
+			@RequestParam(required = false, name = "reg_date") String regDate,
+			HttpSession session) {
 		// 선유진-검색
 		System.out.println("레그데이트 :" + regDate);
 		List<Diary> list = diaryService.getDiarys(memberId, tid, fid, wid, regDate);
-
+		
 		List<Template> templateList = templateService.getTemplateList();
 		List<Feeling> feelingList = feelingService.getFeelingList();
 		List<Weather> weatherList = weatherService.getWeatherList();
+		int id = (int) session.getAttribute("id");
+
 		Template curTName;
 		Feeling curFName;
 		Weather curWName;
@@ -115,6 +120,7 @@ public class MemberController {
 		System.out.println(list);
 
 		System.out.println(memberId.toString() + wid + tid + fid + regDate);
+		System.out.println(id);
 		return "/member/diary/list";
 
 	}

@@ -57,12 +57,12 @@ public class DefaultDiaryService implements DiaryService {
 
 	
 
-	public Map<Integer, ArrayList<DiaryPreview>> getPreview(int year,int month){
+	public Map<Integer, ArrayList<DiaryPreview>> getPreview(int memberId, int year,int month){
 	//담을 객체 선언만 한거
 		Map<Integer, ArrayList<DiaryPreview>> diaryMap = new HashMap<>();
 		
 		//다이어리 값 받아오기
-		List<DiaryPreview> list = repository.getDiaryByMonthly(year, month);
+		List<DiaryPreview> list = repository.getDiaryByMonthly(memberId,year, month);
 		
 		for(DiaryPreview dry : list) {
 			int curdate = dry.getDiaryDate();

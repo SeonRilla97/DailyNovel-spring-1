@@ -30,8 +30,8 @@ public interface DiaryRepository {
 	DiaryView findDiaryView(Integer id); //id 추가
 	
 	
-	Set<Integer> getDateByMonthly(int year, int month);
-	List<DiaryPreview> getDiaryByMonthly(int year, int month); 
+	Set<Integer> getDateByMonthly(Integer memberId, int year, int month);
+	List<DiaryPreview> getDiaryByMonthly(Integer memberId, int year, int month); 
 	
 	
 	//---Update---
