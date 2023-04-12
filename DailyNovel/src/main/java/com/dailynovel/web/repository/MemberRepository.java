@@ -36,7 +36,6 @@ public interface MemberRepository {
 
 	public int getFindIdByEmail(String email);
 
-	public int findMemberSetting(int uid);
 
 
 
