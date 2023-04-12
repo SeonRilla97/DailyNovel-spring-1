@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,17 +30,18 @@
 
 		<main class="main lc-vertical-alignment mgt-6">
 			<div>당신의 하루를 보다 쉽게 정리하세요.</div>
-			<form id="form" class="lc-vertical-alignment mgt-4">
-				<div id="idmiss" class=" blind mgt-3 color-red-1">계정이 올바르지
-					않습니다.</div>
+			<form id="form" class="lc-vertical-alignment mgt-4" method="post" action="./login">
+            <div
+            th:class="${param.error} ? '' : 'd-none' "
+            
+             style="color:red; font-weight: bold; text-align: center; margin: auto;">
+            	아이디 또는 비밀번호가 일치하지 않습니다.
+            </div>
 				<div class="outBox-id box-large  mgt-3">
 					<div class="inputBox">
-						<input id="id" class="sample-id" type="text" name="email"/> <label for="id">이메일
-							또는 별명</label>
+						<input id="id" class="sample-id" type="text" name="email"/> <label for="id">이메일</label>
 					</div>
 				</div>
-				<div id="passwordmiss" class="blind mgt-3 color-red-1">비밀번호가
-					올바르지 않습니다.</div>
 				<div class="outBox-pass box-large  mgt-3">
 					<div class="inputBox">
 						<input id="passwd" class="sample-pass" type="password" name="password"/> 
@@ -48,10 +50,10 @@
 				</div>
 				<div class="lc-center mgt-5">
 					<div>
-						<a href="../user/account-recovery/id.html">아이디 찾기</a>
+						<a href="account-recovery/email">계정 찾기</a>
 					</div>
 					<div class="mgl-5">
-						<a href="../user/account-recovery/password.html">비밀번호 찾기</a>
+						<a href="account-recovery/password">비밀번호 찾기</a>
 					</div>
 				</div>
 				<input id="loginbtn" type="submit" 
@@ -61,7 +63,7 @@
 			<div class="mgt-5">
 				<div class="lc-center">
 					<div>
-						<a href="../user/sign-up.html">처음이신가요? &nbsp;회원가입</a>
+						<a href="/user/signup">처음이신가요? &nbsp;회원가입</a>
 					</div>
 				</div>
 			</div>

@@ -11,7 +11,10 @@
 		<select id="getFindPwd" parameterType="String" resultType="int">
 		select count(password) password from member where password =#{password} and  email =#{email};
 	</select>
-	
+
+	<select id="getFindIdByEmail" parameterType="String" resultType="int">
+		select id from member where email =#{email};
+	</select>
 
 	<select id="FindSameNickname" parameterType="String" resultType="int">
 		select count(nickname) samenickname from member where nickname =#{nickname};
@@ -28,11 +31,14 @@
 	</insert>
 	
 	<update id="updatePassword" parameterType="String">
-		update member set password = "#{password}" where email = #{email}; 
+		update member set password = #{password} where email = #{email}
 	
 	</update>
 	
-
+	<update id="updateTemporaryPassword" parameterType="String">
+		update member set password = #{uuid} where email = #{email}
+	
+	</update>
 	
 
 </mapper>
