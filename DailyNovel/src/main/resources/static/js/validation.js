@@ -14,40 +14,6 @@ const passwordmiss = document.getElementById("passwordmiss");
 const outBox = document.querySelectorAll(".outBox");
 
 
-loginbtn.addEventListener('click', ()=>{
-	const logincheck={
-        method:"post"
-	};
-	fetch("http://localhost:8080/user/login/check")
-	.then(response => response.text())	
-	.then(data=>{
-
-	    if (data == '계정이 올바르지 않습니다.') {
-	      
-	
-	            passwordmiss.classList.remove('blind');
-	            idmiss.classList.add('blind');
-	            loginBoxId.classList.remove('existence');   
-	            loginBoxPass.classList.remove('existence'); 
-	        
-	    }
-	    else if(data=='비밀번호를 다시입력하세요'){
-		
-	
-	            idmiss.classList.remove('blind');
-	            passwordmiss.classList.add('blind');
-	            loginBoxId.classList.remove('existence');   
-	            loginBoxPass.classList.remove('existence'); 
-		}
-	    else {
-			console.log("나 로그인 성공했나");
-	    }
-	
-	
-	})
-
-});
-
 
 loginInputBoxId.addEventListener('keyup', function(){
     if(!loginInputBoxId.value == ''){
