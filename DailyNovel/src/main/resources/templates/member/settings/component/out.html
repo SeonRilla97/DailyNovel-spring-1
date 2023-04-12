@@ -19,22 +19,22 @@
 <body>
     <section class="container-1">
         <header class="header lc-center top-sticky">
-            <div class="box-large color-bg-green-2 h2 mgt-3 color-white-1">회원탈퇴/로그아웃</div>
+            <div class="box-large color-bg-green-2 h2 color-white-1">회원탈퇴/로그아웃</div>
         </header>
 
         <div class="main lc-center flex-column">
             <a href="#" class="modalBtn"><div class="btn3 out">회원탈퇴</div></a>
             <a  class="btn3 mgt-5" href="/">로그아웃</a>
             <div id="modal" class="modal">
-                <div class="modal-content ">
-                <span class="close">&times;</span>
-                <p>탈퇴 하시나요?</p>
-                <div style="display: flex;">
-                	<form action="/member/setting/out/delete" method="post">
-                    	<button id="submitBtn" class="box-short font-s-box out">회원탈퇴</button>
-                	</form>
-                    	<button id="cancelBtn" class="box-short font-s-box">취소</button>
-                </div>
+                <div class="modal-content out-modal">
+	                <p class="mgt-2" >탈퇴 하시나요?</p>
+	                <span class="close">&times;</span>
+	                <div style="display:flex;">
+	                	<form action="/member/setting/out/delete" method="post">
+	                    	<button id="submitBtn" class="box-short font-s-box out">회원탈퇴</button>
+	                	</form>
+	                    	<button id="cancelBtn" class="box-short font-s-box">취소</button>
+	                </div>
                 </div>
             </div>
         </div>

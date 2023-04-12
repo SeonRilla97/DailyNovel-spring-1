@@ -47,6 +47,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/member/setting/")
@@ -55,14 +56,15 @@ public class  SettingController {
 	@Autowired
 	private SettingService settingService;
 	
+	
 	@Autowired
 	private JavaMailSender mailSender; //일기 email전송을 위해 필요한 api?
 	
 	private String imageName;
-	private Integer id;
-	public SettingController() {
-		id=1;
-	}
+//	private Integer id;
+//	public SettingController() {
+//		id=1;
+//	}
 	
 	@RequestMapping("main")
 	public String main(){
@@ -71,10 +73,12 @@ public class  SettingController {
 
 		// 세팅-프로필-------------------------------------------------------------------
 		@RequestMapping("profile")
-		public String profile(Model model) {
-	        
-			//Integer id = 60;
-			Setting setting = settingService.getById(id); // id 1번의 member테이블의 값 가지고 오기
+		public String profile(Model model, HttpSession session) {
+	       
+	        System.out.println(session.getAttribute("id"));
+	     
+			
+			Setting setting = settingService.getById((Integer)session.getAttribute("id")); // id 1번의 member테이블의 값 가지고 오기
 			model.addAttribute("setting", setting);		// 가지고 온 테이블 값을 model에 심기
 			//System.out.println(setting);				// 삭제요망 제대로 가지고 왔는지 확인차 출력해 보기 삭제요망
 			imageName = setting.getProfileImage();		// 가지고 온 profile이미지의 명칭을 전역변수에 넣기
@@ -89,7 +93,8 @@ public class  SettingController {
 				@RequestParam("name") String Nickname,
 				@RequestParam("stsMessage") String stsMessage, 
 				@ModelAttribute Setting setting, 
-				HttpServletRequest request
+				HttpServletRequest request,
+				HttpSession session
 				) throws Exception {
 			
 			if (profile != null && !profile.isEmpty()) { // 사용자가 새로운 이미지를 등록 했을 때만 실행하기
@@ -134,7 +139,7 @@ public class  SettingController {
 				setting.setProfileImage(profileImage);
 			}
 			//Integer id = 1;
-			setting.setId(id);
+			setting.setId((Integer)session.getAttribute("id"));
 			setting.setNickName(Nickname);
 			setting.setStatusMessage(stsMessage);
 			int a = settingService.updateProfile(setting);
@@ -150,9 +155,9 @@ public class  SettingController {
 
 		// 세팅-폰트-------------------------------------------------------------------
 		@RequestMapping("/font")
-		public String font(Model model, Model model2, Model model3) {
+		public String font(Model model, Model model2, Model model3, HttpSession session) {
 
-			Setting setting = settingService.getById(id);
+			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
 			
 			List<setFont> font = settingService.getByFontId();
 			
@@ -187,11 +192,12 @@ public class  SettingController {
 		public String fontUpdate(Model model,
 				@RequestParam(name = "font", required = false) String font,
 				@RequestParam(name = "fontSize", required = false) int fontSize,
-				@ModelAttribute Setting setting
+				@ModelAttribute Setting setting,
+				HttpSession session
 				) {
 			//Integer id = 1;
 			
-			setting.setId(id);
+			setting.setId((Integer)session.getAttribute("id"));
 			setting.setFontFamily((font));
 			setting.setFontSize((fontSize==16 ? "16" : fontSize==22?"22":"28"));
 			//System.out.println(setting);
@@ -203,10 +209,10 @@ public class  SettingController {
 
 		// 세팅-알람-------------------------------------------------------------------
 		@RequestMapping("/alarm")
-		public String alarm(Model model) {
+		public String alarm(Model model, HttpSession session) {
 			
 			//Integer id = 1;
-			Setting setting = settingService.getById(id);
+			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
 			model.addAttribute("setting", setting);
 			//System.out.println(setting);
 			return "member/settings/component/alarm";
@@ -217,10 +223,11 @@ public class  SettingController {
 				@RequestParam(name = "web-alarm", required = false) String alarmSwitch,
 				@RequestParam(name = "katolk-alarm", required = false) String kakaoAlarmSwitch,
 				@RequestParam(name = "timer") String alarmTime, 
-				@ModelAttribute Setting setting) {
+				@ModelAttribute Setting setting,
+				HttpSession session) {
 			
 			//Integer id = 1;
-			setting.setId(id);
+			setting.setId((Integer)session.getAttribute("id"));
 			setting.setAlarmSwitch((alarmSwitch == null ? "0" : "1"));
 			setting.setKakaoAlarmSwitch((kakaoAlarmSwitch == null ? "0" : "1"));
 			setting.setAlarmTime(alarmTime);
@@ -236,10 +243,10 @@ public class  SettingController {
 
 		// 세팅-내보내기-------------------------------------------------------------------
 		@RequestMapping("/export")
-		public String export(Model model) throws UnknownHostException {
+		public String export(Model model, HttpSession session) throws UnknownHostException {
 			
 			//Integer id = 1;
-			Setting setting = settingService.getById(id);
+			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
 			model.addAttribute("setting", setting);
 			//System.out.println(setting);
 			return "member/settings/component/export";
@@ -247,10 +254,10 @@ public class  SettingController {
 
 		@RequestMapping("/export/email")
 		//public void exportEmail(Model model, HttpServletResponse response) throws Exception {
-		public String exportEmail(Model model, HttpServletResponse response) throws Exception {
+		public String exportEmail(Model model, HttpServletResponse response, HttpSession session) throws Exception {
 			//Integer id = 1;
-			Setting setting = settingService.getById(id);
-			List<Export> export = settingService.getDiaryListByid(id);
+			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
+			List<Export> export = settingService.getDiaryListByid((Integer)session.getAttribute("id"));
 
 		    MimeMessage mail = mailSender.createMimeMessage();
 		    // use the true flag to indicate you need a multipart message
@@ -274,10 +281,10 @@ public class  SettingController {
 		  }
 		
 		@RequestMapping("/export/text")
-		public void exportText(Model model, HttpServletResponse response) throws Exception {
+		public void exportText(Model model, HttpServletResponse response, HttpSession session) throws Exception {
 			
 			//Integer id = 1;
-			List<Export> export = settingService.getDiaryListByid(id);
+			List<Export> export = settingService.getDiaryListByid((Integer)session.getAttribute("id"));
 			
 			// 1) com.lowagie.text.Document 클래스 인스턴스를 생성합니다.
 		Document document = new Document();
@@ -372,10 +379,10 @@ public class  SettingController {
 
 		// 세팅-피드백-------------------------------------------------------------------
 		@RequestMapping("/service-help")
-		public String serviceHelp(Model model) {
+		public String serviceHelp(Model model, HttpSession session) {
 
 			//Integer id = 1;
-			Setting setting = settingService.getById(id);
+			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
 			model.addAttribute("setting", setting);
 			return "member/settings/component/service-help";
 		}
