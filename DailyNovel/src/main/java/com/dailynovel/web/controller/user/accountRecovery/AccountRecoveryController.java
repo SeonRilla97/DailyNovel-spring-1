@@ -1,6 +1,7 @@
 package com.dailynovel.web.controller.user.accountRecovery;
 
 import java.util.Random;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dailynovel.web.controller.member.test;
 import com.dailynovel.web.service.MemberService;
 
 import jakarta.mail.internet.MimeMessage;
@@ -38,23 +40,27 @@ public class  AccountRecoveryController {
 	
 	@RequestMapping("mailCheck")
 	@ResponseBody
-	public String mailCheck(String email , HttpSession session) throws Exception{
-		
+	public String mailCheck(String email) throws Exception{
+		System.out.println("여기왔나");
 		int checkEmail = service.FindSameEmail(email);
-		if(checkEmail != 1) {
-		Random rand = new Random();
-		int authCode = rand.nextInt(999999);
-		session.setAttribute("authCode",authCode);
-	    MimeMessage message = sender.createMimeMessage();
-	    // use the true flag to indicate you need a multipart message
-	    MimeMessageHelper helper = new MimeMessageHelper(message, false);
-	    helper.setTo(email);
-	    helper.setSubject("DailyNovel 회원가입 인증 메일입니다.");
-	    // use the true flag to indicate the text included is HTML
-	    helper.setText("<html><body>비밀번호 변경 인증번호:"+authCode+"</body></html>",true);
-	    // let's include the infamous windows Sample file (this time copied to c:/)
-	    sender.send(message);
-	    return "true";
+		if(checkEmail == 1) {
+			String uuid = UUID.randomUUID().toString().replaceAll("-", ""); // -를 제거해 주었다.
+			uuid = uuid.substring(0, 15); //uuid를 앞에서부터 10자리 잘라줌.
+			System.out.println(uuid);
+			boolean temporaryPassword = service.temporaryPassword(email, uuid);
+			if(temporaryPassword) {
+			    MimeMessage message = sender.createMimeMessage();
+			    // use the true flag to indicate you need a multipart message
+			    MimeMessageHelper helper = new MimeMessageHelper(message, false);
+			    helper.setTo(email);
+			    helper.setSubject("DailyNovel 임시 비밀번호 메일입니다.");
+			    // use the true flag to indicate the text included is HTML
+			    helper.setText("<html><body>임시 비밀번호:"+uuid+"</body></html>",true);
+			    // let's include the infamous windows Sample file (this time copied to c:/)
+			    sender.send(message);
+			    return "true";
+			}
+			return "false";
 		}
 		return "false";
 	  }
@@ -71,22 +77,7 @@ public class  AccountRecoveryController {
 		return "false";
 	}
 	
-		@RequestMapping("emailCheckNum")
-		@ResponseBody
-		public String emailCheckNum(int emailCheckNum , HttpSession session){
 
-			int passwordChangeAuthCode =(int) session.getAttribute("authCode");
-			System.out.println(passwordChangeAuthCode);
-			System.out.println(emailCheckNum);
-			if(emailCheckNum==passwordChangeAuthCode) {	
-				  Random rand = new Random();
-			      int  checkNum = rand.nextInt(999999);
-			    session.setAttribute("passwordChangeauthCode", checkNum);
-				return "true";
-			}
-
-			return "false";
-		};
 		
 		
 		@RequestMapping("passwordchange")
@@ -108,6 +99,7 @@ public class  AccountRecoveryController {
 		return "/user/account-recovery/update-password";
 	}
 	
-
 	
+	
+
 }
