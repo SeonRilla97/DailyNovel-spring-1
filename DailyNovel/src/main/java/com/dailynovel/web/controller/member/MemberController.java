@@ -114,13 +114,13 @@ public class MemberController {
 	}
 
 	// 수정 디테일 추가
-//	@RequestMapping("/diary/detail")
-//	public String detail(
-//			Model model,
-//			@RequestParam(required = true, defaultValue = "1", name = "diaryId") Integer diaryId
-//	// @RequestParam(required = true, defaultValue = "1", name="id") Integer
-//	// memberId,
-//	) {
+	@RequestMapping("/diary/detail")
+	public String detail(
+			Model model,
+			@RequestParam(required = true, defaultValue = "1", name = "diaryId") Integer diaryId
+	// @RequestParam(required = true, defaultValue = "1", name="id") Integer
+	// memberId,
+	) {
 		//임시 
 
 		int uid = 1;
