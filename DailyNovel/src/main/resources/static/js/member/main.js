@@ -8,7 +8,7 @@ function callbackforDiaryPreview(result) {
     const diaryData = result;
     let activedDate =document.querySelectorAll(".calender .date .circle-li");
     let sliderAboutDate = document.querySelector("#previewSlider")
-    console.log(diaryData);
+    // console.log(diaryData);
     let htmlText = "";
 //    console.log(activedDate);
     for(let acDate of activedDate){
@@ -94,7 +94,7 @@ function callbackforDiaryPreview(result) {
 
     //오늘 날짜 그리기
     let today = new Date().getDate();
-    console.log(diaryData[today]);
+    // console.log(diaryData[today]);
     for (let index = 0 ; index < diaryData[today].length ; index++){
             diary = diaryData[today][index];
             // if(index ==0 ){폐기 - 1 조장님이 꺼지랭}
@@ -144,13 +144,13 @@ function callbackforDiaryPreview(result) {
 //Main 배경화면 그리기
 const header = document.querySelector("header");
 const mainheader = document.querySelector("#add-hello");
-console.log("전체높이 : " + ((header.offsetHeight)+(mainheader.offsetHeight)))
+// console.log("전체높이 : " + ((header.offsetHeight)+(mainheader.offsetHeight)))
 let bgHeight = ((header.offsetHeight)+(mainheader.offsetHeight));
 const bg = document.querySelector("#background");
 bg.style.height= `${bgHeight}px`;
-console.log(bg);
-console.log(bg.style);
-console.log(bg.style.height);
+// console.log(bg);
+// console.log(bg.style);
+// console.log(bg.style.height);
 
 /*
  //일기 미리보기
