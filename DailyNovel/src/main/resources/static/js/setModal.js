@@ -11,7 +11,6 @@ window.addEventListener("load", function() {
 			// 모달창을 띄운 버튼에 해당하는 p 요소를 찾아서 targetP 변수에 할당
 
 			targetP = this.querySelector("p");
-			console.log(textInput.value)
 		}
 	});
 

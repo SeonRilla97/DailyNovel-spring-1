@@ -76,9 +76,9 @@ public class  SettingController {
 			//Integer id = 60;
 			Setting setting = settingService.getById(id); // id 1번의 member테이블의 값 가지고 오기
 			model.addAttribute("setting", setting);		// 가지고 온 테이블 값을 model에 심기
-			System.out.println(setting);				// 삭제요망 제대로 가지고 왔는지 확인차 출력해 보기 삭제요망
+			//System.out.println(setting);				// 삭제요망 제대로 가지고 왔는지 확인차 출력해 보기 삭제요망
 			imageName = setting.getProfileImage();		// 가지고 온 profile이미지의 명칭을 전역변수에 넣기
-			System.out.println(imageName);
+			//System.out.println(imageName);
 			return "member/settings/component/profile";
 		}
 
@@ -107,7 +107,7 @@ public class  SettingController {
 					Files.delete(filePath);				
 			}
 			catch(파일없음예외 e){
-				System.out.println(e.getMessage());
+				//System.out.println(e.getMessage());
 			}
 			
 			String realPath= "";
@@ -173,7 +173,7 @@ public class  SettingController {
 			preview.add("정말 좋아합니다. 이번엔 거짓이 아니라고요");
 			preview.add("뜨거운 사람 함부로 발로 차지마라, 너는 누구에게..");
 			
-			System.out.println(preview.get(x));
+			//System.out.println(preview.get(x));
 			
 			model3.addAttribute("preview", preview.get(x));
 			
@@ -194,7 +194,7 @@ public class  SettingController {
 			setting.setId(id);
 			setting.setFontFamily((font));
 			setting.setFontSize((fontSize==16 ? "16" : fontSize==22?"22":"28"));
-			System.out.println(setting);
+			//System.out.println(setting);
 			
 			int a = settingService.updateFont(setting);
 
@@ -208,7 +208,7 @@ public class  SettingController {
 			//Integer id = 1;
 			Setting setting = settingService.getById(id);
 			model.addAttribute("setting", setting);
-			System.out.println(setting);
+			//System.out.println(setting);
 			return "member/settings/component/alarm";
 		}
 
@@ -225,7 +225,7 @@ public class  SettingController {
 			setting.setKakaoAlarmSwitch((kakaoAlarmSwitch == null ? "0" : "1"));
 			setting.setAlarmTime(alarmTime);
 
-			System.out.println(setting);
+			//System.out.println(setting);
 			int a = settingService.updateProfile(setting);
 
 			if (a == 1)
@@ -241,7 +241,7 @@ public class  SettingController {
 			//Integer id = 1;
 			Setting setting = settingService.getById(id);
 			model.addAttribute("setting", setting);
-			System.out.println(setting);
+			//System.out.println(setting);
 			return "member/settings/component/export";
 		}
 
@@ -361,97 +361,13 @@ public class  SettingController {
 //		            Files.delete(directoryPath);
 
 			} catch (NoSuchFileException e) {
-				System.out.println("삭제하려는 파일/디렉토리가 없습니다");
+				//System.out.println("삭제하려는 파일/디렉토리가 없습니다");
 			} catch (DirectoryNotEmptyException e) {
-				System.out.println("디렉토리가 비어있지 않습니다");
+				//System.out.println("디렉토리가 비어있지 않습니다");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		
-		// 8) Chrome 으로 방금 작성한 파일을 바로 열어서 확인해봅니다.
-//		String chrome = "C:/Program Files/Google/Chrome/Application/chrome.exe";
-//		try {
-//			new ProcessBuilder(chrome,file.getAbsolutePath()).start();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-			
-//			Date date = new Date(System.currentTimeMillis()); // 현재 시간 측정
-//			SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS"); // 시간 측정 포멧 지정
-//			String time = format.format(date); // 측정한 시간을 포멧화 하기
-//
-//		// 바탕화면으로 경로 만들기 테스트
-//			String deskTopPath = System.getProperty("user.home");
-//			String filePath = deskTopPath + "/Desktop/" + time + "dailyNovel.txt";
-//
-//			FileOutputStream fos = new FileOutputStream(filePath);
-//			PrintStream out = new PrintStream(fos);
-//
-//			for (Export aa : export) {
-//				out.print(aa.getRegDate());
-//				out.print(" [ ");
-//				out.print(aa.getFeelingName());
-//				out.print(" ] ");
-//				out.println();
-//				out.printf("제목: %s", aa.getTitle());
-//				out.println();
-//				out.print(aa.getText());
-//				out.println();
-//				out.println();
-//			}
-			
-//			fos.close();
-//			// 지연시간
-//
-//			// TXT 파일 로드
-//			Document document = new Document(filePath);
-//
-//		// 바탕화면으로 TXT 파일을 PDF로 저장
-//			document.save( deskTopPath + "/Desktop/" + time + "output.pdf");
-//			
-//
-//		 // 바탕화면으로 전송
-//			String path = deskTopPath + "/Desktop/" + time + "output.pdf";
-//				
-//				
-//			FileInputStream fis = new FileInputStream(path);
-//			byte buf[] = new byte[1024];
-//
-//			int size = 1024;
-//			response.setContentType("application/octet-stream");
-//			response.setHeader("Content-Disposition",
-//					"attachment; fileName=\"" + URLEncoder.encode(time + "output.pdf", "UTF-8") + "\";");
-//			response.setHeader("Content-Transfer-Encoding", "binary");
-//			while ((size = fis.read(buf)) != -1) {
-//				response.getOutputStream().write(buf, 0, size);
-//			}
-//			response.getOutputStream().flush();
-//			response.getOutputStream().close();
-//
-//			fis.close();
-//
-//			// 지연시간
-//
-//			try {
-//				// 파일 삭제
-//				// 삭제
-//			// 바탕화면 삭제
-//				Path testPdf = Paths.get( deskTopPath + "/Desktop/" + time + "output.pdf");
-//
-//				Files.delete(testPdf);
-//					Path testText = Paths.get(deskTopPath + "/Desktop/" + time + "dailyNovel.txt");
-//				
-//				Files.delete(testText);
-//				// 디렉토리 삭제
-////		            Files.delete(directoryPath);
-//
-//			} catch (NoSuchFileException e) {
-//				System.out.println("삭제하려는 파일/디렉토리가 없습니다");
-//			} catch (DirectoryNotEmptyException e) {
-//				System.out.println("디렉토리가 비어있지 않습니다");
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
 		}
 
 		// 세팅-피드백-------------------------------------------------------------------
@@ -470,7 +386,7 @@ public class  SettingController {
 			
 			Integer id = 63;
 			Setting setting = settingService.getById(id);
-			System.out.println(setting);
+			//System.out.println(setting);
 			
 			return "member/settings/component/out";
 		}
@@ -483,7 +399,7 @@ public class  SettingController {
 			setting.setId(id);
 
 			int a = settingService.deleteAcount(id);
-			System.out.println(a);
+			//System.out.println(a);
 //			return "member/settings/main";
 			if (a == 1)
 				return "redirect:../../../";
