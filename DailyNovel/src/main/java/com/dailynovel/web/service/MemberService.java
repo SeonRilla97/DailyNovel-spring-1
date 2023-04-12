@@ -1,13 +1,15 @@
 package com.dailynovel.web.service;
 
+
 import com.dailynovel.web.entity.Member;
+
 
 public interface MemberService{
 
 	int FindSameNickname(String nickname);
 
 	
-	String loginCheck(String email,String password);
+	boolean loginCheck(String email,String password);
 
 
 	int FindSameEmail(String email);
@@ -16,7 +18,13 @@ public interface MemberService{
 	String findEmailByNickname(String nickname);
 
 
-	int passwordChange(String password, String email);
+	int passwordChange(String email , String password);
+
+
+	boolean temporaryPassword(String email, String uuid);
+
+
+	int getIdByEmail(String email);
 
 
 	int getMemberSetting(int uid);

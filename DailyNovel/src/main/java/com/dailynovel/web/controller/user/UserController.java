@@ -44,22 +44,25 @@ public class UserController {
 	@Autowired
 	private SignupService signupService;
 	
-	@RequestMapping("login")
+	@GetMapping("login")
 	public String login() {
 		return "/user/login";
 	}
 	
-	@RequestMapping("login/check")
-	@ResponseBody
+	@PostMapping("login")
 	public String loginCheck(@RequestParam(required = true) String email,
 	@RequestParam(required = true) String password,
 	 Model model ,HttpSession session) {
-		session.getAttribute("id");
-		String logincheck= service.loginCheck(email,password);
-		
-		return logincheck;
+		boolean logincheck= service.loginCheck(email,password);
+		if(logincheck) {
+			int id = service.getIdByEmail(email);
+			session.setAttribute("id", "id");
+			System.out.println(id);
+			return "redirect:/member/main";
+		}
+		return "redirect:login?error=error";
 	}
-
+	
 	@GetMapping("signup")
 	public String GetsignUp() {
 		System.out.println("이건 get");
@@ -81,7 +84,7 @@ public class UserController {
 		signupService.signup(id,pwd,nickname,phoneNum);
 //		signupService.createUser();
 		System.out.println("전송완료!");
-		return "/user/sign-up";
+		return "/user/login";
 	}
 	
 	@RequestMapping("mailCheck")
