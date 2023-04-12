@@ -59,15 +59,6 @@ public class MemberController {
 		return "/member/diary/register";
 	}
 
-	// 수정 부분
-	@RequestMapping("/diary/modify")
-	public String modify(Model model,
-			@RequestParam(name = "diaryId") Integer diaryId) {
-
-		//
-
-		return "/member/diary/modify";
-	}
 
 	@RequestMapping("/diary/list")
 	public String diarylist(Model model,
@@ -171,8 +162,52 @@ public class MemberController {
 		return "/member/diary/detail";
 	}
 
-	@RequestMapping("/diary/edit")
-	public String edit() {
-		return "/member/diary/edit";
+	@RequestMapping("/diary/modify")
+	public String modify(
+			Model model,
+			@RequestParam(required = true, defaultValue = "1", name = "diaryId") Integer diaryId
+	// @RequestParam(required = true, defaultValue = "1", name="id") Integer
+	// memberId,
+	) {
+		//임시 
+		int uid = 1;
+
+		DiaryView diary = diaryservice.viewDiary(diaryId); 
+		String fontnameCSS = settingService.getfontNameforCSS(memberservice.getMemberSetting(uid));
+		
+		System.out.println(fontnameCSS);
+		
+//		.noto-sans-k{
+//		    font-size: 100%;
+//		    font-family: 'Noto Sans KR', sans-serif;
+//		}
+//		.nanum-pen-s{
+//		    font-size: 100%;
+//		    font-family: 'Nanum Pen Script', cursive;
+//		}
+//		.sunflower{
+//		    font-size: 100%;
+//		    font-family: 'Sunflower', sans-serif;
+//		}
+//		.dongle{
+//		    font-size: 100%;
+//		    font-family: 'Dongle', sans-serif;
+//		}
+		
+		
+		// d.getRegDate();
+		// d.getTemplateId();
+		// d.getFeelingId();
+		// d.getWeatherId();
+		// d.getTitle();
+		// d.getContent();
+
+		// 객체 통째로 보내준다.
+		model.addAttribute("diary", diary);
+		model.addAttribute("font", fontnameCSS);
+
+		System.out.println(diary.getContent());
+
+		return "/member/diary/modify";
 	}
 }

@@ -96,7 +96,7 @@
 		SELECT 
 			*
  		FROM 
-			dailynoveldb.font_family
+			font_family
 		where
 			id = #{fid}
 	</select>
