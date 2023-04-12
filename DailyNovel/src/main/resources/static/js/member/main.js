@@ -18,7 +18,7 @@ const bg = document.querySelector("#background"); //배경
 let bgHeight = ((header.offsetHeight)+(addHello.offsetHeight)); //인삿말 + 헤더
 bg.style.height= `${bgHeight}px`; //스타일 적용 (크기 변경)
 const BACKGROUNDLIST  = ["/img/DiaryMainPage/Spring.png","/img/DiaryMainPage/Summer.png","/img/DiaryMainPage/autumn.png","/img/DiaryMainPage/winter.png"]
-console.log(bg.src);
+bg.src = BACKGROUNDLIST[Math.floor(Math.random() * BACKGROUNDLIST.length)];
 
 
 
