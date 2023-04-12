@@ -15,7 +15,14 @@ public interface DiaryRepository {
 	void register(Diary diary);
 	
 	//--Read--
-	List<Diary> getAllDiaryById();
+	List<Diary> getAllDiaryById(); //해당 유저의 모든 다이러리 가져오기
+	List<Diary> findAllById(
+			Integer memberId,
+			Integer tid, //템플릿
+			Integer fid, //기분
+			Integer wid,
+			String date //날짜
+			); //정렬기준에 따라 다이어리 가져오기
 	
 	Diary view(Integer id); //id 추가
 	

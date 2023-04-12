@@ -75,4 +75,12 @@ public class DefaultDiaryService implements DiaryService {
 		}
 		return diaryMap;
 	}
+
+	@Override
+	public List<Diary> getDiarys(Integer memberId, Integer tid, Integer fid, Integer wid,
+			String regDate) {
+		List<Diary> list = repository.findAllById(memberId,tid,fid,wid,regDate);
+		System.out.println("서비스단 리스트 출력" + list);
+		return repository.findAllById(memberId,tid,fid,wid,regDate);
+	}
 }
