@@ -206,8 +206,6 @@ public class MemberController {
 		model.addAttribute("diary", diary);
 		model.addAttribute("font", fontnameCSS);
 
-		System.out.println(diary.getContent());
-
 		return "/member/diary/modify";
 	}
 }
