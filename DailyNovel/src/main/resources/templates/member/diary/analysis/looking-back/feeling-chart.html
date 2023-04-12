@@ -19,7 +19,7 @@
   
     
 </head>
-<body class="container-1" id="app">
+<body class="container-1" >
     
     <header class="header lc-center">
         <div class="box-large color-bg-green-2 h2 font-weight-700 color-white-1 ">기분</div>
@@ -37,7 +37,7 @@
                   <div class="lc-center font-size30 font-weight-bolder" th:if="${TopPercent == null}">
 						일기를 작성해주세요
           	</div>
-	                    <p class="box-p font-size20 font-weight-bolder" th:unless="TopPercent == null" th:text="${TopPercent != null and Percent != null} ? ${TopPercent.name + '이 ' + Percent.name + '보다 ' + (TopPercent.percent - Percent.percent) + '% 많이 차지했어요'} : ''">
+	                    <p class="box-p font-size20 font-weight-bolder"  th:text="${TopPercent != null and Percent != null} ? ${TopPercent.name + '이 ' + Percent.name + '보다 ' + (TopPercent.percent - Percent.percent) + '% 많이 차지했어요'} : ''">
 						</p>
 
 					

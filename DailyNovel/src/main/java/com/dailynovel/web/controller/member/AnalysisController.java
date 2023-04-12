@@ -54,7 +54,7 @@ public class  AnalysisController {
 	        TopPcnt = TopPercent.get(0);
 	    }
 	    if(!Percent.isEmpty()) {
-	        Pcnt = Percent.get(0);
+	        Pcnt = Percent.get(3);
 	    }
 	    model.addAttribute("TopPercent", TopPcnt);
 	    model.addAttribute("Percent", Pcnt);
@@ -79,15 +79,23 @@ public class  AnalysisController {
 			return "member/diary/analysis/looking-back/honesty";
 		}
 //	
-	@GetMapping("member/analysis/how")
-	public String How(Model model, HttpSession session) {
-		Integer id = (Integer) session.getAttribute("id");	
-		List<How> list = service.getHow(null, null, id);
-		How Tophow = service.getHowTop(id).get(0); // 첫 번째 요소만 가져오기
-		model.addAttribute("list", list);
-		model.addAttribute("Tophow", Tophow);
-		return "member/diary/analysis/looking-back/how";
-	}
+		@GetMapping("member/analysis/how")
+		public String How(Model model, HttpSession session) {
+		    Integer id = (Integer) session.getAttribute("id");    
+		    List<How> list = service.getHow(null, null, id);		  
+		    String Toptemplate = null;
+		    
+		    if(!list.isEmpty()) {
+		        Toptemplate = list.get(0).getDescription();
+		    }
+		    model.addAttribute("list", list);
+		    model.addAttribute("Tophow", Toptemplate);
+		    return "member/diary/analysis/looking-back/how";
+		}
+
+	
+	
+	
 //	
 		@GetMapping("member/analysis/main")
 		public String main() {
