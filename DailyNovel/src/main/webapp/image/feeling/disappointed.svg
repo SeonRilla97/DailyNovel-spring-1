@@ -1,87 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="129px" height="128px" viewBox="0 0 129 128" enable-background="new 0 0 129 128" xml:space="preserve">  <image id="image0" width="129" height="128" x="0" y="0"
-    href="data:image/png;base64,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" />
-</svg>
+<?xml version="1.0" ?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 0 2050 2050" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<style>.cls-1{fill:#ffffff;}.cls-2{fill:#ffc500;}.cls-3{fill:#ff9f1e;}.cls-4{fill:#ffe059;}.cls-5{fill:#00305f;}</style>
+</defs>
+<title/>
+<g data-name="Layer 1" id="Layer_1">
+<rect class="cls-1" height="2040" width="2040" x="5" y="5"/>
+</g>
+<g data-name="Layer 3" id="Layer_3">
+<circle class="cls-2" cx="1025" cy="1025" r="613.7"/>
+<path class="cls-3" d="M1068.5,1551.8c-339,0-613.7-274.8-613.7-613.7a613.5,613.5,0,0,1,44.4-229.8A610.7,610.7,0,0,0,411.3,1025c0,338.9,274.8,613.7,613.7,613.7,257.7,0,478.3-158.8,569.2-383.9C1486.8,1432.8,1291.5,1551.8,1068.5,1551.8Z"/>
+<path class="cls-4" d="M1025,411.3A610.4,610.4,0,0,0,659.9,531.7a706.9,706.9,0,0,1,453.2-18.9,27.8,27.8,0,0,0-3.3,5.1c-18.2,33.9,18.9,89.1,82.7,123.3s130.4,34.6,148.6.8a38.6,38.6,0,0,0,3.7-10.5c165.2,128,271.9,328.1,272.9,553.1a613.3,613.3,0,0,0,21-159.6C1638.7,686.1,1363.9,411.3,1025,411.3Z"/>
+<ellipse class="cls-4" cx="1077.2" cy="561.6" rx="17.2" ry="25" transform="translate(52.2 1213.7) rotate(-60)"/>
+<ellipse class="cls-5" cx="797.9" cy="735.4" rx="94.9" ry="60.2" transform="translate(28.6 1500.7) rotate(-87.5)"/>
+<circle class="cls-1" cx="827.6" cy="696.8" r="16.6"/>
+<ellipse class="cls-5" cx="1252.1" cy="735.4" rx="60.2" ry="94.9" transform="translate(-30.7 55) rotate(-2.5)"/>
+<circle class="cls-1" cx="1272.4" cy="696.8" r="16.6"/>
+<path class="cls-5" d="M1392.3,1182.1a29.9,29.9,0,0,1-29.3-24,345.8,345.8,0,0,0-118.6-196.6,344.7,344.7,0,0,0-438.8,0A345.8,345.8,0,0,0,687,1158.1a30,30,0,1,1-58.7-12c18.4-90,67.8-172,139.1-230.9a405.1,405.1,0,0,1,654.4,230.9,30,30,0,0,1-23.4,35.4A32.3,32.3,0,0,1,1392.3,1182.1Z"/>
+</g>
+</svg>
