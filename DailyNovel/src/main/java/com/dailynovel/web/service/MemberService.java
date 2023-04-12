@@ -27,7 +27,7 @@ public interface MemberService{
 	int getIdByEmail(String email);
 
 
-	int getMemberSetting(int uid);
+	int[] getMemberSetting(int uid);
 
 
 

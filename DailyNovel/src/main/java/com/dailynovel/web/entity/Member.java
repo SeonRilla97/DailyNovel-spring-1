@@ -15,6 +15,8 @@ public class Member {
 	private	String password;
 	private String nickname;
 	
-	private int fontFamily;
+	private int font_family;
+	private int font_size;
+	
 
 }

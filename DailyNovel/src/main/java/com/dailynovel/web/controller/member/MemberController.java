@@ -2,6 +2,7 @@ package com.dailynovel.web.controller.member;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -121,43 +122,31 @@ public class MemberController {
 	// memberId,
 	) {
 		//임시 
+
 		int uid = 1;
 
 		DiaryView diary = diaryservice.viewDiary(diaryId); 
-		String fontnameCSS = settingService.getfontNameforCSS(memberservice.getMemberSetting(uid));
-		
-		System.out.println(fontnameCSS);
-		
-//		.noto-sans-k{
-//		    font-size: 100%;
-//		    font-family: 'Noto Sans KR', sans-serif;
-//		}
-//		.nanum-pen-s{
-//		    font-size: 100%;
-//		    font-family: 'Nanum Pen Script', cursive;
-//		}
-//		.sunflower{
-//		    font-size: 100%;
-//		    font-family: 'Sunflower', sans-serif;
-//		}
-//		.dongle{
-//		    font-size: 100%;
-//		    font-family: 'Dongle', sans-serif;
-//		}
-		
-		
-		// d.getRegDate();
-		// d.getTemplateId();
-		// d.getFeelingId();
-		// d.getWeatherId();
-		// d.getTitle();
-		// d.getContent();
 
+		String[] DiarySetToCss = diaryservice.getDiarySetToCSS(diaryId);
+		
+		//font 설정 관련 배열
+		int[] fontset = memberservice.getMemberSetting(uid);
+		//폰트 명 스타일과 사이즈 지정
+		String fontnameCSS = settingService.getfontNameforCSS(fontset[0]);
+		int fontsize = fontset[1];
+		
+		
 		// 객체 통째로 보내준다.
-		model.addAttribute("diary", diary);
-		model.addAttribute("font", fontnameCSS);
 
-		System.out.println(diary.getContent());
+		System.out.println(DiarySetToCss[0]);
+		System.out.println(DiarySetToCss[1]);
+
+		
+		model.addAttribute("diary", diary);
+		model.addAttribute("DiarySetToCss", DiarySetToCss);
+		
+		model.addAttribute("font", fontnameCSS);
+		model.addAttribute("fontsize", fontsize);
 
 		return "/member/diary/detail";
 	}
@@ -173,9 +162,13 @@ public class MemberController {
 		int uid = 1;
 
 		DiaryView diary = diaryservice.viewDiary(diaryId); 
-		String fontnameCSS = settingService.getfontNameforCSS(memberservice.getMemberSetting(uid));
+		//font 설정 관련 배열
+		int[] fontset = memberservice.getMemberSetting(uid);
+		System.out.println(fontset[0]);
 		
-		System.out.println(fontnameCSS);
+		//폰트 명 스타일과 사이즈 지정
+		String fontnameCSS = settingService.getfontNameforCSS(fontset[0]);
+		int fontsize = fontset[1];
 		
 //		.noto-sans-k{
 //		    font-size: 100%;
@@ -205,7 +198,9 @@ public class MemberController {
 		// 객체 통째로 보내준다.
 		model.addAttribute("diary", diary);
 		model.addAttribute("font", fontnameCSS);
+		model.addAttribute("fontsize", fontsize);
 
 		return "/member/diary/modify";
 	}
+
 }

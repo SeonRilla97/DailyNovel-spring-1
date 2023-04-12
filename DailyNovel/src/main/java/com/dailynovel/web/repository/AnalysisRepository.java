@@ -18,30 +18,34 @@ public interface AnalysisRepository {
 	List<Feeling> findCount(String name,
 							String description,
 							String img,
-							Integer frequency
+							Integer frequency,
+							Integer id
 									); 
 	List<Feeling> findFeelingTopRank(String name,
 								String img,
 								Integer frequency,
-								String description
+								String description,
+								Integer id
 									);
 	List<Feeling> findFeelingRank(String name,
 				   			String img,
-							Integer frequency
+							Integer frequency,
+							Integer id
 									);
 	
-	List<Honesty> findHonesty(String honestyRange, Integer count);
+	List<Honesty> findHonesty(String honestyRange, Integer count, Integer id);
 	
-	List<Feeling> findValue(String name, Integer frequency);
+	List<Feeling> findValue(String name, Integer frequency, Integer id);
 	
 	List<FeelingPercent> findpercent(String name,
 								Integer frequency,
 								Integer Count,
-								Integer total);
+								Integer total,
+								Integer id);
 	
-	List<How> findHow(String name, Integer count);
+	List<How> findHow(String name, Integer count, Integer id);
 	
-	List<How> findTopHow(String description, Integer count);
+	List<How> findTopHow(String description, Integer count, Integer id);
 	
 	
 

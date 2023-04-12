@@ -1,6 +1,7 @@
 package com.dailynovel.web.controller.user.accountRecovery;
 
 import java.util.Random;
+
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ import jakarta.servlet.http.HttpSession;
 public class  AccountRecoveryController {
 	
 	
-	
+//	
 	@Autowired
 	private JavaMailSenderImpl sender;
 	
