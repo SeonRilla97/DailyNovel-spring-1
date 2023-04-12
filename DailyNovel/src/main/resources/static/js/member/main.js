@@ -87,6 +87,18 @@ function callbackforDiaryPreview(result) {
 
     }
 }
+
+
+const header = document.querySelector("header");
+const mainheader = document.querySelector("#add-hello");
+console.log("전체높이 : " + ((header.offsetHeight)+(mainheader.offsetHeight)))
+let bgHeight = ((header.offsetHeight)+(mainheader.offsetHeight));
+const bg = document.querySelector("#background");
+bg.style.height= `${bgHeight}px`;
+console.log(bg);
+console.log(bg.style);
+console.log(bg.style.height);
+
 /*
  //일기 미리보기
  <div class="item item-diary">
