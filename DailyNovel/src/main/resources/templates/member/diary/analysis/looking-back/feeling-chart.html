@@ -27,21 +27,29 @@
 
 
         <div class="main f-pdt-7 lc-space-between-alignment">
-            <div class ="chart">
+        <div th:if="${TopPercent == null}" class="diary-img2"></div>
+       
+            <div th:unless="${TopPercent == null}"class ="chart">
                 <canvas id="myChart" width="3rem" height="3rem" ></canvas>
-            
+                 
             </div>
                 <div class="">
-                    <p class="box-p font-size20 font-weight-bolder" th:text="${TopPercent != null and Percent != null} ? ${TopPercent.name + '이 ' + Percent.name + '보다 ' + (TopPercent.percent - Percent.percent) + '% 많이 차지했어요'} : ''">
-					</p>
+                  <div class="lc-center font-size30 font-weight-bolder" th:if="${TopPercent == null}">
+						일기를 작성해주세요
+          	</div>
+	                    <p class="box-p font-size20 font-weight-bolder" th:unless="TopPercent == null" th:text="${TopPercent != null and Percent != null} ? ${TopPercent.name + '이 ' + Percent.name + '보다 ' + (TopPercent.percent - Percent.percent) + '% 많이 차지했어요'} : ''">
+						</p>
 
-                </div>
+					
+             	</div>
+             
 
                 <div class="lc-space-around pdb-5">
                     <div class="btn-feeling"><a class="" href="/member/analysis/feeling"> 이전</a></div>
                 </div>
 
         </div>
+       
 
        <footer class="footer ">
             <div class="container-nav color-white-1">
