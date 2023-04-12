@@ -34,9 +34,9 @@
 	
 	<select id="findMemberSetting" resultType="int">
 		SELECT 
-			font_family
+			font_family, 
  		FROM 
-			dailynoveldb.member
+			member
 		where
 			id = #{uid}
 	</select>
