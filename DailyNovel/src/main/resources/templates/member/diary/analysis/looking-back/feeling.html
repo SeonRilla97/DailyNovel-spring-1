@@ -26,21 +26,21 @@
             
 			<div class="feeling-rank-box" >
 
-				 <div class="top-feeling" th:style="'background-image:url('+ @{/image/feeling/{img}(img=${Toprank.img})} +');'">
-						<div class="first-prize"></div>
-				  
-				 </div>
+				 <div class="top-feeling" th:unless="${Toprank == null}" th:style="'background-image:url('+ @{/image/feeling/{img}(img=${Toprank.img})} +');'">
+					    <div class="first-prize"></div>
+					</div>
+					<div th:unless="${Toprank != null}" class="diary-img"></div>
 				<div class="sub-feeling">
-				    <div class="rank-box" th:each="rank, index : ${rank}" th:style="'background-image:url('+ @{/image/feeling/{img}(img=${rank.img})} +');'">
-				       
-				    </div>
+				    <div th:unless="${rank == null}" th:each="r : ${rank}" th:style="'background-image:url('+ @{/image/feeling/{img}(img=${r.img})} +');'" class="rank-box"></div>
 				</div>
+				<div th:if="${#lists.isEmpty(rank)}" class ="font-size30 lc-center font-weight-700">일기를 작성해주세요</div>
+				
 			</div>
 				
 				
 				
                 <div class="">
-                    <p class="box-p font-size20 font-weight-bolder description-pont" th:text="${Toprank.description}">
+                    <p class="box-p font-size20 font-weight-bolder description-pont" th:unless="${Toprank == null}" th:text="${Toprank.description}">
                     </p>
                 </div>    
 

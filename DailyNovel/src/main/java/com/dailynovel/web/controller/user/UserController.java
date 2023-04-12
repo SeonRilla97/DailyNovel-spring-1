@@ -56,7 +56,7 @@ public class UserController {
 		boolean logincheck= service.loginCheck(email,password);
 		if(logincheck) {
 			int id = service.getIdByEmail(email);
-			session.setAttribute("id", "id");
+			session.setAttribute("id", id);
 			System.out.println(id);
 			return "redirect:/member/main";
 		}

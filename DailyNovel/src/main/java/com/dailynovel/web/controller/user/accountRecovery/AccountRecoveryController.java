@@ -1,6 +1,7 @@
 package com.dailynovel.web.controller.user.accountRecovery;
 
 import java.util.Random;
+
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.dailynovel.web.controller.member.test;
 import com.dailynovel.web.service.MemberService;
 
 import jakarta.mail.internet.MimeMessage;
