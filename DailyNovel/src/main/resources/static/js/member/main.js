@@ -1,7 +1,25 @@
-//console.log("메인 스크립트 연결!")
+//메인 인삿말 랜덤
 
-// let a =document.querySelectorAll(".calendar .date .circle-li");
-// console.log(a);
+const HITEXT = ["당신의 하루를 들려주세요","어쩌라고!","소소한 일상과 나만의 이야기","마음먹은 대로 잘 될거에요"
+,"내일은 영화보러 갈까요","나만의 여행을 계획하기","나는 더 나은 미래를 위해 싸운다","두려움이 가장 큰 적이다."]
+
+let addHello = document.querySelector("#add-hello");
+// console.log(Math.floor(Math.random() * HITEXT.length))
+addHello.insertAdjacentHTML('beforeend',`<div class="h2 mgt-2">${HITEXT[Math.floor(Math.random() * HITEXT.length)]}`)
+
+
+
+
+
+//메인 사진 랜덤
+const header = document.querySelector("header");//header 
+const bg = document.querySelector("#background"); //배경
+//
+let bgHeight = ((header.offsetHeight)+(addHello.offsetHeight)); //인삿말 + 헤더
+bg.style.height= `${bgHeight}px`; //스타일 적용 (크기 변경)
+const BACKGROUNDLIST  = ["/img/DiaryMainPage/Spring.png","/img/DiaryMainPage/Summer.png","/img/DiaryMainPage/autumn.png","/img/DiaryMainPage/winter.png"]
+bg.src = BACKGROUNDLIST[Math.floor(Math.random() * BACKGROUNDLIST.length)];
+
 
 
 function callbackforDiaryPreview(result) {
@@ -142,12 +160,7 @@ function callbackforDiaryPreview(result) {
 
 
 //Main 배경화면 그리기
-const header = document.querySelector("header");
-const mainheader = document.querySelector("#add-hello");
-// console.log("전체높이 : " + ((header.offsetHeight)+(mainheader.offsetHeight)))
-let bgHeight = ((header.offsetHeight)+(mainheader.offsetHeight));
-const bg = document.querySelector("#background");
-bg.style.height= `${bgHeight}px`;
+
 // console.log(bg);
 // console.log(bg.style);
 // console.log(bg.style.height);
