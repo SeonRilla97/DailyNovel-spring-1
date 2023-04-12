@@ -75,22 +75,24 @@
         <div class="reg-title-section">
           <div class="lc-center font-bold">제목</div>
           <div class="font-set editor-title pdl-3 pdr-3 flex-aln-center" 
-              th:classappend ="${font}"
+              th:classappend="${font}"
               th:text="${diary.title}"></div>
+
+              <!-- th:classappend ="'${font}', 'detail-font-size${fontsize}'" -->
+
         </div>
         
-        	<textarea readonly id="content-editor" 
-                class="font-set2 detail editor-base-detail mgt-2 pdt-4 pdl-4 pdr-4 " 
-                th:classappend ="${font}"
-                th:text="${diary.content}">나마자기 구조개와 함께 하와이에 가고싶다.</textarea>
-
-      </div>
+            <textarea readonly id="content-editor" 
+                  class="font-set2 detail editor-base-detail mgt-2 pdt-4 pdl-4 pdr-4 " 
+                  th:classappend="|${font}  detail-font-size${fontsize}|"
+                  th:text="${diary.content}">나마자기 구조개와 함께 하와이에 가고싶다.</textarea>
+        </div>
     
     </div>
 
-    <div class="footer lc-center">
+    <!-- <div class="footer lc-center">
       <div class="btn3 color-bg-green-2"><a href="./modify">수정하기</a></div>
-    </div>
+    </div> -->
   </div>
 </body>
 </html>
