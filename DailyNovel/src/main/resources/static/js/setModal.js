@@ -17,6 +17,13 @@ window.addEventListener("load", function() {
 		modal.style.display = "none";
 	}
 
+	modal.addEventListener("click", function(e) {
+		// 모달창 바깥을 클릭했을 때 모달창 닫기
+		if (e.target == this) {
+			modal.style.display = "none";
+		}
+	});
+
 	const cancelBtn = document.querySelector("#cancelBtn");
 	cancelBtn.onclick = function() {
 		modal.style.display = "none";
