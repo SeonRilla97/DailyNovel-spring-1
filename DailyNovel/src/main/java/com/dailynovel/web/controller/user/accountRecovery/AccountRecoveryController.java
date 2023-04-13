@@ -57,6 +57,7 @@ public class  AccountRecoveryController {
 			    helper.setText("<html><body>임시 비밀번호:"+uuid+"</body></html>",true);
 			    // let's include the infamous windows Sample file (this time copied to c:/)
 			    sender.send(message);
+			    System.out.println("아라비와 황제가");
 			    return "true";
 			}
 			return "false";
