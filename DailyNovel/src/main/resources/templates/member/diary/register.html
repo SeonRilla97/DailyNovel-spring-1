@@ -74,18 +74,18 @@
     <div class="tmp-section">
         <ul class="tmps" style="margin-bottom: 1rem;">
 
-          <li class="btn1" value="free-form"><a th:href="@{/member/diary/register(tmp=${'free-form'})}">자유롭게</a></li>
+          <li class="btn1" value="free-form">자유롭게</li>
 
           <li>
             <div id="simple-tmp" class="btn1">간편일기</div>      
             <ul class="tmp-select-box mgt-1">
-              <li class="simple-tmp-box" value="thanks-form"><a th:href="@{/member/diary/register(tmp=${'thanks-form'})}">감사일기</a></li>
-              <li class="simple-tmp-box" value="meat-form"><a th:href="@{/member/diary/register(tmp=${'meat-form'})}">밥블로그</a></li>
-              <li class="simple-tmp-box" value="question-form"><a th:href="@{/member/diary/register(tmp=${'question-form'})}">질문일기</a></li>
+              <li class="simple-tmp-box" value="thanks-form">감사일기</li>
+              <li class="simple-tmp-box" value="meat-form">밥블로그</li>
+              <li class="simple-tmp-box" value="question-form">질문일기</li>
             </ul>        
           </li>      
-          <li class="btn1" value="movie-form"><a th:href="@{/member/diary/register(tmp=${'movie-form'})}">영화</a></li>
-          <li class="btn1" value="trip-form"><a th:href="@{/member/diary/register(tmp=${'trip-form'})}">여행</a></li>  
+          <li class="btn1" value="movie-form">영화</li>
+          <li class="btn1" value="trip-form">여행</li>  
           <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</li>
         </ul>
     </div>
@@ -161,8 +161,8 @@
   <div id="reg-reset-warning-modal" class="reg-select-modal">
     <div class="reg-reset-warn-section">
       <span style="text-align: center;">작성 방법을 바꾸게 되면<br>지금까지 작성했던 내용은 사라져요.<br>괜찮으신가요?</span>
-      <div>네, 바꿀래요.</div>
-      <div>아니요, 그대로 작성할게요.</div>
+      <div class="btn3"><a id="chg-tmp-btn" th:href="@{/member/diary/register(tmp=${tmp})}">네, 바꿀래요.</a></div>
+      <div id="modal-close-btn" class="btn3">아니요,<br>그대로 작성할게요.</div>
     </div>
   </div>
 
