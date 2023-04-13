@@ -1,4 +1,5 @@
 window.addEventListener("load", function(){
+
 	let diaryObj = {
 		memberId: 1,
 		regDate: "",
@@ -13,7 +14,8 @@ window.addEventListener("load", function(){
 	const queryString = this.window.location.search;
 	const params = new URLSearchParams(queryString);
 	const tmpName = params.get('tmp');
-	let tmpValueArr = ['free-form','thanks-form','meat-form', 'question-form', 'movie-form','trip-form'];
+
+	let tmpValueArr = ['free-form','thanks-form', 'meat-form', 'question-form', 'movie-form','trip-form'];
 	let tmpValueKrArr = ['자유', '감사', '밥', '질문', '영화', '여행'];
 	let tmpTxt = document.querySelector(".reg-tmp-txt");
 
@@ -84,10 +86,18 @@ window.addEventListener("load", function(){
 	let feelArr = ['null','angry','awkward','calm','disappointed','anxiety','happy','sad','tocuhed','excited'];	
 	let weatherArr = ['null','sunny','cloudy','snow','rain','dust'];
 
+	// 작성 방법 변경 버튼
+	let chgTmpBtn = this.document.querySelector("#chg-tmp-btn");
+	let chgTmpValue = "free-form";
+
 	if((diaryObj.feelingId == null && diaryObj.weatherId == null)){
 		feelBox.classList.add("null-circle-img");
 		weatherBox.classList.add("null-circle-img");
 	}
+
+	chgTmpBtn.addEventListener('click',()=>{
+		chgTmpBtn.href = `/member/diary/register?tmp=${chgTmpValue}`;
+	})
 
 
 	// json 콘솔로 확인용
@@ -131,30 +141,18 @@ window.addEventListener("load", function(){
 	
 	tmpDiv.onclick = function (e){
 		if(e.target.tagName != "LI")
-			return;			
-		let valueArr = ['free-form','thanks-form','meat-form', 'question-form', 'movie-form','trip-form'];
-		let valueKrArr = ['자유', '감사', '밥', '질문', '영화', '여행'];
+			return;
 
-		let value = e.target.getAttribute('value');
-		let txt = document.querySelector(".reg-tmp-txt");
-		for(let i=0; i < valueArr.length; i++){
-			if(value == valueArr[i]){
-				txt.innerText = valueKrArr[i];				
-				break;
-			}
-		}	
-		diaryObj.templateId = getValueIndex(value,valueArr);
-		
-		viewObj();	
-	}	
+		chgTmpValue = e.target.getAttribute('value');
+	}
 	
-	//적용이 안되는거 같아서 테스트..
+	
+	//적용이 안되는거 같아서 테스트.. 
+	// 2차.. 확실하게 없애보겟습니다.
 	weatherDiv.onclick = function(e){
-		if(e.target.tagName != "LI")
-			return;			
-		
+				
 		let valueArr = ['sunny','cloudy','snow','rain','dust'];
-		let value = e.target.getAttribute('value');
+		let value = e.target.parentElement.getAttribute('value');
 		
 		// li를 선택했다면 닷트 원 없어지도록
 		if(diaryObj.weatherId === null){
