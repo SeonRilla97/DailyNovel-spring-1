@@ -67,7 +67,11 @@ public class  SettingController {
 //	}
 	
 	@RequestMapping("main")
-	public String main(){
+	public String main(HttpSession session){
+		
+		if(session.getAttribute("id")==null)
+			return "redirect:/user/login";
+		
 		return "/member/settings/main";
 	}
 
@@ -379,10 +383,7 @@ public class  SettingController {
 		// 세팅-로그아웃-------------------------------------------------------------------
 		@RequestMapping("/out")
 		public String out(HttpSession session, Model model) {
-			
-			if(session.getAttribute("id")==null)
-				return "redirect:/user/login";
-			
+						
 			//Integer id = 63;
 			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
 						
