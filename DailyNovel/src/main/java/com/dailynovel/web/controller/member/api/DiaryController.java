@@ -69,8 +69,13 @@ public class DiaryController {
 		else
 			feelingId = Integer.parseInt(String.valueOf(dry.get("feelingId")));
 //		Integer feelingId = 
-//		Integer 
-		weatherId = Integer.parseInt(String.valueOf(dry.get("weatherId")));
+//		Integer
+		if(String.valueOf(dry.get("weatherId")).equals("null")) {
+			weatherId = null;
+		}
+		else
+			weatherId = Integer.parseInt(String.valueOf(dry.get("weatherId")));
+//		weatherId = Integer.parseInt(String.valueOf(dry.get("weatherId")));
 		Integer honesty = Integer.parseInt(String.valueOf(dry.get("honesty")));
 		String regDate = (String) dry.get("regDate");
 		String title = (String) dry.get("title");
