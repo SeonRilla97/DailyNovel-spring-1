@@ -31,7 +31,7 @@
   </select>
   
   	<select id="findAllById" resultMap="DiaryResultMap">
-		select id, title, text as content,
+		select id, title, text,
 		date_format(reg_date, '%Y-%m-%d') as reg_date,
 		feeling_id,weather_id, member_id,template_id,id
 		FROM dailynoveldb.diary
@@ -75,7 +75,7 @@
   
   <select id="getDiaryByMonthly" resultMap="DiaryResultMap">
   	SELECT 
-	  	substring(text, 1, 60) as content,
+	  	substring(text, 1, 60) as text,
 	  	title,
 	 	str_to_date(reg_date,'%Y-%m-%d') as reg_date,
 	 	day(reg_date) as diary_date,

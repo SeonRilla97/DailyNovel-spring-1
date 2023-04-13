@@ -640,6 +640,7 @@ color: white;
 
 
 .list-box {
+  /* 후에 스타일 수정해야함 */
   box-shadow: 0px 4px 4px 0px #DFDFDF;
   background-color: #FCFCFC;
   border-radius: 5px;
@@ -667,8 +668,14 @@ color: white;
     }
 
   .list-box .content{
+    /* 나중에 스타일 수정해야함  */
     /* padding-left: 2%; */
     line-height: 1rem;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }    
 
 
