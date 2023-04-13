@@ -156,6 +156,7 @@
 .lc-vertical-alignment {
   display: flex;
   flex-direction: column;
+  
   align-items: center;
 }
 /*  추가한자: 이동형 사유:location 수평 정렬이 필요했기 때문에 정렬정중앙 정렬이 아님 */
