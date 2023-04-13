@@ -174,48 +174,29 @@ public class MemberController {
 	// memberId,
 	) {
 
-		DiaryView diary = diaryService.viewDiary(diaryId);
-		
-		
-		//임시 (세션 안쓰고 누가 썻는지 방식으로 uid에 저장함) 
 		int uid = (int) session.getAttribute("id");
+//		int uid = 1; 
+
+		DiaryView diary = diaryService.viewDiary(diaryId); 
+
+		String[] DiarySetToCss = diaryService.getDiarySetToCSS(diaryId);
 		
 		//font 설정 관련 배열
 		int[] fontset = memberService.getMemberSetting(uid);
-		System.out.println(fontset[0]);
-		
 		//폰트 명 스타일과 사이즈 지정
 		String fontnameCSS = settingService.getfontNameforCSS(fontset[0]);
 		int fontsize = fontset[1];
 		
-//		.noto-sans-k{
-//		    font-size: 100%;
-//		    font-family: 'Noto Sans KR', sans-serif;
-//		}
-//		.nanum-pen-s{
-//		    font-size: 100%;
-//		    font-family: 'Nanum Pen Script', cursive;
-//		}
-//		.sunflower{
-//		    font-size: 100%;
-//		    font-family: 'Sunflower', sans-serif;
-//		}
-//		.dongle{
-//		    font-size: 100%;
-//		    font-family: 'Dongle', sans-serif;
-//		}
 		
-		
-		// d.getRegDate();
-		// d.getTemplateId();
-		// d.getFeelingId();
-		// d.getWeatherId();
-		// d.getTitle();
-		// d.getContent();
-
 		// 객체 통째로 보내준다.
+
+		System.out.println(DiarySetToCss[0]);
+		System.out.println(DiarySetToCss[1]);
+
 		model.addAttribute("diaryId",diaryId);
 		model.addAttribute("diary", diary);
+		model.addAttribute("DiarySetToCss", DiarySetToCss);
+		
 		model.addAttribute("font", fontnameCSS);
 		model.addAttribute("fontsize", fontsize);
 
