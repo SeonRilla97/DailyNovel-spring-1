@@ -138,38 +138,19 @@ window.addEventListener("load", function(){
 
 		viewObj();
 	};
+	
 	tmpDiv.onclick = function (e){
 		if(e.target.tagName != "LI")
 			return;
 
 		chgTmpValue = e.target.getAttribute('value');
 	}
-
-	// tmpDiv.onclick = function (e){
-	// 	if(e.target.tagName != "LI")
-	// 		return;			
-	// 	let valueArr = ['free-form','thanks-form','meat-form', 'question-form', 'movie-form','trip-form'];
-	// 	let valueKrArr = ['자유', '감사', '밥', '질문', '영화', '여행'];
-
-	// 	let value = e.target.getAttribute('value');
-	// 	let txt = document.querySelector(".reg-tmp-txt");
-	// 	for(let i=0; i < valueArr.length; i++){
-	// 		if(value == valueArr[i]){
-	// 			txt.innerText = valueKrArr[i];				
-	// 			break;
-	// 		}
-	// 	}	
-	// 	diaryObj.templateId = getValueIndex(value,valueArr);
-		
-	// 	viewObj();	
-	// }	
 	
-	//적용이 안되는거 같아서 테스트..
+	
+	//적용이 안되는거 같아서 테스트.. 
+	// 2차.. 확실하게 없애보겟습니다.
 	weatherDiv.onclick = function(e){
-		
-		// if(e.target.tagName != "LI")
-		// 	return;			
-		
+				
 		let valueArr = ['sunny','cloudy','snow','rain','dust'];
 		let value = e.target.parentElement.getAttribute('value');
 		
