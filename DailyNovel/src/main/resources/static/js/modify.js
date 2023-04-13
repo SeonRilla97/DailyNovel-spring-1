@@ -1,14 +1,15 @@
 window.addEventListener("load", function(){
 
 	let diaryObj = {
-		memberId: 1,
-		regDate: "",
+		memberId: null,
+		regDate: null,
 		title: null,
 		content: null,
 		templateId: null,
 		weatherId: null,
 		feelingId: null, 
-		honesty: 100	
+		honesty: null,
+		id: null
 	};	
 	
 	const queryString = this.window.location.search;
@@ -52,9 +53,9 @@ window.addEventListener("load", function(){
 	console.log("iso" + date.toISOString());
 	console.log("localedate" + date.toLocaleDateString());
 
-	diaryObj.regDate = `${year}/${month}/${day} ${hour}:${minute}:${second}`;
+	// diaryObj.regDate = `${year}/${month}/${day} ${hour}:${minute}:${second}`;
 	console.log(diaryObj.regDate);
-	dateTxt.innerText = `${year}년 ${month}월 ${day}일`;
+	// dateTxt.innerText = `${year}년 ${month}월 ${day}일`;
 	
 
 
@@ -84,9 +85,9 @@ window.addEventListener("load", function(){
 		weatherBox.classList.add("null-circle-img");
 	}
 
-	chgTmpBtn.addEventListener('click',()=>{
-		chgTmpBtn.href = `/member/diary/register?tmp=${chgTmpValue}`;
-	})
+	// chgTmpBtn.addEventListener('click',()=>{
+	// 	chgTmpBtn.href = `/member/diary/register?tmp=${chgTmpValue}`;
+	// })
 
 
 	// json 콘솔로 확인용
@@ -195,33 +196,57 @@ window.addEventListener("load", function(){
 		viewObj();	
 	})	
 	
+	//id 값 쿼리스트링으로 받아오기
+	const queryString1 = this.window.location.search;
+	const params1 = new URLSearchParams(queryString);
+	const id1 = params.get('diaryId');
+	diaryObj.id = id1;
+	console.log(diaryObj);
+	
+
 	submitBtn.addEventListener('click',()=>{
-		diaryObj.honesty = honestyRange.value;
+		// diaryObj.honesty = honestyRange.value;
 		console.log(diaryObj);
 	
 	// 객체 json 파싱
 	//let diaryJSON = JSON.parse(diaryObj);
 	let diaryJSON = diaryObj;
-	
+		console.log(diaryObj);
 	// post 전송 부분
-	var myHeaders = new Headers();
-	myHeaders.append("Content-Type", "application/json");
+	// var myHeaders = new Headers();
+	// myHeaders.append("Content-Type", "application/json");
 	
-	var raw = JSON.stringify(diaryJSON);
+	// var raw = JSON.stringify(diaryJSON);
 	
-	var requestOptions = {
-	  method: 'POST',
-	  headers: myHeaders,
-	  body: raw,
-	  redirect: 'follow'
-	};
+	// var requestOptions = {
+	//   method: 'POST',
+	//   headers: myHeaders,
+	//   body: raw,
+	//   redirect: 'follow'
+	// };
 	
-	fetch("http://localhost:8080/diarys", requestOptions)
-	  .then(response => response.text())
-	  .then(result => console.log("성공"))
-	  .catch(error => console.log('error', error));
+	// fetch("http://localhost:8080/diarys", requestOptions)
+	//   .then(response => response.text())
+	//   .then(result => console.log("성공"))
+	//   .catch(error => console.log('error', error));
 	
-	
+		var myHeaders = new Headers();
+		myHeaders.append("Content-Type", "application/json");
+
+		var raw = JSON.stringify(diaryJSON);
+
+		var requestOptions = {
+			method: 'PUT',
+			headers: myHeaders,
+			body: raw,
+			redirect: 'follow'
+		};
+
+		fetch("http://localhost:8080/diarys", requestOptions)
+		.then(response => response.text())
+		.then(result => console.log(result))
+		.catch(error => console.log('error', error));
+
 	})
 	
 	// db 인덱스 구하는 메서드. 

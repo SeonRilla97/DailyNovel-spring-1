@@ -116,6 +116,25 @@
 	where id = ${id};
   </select>
   
+  	<update id="update" parameterType="Diary">
+		update diary
+		<set>
+			<if test="title != null">title = #{title},</if>
+			<if test="content != null">text = #{content}</if>
+			
+			<!-- <trim prefix="set" suffixOverrides=",">
+				<if test="title != null">
+					title = ${title},
+				</if>
+				<if test="content !=null">
+					text = ${content},
+				</if>
+			</trim> -->
+		</set>
+		where id = #{id}
+	</update>
+  
+  
   	<delete id="delete">
 		delete 
 		from 

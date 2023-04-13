@@ -121,7 +121,9 @@ public class DefaultDiaryService implements DiaryService {
 	@Override
 	public int modifyDiary(Diary diary) {
 		
-		return 0;
+		repository.update(diary);
+		
+		return 1;
 	}
 
 

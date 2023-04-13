@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -109,6 +110,30 @@ public class DiaryController {
 		
 
 		return "ㄷ...될까..?";
+	}
+	
+	@PutMapping
+//	@PutMapping
+	public int modify(
+//			@PathVariable("id") Integer id,
+//			@RequestBody String title,
+//			@RequestBody String content) {
+			@RequestBody Diary diary) {
+		
+		
+		//1 값은 자료형이 int 라서 어쩔수없이 넣음
+//		Diary d= new Diary(1, 1, null, null, null, null, title, content,id);
+		Diary d= new Diary(1, 1, null, null, null, null, diary.getTitle(), diary.getContent(),diary.getId());
+		
+		System.out.println(d.getTitle());
+		System.out.println(d.getContent());
+		System.out.println(d.getId());
+		
+		
+		
+		service.modifyDiary(d);
+		
+		return 1;
 	}
 	
 	// ajax 테스트
