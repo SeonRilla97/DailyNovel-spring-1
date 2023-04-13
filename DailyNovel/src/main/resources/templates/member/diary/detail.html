@@ -19,7 +19,7 @@
 
 <script src="/js/member/diary/detail.js" defer="defer"></script>
 <!-- <script src="/js/register.js"></script> -->
-<script src="/js/modal2.js"></script>
+<script src="/js/modalDetail.js"></script>
 <!-- DailyNovel/src/main/resources/static/js/member/diary/detail.js -->
 
   <title>일기 보기</title>
@@ -29,7 +29,7 @@
   <div class="container-2" >
     <div class="header reg-header">
       <div class="lc-center">
-        <div id="edit-Del" class="icon detail-menu">?</div>
+        <div id="edit-Del" class="icon detail-menu">...</div>
       </div>
       <div class="lc-center">
         <div class="box-short " th:text="${#dates.format(diary.regDate, 'yyyy년 MM월 dd일')}" >2023년 01월 27일</div>
@@ -50,7 +50,7 @@
         <div class="l-box-mini">
           <div class="name lc-center color-white-1">기분</div>
           <!-- <div class="value touched-img" th:switch="${diary.feelingName}" th:style="'background-image:url('+ @{/image/feeling/{img}(img=${diary.feelingImg})} +');'"> -->
-          <div class="value touched-img" th:switch="${diary.feelingName}" th:classappend="${DiarySetToCss[0]}">
+          <div class="value " th:switch="${diary.feelingName}" th:classappend="${DiarySetToCss[0]}">
             <!-- <span class="value" th:case="화남" 
               >
             </span>
