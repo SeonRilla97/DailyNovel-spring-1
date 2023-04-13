@@ -1331,6 +1331,8 @@ color: white;
 .chart {
   width: 20rem;
   height: 25rem;
+  box-sizing: border-box;
+  
 }
 
 .diary-img{
@@ -1362,10 +1364,14 @@ color: white;
   grid-template-rows: 3fr 1fr;
   width: 20rem;
   height: 25rem;
+  box-sizing: border-box;
+  
 }
 
 .feeling-rank-box > .top-feeling{
   display: grid;
+    box-sizing: border-box;
+  
   gap: 0.5rem;
   background-repeat: no-repeat;
   background-size: 125%;
@@ -1384,6 +1390,8 @@ color: white;
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
+    box-sizing: border-box;
+  
 
 }
 
@@ -1391,11 +1399,15 @@ color: white;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
+    box-sizing: border-box;
+  
 }
 
 .feeling-rank-box > .sub-feeling > .rank-box {
   display: grid;
   background-repeat: no-repeat;
+    box-sizing: border-box;
+  
   background-size: 150%;
   background-position: center;
   grid-template:
@@ -1427,6 +1439,7 @@ color: white;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
+  box-sizing: border-box;
 
   width: 20rem;
   height: 25rem;
@@ -1435,6 +1448,7 @@ color: white;
 .feeling-box{
   display: grid;
   grid-template-rows: 2fr 1fr;
+    box-sizing: border-box;
   
 }
 
@@ -1442,6 +1456,7 @@ color: white;
   background-repeat: no-repeat;
   background-size: 130%;
   background-position: center;
+  
 }
 
 .feeling-box > .count-box{
@@ -1558,13 +1573,11 @@ color: white;
 }
 .box-p{
     background-color: #ffffff;
-    width: 21rem; /* 336px */
-    height: 5.75rem; /* 92px */
 
     display: flex;
     align-items: center;
     justify-content: center;
-
+    box-sizing: border-box;
     text-align: center;
 }
 
@@ -1574,6 +1587,23 @@ color: white;
     justify-content: space-between;
     align-items: center;
 }
+
+.lc-space-between-alignment > .MC{
+	grid-column : 7/12;
+	grid-row:3/4
+	
+}
+
+.lc-space-between-alignment > .PC{
+	grid-column : 4/12;
+	grid-row:3/4;
+}
+
+.lc-space-between-alignment > .BC{
+	grid-column : 1/12;
+	grid-row:3/4
+}
+
 
 
 .lc-feeling-view-alignment{
@@ -1597,6 +1627,10 @@ color: white;
 
 /* honesty */
 
+.border{
+	 box-sizing: border-box;
+	
+}
 
 /* How */
 
@@ -1622,9 +1656,15 @@ color: white;
 .f-pdb-7{
   padding-bottom: 4.5rem;
 }
+.f-pdb-9{
+  padding-bottom: 6.05rem;
+}
 /* 
 feeling view
 */
+
+
+
 
 .pdb-feelingview{ padding-bottom: 7rem;}
 
