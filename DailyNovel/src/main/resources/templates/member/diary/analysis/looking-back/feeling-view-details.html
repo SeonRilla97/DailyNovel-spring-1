@@ -20,32 +20,39 @@
             <div class="box-large color-bg-green-2 h2 font-weight-700 color-white-1 ">기분</div>
         </header>
 
-        <div class="main pd-a lc-space-between-alignment">
+        <div class="main lc-space-between-alignment">
                
-                
-				<div class="feeling-big-box" >
-	                <div class="feeling-box" th:each="detail : ${list}">
-                    <div class=feeling th:style="'background-image:url('+ @{/image/feeling/{img}(img=${detail.img})} +');'">
-                    	<!-- <img th:src="@{/image/feeling/{img}(img=${detail.img})}"> -->
-                    	 
-                    </div>
-                    <div class="count-box lc-center">
-                    	<p th:text="${detail.name}"></p>
-                    	<p th:text="${detail.frequency}"></p>
-                    </div>
-                </div>
+         	<div class ="MC">
+            
+					<div class="feeling-big-box pdt-4" >
+		                <div class="feeling-box border" th:each="detail : ${list}">
+	                    <div class=feeling th:style="'background-image:url('+ @{/image/feeling/{img}(img=${detail.img})} +');'">
+	                    	<!-- <img th:src="@{/image/feeling/{img}(img=${detail.img})}"> -->
+	                    	 
+	                    </div>
+	                    <div class="count-box border lc-center">
+	                    	<p th:text="${detail.name}"></p>
+	                    	<p th:text="${detail.frequency}"></p>
+	                    </div>
+	                </div>
                 
            </div>
+		</div>
+		
+		
+		           
+		<div class="PC">
+		</div>               
                
 
                 
-               
-            <div class="lc-space-around">
-                <div class="btn-feeling"><a class="" href="/member/analysis/feeling">이전</a></div>
+		<div class="BC">               
+            <div class="lc-space-around pdb-5">
+                <div class="btn-feeling border"><a class="" href="/member/analysis/feeling">이전</a></div>
                     
                 </div>
           
-
+		</div>
                 
                 
         </div>
