@@ -378,11 +378,15 @@ public class  SettingController {
 
 		// 세팅-로그아웃-------------------------------------------------------------------
 		@RequestMapping("/out")
-		public String out(HttpSession session) {
+		public String out(HttpSession session, Model model) {
+			
+			if(session.getAttribute("id")==null)
+				return "redirect:/user/login";
 			
 			//Integer id = 63;
 			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
-			
+						
+			model.addAttribute("setting", setting);
 			return "member/settings/component/out";
 		}
 		
@@ -391,6 +395,7 @@ public class  SettingController {
 			
 			// 사실상 로그아웃도 기능이니 이 한 줄 'session.invalidate();'을 서비스에서 불러와야 하는 게 아닌가 싶다.
 			session.invalidate();
+			
 			
 			return "redirect:/";
 		}
