@@ -20,8 +20,9 @@
 	
 
 	<select id="findFeelingTopRank" parameterType="Integer" resultType="Feeling">
-		SELECT name, img, frequency, description
-		FROM feeling_view
+		SELECT name, img, count(d.member_id) as frequency, description
+		FROM diary d
+        left join feeling f on f.id = d.feeling_id
 		where member_id = #{id} and MONTH(reg_date) = MONTH(CURRENT_DATE())
 		group by name
 		ORDER BY frequency DESC
@@ -29,16 +30,19 @@
 	
 
 	<select id="findFeelingRank" parameterType="Integer" resultType="Feeling">
-		SELECT img, name, frequency, DENSE_RANK() OVER (ORDER BY frequency DESC) as ranking
-		FROM feeling_view
-		where member_id = #{id} and MONTH(reg_date) = MONTH(CURRENT_DATE())
+		SELECT name, img, count(d.member_id) as frequency, DENSE_RANK() OVER (ORDER BY frequency DESC) as ranking
+		FROM diary d
+        left join feeling f on f.id = d.feeling_id
+		where member_id = #{id}  and MONTH(reg_date) = MONTH(CURRENT_DATE())
+		group by name
 		ORDER BY frequency DESC
-		LIMIT 1,4;
+        LIMIT 1,4;
 	</select>
 	
 	<select id="findValue" parameterType="Integer" resultType="Feeling">
-		SELECT name, frequency
-		FROM feeling_view
+		SELECT f.name, count(d.member_id) as frequency
+		FROM diary d
+        left join feeling f on f.id = d.feeling_id
 		where member_id = #{id} and MONTH(reg_date) = MONTH(CURRENT_DATE())
 		GROUP BY name
 		ORDER BY frequency DESC;

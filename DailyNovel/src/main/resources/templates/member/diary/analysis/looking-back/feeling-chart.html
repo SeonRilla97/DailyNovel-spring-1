@@ -32,8 +32,8 @@
 	 	       
 	 	       <div class ="MC">
 	 	       
-		 	        <div th:if="${TopPercent == null}" class="pdt-5 diary-img2"></div>
-		            <div th:unless="${TopPercent == null}"class ="pdt-5 chart">
+		 	        <div th:if="${Value == null}" class="pdt-5 diary-img2"></div>
+		            <div th:unless="${Value == null}"class ="pdt-5 chart">
 		                <canvas id="myChart" width="3rem" height="3rem" ></canvas>
 		            </div>
 		            
@@ -51,7 +51,7 @@
 	            
 	             
 			<div class="BC">
-			<div class="lc-center font-size30 f-pdb-9 font-weight-bolder" th:if="${TopPercent == null}">
+			<div class="lc-center font-size30 f-pdb-9 font-weight-bolder" th:if="${Value == null}">
 							일기를 작성해주세요</div>
 	                <div class="lc-space-around pdb-5">
 	                    <div class="btn-feeling"><a class="" href="/member/analysis/feeling"> 이전</a></div>
