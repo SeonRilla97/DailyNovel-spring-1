@@ -164,7 +164,7 @@ window.addEventListener("load", function(){
 	// 	viewObj();	
 	// }	
 	
-
+	//적용이 안되는거 같아서 테스트..
 	weatherDiv.onclick = function(e){
 		
 		// if(e.target.tagName != "LI")
