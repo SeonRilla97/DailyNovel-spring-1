@@ -123,12 +123,7 @@ public class DefaultDiaryService implements DiaryService {
 		
 		return 0;
 	}
-	
-	@Override
-	public int removeDiary() {
-		
-		return 0;
-	}
+
 
 	
 	//월별 일기 얻기(사용자 별)
@@ -161,4 +156,16 @@ public class DefaultDiaryService implements DiaryService {
 		System.out.println("서비스단 리스트 출력" + list);
 		return repository.findAllById(memberId,tid,fid,wid,regDate);
 	}
+
+	
+	@Override
+	public int removeDiary(Integer id) {
+		
+		int result = repository.delete(id);
+		
+		
+		return result;
+	}
+	
+	
 }

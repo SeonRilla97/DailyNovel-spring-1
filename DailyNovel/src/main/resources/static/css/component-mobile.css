@@ -1716,7 +1716,6 @@ feeling view
 }
 
 .detail-font-size22{
-
   font-size: 22px;
 
 }
@@ -1726,3 +1725,22 @@ feeling view
   font-size: 28px;
 
 }
+
+
+.detail-modal-magin{
+
+  margin-top:42px;
+
+}
+
+.detail-modal-check{
+  display: flex;
+  /* align-items: end; */
+  gap : 1.5rem;
+
+}
+
+.delete-yes-btn{
+  background-color: #DB4455;
+}
+

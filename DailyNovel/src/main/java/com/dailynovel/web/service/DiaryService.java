@@ -27,5 +27,5 @@ public interface DiaryService {
 	
 	void insertDiary(Diary diary);
 	int modifyDiary(Diary diary);
-	int removeDiary();
+	int removeDiary(Integer id);
 }
