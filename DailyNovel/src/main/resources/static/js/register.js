@@ -13,6 +13,7 @@ window.addEventListener("load", function(){
 	const queryString = this.window.location.search;
 	const params = new URLSearchParams(queryString);
 	const tmpName = params.get('tmp');
+
 	let tmpValueArr = ['free-form','thanks-form','meat-form', 'question-form', 'movie-form','trip-form'];
 	let tmpValueKrArr = ['자유', '감사', '밥', '질문', '영화', '여행'];
 	let tmpTxt = document.querySelector(".reg-tmp-txt");
@@ -150,11 +151,12 @@ window.addEventListener("load", function(){
 	
 
 	weatherDiv.onclick = function(e){
-		if(e.target.tagName != "LI")
-			return;			
+		
+		// if(e.target.tagName != "LI")
+		// 	return;			
 		
 		let valueArr = ['sunny','cloudy','snow','rain','dust'];
-		let value = e.target.getAttribute('value');
+		let value = e.target.parentElement.getAttribute('value');
 		
 		// li를 선택했다면 닷트 원 없어지도록
 		if(diaryObj.weatherId === null){

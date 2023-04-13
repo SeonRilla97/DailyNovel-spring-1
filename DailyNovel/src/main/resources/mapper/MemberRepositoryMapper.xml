@@ -40,9 +40,9 @@
 	
 	</update>
 	
-	<select id="findMemberSetting" resultType="int">
+	<select id="findMemberSetting" resultType="Member">
 		SELECT 
-			font_family 
+			font_family, font_size
  		FROM 
 			member
 		where

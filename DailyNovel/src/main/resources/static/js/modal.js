@@ -20,6 +20,7 @@ window.addEventListener('load',()=>{
   const regmodal = document.querySelector(".reg-select-modal");
   const regCancelModal = document.querySelector("#reg-cancel-modal");
   const regHonestyModal = document.querySelector("#reg-honesty-modal");
+  const regResetWarnModal = document.querySelector("#reg-reset-warning-modal");
 
   regSumbitBtn.addEventListener('click', ()=>{
     modalOpen(regHonestyModal,container);
@@ -53,11 +54,29 @@ window.addEventListener('load',()=>{
       modalClose(regFeelModal,container);      
   })
 
+  // 날씨 부분 수정
+  let wtbox = document.querySelector(".weather-box > *");  
+  let wtboxes = document.querySelectorAll(".weather-box > * ");
+  for(let e of wtboxes){
+    e.addEventListener('click',(e)=>{
+      modalClose(regWeatherModal,container);      
+    })  
+  }
+  // wtboxes.addEventListener('click',(e)=>{
+  //   modalClose(regWeatherModal,container);      
+  // })
+
   regWeatherModal.addEventListener('click',(e)=>{
-      if(e.target.tagName != "LI")
-        return;      
+      // wtbox.addEventListener('click',(e)=>{
+
+      // })
+      // // if(e.target.tagName != "LI")
+      // //   return;      
+      if(e.target != wtbox)
+        return;
       modalClose(regWeatherModal,container);      
   })
+  
   
 
   for(let e of modalCloseBtn){

@@ -14,6 +14,8 @@ public interface DiaryService {
 	Diary Diary(Integer id);
 	DiaryView viewDiary(Integer id);
 	
+	String [] getDiarySetToCSS(Integer id);
+	
 	
 	//노션 유진이의 공간 참고(여기에 선언한 이유) -> Diary관련 서비스라고 생각함 (미리보기 서비스가 아닌)
 	Map<Integer, ArrayList<DiaryPreview>> getPreview(int memberId, int year,int month);
