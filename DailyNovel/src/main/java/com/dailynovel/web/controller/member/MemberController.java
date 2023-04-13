@@ -138,12 +138,12 @@ public class MemberController {
 
 		int uid = 1;
 
-		DiaryView diary = diaryservice.viewDiary(diaryId); 
+		DiaryView diary = diaryService.viewDiary(diaryId); 
 
-		String[] DiarySetToCss = diaryservice.getDiarySetToCSS(diaryId);
+		String[] DiarySetToCss = diaryService.getDiarySetToCSS(diaryId);
 		
 		//font 설정 관련 배열
-		int[] fontset = memberservice.getMemberSetting(uid);
+		int[] fontset = memberService.getMemberSetting(uid);
 		//폰트 명 스타일과 사이즈 지정
 		String fontnameCSS = settingService.getfontNameforCSS(fontset[0]);
 		int fontsize = fontset[1];
@@ -174,9 +174,9 @@ public class MemberController {
 		//임시 
 		int uid = 1;
 
-		DiaryView diary = diaryservice.viewDiary(diaryId); 
+		DiaryView diary = diaryService.viewDiary(diaryId); 
 		//font 설정 관련 배열
-		int[] fontset = memberservice.getMemberSetting(uid);
+		int[] fontset = memberService.getMemberSetting(uid);
 		System.out.println(fontset[0]);
 		
 		//폰트 명 스타일과 사이즈 지정
