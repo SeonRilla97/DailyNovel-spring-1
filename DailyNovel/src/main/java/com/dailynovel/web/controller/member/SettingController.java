@@ -102,7 +102,7 @@ public class  SettingController {
 			String beforeImagePath = System.getProperty("user.home"); // 컴퓨터의 사용자 경로 추출 
 /*노트북 경로*/ Path filePath = Paths.get( beforeImagePath + "/Desktop/novelPrj/mon/DailyNovel/src/main/webapp/img/profile/" + imageName);
 // 노트북 경로 Path filePath = Paths.get( beforeImagePath + "/Desktop/proproprj/DailyNovel/src/main/webapp/img/profile/" + imageName);
-///*데스크톱경로*/Path filePath = Paths.get( beforeImagePath + "/Desktop/novelPrj(2)/nav/DailyNovel/src/main/webapp/img/profile/" + imageName); 
+// *데스크톱경로*/Path filePath = Paths.get( beforeImagePath + "/Desktop/novelPrj(2)/nav/DailyNovel/src/main/webapp/img/profile/" + imageName); 
 			
 			try {
 				// 삭제하는 클래스 생성(사실상 서비스를 호출) service.deleteImage(filePath);
@@ -150,7 +150,6 @@ public class  SettingController {
 			}
 			else								   // 사진의 업데이트가 없으면 바로 전송(상태메시지 수정만 있는 경우
 				return "redirect:../profile";
-			
 		}
 
 		// 세팅-폰트-------------------------------------------------------------------
@@ -178,13 +177,8 @@ public class  SettingController {
 			preview.add("정말 좋아합니다. 이번엔 거짓이 아니라고요");
 			preview.add("뜨거운 사람 함부로 발로 차지마라, 너는 누구에게..");
 			
-			//System.out.println(preview.get(x));
-			
 			model3.addAttribute("preview", preview.get(x));
 			
-			//System.out.printf("폰트패밀리 %s\n",setting.getFontFamily());
-			//System.out.printf("폰트사이즈 %s\n",setting.getFontSize());
-
 			return "member/settings/component/font";
 		}
 		
@@ -200,7 +194,6 @@ public class  SettingController {
 			setting.setId((Integer)session.getAttribute("id"));
 			setting.setFontFamily((font));
 			setting.setFontSize((fontSize==16 ? "16" : fontSize==22?"22":"28"));
-			//System.out.println(setting);
 			
 			int a = settingService.updateFont(setting);
 
@@ -214,7 +207,6 @@ public class  SettingController {
 			//Integer id = 1;
 			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
 			model.addAttribute("setting", setting);
-			//System.out.println(setting);
 			return "member/settings/component/alarm";
 		}
 
@@ -232,7 +224,6 @@ public class  SettingController {
 			setting.setKakaoAlarmSwitch((kakaoAlarmSwitch == null ? "0" : "1"));
 			setting.setAlarmTime(alarmTime);
 
-			//System.out.println(setting);
 			int a = settingService.updateProfile(setting);
 
 			if (a == 1)
@@ -248,12 +239,10 @@ public class  SettingController {
 			//Integer id = 1;
 			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
 			model.addAttribute("setting", setting);
-			//System.out.println(setting);
 			return "member/settings/component/export";
 		}
 
 		@RequestMapping("/export/email")
-		//public void exportEmail(Model model, HttpServletResponse response) throws Exception {
 		public String exportEmail(Model model, HttpServletResponse response, HttpSession session) throws Exception {
 			//Integer id = 1;
 			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
@@ -389,28 +378,36 @@ public class  SettingController {
 
 		// 세팅-로그아웃-------------------------------------------------------------------
 		@RequestMapping("/out")
-		public String out() {
+		public String out(HttpSession session) {
 			
-			Integer id = 63;
-			Setting setting = settingService.getById(id);
-			//System.out.println(setting);
+			//Integer id = 63;
+			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
 			
 			return "member/settings/component/out";
+		}
+		
+		@RequestMapping("/out/logout")
+		public String logOut(HttpSession session) {
+			
+			// 사실상 로그아웃도 기능이니 이 한 줄 'session.invalidate();'을 서비스에서 불러와야 하는 게 아닌가 싶다.
+			session.invalidate();
+			
+			return "redirect:/";
 		}
 
 		@PostMapping("/out/delete")
 		public String acountOut(Model model, 
-				@ModelAttribute Setting setting) {
+				@ModelAttribute Setting setting,
+				HttpSession session) {
 
-			Integer id = 63;
-			setting.setId(id);
+			//Integer id = 63;
+			setting.setId((Integer)session.getAttribute("id"));
 
-			int a = settingService.deleteAcount(id);
+			int a = settingService.deleteAcount((Integer)session.getAttribute("id"));
 			//System.out.println(a);
 //			return "member/settings/main";
 			if (a == 1)
 				return "redirect:../../../";
-				//return "redirect:../alarm";
 			else
 				return "redirect:../../setting/out";
 		}
