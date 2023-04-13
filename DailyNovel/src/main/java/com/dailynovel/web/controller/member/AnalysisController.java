@@ -53,8 +53,12 @@ public class  AnalysisController {
 	    if(!TopPercent.isEmpty()) {
 	        TopPcnt = TopPercent.get(0);
 	    }
-	    if(!Percent.isEmpty()) {
-	        Pcnt = Percent.get(3);
+	    if (!Percent.isEmpty()) {
+	        if (Percent.size() > 1) {
+	            Pcnt = Percent.get(1);
+	        } else {
+	            Pcnt = null;
+	        }
 	    }
 	    model.addAttribute("TopPercent", TopPcnt);
 	    model.addAttribute("Percent", Pcnt);

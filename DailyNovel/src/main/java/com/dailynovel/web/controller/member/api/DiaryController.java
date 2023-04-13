@@ -8,9 +8,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -106,6 +110,53 @@ public class DiaryController {
 		
 
 		return "ㄷ...될까..?";
+	}
+	
+	@PutMapping
+//	@PutMapping
+	public int modify(
+//			@PathVariable("id") Integer id,
+//			@RequestBody String title,
+//			@RequestBody String content) {
+			@RequestBody Diary diary) {
+		
+		
+		//1 값은 자료형이 int 라서 어쩔수없이 넣음
+//		Diary d= new Diary(1, 1, null, null, null, null, title, content,id);
+		Diary d= new Diary(1, 1, null, null, null, null, diary.getTitle(), diary.getContent(),diary.getId());
+		
+		System.out.println(d.getTitle());
+		System.out.println(d.getContent());
+		System.out.println(d.getId());
+		
+		
+		
+		service.modifyDiary(d);
+		
+		return 1;
+	}
+	
+	// ajax 테스트
+	@GetMapping("{id}") 
+	public Diary get(
+			@PathVariable("id") int id){
+		
+		Diary d = service.Diary(id);
+		
+//		return "menu " + id;
+		return d;
+		//객체를 못전달해 이를 다 표현하기 위해 문자열로 바꾸거나,바꾸는 표현식을 써야해!
+		//요새 트렌드는 JSON과 XML을 써야
+		
+	};
+	
+	@DeleteMapping("{id}")
+	public String delete(
+			@PathVariable int id) {
+		
+		int result = service.removeDiary(id);
+		
+		return id + "완료";
 	}
 
 }

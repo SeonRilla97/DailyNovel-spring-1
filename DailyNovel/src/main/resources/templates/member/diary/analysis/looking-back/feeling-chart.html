@@ -42,7 +42,7 @@
 		      
 	          <div class="PC">
 	                
-					<div class="box-p font-size20 font-weight-bolder"  th:text="${TopPercent != null and Percent != null} ? ${TopPercent.name + '이 ' + Percent.name + '보다 ' + (TopPercent.percent - Percent.percent) + '% 많이 차지했어요'} : ''">
+					<div class="box-p font-size20 font-weight-bolder"  th:if="${Percent != null}" th:text="${TopPercent != null and Percent != null} ? ${TopPercent.name + '이 ' + Percent.name + '보다 ' + (TopPercent.percent - Percent.percent) + '% 많이 차지했어요'} : ''">
 					</div>
 	          </div>
 		                    
