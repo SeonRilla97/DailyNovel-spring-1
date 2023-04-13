@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dailynovel.web.entity.Diary;
-import com.dailynovel.web.entity.DiaryPreview;
 import com.dailynovel.web.entity.DiaryView;
 import com.dailynovel.web.repository.DiaryRepository;
 
@@ -132,19 +131,19 @@ public class DefaultDiaryService implements DiaryService {
 	}
 
 	
-
-	public Map<Integer, ArrayList<DiaryPreview>> getPreview(int memberId, int year,int month){
+	//월별 일기 얻기(사용자 별)
+	public Map<Integer, ArrayList<Diary>> getAllbyMonthly(int memberId, int year,int month){
 	//담을 객체 선언만 한거
-		Map<Integer, ArrayList<DiaryPreview>> diaryMap = new HashMap<>();
+		Map<Integer, ArrayList<Diary>> diaryMap = new HashMap<>();
 		
 		//다이어리 값 받아오기
-		List<DiaryPreview> list = repository.getDiaryByMonthly(memberId,year, month);
+		List<Diary> list = repository.getDiaryByMonthly(memberId,year, month);
 		
-		for(DiaryPreview dry : list) {
-			int curdate = dry.getDiaryDate();
+		for(Diary dry : list) {
+			int curdate = dry.getRegDate().toLocalDateTime().getDayOfMonth();
 			//해당 날짜가 key:value 선언이 되어있는지 확인, 없으면 생성
 			if (!diaryMap.containsKey(curdate)) {
-				diaryMap.put(curdate, new ArrayList<DiaryPreview>());
+				diaryMap.put(curdate, new ArrayList<Diary>());
 		    }
 			//key(날짜) 별 value(미리보기) 넣기
 			diaryMap.get(curdate).add(dry);	
@@ -152,8 +151,11 @@ public class DefaultDiaryService implements DiaryService {
 		return diaryMap;
 	}
 
+	//정렬기준에 따라 일기 주기 (사용자별)--> 후에 이거 front에서 처리하도록 바뀔예정 -> 데이터 전부 다 주고 Front에서 정렬하도록
+	//대신 데이터를 다시는 불러오지 않기 때문에, 데이터가 변화 된 적이 있는지 확인하는것도 좋을듯? (예를들면 다이어리 개수비교)
+	//일기를 지운 뒤, 일기를 다시 불러오기, 컴퓨터에선 일기쓰고 모바일에선 list보고 이럴때 조오옹나 신경쓸거 많아지지만 서버와 통신은 최소화?? 
 	@Override
-	public List<Diary> getDiarys(Integer memberId, Integer tid, Integer fid, Integer wid,
+	public List<Diary> getAllByCriterion(Integer memberId, Integer tid, Integer fid, Integer wid,
 			String regDate) {
 		List<Diary> list = repository.findAllById(memberId,tid,fid,wid,regDate);
 		System.out.println("서비스단 리스트 출력" + list);

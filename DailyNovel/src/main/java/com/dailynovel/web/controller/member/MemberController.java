@@ -72,7 +72,6 @@ public class MemberController {
 
 	@RequestMapping("/diary/list")
 	public String diarylist(Model model,
-			@RequestParam(required = true, defaultValue = "1", name = "id") Integer memberId,
 			@RequestParam(required = false, name = "wid") Integer wid,
 			@RequestParam(required = false, name = "tid") Integer tid,
 			@RequestParam(required = false, name = "fid") Integer fid,
@@ -80,12 +79,12 @@ public class MemberController {
 			HttpSession session) {
 		// 선유진-검색
 		System.out.println("레그데이트 :" + regDate);
-		List<Diary> list = diaryService.getDiarys(memberId, tid, fid, wid, regDate);
+		int id = (int) session.getAttribute("id");
+		List<Diary> list = diaryService.getAllByCriterion(id, tid, fid, wid, regDate);
 		
 		List<Template> templateList = templateService.getTemplateList();
 		List<Feeling> feelingList = feelingService.getFeelingList();
 		List<Weather> weatherList = weatherService.getWeatherList();
-		int id = (int) session.getAttribute("id");
 
 		Template curTName;
 		Feeling curFName;
@@ -119,9 +118,7 @@ public class MemberController {
 		model.addAttribute("weatherList", weatherList);
 		model.addAttribute("list", list);
 		System.out.println(list);
-
-		System.out.println(memberId.toString() + wid + tid + fid + regDate);
-		System.out.println(id);
+//		System.out.println(id);
 		return "/member/diary/list";
 
 	}

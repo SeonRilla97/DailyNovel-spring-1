@@ -24,6 +24,7 @@ bg.src = BACKGROUNDLIST[Math.floor(Math.random() * BACKGROUNDLIST.length)];
 
 function callbackforDiaryPreview(result) {
     const diaryData = result;
+    console.log(diaryData);
     let activedDate =document.querySelectorAll(".calender .date .circle-li");
     let sliderAboutDate = document.querySelector("#previewSlider")
     // console.log(diaryData);
@@ -53,7 +54,7 @@ function callbackforDiaryPreview(result) {
                     //    </div>`;
                     //    continue;
                     // }
-                    htmlText += `<div class="item item-diary" onClick ="location.href='/member/diary/detail?diaryId=${diary.diaryId}'">
+                    htmlText += `<div class="item item-diary" onClick ="location.href='/member/diary/detail?diaryId=${diary.id}'">
                     <div class="h2">${diary.title}</div>
                     <div>
                         ${diary.content}
@@ -126,7 +127,7 @@ function callbackforDiaryPreview(result) {
             //    </div>`;
             //    continue;
             // }
-            htmlText += `<div class="item item-diary" onClick ="location.href='/member/diary/detail?diaryId=${diary.diaryId}'">
+            htmlText += `<div class="item item-diary" onClick ="location.href='/member/diary/detail?diaryId=${diary.id}'">
             <div class="h2">${diary.title}</div>
             <div>
                 ${diary.content}

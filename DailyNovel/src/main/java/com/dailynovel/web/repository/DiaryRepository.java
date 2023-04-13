@@ -6,7 +6,6 @@ import java.util.Set;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.dailynovel.web.entity.Diary;
-import com.dailynovel.web.entity.DiaryPreview;
 import com.dailynovel.web.entity.DiaryView;
 
 @Mapper
@@ -31,7 +30,7 @@ public interface DiaryRepository {
 	
 	
 	Set<Integer> getDateByMonthly(Integer memberId, int year, int month);
-	List<DiaryPreview> getDiaryByMonthly(Integer memberId, int year, int month); 
+	List<Diary> getDiaryByMonthly(Integer memberId, int year, int month); 
 	
 	
 	//---Update---

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dailynovel.web.entity.Diary;
-import com.dailynovel.web.entity.DiaryPreview;
 import com.dailynovel.web.service.DiaryService;
 
 import jakarta.servlet.http.HttpSession;
@@ -30,13 +29,13 @@ public class DiaryController {
 	private DiaryService service;
 
 	@GetMapping("preview")
-	public Map<Integer, ArrayList<DiaryPreview>> getPreview(
+	public Map<Integer, ArrayList<Diary>> getPreview(
 			@RequestParam int year,
 			@RequestParam int month,
 			HttpSession session) {
 		int memberid = (int) session.getAttribute("id");
-		Map<Integer, ArrayList<DiaryPreview>> list = service.getPreview(memberid, year, month);
-
+		Map<Integer, ArrayList<Diary>> list = service.getAllbyMonthly(memberid, year, month);
+		System.out.println(list);
 		return list;
 	}
 
