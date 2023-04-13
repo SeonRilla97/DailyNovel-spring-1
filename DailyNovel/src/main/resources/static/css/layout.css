@@ -221,3 +221,19 @@ html{
     flex-direction: column;
 
   }
+  
+  /* 병우 회원탈퇴 모달창 */
+  .out-modal{
+  	display:inline-flex;
+  	flex-wrap:wrap;
+  	justify-content: space-between;
+  }
+
+  /*폰트 버튼*/ 
+  .imsigrid{
+    display: grid;
+    grid-template-columns: repeat(2, 9rem);
+    grid-template-rows: 3rem 3rem;
+    justify-items: center;
+    align-items: center;
+  }
