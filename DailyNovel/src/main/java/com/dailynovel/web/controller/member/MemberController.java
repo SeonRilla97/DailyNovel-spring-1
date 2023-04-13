@@ -129,6 +129,7 @@ public class MemberController {
 	// 수정 디테일 추가
 	@RequestMapping("/diary/detail")
 	public String detail(
+			HttpSession session,
 			Model model,
 			@RequestParam(required = true, defaultValue = "1", name = "diaryId") Integer diaryId
 	// @RequestParam(required = true, defaultValue = "1", name="id") Integer
@@ -136,7 +137,8 @@ public class MemberController {
 	) {
 		//임시 
 
-		int uid = 1;
+		int uid = (int) session.getAttribute("id");
+//		int uid = 1; 
 
 		DiaryView diary = diaryService.viewDiary(diaryId); 
 
@@ -154,7 +156,7 @@ public class MemberController {
 		System.out.println(DiarySetToCss[0]);
 		System.out.println(DiarySetToCss[1]);
 
-		
+		model.addAttribute("diaryId",diaryId);
 		model.addAttribute("diary", diary);
 		model.addAttribute("DiarySetToCss", DiarySetToCss);
 		
@@ -166,6 +168,7 @@ public class MemberController {
 
 	@RequestMapping("/diary/modify")
 	public String modify(
+			HttpSession session,
 			Model model,
 			@RequestParam(required = true, defaultValue = "1", name = "diaryId") Integer diaryId
 	// @RequestParam(required = true, defaultValue = "1", name="id") Integer
@@ -176,7 +179,7 @@ public class MemberController {
 		
 		
 		//임시 (세션 안쓰고 누가 썻는지 방식으로 uid에 저장함) 
-		int uid = 1;
+		int uid = (int) session.getAttribute("id");
 		
 		//font 설정 관련 배열
 		int[] fontset = memberService.getMemberSetting(uid);
@@ -212,6 +215,7 @@ public class MemberController {
 		// d.getContent();
 
 		// 객체 통째로 보내준다.
+		model.addAttribute("diaryId",diaryId);
 		model.addAttribute("diary", diary);
 		model.addAttribute("font", fontnameCSS);
 		model.addAttribute("fontsize", fontsize);

@@ -124,6 +124,13 @@
 	where id = ${id};
   </select>
   
+  	<delete id="delete">
+		delete 
+		from 
+			diary 
+		where id =${id}
+  	</delete>
+  
   
   
   

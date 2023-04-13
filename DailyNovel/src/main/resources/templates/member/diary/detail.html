@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="/css/style.css">
 <!-- <script src="../../../res/js/" type="text/javascript"></script> -->
 
-<!-- <script src="/js/member/diary/detail.js" defer="defer"></script> -->
+<script src="/js/member/diary/detail.js" defer="defer"></script>
 <!-- <script src="/js/register.js"></script> -->
 <script src="/js/modal2.js"></script>
 <!-- DailyNovel/src/main/resources/static/js/member/diary/detail.js -->
@@ -92,15 +92,15 @@
 
   <div id="diary-edit-modal" class="reg-select-modal">    
     <ul>
-      <li class="btn3 " id="modal-delete-btn">삭제하기</li>
-      <li class="btn3 detail-modal-magin"><a th:href="@{/member/modify}">수정하기</a></li>
+      <li class="btn3 " id="modal-delete-btn">삭제하기</li>   
+      <li class="btn3 detail-modal-magin"><a th:href="@{/member/diary/modify(diaryId=${diaryId})}">수정하기</a></li>
     </ul> 
     <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</div>
   </div>
 
   <div id="delete-check-modal" class="reg-select-modal">    
     <ul class="detail-modal-check">
-      <li class="btn4 delete-yes-btn" id="delete-yes-btn"><a th:href="@{/member/modify}">네 삭제할게요</a></li>
+      <li class="btn4 delete-yes-btn"><a id="delete-yes-btn" th:href="@{/member/diary/list}">네 삭제할게요</a></li>
       <li class="btn4 " id="delete-no-btn">아니요</li>
     </ul> 
     <!-- <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white d-none">모달 종료 버튼</div> -->
