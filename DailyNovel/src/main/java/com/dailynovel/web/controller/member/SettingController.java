@@ -377,6 +377,7 @@ public class  SettingController {
 			//Integer id = 1;
 			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
 			model.addAttribute("setting", setting);
+			
 			return "member/settings/component/service-help";
 		}
 
@@ -388,7 +389,7 @@ public class  SettingController {
 			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
 						
 			model.addAttribute("setting", setting);
-			return "member/settings/component/out";
+			return "/member/settings/component/out";
 		}
 		
 		@RequestMapping("/out/logout")
