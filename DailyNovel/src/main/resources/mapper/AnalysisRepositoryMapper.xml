@@ -85,14 +85,16 @@
 	</select>
 	
 	<select id ="findpercent" parameterType="Integer" resultType="Feelingpercent">
-	select 
-	name, 
-	frequency,
-	(select count(d.feeling_id) from diary d where d.member_id = #{id} and month(d.reg_date) = MONTH(CURRENT_DATE())) as total,
-	round(frequency / (select count(d.feeling_id) from diary d where d.member_id = #{id})*100, 0) as percent
-	from feeling_view
-	where member_id = #{id} and MONTH(reg_date) = MONTH(CURRENT_DATE())
-	order by percent DESC;
+	SELECT 
+	f.name, 
+	COUNT(d.feeling_id) AS frequency,
+	(SELECT COUNT(d.feeling_id) FROM diary d WHERE d.member_id = #{id} AND MONTH(d.reg_date) = MONTH(CURRENT_DATE())) AS total,
+	ROUND(COUNT(d.feeling_id) / (SELECT COUNT(d.feeling_id) FROM diary d WHERE d.member_id = #{id} AND MONTH(d.reg_date) = MONTH(CURRENT_DATE())) * 100, 0) AS percent
+	from diary d
+	LEFT JOIN feeling f ON d.feeling_id = f.id
+	WHERE member_id = #{id} AND MONTH(d.reg_date) = MONTH(CURRENT_DATE())
+	GROUP BY f.name
+	ORDER BY percent DESC;
 	</select>
 	
 	
