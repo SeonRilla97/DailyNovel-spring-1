@@ -670,12 +670,13 @@ color: white;
   .list-box .content{
     /* 나중에 스타일 수정해야함  */
     /* padding-left: 2%; */
-    line-height: 1rem;
+    line-height: 1.25rem;
     white-space: normal;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-align: center;
   }    
 
 
