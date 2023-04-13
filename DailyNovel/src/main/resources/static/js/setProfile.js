@@ -29,12 +29,10 @@ function updateImg() {
 	//if (file) reader.readAsDataURL(file);
 	if (file) {
 		reader.readAsDataURL(file);
-		console.log("파일 선택");
 	}
 	else {
 		proImg.style.backgroundImage = "";
 		//proImg.style.backgroundImage = "url()";
 		//proImg.style.backgroundColor = "red";
-		console.log("파일 미 선택");
 	}
 };

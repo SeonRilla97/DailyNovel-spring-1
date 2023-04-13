@@ -4,7 +4,6 @@
 let fontRadios = document.querySelectorAll(".flex-jfy-center input[type=radio]");
 
 const dbFont = document.querySelector('.dbFont').textContent;/* 초기화를 누를 때 db의 값으로 변경하기 위해 만들어 둔 변수 */
-//console.log(dbFont);
 
 fontRadios.forEach(radio => {
   radio.onchange = () => {
@@ -34,10 +33,6 @@ function changeFont(selectedFontId) { // 라디오 버튼에 해당하는 폰트
       break;
   }
 
-  // "content" 요소에 선택된 폰트 클래스를 추가합니다.
-  //let contentElem = document.querySelector(".content"); // class=""를 적기위한 태그
-  //contentElem.classList.remove("noto-sans-k", "nanum-pen-s", "sunflower", "dongle"); // 기존 폰트관련 클래스 제거
-  //contentElem.classList.add(selectedFontClass); // 선택한 폰트 클래스 추가
   content.classList.remove("noto-sans-k", "nanum-pen-s", "sunflower", "dongle"); // 기존 폰트관련 클래스 제거
   content.classList.add(selectedFontClass); // 선택한 폰트 클래스 추가
 }
@@ -54,14 +49,12 @@ function changeFont(selectedFontId) { // 라디오 버튼에 해당하는 폰트
 
   //16 22 28
 	fontAdjuster.oninput = function(e) {
-		console.log(fontAdjuster.value); 
 		content.style.fontSize = fontAdjuster.value + "px";
 	};
 
 	fontApply.onclick = function() {
 		alert("변경되었습니다.");
 		content.style.fontSize = fontAdjuster.value + "px";
-		console.log("tlqk")
 	}
 
 	fontInit.onclick = function() {
@@ -71,5 +64,4 @@ function changeFont(selectedFontId) { // 라디오 버튼에 해당하는 폰트
    		changeFont(dbFont);
 		contentElem.classList.remove("noto-sans-k", "nanum-pen-s", "sunflower", "dongle"); // 기존 클래스 제거
 		contentElem.classList.add(selectedFontClass);
-		console.log("초기화");
 	}
