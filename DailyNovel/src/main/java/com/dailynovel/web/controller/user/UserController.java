@@ -57,7 +57,7 @@ public class UserController {
 		if(logincheck) {
 			int id = service.getIdByEmail(email);
 			session.setAttribute("id", id);
-			System.out.println(id);
+			System.out.println("현재접속 id : " + id);
 			return "redirect:/member/main";
 		}
 		return "redirect:login?error=error";
