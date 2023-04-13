@@ -22,9 +22,9 @@ window.addEventListener('load',()=>{
   const regHonestyModal = document.querySelector("#reg-honesty-modal");
   const regResetWarnModal = document.querySelector("#reg-reset-warning-modal");
 
-  regSumbitBtn.addEventListener('click', ()=>{
-    modalOpen(regHonestyModal,container);
-  })
+  // regSumbitBtn.addEventListener('click', ()=>{
+  //   // modalOpen(regHonestyModal,container);
+  // })
 
   regCancelBtn.addEventListener('click', ()=>{
     modalOpen(regCancelModal,container);

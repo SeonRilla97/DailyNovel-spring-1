@@ -34,7 +34,7 @@ public interface DiaryRepository {
 	
 	
 	//---Update---
-	void update(Diary diary, Integer diaryId);
+	void update(Diary diary);
 	
 	//--Delete--
 	int delete(Integer id);
