@@ -47,6 +47,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/member/setting/")
@@ -55,14 +56,15 @@ public class  SettingController {
 	@Autowired
 	private SettingService settingService;
 	
+	
 	@Autowired
 	private JavaMailSender mailSender; //일기 email전송을 위해 필요한 api?
 	
 	private String imageName;
-	private Integer id;
-	public SettingController() {
-		id=1;
-	}
+//	private Integer id;
+//	public SettingController() {
+//		id=1;
+//	}
 	
 	@RequestMapping("main")
 	public String main(){
@@ -71,14 +73,16 @@ public class  SettingController {
 
 		// 세팅-프로필-------------------------------------------------------------------
 		@RequestMapping("profile")
-		public String profile(Model model) {
-	        
-			//Integer id = 60;
-			Setting setting = settingService.getById(id); // id 1번의 member테이블의 값 가지고 오기
+		public String profile(Model model, HttpSession session) {
+	       
+	        System.out.println(session.getAttribute("id"));
+	     
+			
+			Setting setting = settingService.getById((Integer)session.getAttribute("id")); // id 1번의 member테이블의 값 가지고 오기
 			model.addAttribute("setting", setting);		// 가지고 온 테이블 값을 model에 심기
-			System.out.println(setting);				// 삭제요망 제대로 가지고 왔는지 확인차 출력해 보기 삭제요망
+			//System.out.println(setting);				// 삭제요망 제대로 가지고 왔는지 확인차 출력해 보기 삭제요망
 			imageName = setting.getProfileImage();		// 가지고 온 profile이미지의 명칭을 전역변수에 넣기
-			System.out.println(imageName);
+			//System.out.println(imageName);
 			return "member/settings/component/profile";
 		}
 
@@ -89,7 +93,8 @@ public class  SettingController {
 				@RequestParam("name") String Nickname,
 				@RequestParam("stsMessage") String stsMessage, 
 				@ModelAttribute Setting setting, 
-				HttpServletRequest request
+				HttpServletRequest request,
+				HttpSession session
 				) throws Exception {
 			
 			if (profile != null && !profile.isEmpty()) { // 사용자가 새로운 이미지를 등록 했을 때만 실행하기
@@ -97,7 +102,7 @@ public class  SettingController {
 			String beforeImagePath = System.getProperty("user.home"); // 컴퓨터의 사용자 경로 추출 
 /*노트북 경로*/ Path filePath = Paths.get( beforeImagePath + "/Desktop/novelPrj/mon/DailyNovel/src/main/webapp/img/profile/" + imageName);
 // 노트북 경로 Path filePath = Paths.get( beforeImagePath + "/Desktop/proproprj/DailyNovel/src/main/webapp/img/profile/" + imageName);
-///*데스크톱경로*/Path filePath = Paths.get( beforeImagePath + "/Desktop/novelPrj(2)/nav/DailyNovel/src/main/webapp/img/profile/" + imageName); 
+// *데스크톱경로*/Path filePath = Paths.get( beforeImagePath + "/Desktop/novelPrj(2)/nav/DailyNovel/src/main/webapp/img/profile/" + imageName); 
 			
 			try {
 				// 삭제하는 클래스 생성(사실상 서비스를 호출) service.deleteImage(filePath);
@@ -107,7 +112,7 @@ public class  SettingController {
 					Files.delete(filePath);				
 			}
 			catch(파일없음예외 e){
-				System.out.println(e.getMessage());
+				//System.out.println(e.getMessage());
 			}
 			
 			String realPath= "";
@@ -134,7 +139,7 @@ public class  SettingController {
 				setting.setProfileImage(profileImage);
 			}
 			//Integer id = 1;
-			setting.setId(id);
+			setting.setId((Integer)session.getAttribute("id"));
 			setting.setNickName(Nickname);
 			setting.setStatusMessage(stsMessage);
 			int a = settingService.updateProfile(setting);
@@ -145,14 +150,13 @@ public class  SettingController {
 			}
 			else								   // 사진의 업데이트가 없으면 바로 전송(상태메시지 수정만 있는 경우
 				return "redirect:../profile";
-			
 		}
 
 		// 세팅-폰트-------------------------------------------------------------------
 		@RequestMapping("/font")
-		public String font(Model model, Model model2, Model model3) {
+		public String font(Model model, Model model2, Model model3, HttpSession session) {
 
-			Setting setting = settingService.getById(id);
+			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
 			
 			List<setFont> font = settingService.getByFontId();
 			
@@ -173,13 +177,8 @@ public class  SettingController {
 			preview.add("정말 좋아합니다. 이번엔 거짓이 아니라고요");
 			preview.add("뜨거운 사람 함부로 발로 차지마라, 너는 누구에게..");
 			
-			System.out.println(preview.get(x));
-			
 			model3.addAttribute("preview", preview.get(x));
 			
-			//System.out.printf("폰트패밀리 %s\n",setting.getFontFamily());
-			//System.out.printf("폰트사이즈 %s\n",setting.getFontSize());
-
 			return "member/settings/component/font";
 		}
 		
@@ -187,14 +186,14 @@ public class  SettingController {
 		public String fontUpdate(Model model,
 				@RequestParam(name = "font", required = false) String font,
 				@RequestParam(name = "fontSize", required = false) int fontSize,
-				@ModelAttribute Setting setting
+				@ModelAttribute Setting setting,
+				HttpSession session
 				) {
 			//Integer id = 1;
 			
-			setting.setId(id);
+			setting.setId((Integer)session.getAttribute("id"));
 			setting.setFontFamily((font));
 			setting.setFontSize((fontSize==16 ? "16" : fontSize==22?"22":"28"));
-			System.out.println(setting);
 			
 			int a = settingService.updateFont(setting);
 
@@ -203,12 +202,11 @@ public class  SettingController {
 
 		// 세팅-알람-------------------------------------------------------------------
 		@RequestMapping("/alarm")
-		public String alarm(Model model) {
+		public String alarm(Model model, HttpSession session) {
 			
 			//Integer id = 1;
-			Setting setting = settingService.getById(id);
+			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
 			model.addAttribute("setting", setting);
-			System.out.println(setting);
 			return "member/settings/component/alarm";
 		}
 
@@ -217,15 +215,15 @@ public class  SettingController {
 				@RequestParam(name = "web-alarm", required = false) String alarmSwitch,
 				@RequestParam(name = "katolk-alarm", required = false) String kakaoAlarmSwitch,
 				@RequestParam(name = "timer") String alarmTime, 
-				@ModelAttribute Setting setting) {
+				@ModelAttribute Setting setting,
+				HttpSession session) {
 			
 			//Integer id = 1;
-			setting.setId(id);
+			setting.setId((Integer)session.getAttribute("id"));
 			setting.setAlarmSwitch((alarmSwitch == null ? "0" : "1"));
 			setting.setKakaoAlarmSwitch((kakaoAlarmSwitch == null ? "0" : "1"));
 			setting.setAlarmTime(alarmTime);
 
-			System.out.println(setting);
 			int a = settingService.updateProfile(setting);
 
 			if (a == 1)
@@ -236,21 +234,19 @@ public class  SettingController {
 
 		// 세팅-내보내기-------------------------------------------------------------------
 		@RequestMapping("/export")
-		public String export(Model model) throws UnknownHostException {
+		public String export(Model model, HttpSession session) throws UnknownHostException {
 			
 			//Integer id = 1;
-			Setting setting = settingService.getById(id);
+			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
 			model.addAttribute("setting", setting);
-			System.out.println(setting);
 			return "member/settings/component/export";
 		}
 
 		@RequestMapping("/export/email")
-		//public void exportEmail(Model model, HttpServletResponse response) throws Exception {
-		public String exportEmail(Model model, HttpServletResponse response) throws Exception {
+		public String exportEmail(Model model, HttpServletResponse response, HttpSession session) throws Exception {
 			//Integer id = 1;
-			Setting setting = settingService.getById(id);
-			List<Export> export = settingService.getDiaryListByid(id);
+			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
+			List<Export> export = settingService.getDiaryListByid((Integer)session.getAttribute("id"));
 
 		    MimeMessage mail = mailSender.createMimeMessage();
 		    // use the true flag to indicate you need a multipart message
@@ -274,10 +270,10 @@ public class  SettingController {
 		  }
 		
 		@RequestMapping("/export/text")
-		public void exportText(Model model, HttpServletResponse response) throws Exception {
+		public void exportText(Model model, HttpServletResponse response, HttpSession session) throws Exception {
 			
 			//Integer id = 1;
-			List<Export> export = settingService.getDiaryListByid(id);
+			List<Export> export = settingService.getDiaryListByid((Integer)session.getAttribute("id"));
 			
 			// 1) com.lowagie.text.Document 클래스 인스턴스를 생성합니다.
 		Document document = new Document();
@@ -361,133 +357,62 @@ public class  SettingController {
 //		            Files.delete(directoryPath);
 
 			} catch (NoSuchFileException e) {
-				System.out.println("삭제하려는 파일/디렉토리가 없습니다");
+				//System.out.println("삭제하려는 파일/디렉토리가 없습니다");
 			} catch (DirectoryNotEmptyException e) {
-				System.out.println("디렉토리가 비어있지 않습니다");
+				//System.out.println("디렉토리가 비어있지 않습니다");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		
-		// 8) Chrome 으로 방금 작성한 파일을 바로 열어서 확인해봅니다.
-//		String chrome = "C:/Program Files/Google/Chrome/Application/chrome.exe";
-//		try {
-//			new ProcessBuilder(chrome,file.getAbsolutePath()).start();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-			
-//			Date date = new Date(System.currentTimeMillis()); // 현재 시간 측정
-//			SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd-HH-mm-ss-SS"); // 시간 측정 포멧 지정
-//			String time = format.format(date); // 측정한 시간을 포멧화 하기
-//
-//		// 바탕화면으로 경로 만들기 테스트
-//			String deskTopPath = System.getProperty("user.home");
-//			String filePath = deskTopPath + "/Desktop/" + time + "dailyNovel.txt";
-//
-//			FileOutputStream fos = new FileOutputStream(filePath);
-//			PrintStream out = new PrintStream(fos);
-//
-//			for (Export aa : export) {
-//				out.print(aa.getRegDate());
-//				out.print(" [ ");
-//				out.print(aa.getFeelingName());
-//				out.print(" ] ");
-//				out.println();
-//				out.printf("제목: %s", aa.getTitle());
-//				out.println();
-//				out.print(aa.getText());
-//				out.println();
-//				out.println();
-//			}
-			
-//			fos.close();
-//			// 지연시간
-//
-//			// TXT 파일 로드
-//			Document document = new Document(filePath);
-//
-//		// 바탕화면으로 TXT 파일을 PDF로 저장
-//			document.save( deskTopPath + "/Desktop/" + time + "output.pdf");
-//			
-//
-//		 // 바탕화면으로 전송
-//			String path = deskTopPath + "/Desktop/" + time + "output.pdf";
-//				
-//				
-//			FileInputStream fis = new FileInputStream(path);
-//			byte buf[] = new byte[1024];
-//
-//			int size = 1024;
-//			response.setContentType("application/octet-stream");
-//			response.setHeader("Content-Disposition",
-//					"attachment; fileName=\"" + URLEncoder.encode(time + "output.pdf", "UTF-8") + "\";");
-//			response.setHeader("Content-Transfer-Encoding", "binary");
-//			while ((size = fis.read(buf)) != -1) {
-//				response.getOutputStream().write(buf, 0, size);
-//			}
-//			response.getOutputStream().flush();
-//			response.getOutputStream().close();
-//
-//			fis.close();
-//
-//			// 지연시간
-//
-//			try {
-//				// 파일 삭제
-//				// 삭제
-//			// 바탕화면 삭제
-//				Path testPdf = Paths.get( deskTopPath + "/Desktop/" + time + "output.pdf");
-//
-//				Files.delete(testPdf);
-//					Path testText = Paths.get(deskTopPath + "/Desktop/" + time + "dailyNovel.txt");
-//				
-//				Files.delete(testText);
-//				// 디렉토리 삭제
-////		            Files.delete(directoryPath);
-//
-//			} catch (NoSuchFileException e) {
-//				System.out.println("삭제하려는 파일/디렉토리가 없습니다");
-//			} catch (DirectoryNotEmptyException e) {
-//				System.out.println("디렉토리가 비어있지 않습니다");
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
 		}
 
 		// 세팅-피드백-------------------------------------------------------------------
 		@RequestMapping("/service-help")
-		public String serviceHelp(Model model) {
+		public String serviceHelp(Model model, HttpSession session) {
 
 			//Integer id = 1;
-			Setting setting = settingService.getById(id);
+			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
 			model.addAttribute("setting", setting);
 			return "member/settings/component/service-help";
 		}
 
 		// 세팅-로그아웃-------------------------------------------------------------------
 		@RequestMapping("/out")
-		public String out() {
+		public String out(HttpSession session, Model model) {
 			
-			Integer id = 63;
-			Setting setting = settingService.getById(id);
-			System.out.println(setting);
+			if(session.getAttribute("id")==null)
+				return "redirect:/user/login";
 			
+			//Integer id = 63;
+			Setting setting = settingService.getById((Integer)session.getAttribute("id"));
+						
+			model.addAttribute("setting", setting);
 			return "member/settings/component/out";
+		}
+		
+		@RequestMapping("/out/logout")
+		public String logOut(HttpSession session) {
+			
+			// 사실상 로그아웃도 기능이니 이 한 줄 'session.invalidate();'을 서비스에서 불러와야 하는 게 아닌가 싶다.
+			session.invalidate();
+			
+			
+			return "redirect:/";
 		}
 
 		@PostMapping("/out/delete")
 		public String acountOut(Model model, 
-				@ModelAttribute Setting setting) {
+				@ModelAttribute Setting setting,
+				HttpSession session) {
 
-			Integer id = 63;
-			setting.setId(id);
+			//Integer id = 63;
+			setting.setId((Integer)session.getAttribute("id"));
 
-			int a = settingService.deleteAcount(id);
-			System.out.println(a);
+			int a = settingService.deleteAcount((Integer)session.getAttribute("id"));
+			//System.out.println(a);
 //			return "member/settings/main";
 			if (a == 1)
 				return "redirect:../../../";
-				//return "redirect:../alarm";
 			else
 				return "redirect:../../setting/out";
 		}

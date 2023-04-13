@@ -46,8 +46,8 @@ public class MemberController {
 	private WeatherService weatherService;
 	
 	@RequestMapping("main")
-	public String main(	HttpSession session) {
-		int id = (int) session.getAttribute("id");
+	public String main(HttpSession session) {
+		Integer id = (int) session.getAttribute("id");
 		return "/member/main";
 	}
 
@@ -80,7 +80,8 @@ public class MemberController {
 			HttpSession session) {
 		// 선유진-검색
 		System.out.println("레그데이트 :" + regDate);
-		int id = (int) session.getAttribute("id");
+		Integer id = (int) session.getAttribute("id");
+
 		List<Diary> list = diaryService.getAllByCriterion(id, tid, fid, wid, regDate);
 		
 		List<Template> templateList = templateService.getTemplateList();
