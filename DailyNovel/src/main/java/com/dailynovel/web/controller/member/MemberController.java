@@ -12,13 +12,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.DiaryView;
 import com.dailynovel.web.entity.Feeling;
-import com.dailynovel.web.entity.Member;
 import com.dailynovel.web.entity.Template;
 import com.dailynovel.web.entity.Weather;
 import com.dailynovel.web.service.DiaryService;
-import com.dailynovel.web.service.ListService;
+import com.dailynovel.web.service.FeelingService;
 import com.dailynovel.web.service.MemberService;
 import com.dailynovel.web.service.SettingService;
+import com.dailynovel.web.service.TemplateService;
+import com.dailynovel.web.service.WeatherService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/member/")
@@ -27,15 +30,21 @@ public class MemberController {
 	@Autowired
 	private SettingService settingService;
 
-	@Autowired
-	private ListService listservice;
 
 	@Autowired
-	private DiaryService diaryservice;
+	private DiaryService diaryService;
 	
 	@Autowired
-	private MemberService memberservice;
+	private MemberService memberService;
 
+	@Autowired
+	private FeelingService feelingService;
+	
+	@Autowired
+	private TemplateService templateService;
+	@Autowired
+	private WeatherService weatherService;
+	
 	@RequestMapping("main")
 	public String main() {
 		return "/member/main";
@@ -67,14 +76,17 @@ public class MemberController {
 			@RequestParam(required = false, name = "wid") Integer wid,
 			@RequestParam(required = false, name = "tid") Integer tid,
 			@RequestParam(required = false, name = "fid") Integer fid,
-			@RequestParam(required = false, name = "reg_date") String regDate) {
+			@RequestParam(required = false, name = "reg_date") String regDate,
+			HttpSession session) {
 		// 선유진-검색
 		System.out.println("레그데이트 :" + regDate);
-		List<Diary> list = listservice.getDiarys(memberId, tid, fid, wid, regDate);
+		List<Diary> list = diaryService.getDiarys(memberId, tid, fid, wid, regDate);
+		
+		List<Template> templateList = templateService.getTemplateList();
+		List<Feeling> feelingList = feelingService.getFeelingList();
+		List<Weather> weatherList = weatherService.getWeatherList();
+		int id = (int) session.getAttribute("id");
 
-		List<Template> templateList = listservice.getTemplateList();
-		List<Feeling> feelingList = listservice.getFeelingList();
-		List<Weather> weatherList = listservice.getWeatherList();
 		Template curTName;
 		Feeling curFName;
 		Weather curWName;
@@ -109,6 +121,7 @@ public class MemberController {
 		System.out.println(list);
 
 		System.out.println(memberId.toString() + wid + tid + fid + regDate);
+		System.out.println(id);
 		return "/member/diary/list";
 
 	}

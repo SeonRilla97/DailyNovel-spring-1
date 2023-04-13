@@ -133,12 +133,12 @@ public class DefaultDiaryService implements DiaryService {
 
 	
 
-	public Map<Integer, ArrayList<DiaryPreview>> getPreview(int year,int month){
+	public Map<Integer, ArrayList<DiaryPreview>> getPreview(int memberId, int year,int month){
 	//담을 객체 선언만 한거
 		Map<Integer, ArrayList<DiaryPreview>> diaryMap = new HashMap<>();
 		
 		//다이어리 값 받아오기
-		List<DiaryPreview> list = repository.getDiaryByMonthly(year, month);
+		List<DiaryPreview> list = repository.getDiaryByMonthly(memberId,year, month);
 		
 		for(DiaryPreview dry : list) {
 			int curdate = dry.getDiaryDate();
@@ -152,5 +152,11 @@ public class DefaultDiaryService implements DiaryService {
 		return diaryMap;
 	}
 
-
+	@Override
+	public List<Diary> getDiarys(Integer memberId, Integer tid, Integer fid, Integer wid,
+			String regDate) {
+		List<Diary> list = repository.findAllById(memberId,tid,fid,wid,regDate);
+		System.out.println("서비스단 리스트 출력" + list);
+		return repository.findAllById(memberId,tid,fid,wid,regDate);
+	}
 }
