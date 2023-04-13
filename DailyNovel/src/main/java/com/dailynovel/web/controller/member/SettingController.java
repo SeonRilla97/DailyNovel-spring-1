@@ -69,8 +69,8 @@ public class  SettingController {
 	@RequestMapping("main")
 	public String main(HttpSession session){
 		
-		if(session.getAttribute("id")==null)
-			return "redirect:/user/login";
+//		if(session.getAttribute("id")==null)
+//			return "redirect:/user/login";
 		
 		return "/member/settings/main";
 	}
