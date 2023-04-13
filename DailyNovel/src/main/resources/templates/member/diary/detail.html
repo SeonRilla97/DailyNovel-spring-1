@@ -29,7 +29,7 @@
   <div class="container-2" >
     <div class="header reg-header">
       <div class="lc-center">
-        <div class="icon question-mark">?</div>
+        <div id="edit-Del" class="icon detail-menu">?</div>
       </div>
       <div class="lc-center">
         <div class="box-short " th:text="${#dates.format(diary.regDate, 'yyyy년 MM월 dd일')}" >2023년 01월 27일</div>
@@ -89,5 +89,15 @@
     </div> 
 
   </div>
+
+  <div id="diary-edit-modal" class="reg-select-modal">    
+    <ul>
+      <li class="btn3"><a th:href="@{/member/modify}">수정하기</a></li>
+      <li class="btn3" id="modal-close-btn">삭제하기</li>
+    </ul> 
+    <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</div>
+  </div>
+
+
 </body>
 </html>
