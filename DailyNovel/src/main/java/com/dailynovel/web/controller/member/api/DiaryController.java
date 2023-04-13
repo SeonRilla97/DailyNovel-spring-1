@@ -51,7 +51,8 @@ public class DiaryController {
 	// }
 
 	@PostMapping
-	public String insert(@RequestBody Map<String, Object> dry) throws ParseException {
+	public String insert(@RequestBody Map<String, Object> dry
+			,HttpSession session) throws ParseException {
 
 		// service.insertDiary(diary);
 		//
@@ -59,7 +60,8 @@ public class DiaryController {
 		Integer feelingId = 0;
 		Integer weatherId = 0;
 		
-		int memberId = Integer.parseInt(String.valueOf(dry.get("memberId")));
+//		int memberId = Integer.parseInt(String.valueOf(dry.get("memberId")));
+		int memberId = (int) session.getAttribute("id");
 		int templateId = Integer.parseInt(String.valueOf(dry.get("templateId")));
 		if(String.valueOf(dry.get("feelingId")).equals("null")) {
 			feelingId = null;
