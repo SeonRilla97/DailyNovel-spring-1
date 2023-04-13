@@ -28,12 +28,12 @@ public class error implements ErrorController {
 				return "error/404";
 			}
 			else {
-				return "error/error";
+				return "/user/login";
 			}
 			
 		}
 		
 		
-		return "error/error";
+		return "/user/login";
 	}
 }

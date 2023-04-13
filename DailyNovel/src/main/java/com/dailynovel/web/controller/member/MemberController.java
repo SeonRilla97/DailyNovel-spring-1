@@ -46,7 +46,8 @@ public class MemberController {
 	private WeatherService weatherService;
 	
 	@RequestMapping("main")
-	public String main() {
+	public String main(	HttpSession session) {
+		int id = (int) session.getAttribute("id");
 		return "/member/main";
 	}
 
