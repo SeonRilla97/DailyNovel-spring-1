@@ -47,7 +47,7 @@
                 </div>    
 
                <div class="BC">
-                    <div th:if="${#lists.isEmpty(rank)}" class ="font-size30 lc-center f-pdb-9  font-weight-700">일기를 작성해주세요</div>
+                    <div th:unless="${Toprank != null}" class ="font-size30 lc-center f-pdb-9  font-weight-700">일기를 작성해주세요</div>
                
 	                <div class="lc-space-around border pdb-5">
 	                    <div class="btn-feeling"><a class="" href="/member/analysis/feeling-view-detail">상세보기</a></div>

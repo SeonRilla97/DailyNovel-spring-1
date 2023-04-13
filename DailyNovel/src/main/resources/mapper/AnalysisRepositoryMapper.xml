@@ -40,8 +40,9 @@
 	</select>
 	
 	<select id="findValue" parameterType="Integer" resultType="Feeling">
-		SELECT name, frequency
-		FROM feeling_view
+		SELECT f.name, count(d.member_id) as frequency
+		FROM diary d
+        left join feeling f on f.id = d.feeling_id
 		where member_id = #{id} and MONTH(reg_date) = MONTH(CURRENT_DATE())
 		GROUP BY name
 		ORDER BY frequency DESC;
