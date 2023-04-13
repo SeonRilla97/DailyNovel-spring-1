@@ -66,7 +66,7 @@
     </div> 
 
     <div class="footer lc-center pdb-2">
-      <div id="reg-submit-btn" class="btn3 color-bg-green-2">저장하기</div>
+      <div id="reg-submit-btn" class="btn3">저장하기</div>
     </div>
   </div>
   
@@ -74,27 +74,26 @@
     <div class="tmp-section">
         <ul class="tmps" style="margin-bottom: 1rem;">
 
-              <li class="btn1" value="free-form">자유롭게</li>
+          <li class="btn1" value="free-form"><a th:href="@{/member/diary/register(tmp=${'free-form'})}">자유롭게</a></li>
 
-              <li>
-                <div id="simple-tmp" class="btn1">간편일기</div>      
-                <ul class="tmp-select-box mgt-1" >
-                  <li class="simple-tmp-box" value="thanks-form">감사일기</li>
-                  <li class="simple-tmp-box" value="meat-form">밥블로그</li>
-                  <li class="simple-tmp-box" value="question-form">질문일기</li>
-                </ul>        
-              </li>
-      
-              <li class="btn1" value="movie-form">영화</li>
-              <li class="btn1" value="trip-form">여행</li>
-              <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</li>
+          <li>
+            <div id="simple-tmp" class="btn1">간편일기</div>      
+            <ul class="tmp-select-box mgt-1">
+              <li class="simple-tmp-box" value="thanks-form"><a th:href="@{/member/diary/register(tmp=${'thanks-form'})}">감사일기</a></li>
+              <li class="simple-tmp-box" value="meat-form"><a th:href="@{/member/diary/register(tmp=${'meat-form'})}">밥블로그</a></li>
+              <li class="simple-tmp-box" value="question-form"><a th:href="@{/member/diary/register(tmp=${'question-form'})}">질문일기</a></li>
+            </ul>        
+          </li>      
+          <li class="btn1" value="movie-form"><a th:href="@{/member/diary/register(tmp=${'movie-form'})}">영화</a></li>
+          <li class="btn1" value="trip-form"><a th:href="@{/member/diary/register(tmp=${'trip-form'})}">여행</a></li>  
+          <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</li>
         </ul>
     </div>
   </div>
 
   <div id="reg-feel-modal" class="reg-select-modal">
     <div class="feel-section">      
-      <div>일기를 쓰실 때의 기분은 어떠신가요?</div>
+      <!-- <div>일기를 쓰실 때의 기분은 어떠신가요?</div> -->
       <ul class="reg-feel-select-box">
         <li class="feel-circle-box happy-img" value="happy">행복</li>
         <li class="feel-circle-box excited-img" value="excited">신남</li>
@@ -115,35 +114,66 @@
   <div id="reg-weather-modal" class="reg-select-modal">
     <div class="weather-section">
       <ul class="reg-weather-select-box">
-        <li class="weather-box" value="sunny">맑음</li>
-        <li class="weather-box" value="cloudy">흐림</li>
-        <li class="weather-box" value="snow">눈</li>
-        <li class="weather-box" value="rain">비</li>
-        <li class="weather-box" value="dust">먼지/황사</li>
+        <li class="weather-box" value="sunny">
+          <div class="weather-mini sunny-img"></div>
+          <div class="reg-wt-tem"><span class="font-bold h3">24℃</span></div>
+          <div class="lc-center"><span class="font-bold h3">맑음</span></div>          
+        </li>
+        <li class="weather-box" value="cloudy">
+          <div class="weather-mini cloudy-img"></div>
+          <div class="reg-wt-tem"><span class="font-bold h3">18℃</span></div>
+          <div class="lc-center"><span class="font-bold h3">흐림</span></div>
+        </li>
+        <li class="weather-box" value="rain">
+          <div class="weather-mini rain-img"></div>
+          <div class="reg-wt-tem"><span class="font-bold h3">12℃</span></div>
+          <div class="lc-center"><span class="font-bold h3">비</span></div>
+        </li>
+        <li class="weather-box" value="snow">
+          <div class="weather-mini snow-img"></div>
+          <div class="reg-wt-tem"><span class="font-bold h3">-2℃</span></div>
+          <div class="lc-center"><span class="font-bold h3">눈</span></div>
+        </li>
+        <li class="weather-box" value="dust">
+          <div class="weather-mini dust-img"></div>
+          <div class="reg-wt-tem"><span class="font-bold h3">15℃</span></div>
+          <div class="lc-center"><span class="font-bold h3">먼지</span></div>
+        </li>
       </ul>
-      <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</div>
+      <div class="lc-center">
+        <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</div>
+      </div>
     </div>
   </div>
 
   <div id="reg-honesty-modal" class="reg-select-modal">
-    <div class="reg-honesty-section">
-      <p style="text-align: center;">이번 일기를 생각할 때 <br>얼마나 진실되었다고 생각하시나요?</p>
+    <div class="reg-honesty-section ">
+      <p style="text-align: center;">이번 일기를 작성하면서<br>얼마나 솔직하게 적었는지<br>수치를 정해볼까요?</p>
       <div class="reg-range-value"></div>
 		<span id="range-text-test"></span>      
         <input class="reg-honesty-test" type="range" min="0" max="100" step="10" value="100">
         
-      <div id="submit-test" class="btn3"><a th:href="@{/member/main}">바로 저장하기</a></div>
+      <div id="submit-test" class="btn3"><a th:href="@{/member/main}">저장하기</a></div>
       <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</div>
     </div>
   </div>
 
+  <div id="reg-reset-warning-modal" class="reg-select-modal">
+    <div class="reg-reset-warn-section">
+      <span style="text-align: center;">작성 방법을 바꾸게 되면<br>지금까지 작성했던 내용은 사라져요.<br>괜찮으신가요?</span>
+      <div>네, 바꿀래요.</div>
+      <div>아니요, 그대로 작성할게요.</div>
+    </div>
+  </div>
+
   <div id="reg-cancel-modal" class="reg-select-modal">    
-    <div>지금 돌아가시면 지금까지 작성하신 내용은 사라집니다. 괜찮으신가요?</div>
-    <ul>
-      <li class="btn3"><a th:href="@{/member/main}">네</a></li>
-      <li id="modal-close-btn" class="btn3">아니요, 돌아갈래요.</li>
-    </ul>    
-    <div id="modal-close-btn" class="circle-box-modal color-bg-green-2 close-btn-white">모달 종료 버튼</div>
+    <div class="reg-cancel-section ">
+      <span style="text-align: center;">지금 나가시면<br>지금까지 작성하신 내용은 사라집니다.<br>괜찮으신가요?</span>
+      <ul>
+        <li class="btn3"><a th:href="@{/member/main}">네</a></li>
+        <li id="modal-close-btn" class="btn3">아니요, 돌아갈래요.</li>
+      </ul>    
+    </div>
   </div>
 </body>
 

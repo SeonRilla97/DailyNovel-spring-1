@@ -1,6 +1,7 @@
 package com.dailynovel.web.controller.user.accountRecovery;
 
 import java.util.Random;
+
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +14,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.dailynovel.web.service.MemberService;
 
 import jakarta.mail.internet.MimeMessage;
-import jakarta.servlet.http.HttpSession;
 
 @RequestMapping("/user/account-recovery")
 @Controller
 public class  AccountRecoveryController {
 	
 	
-	
+//	
 	@Autowired
 	private JavaMailSenderImpl sender;
 	

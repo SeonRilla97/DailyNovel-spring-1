@@ -2,6 +2,7 @@ package com.dailynovel.web.controller.member;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,13 +12,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.DiaryView;
 import com.dailynovel.web.entity.Feeling;
-import com.dailynovel.web.entity.Member;
 import com.dailynovel.web.entity.Template;
 import com.dailynovel.web.entity.Weather;
 import com.dailynovel.web.service.DiaryService;
-import com.dailynovel.web.service.ListService;
+import com.dailynovel.web.service.FeelingService;
 import com.dailynovel.web.service.MemberService;
 import com.dailynovel.web.service.SettingService;
+import com.dailynovel.web.service.TemplateService;
+import com.dailynovel.web.service.WeatherService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/member/")
@@ -26,15 +30,21 @@ public class MemberController {
 	@Autowired
 	private SettingService settingService;
 
-	@Autowired
-	private ListService listservice;
 
 	@Autowired
-	private DiaryService diaryservice;
+	private DiaryService diaryService;
 	
 	@Autowired
-	private MemberService memberservice;
+	private MemberService memberService;
 
+	@Autowired
+	private FeelingService feelingService;
+	
+	@Autowired
+	private TemplateService templateService;
+	@Autowired
+	private WeatherService weatherService;
+	
 	@RequestMapping("main")
 	public String main() {
 		return "/member/main";
@@ -66,14 +76,17 @@ public class MemberController {
 			@RequestParam(required = false, name = "wid") Integer wid,
 			@RequestParam(required = false, name = "tid") Integer tid,
 			@RequestParam(required = false, name = "fid") Integer fid,
-			@RequestParam(required = false, name = "reg_date") String regDate) {
+			@RequestParam(required = false, name = "reg_date") String regDate,
+			HttpSession session) {
 		// 선유진-검색
 		System.out.println("레그데이트 :" + regDate);
-		List<Diary> list = listservice.getDiarys(memberId, tid, fid, wid, regDate);
+		List<Diary> list = diaryService.getDiarys(memberId, tid, fid, wid, regDate);
+		
+		List<Template> templateList = templateService.getTemplateList();
+		List<Feeling> feelingList = feelingService.getFeelingList();
+		List<Weather> weatherList = weatherService.getWeatherList();
+		int id = (int) session.getAttribute("id");
 
-		List<Template> templateList = listservice.getTemplateList();
-		List<Feeling> feelingList = listservice.getFeelingList();
-		List<Weather> weatherList = listservice.getWeatherList();
 		Template curTName;
 		Feeling curFName;
 		Weather curWName;
@@ -108,6 +121,7 @@ public class MemberController {
 		System.out.println(list);
 
 		System.out.println(memberId.toString() + wid + tid + fid + regDate);
+		System.out.println(id);
 		return "/member/diary/list";
 
 	}
@@ -121,43 +135,31 @@ public class MemberController {
 	// memberId,
 	) {
 		//임시 
+
 		int uid = 1;
 
-		DiaryView diary = diaryservice.viewDiary(diaryId); 
-		String fontnameCSS = settingService.getfontNameforCSS(memberservice.getMemberSetting(uid));
-		
-		System.out.println(fontnameCSS);
-		
-//		.noto-sans-k{
-//		    font-size: 100%;
-//		    font-family: 'Noto Sans KR', sans-serif;
-//		}
-//		.nanum-pen-s{
-//		    font-size: 100%;
-//		    font-family: 'Nanum Pen Script', cursive;
-//		}
-//		.sunflower{
-//		    font-size: 100%;
-//		    font-family: 'Sunflower', sans-serif;
-//		}
-//		.dongle{
-//		    font-size: 100%;
-//		    font-family: 'Dongle', sans-serif;
-//		}
-		
-		
-		// d.getRegDate();
-		// d.getTemplateId();
-		// d.getFeelingId();
-		// d.getWeatherId();
-		// d.getTitle();
-		// d.getContent();
+		DiaryView diary = diaryService.viewDiary(diaryId); 
 
+		String[] DiarySetToCss = diaryService.getDiarySetToCSS(diaryId);
+		
+		//font 설정 관련 배열
+		int[] fontset = memberService.getMemberSetting(uid);
+		//폰트 명 스타일과 사이즈 지정
+		String fontnameCSS = settingService.getfontNameforCSS(fontset[0]);
+		int fontsize = fontset[1];
+		
+		
 		// 객체 통째로 보내준다.
-		model.addAttribute("diary", diary);
-		model.addAttribute("font", fontnameCSS);
 
-		System.out.println(diary.getContent());
+		System.out.println(DiarySetToCss[0]);
+		System.out.println(DiarySetToCss[1]);
+
+		
+		model.addAttribute("diary", diary);
+		model.addAttribute("DiarySetToCss", DiarySetToCss);
+		
+		model.addAttribute("font", fontnameCSS);
+		model.addAttribute("fontsize", fontsize);
 
 		return "/member/diary/detail";
 	}
@@ -172,10 +174,14 @@ public class MemberController {
 		//임시 
 		int uid = 1;
 
-		DiaryView diary = diaryservice.viewDiary(diaryId); 
-		String fontnameCSS = settingService.getfontNameforCSS(memberservice.getMemberSetting(uid));
+		DiaryView diary = diaryService.viewDiary(diaryId); 
+		//font 설정 관련 배열
+		int[] fontset = memberService.getMemberSetting(uid);
+		System.out.println(fontset[0]);
 		
-		System.out.println(fontnameCSS);
+		//폰트 명 스타일과 사이즈 지정
+		String fontnameCSS = settingService.getfontNameforCSS(fontset[0]);
+		int fontsize = fontset[1];
 		
 //		.noto-sans-k{
 //		    font-size: 100%;
@@ -205,7 +211,9 @@ public class MemberController {
 		// 객체 통째로 보내준다.
 		model.addAttribute("diary", diary);
 		model.addAttribute("font", fontnameCSS);
+		model.addAttribute("fontsize", fontsize);
 
 		return "/member/diary/modify";
 	}
+
 }

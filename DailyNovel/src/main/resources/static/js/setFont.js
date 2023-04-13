@@ -46,6 +46,8 @@ function changeFont(selectedFontId) { // 라디오 버튼에 해당하는 폰트
 	let existSize = fontAdjuster.value;
 	content.style.fontSize = fontAdjuster.value + "px";
 
+
+  //16 22 28
 	fontAdjuster.oninput = function(e) {
 		content.style.fontSize = fontAdjuster.value + "px";
 	};

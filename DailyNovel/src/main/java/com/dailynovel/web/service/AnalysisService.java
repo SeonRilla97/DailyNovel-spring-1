@@ -9,27 +9,25 @@ import com.dailynovel.web.entity.How;
 
 public interface AnalysisService {
 	
-	List<Feeling> getCount();
+	List<Feeling> getCount(Integer id);
+
+	List<Feeling> getValue(String name, Integer frequency, Integer id);
+
+	List<Feeling> getFeelingRank(Integer id);
+
+	List<Feeling> getFeelingTopRank(Integer id);
 	
+	List<FeelingPercent> getPercent(Integer id);
 
-	List<Feeling> getValue();
 
-	List<Feeling> getFeelingRank();
-
-	List<Feeling> getFeelingTopRank();
-
-	List<Feeling> getValue(String name, Integer frequency);
+	List<Honesty> getHonesty(String honestyRange, Integer count, Integer id);
 	
-	List<FeelingPercent> getPercent();
-
-	List<Honesty> getHonesty();
-
-	List<Honesty> getHonesty(String honestyRange, Integer count);
+	List<How> getHow(String name, Integer count, Integer id);
 	
-	List<How> getHow(String name, Integer count);
+	List<How> getHowTop(Integer id);
 
-	List<How> getHow();
-	
-	List<How> getHowTop();
+
+
+
 
 }

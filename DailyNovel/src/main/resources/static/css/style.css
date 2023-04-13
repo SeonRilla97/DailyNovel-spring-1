@@ -14,21 +14,23 @@ html {
 }
 /* 설정 폰트 */
 .noto-sans-k{
-/*     font-size: 100%; */
+
+    /* font-size: 100%; */
     font-family: 'Noto Sans KR', sans-serif;
 }
 .nanum-pen-s{
-/*     font-size: 100%; */
+    /* font-size: 100%; */
     font-family: 'Nanum Pen Script', cursive;
 }
 .sunflower{
-/*     font-size: 100%; */
+    /* font-size: 100%; */
     font-family: 'Sunflower', sans-serif;
 }
 .dongle{
-/*     font-size: 100%; */
+    /* font-size: 100%; */
     font-family: 'Dongle', sans-serif;
 }
+
 /* color - 값이 오를수록 진해짐.*/
 
 /* 배경 */
