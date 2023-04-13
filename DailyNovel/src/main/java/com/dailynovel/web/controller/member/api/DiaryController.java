@@ -8,8 +8,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,7 +54,8 @@ public class DiaryController {
 	// }
 
 	@PostMapping
-	public String insert(@RequestBody Map<String, Object> dry) throws ParseException {
+	public String insert(@RequestBody Map<String, Object> dry
+			,HttpSession session) throws ParseException {
 
 		// service.insertDiary(diary);
 		//
@@ -59,7 +63,8 @@ public class DiaryController {
 		Integer feelingId = 0;
 		Integer weatherId = 0;
 		
-		int memberId = Integer.parseInt(String.valueOf(dry.get("memberId")));
+//		int memberId = Integer.parseInt(String.valueOf(dry.get("memberId")));
+		int memberId = (int) session.getAttribute("id");
 		int templateId = Integer.parseInt(String.valueOf(dry.get("templateId")));
 		if(String.valueOf(dry.get("feelingId")).equals("null")) {
 			feelingId = null;
@@ -67,8 +72,13 @@ public class DiaryController {
 		else
 			feelingId = Integer.parseInt(String.valueOf(dry.get("feelingId")));
 //		Integer feelingId = 
-//		Integer 
-		weatherId = Integer.parseInt(String.valueOf(dry.get("weatherId")));
+//		Integer
+		if(String.valueOf(dry.get("weatherId")).equals("null")) {
+			weatherId = null;
+		}
+		else
+			weatherId = Integer.parseInt(String.valueOf(dry.get("weatherId")));
+//		weatherId = Integer.parseInt(String.valueOf(dry.get("weatherId")));
 		Integer honesty = Integer.parseInt(String.valueOf(dry.get("honesty")));
 		String regDate = (String) dry.get("regDate");
 		String title = (String) dry.get("title");
@@ -99,6 +109,29 @@ public class DiaryController {
 		
 
 		return "ㄷ...될까..?";
+	}
+	
+	// ajax 테스트
+	@GetMapping("{id}") 
+	public Diary get(
+			@PathVariable("id") int id){
+		
+		Diary d = service.Diary(id);
+		
+//		return "menu " + id;
+		return d;
+		//객체를 못전달해 이를 다 표현하기 위해 문자열로 바꾸거나,바꾸는 표현식을 써야해!
+		//요새 트렌드는 JSON과 XML을 써야
+		
+	};
+	
+	@DeleteMapping("{id}")
+	public String delete(
+			@PathVariable int id) {
+		
+		int result = service.removeDiary(id);
+		
+		return id + "완료";
 	}
 
 }

@@ -45,7 +45,8 @@ window.addEventListener('load',()=>{
   regTmpModal.addEventListener('click', (e)=> {
       if(e.target.tagName != "LI")
         return;      
-      modalClose(regTmpModal,container);      
+      modalClose(regTmpModal,container);
+      modalOpen(regResetWarnModal,container);
   })
 
   regFeelModal.addEventListener('click',(e)=>{

@@ -83,13 +83,13 @@ public class  AnalysisController {
 		public String How(Model model, HttpSession session) {
 		    Integer id = (Integer) session.getAttribute("id");    
 		    List<How> list = service.getHow(null, null, id);		  
-		    String Toptemplate = null;
-		    
-		    if(!list.isEmpty()) {
-		        Toptemplate = list.get(0).getDescription();
+		    List<How> Toptemplate = service.getHowTop(id);
+		    How Tophow = null;
+		    if(!Toptemplate.isEmpty()) {
+		        Tophow = Toptemplate.get(0);
 		    }
 		    model.addAttribute("list", list);
-		    model.addAttribute("Tophow", Toptemplate);
+		    model.addAttribute("Tophow", Tophow);
 		    return "member/diary/analysis/looking-back/how";
 		}
 

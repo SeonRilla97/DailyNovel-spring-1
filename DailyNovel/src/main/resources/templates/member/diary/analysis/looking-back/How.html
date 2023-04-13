@@ -20,29 +20,33 @@
             <div class="box-large color-bg-green-2 h2 font-weight-700 color-white-1 ">How</div>
         </header>
 
-        <div class="main f-pdt-7 lc-space-between-alignment">
+        <div class="main  lc-space-between-alignment">
                
-               
-               
-               <div class="main C">
-                <div class ="chart pdb-5">
-                    <canvas id="myChart" width="3rem" height="3rem"></canvas>
-                
-                </div>
 
-                <div class="">
-			    <p class="box-p font-size20 font-weight-bolder description-pont pdb-5" th:if="${Tophow != null}" th:text="${Tophow.description}">
-			    </p>
-			</div>
+	 	       <div class ="MC">
+	                <div class ="chart pdt-5">
+	                    <canvas id="myChart" width="3rem" height="3rem"></canvas>
+	                
+	                </div>
+		       </div>
+			 
+			 
+			 
+			 
+	         <div class="PC">
+	         	<div th:if="${Tophow != null}" th:text="${Tophow.name} + 템플릿" class="box-p pdb-3 font-size30 font-weight-bolder description-pont"></div>
+			    <div th:if="${Tophow != null}" th:text="${Tophow.description}" class="box-p font-size20 font-weight-bolder description-pont">
+			    </div>
+			 </div>
 			                
                 
-                <div class="lc-space-around pdb-5">
-                    <div class="btn-feeling"><a class="" href="./main"> 이전</a></div>
-                </div>                
-             
-
-                </div>
-        </div>
+                
+              <div class="BC">
+	                <div class="lc-space-around pdb-5">
+	                    <div class="btn-feeling"><a class="" href="./main"> 이전</a></div>
+	                </div>                
+              </div>
+       </div>
 
         <footer class="footer ">
             <div class="container-nav color-white-1">
