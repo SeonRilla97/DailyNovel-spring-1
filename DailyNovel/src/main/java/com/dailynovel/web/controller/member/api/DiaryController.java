@@ -1,7 +1,6 @@
 package com.dailynovel.web.controller.member.api;
 
 
-import java.util.ArrayList;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,6 +20,8 @@ import com.dailynovel.web.entity.Diary;
 import com.dailynovel.web.entity.DiaryPreview;
 import com.dailynovel.web.service.DiaryService;
 
+import jakarta.servlet.http.HttpSession;
+
 @RestController("apiDiaryController")
 @RequestMapping("/diarys")
 public class DiaryController {
@@ -31,8 +32,10 @@ public class DiaryController {
 	@GetMapping("preview")
 	public Map<Integer, ArrayList<DiaryPreview>> getPreview(
 			@RequestParam int year,
-			@RequestParam int month) {
-		Map<Integer, ArrayList<DiaryPreview>> list = service.getPreview(year, month);
+			@RequestParam int month,
+			HttpSession session) {
+		int memberid = (int) session.getAttribute("id");
+		Map<Integer, ArrayList<DiaryPreview>> list = service.getPreview(memberid, year, month);
 
 		return list;
 	}

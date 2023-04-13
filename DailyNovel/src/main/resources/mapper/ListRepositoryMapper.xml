@@ -13,28 +13,6 @@
 	
 
 	
-<!-- 	<select id="findAllById" resultType="DiaryPreview"> -->
-<!-- 		SELECT  -->
-<!-- 			date_format(reg_date, '%Y-%m-%d')as regDate,  -->
-<!-- 			title, -->
-<!-- 			text as content, -->
-<!-- 			template_id as templateId, -->
-<!-- 			weather_id as weatherId, -->
-<!-- 			feeling_id as feelingId -->
-<!-- 		FROM dailynoveldb.diary -->
-<!-- 		<trim prefix="where" prefixOverrides="AND |OR "> -->
-<!-- 			<if test="date != null"> -->
-<!-- 				str_to_date(reg_date,'%Y-%m-%d') = #{date}</if> -->
-<!-- 			<if test="tid != null"> -->
-<!-- 				and template_id = ${tid}</if> -->
-<!-- 			<if test="wid != null"> -->
-<!-- 				and weather_id = ${wid}</if> -->
-<!-- 			<if test="fid != null"> -->
-<!-- 				and feeling_id = ${fid}</if> -->
-<!-- 		</trim> -->
-<!--  	</select>  -->
-	
-	
 	<select id="findAllById" resultMap="DiaryResultMap">
 		select id, title, text as content,
 		date_format(reg_date, '%Y-%m-%d') as reg_date,

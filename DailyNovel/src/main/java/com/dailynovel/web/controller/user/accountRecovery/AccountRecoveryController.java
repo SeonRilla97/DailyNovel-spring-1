@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.dailynovel.web.service.MemberService;
 
 import jakarta.mail.internet.MimeMessage;
-import jakarta.servlet.http.HttpSession;
 
 @RequestMapping("/user/account-recovery")
 @Controller
