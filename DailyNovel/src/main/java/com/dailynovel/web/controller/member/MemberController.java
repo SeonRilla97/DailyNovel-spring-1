@@ -171,10 +171,13 @@ public class MemberController {
 	// @RequestParam(required = true, defaultValue = "1", name="id") Integer
 	// memberId,
 	) {
-		//임시 
-		int uid = 1;
 
-		DiaryView diary = diaryService.viewDiary(diaryId); 
+		DiaryView diary = diaryService.viewDiary(diaryId);
+		
+		
+		//임시 (세션 안쓰고 누가 썻는지 방식으로 uid에 저장함) 
+		int uid = 1;
+		
 		//font 설정 관련 배열
 		int[] fontset = memberService.getMemberSetting(uid);
 		System.out.println(fontset[0]);
