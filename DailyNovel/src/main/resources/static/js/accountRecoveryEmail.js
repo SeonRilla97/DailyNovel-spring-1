@@ -19,6 +19,15 @@ window.onload = function() {
 	const nicknameLabel = document.querySelector("label[for='nickname']");
 	const phoneCheckLabel = document.querySelector("label[for='phone']");
 	
+	
+	
+	   signUpForm.addEventListener('keydown', (e) => {
+      if (e.key === "Enter") {
+         e.preventDefault();
+      }
+   });
+   
+	
 	// ===============회원가입 css 스타일==========
 	const outBox = document.querySelectorAll(".outBox");
 	//여기에 유효성검사 까지 들어간다면 어떻게 되는거지???

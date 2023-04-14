@@ -127,7 +127,7 @@ function drawDate() {
 		if(new URL(window.location.href).pathname =='/member/main')
 			callbackforDiaryPreview(result);
 	})
-	  .catch(error => console.log('error', error));
+	  .catch(error => null);
 }  //달력 그리기 함수 끝!
 
 

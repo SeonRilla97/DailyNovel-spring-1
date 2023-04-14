@@ -24,7 +24,7 @@ bg.src = BACKGROUNDLIST[Math.floor(Math.random() * BACKGROUNDLIST.length)];
 
 function callbackforDiaryPreview(result) {
     const diaryData = result;
-    console.log(diaryData);
+    // console.log(diaryData);
     let activedDate =document.querySelectorAll(".calender .date .circle-li");
     let sliderAboutDate = document.querySelector("#previewSlider")
     // console.log(diaryData);
