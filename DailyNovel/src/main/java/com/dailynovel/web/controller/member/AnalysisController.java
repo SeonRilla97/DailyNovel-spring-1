@@ -54,8 +54,8 @@ public class  AnalysisController {
 	        TopPcnt = TopPercent.get(0);
 	    }
 	    if (!Percent.isEmpty()) {
-	        if (Percent.size() > 1) {
-	            Pcnt = Percent.get(1);
+	        if (Percent.size() > 5) {
+	            Pcnt = Percent.get(4);
 	        } else {
 	            Pcnt = null;
 	        }
