@@ -82,7 +82,7 @@ window.addEventListener("load", function(){
 
 	if((diaryObj.feelingId == null && diaryObj.weatherId == null)){
 		// feelBox.classList.add("null-circle-img");
-		weatherBox.classList.add("null-circle-img");
+		// weatherBox.classList.add("null-circle-img");
 	}
 
 	// chgTmpBtn.addEventListener('click',()=>{

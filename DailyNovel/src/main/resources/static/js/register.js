@@ -39,7 +39,7 @@ window.addEventListener("load", function(){
 	//	"honesty": null	
 	//};
 	
-	viewObj();
+	// viewObj();
 
 	// 날짜 관련 부분
 	const date = new Date();
@@ -58,13 +58,13 @@ window.addEventListener("load", function(){
 	// const year = date.getFullYear();
 
 	let dateTxt = document.querySelector("#date");
-	console.log(`${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분 ${second}초`);
+	// console.log(`${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분 ${second}초`);
 	
-	console.log("iso" + date.toISOString());
-	console.log("localedate" + date.toLocaleDateString());
+	// console.log("iso" + date.toISOString());
+	// console.log("localedate" + date.toLocaleDateString());
 
 	diaryObj.regDate = `${year}/${month}/${day} ${hour}:${minute}:${second}`;
-	console.log(diaryObj.regDate);
+	// console.log(diaryObj.regDate);
 	dateTxt.innerText = `${year}년 ${month}월 ${day}일`;
 	
 
@@ -132,11 +132,11 @@ window.addEventListener("load", function(){
 		}
 		
 
-		console.log(`선택한 리스트 : ${value}`);		
+		// console.log(`선택한 리스트 : ${value}`);		
 		diaryObj.feelingId = getValueIndex(value, valueArr);
 		
 
-		viewObj();
+		// viewObj();
 	};
 	
 	tmpDiv.onclick = function (e){
@@ -170,24 +170,24 @@ window.addEventListener("load", function(){
 		}
 
 		diaryObj.weatherId = getValueIndex(value,valueArr);
-		viewObj();
+		// viewObj();
 	}
 	
 	
 	titleEditor.addEventListener('change',()=>{
 		diaryObj.title = titleEditor.value;
 		
-		viewObj();	
+		// viewObj();	
 	})
 	
 	contentEditor.addEventListener('change',()=>{
 		diaryObj.content = contentEditor.value;
-		viewObj();	
+		// viewObj();	
 	})	
 	
 	submitBtn.addEventListener('click',()=>{
 		diaryObj.honesty = honestyRange.value;
-		console.log(diaryObj);
+		// console.log(diaryObj);
 	
 	// 객체 json 파싱
 	//let diaryJSON = JSON.parse(diaryObj);
@@ -206,10 +206,11 @@ window.addEventListener("load", function(){
 	  redirect: 'follow'
 	};
 	
+	// 콘솔로그 지우는 중
 	fetch("http://localhost:8080/diarys", requestOptions)
 	  .then(response => response.text())
-	  .then(result => console.log("성공"))
-	  .catch(error => console.log('error', error));
+	  .then(result => null)
+	  .catch(error => null);
 	
 	
 	})
