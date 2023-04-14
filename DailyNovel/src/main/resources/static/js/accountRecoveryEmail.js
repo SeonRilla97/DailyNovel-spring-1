@@ -59,7 +59,7 @@ if(emailCheckBtn)
 				else{
 
 					emailLabel.style.color = "#69BC80";		
-				nickname.innerHTML += 	maskEmail(code, 3)+" 입니다.";
+				nickname.innerHTML = maskEmail(code, 4)+" 입니다.";
 				}
 			}
 
