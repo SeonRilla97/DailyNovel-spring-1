@@ -1,8 +1,16 @@
-
+const signUpForm = document.querySelector("#sign-up-form");
 const email = document.querySelector("#email");
 const emailCheckNum = document.querySelector("#email-check");
 const emailCheckBtn = document.querySelector("#email-check-btn"); //인증번호 전송
 const emailLabel = document.querySelector("label[for='email']");
+
+
+   signUpForm.addEventListener('keydown', (e) => {
+      if (e.key === "Enter") {
+         e.preventDefault();
+      }
+   });
+   
 
 // ===============회원가입 css 스타일==========
 const outBox = document.querySelectorAll(".outBox");
