@@ -1041,6 +1041,12 @@ color: white;
   
 }
 
+.reg-cancel-btn-li{
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
 /* -- 작성 - guide.html */
 /* 없어질지도 모름(현재 안씀) */
 .swiper-bullets{

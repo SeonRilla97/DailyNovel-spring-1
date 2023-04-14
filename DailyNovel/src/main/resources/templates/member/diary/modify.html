@@ -50,8 +50,8 @@
         </div>
         <div class="l-box-mini">
           <div class="name lc-center color-white-1">기분</div>
-          <div id="feel-value" class="value" th:classappend="${DiarySetToCss[0]}">
-            <!-- <div class="feel-circle-box happy-img"></div> -->
+          <div id="feel-value" class="value"  th:classappend="${DiarySetToCss[0]}">
+            <!-- <div class="feel-circle-box"></div> -->
             <div class="value" >
               <!-- 비내림 -->
             </div>
@@ -80,7 +80,7 @@
     </div> 
 
     <div class="footer lc-center pdb-2">
-      <div id="submit-test" class="btn3 color-bg-green-2"><a th:href="@{/member/main}">수정하기</a></div>
+      <div id="submit-test" class="btn3 "><a th:href="@{/member/main}">수정하기</a></div>
       <!-- <div id="submit-test" class="btn3 color-bg-green-2">수정하기</a></div> -->
     </div>
   </div>
@@ -154,10 +154,10 @@
 
   <div id="reg-cancel-modal" class="reg-select-modal">    
     <div class="reg-cancel-section ">
-      <span style="text-align: center;">지금 나가시면<br>지금까지 작성하신 내용은 사라집니다.<br>괜찮으신가요?</span>
-      <ul>
+      <span style="text-align: center;">수정을 멈추고<br>돌아가실 건가요?</span>
+      <ul class="reg-cancel-btn-li">
         <li class="btn3"><a th:href="@{/member/main}">네</a></li>
-        <li id="modal-close-btn" class="btn3">아니요, 돌아갈래요.</li>
+        <li id="modal-close-btn" class="btn3">아니요</li>
       </ul>    
     </div>
   </div>

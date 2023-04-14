@@ -81,7 +81,7 @@ window.addEventListener("load", function(){
 	let chgTmpValue = "free-form";
 
 	if((diaryObj.feelingId == null && diaryObj.weatherId == null)){
-		feelBox.classList.add("null-circle-img");
+		// feelBox.classList.add("null-circle-img");
 		weatherBox.classList.add("null-circle-img");
 	}
 
