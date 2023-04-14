@@ -6,6 +6,6 @@ submitBtn.onclick = function(){
     alert("문의가 전송되었습니다.");
     setTimeout(xdxd=>santance.value="",10);
     radioInit[2].checked=true
-    
+    /* 업데이트 */
     
 }
