@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dailynovel.web.repository.SettingRepository">
+
+	<resultMap id="settingId" type="setting">
+	  <result property="profileImage" column="profile_image"/>
+	  <result property="statusMessage" column="status_message"/>
+	  <result property="alarmSwitch" column="alarm_switch"/>
+	  <result property="fontFamily" column="font_family"/>
+	  <result property="fontSize" column="font_size"/>
+	  <result property="kakaoAlarmSwitch" column="kakao_alarm_switch"/>
+	  <result property="alarmTime" column="alarm_time"/>
+	</resultMap>
+	
+	<resultMap id="exportId" type="export">
+	  <result property="regDate" column="reg_date"/>
+	  <result property="feelingName" column="name"/>
+	</resultMap>
+	
+<!-- 	<resultMap id="fontId" type="font"> -->
+<!-- 	  <result property="regDate" column="reg_date"/> -->
+<!-- 	  <result property="feelingName" column="name"/> -->
+<!-- 	</resultMap> -->
+
+	<select id="getFont" resultType="setFont">
+		
+	
+	</select>
+
+	
+	<select id="findById" resultMap="settingId">
+		select * from member 
+		where id=#{id}
+	</select>
+	
+	
+
+	<select id="findDiaryListById" resultMap="exportId">
+		select d.reg_date, f.name, d.title, d.text 
+			from diary d 
+			inner join feeling f 
+			on d.feeling_id=f.id 
+			where member_id=#{id} order by reg_date asc
+	</select>
+	
+	<select id="findFontById" resultType="setfont">
+		select * from font_family;
+	</select>
+	
+	
+ 	<update id="updateProfile" parameterType="Setting">
+		update member
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="profileImage !=null">
+				profile_image=#{profileImage},
+			</if>
+			<if test="nickName !=null">
+				nickname=#{nickName},
+			</if>
+			<if test="statusMessage !=null">
+				status_message=#{statusMessage},
+			</if>
+			<if test="alarmSwitch !=null">
+				alarm_switch=#{alarmSwitch},
+			</if>
+			<if test="kakaoAlarmSwitch !=null">
+				kakao_alarm_switch=#{kakaoAlarmSwitch},
+			</if>
+			<if test="alarmTime !=null">
+				alarm_time=#{alarmTime}
+			</if>
+		</trim>
+			 where id=#{id}
+	</update>
+
+	<update id="updateFont" parameterType="Setting">
+		update member
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="fontFamily !=null">
+				font_family=#{fontFamily},
+			</if>
+			<if test="fontSize !=null">
+				font_size=#{fontSize}
+			</if>
+		</trim>
+			 where id=#{id};
+ 	</update>
+
+	<delete id="deleteAcount" parameterType="Setting">
+		delete from member where id = #{id};
+	</delete>
+	
+		<select id="findFontId" resultType="setFont">
+		SELECT 
+			*
+ 		FROM 
+			font_family
+		where
+			id = #{fid}
+	</select>
+	
+
+
+</mapper>

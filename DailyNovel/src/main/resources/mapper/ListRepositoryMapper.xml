@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dailynovel.web.repository.ListRepository">
+	<resultMap id="DiaryResultMap" type="Diary">
+      <result property="templateId" column="template_id"/>
+      <result property="feelingId" column="feeling_id"/>
+      <result property="weatherId" column="weather_id"/>
+      <result property="regDate" column="reg_date" />
+      <result property="memberId" column="member_id" />
+	</resultMap>
+	
+
+	
+	<select id="findAllById" resultMap="DiaryResultMap">
+		select id, title, text as content,
+		date_format(reg_date, '%Y-%m-%d') as reg_date,
+		feeling_id,weather_id, member_id,template_id,id
+		FROM dailynoveldb.diary
+		<trim prefix="where" prefixOverrides="AND |OR ">
+			<if test="date != null">
+				str_to_date(reg_date,'%Y-%m-%d') = #{date}</if>
+			<if test="tid != null">
+				and template_id = ${tid}</if>
+			<if test="wid != null">
+				and weather_id = ${wid}</if>
+			<if test="fid != null">
+				and feeling_id = ${fid}</if>
+		</trim>
+	</select>
+</mapper>

@@ -17,7 +17,44 @@
 		<jakarta-servlet.version>5.0.0</jakarta-servlet.version>
 		<java.version>17</java.version>
 	</properties>
+	
+	<repositories>
+		<repository>
+		    <id>AsposeJavaAPI</id>
+		    <name>Aspose Java API</name>
+		    <url>https://repository.aspose.com/repo/</url>
+		</repository>
+	</repositories>
+	
+	
+	
 	<dependencies>
+	<!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
+			<dependency>
+			    <groupId>com.itextpdf</groupId>
+			    <artifactId>itextpdf</artifactId>
+			    <version>5.5.13.3</version>
+			</dependency>
+	<!-- https://mvnrepository.com/artifact/com.itextpdf/itext-asian -->
+			<dependency>
+			    <groupId>com.itextpdf</groupId>
+			    <artifactId>itext-asian</artifactId>
+			    <version>5.2.0</version>
+			</dependency>
+						
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.aspose</groupId> -->
+<!-- 			<artifactId>aspose-words</artifactId> -->
+<!-- 			<version>23.3</version> -->
+<!-- 			<classifier>jdk17</classifier> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency>   -->
+<!-- 	        <groupId>com.aspose</groupId> -->
+<!-- 			<artifactId>aspose-pdf</artifactId> -->
+<!-- 			<version>23.3</version> -->
+<!-- 		</dependency>   -->
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -25,15 +62,16 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
 		<dependency>
 		    <groupId>org.apache.tomcat.embed</groupId>
@@ -55,6 +93,49 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.mybatis.spring.boot</groupId>
+		    <artifactId>mybatis-spring-boot-starter-test</artifactId>
+		    <version>3.0.1</version>
+		    <scope>test</scope>
+		</dependency>
+
+        <!-- Email 인증 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+				
+<!-- 		js, css 자동반영	:선유진 -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -62,6 +143,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

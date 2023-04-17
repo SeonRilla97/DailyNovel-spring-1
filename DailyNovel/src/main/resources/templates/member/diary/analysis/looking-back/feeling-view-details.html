@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html 	xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" type="text/css" href="/css/reset.css">
+<link rel="stylesheet" type="text/css" href="/css/button.css">
+<link rel="stylesheet" type="text/css" href="/css/box.css">
+<link rel="stylesheet" type="text/css" href="/css/layout.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/icon.css" />
+<link rel="stylesheet" type="text/css" href="/css/component-mobile.css">
+<link rel="stylesheet" type="text/css" href="/css/util.css">
+</head>
+<body class="container-1">
+    
+        <header class="header lc-center ">
+            <div class="box-large color-bg-green-2 h2 font-weight-700 color-white-1 ">기분</div>
+        </header>
+
+        <div class="main lc-space-between-alignment">
+               
+         	<div class ="MC">
+            
+					<div class="feeling-big-box pdt-4" >
+		                <div class="feeling-box border" th:each="detail : ${list}">
+	                    <div class=feeling th:style="'background-image:url('+ @{/image/feeling/{img}(img=${detail.img})} +');'">
+	                    	<!-- <img th:src="@{/image/feeling/{img}(img=${detail.img})}"> -->
+	                    	 
+	                    </div>
+	                    <div class="count-box border lc-center">
+	                    	<p th:text="${detail.name}"></p>
+	                    	<p th:text="${detail.frequency}"></p>
+	                    </div>
+	                </div>
+                
+           </div>
+		</div>
+		
+		
+		           
+		<div class="PC">
+		</div>               
+               
+
+                
+		<div class="BC">               
+            <div class="lc-space-around pdb-5">
+                <div class="btn-feeling border"><a class="" href="/member/analysis/feeling">이전</a></div>
+                    
+                </div>
+          
+		</div>
+                
+                
+        </div>
+
+        <footer class="footer ">
+            <div class="container-nav color-white-1">
+                
+                <div class="nav-1 lc-center">
+                    <a href="/member/diary/list" class="lc-vertical-alignment">
+                    <div class="nav-icon bookmark-btn"></div>
+                    <div class="h6 mgt-2">모아보기</div>
+                </a>
+                </div>
+                
+                <div class="nav-2 lc-center">
+                    <a href="/" class="lc-vertical-alignment">
+                        <div class=" nav-icon speech-bubble-btn"></div>
+                        <div class="h6 mgt-2">커뮤니티</div>
+                    </a>
+                </div>
+
+                <div class="nav-main lc-center">
+                    <a href="/member/main" class="lc-vertical-alignment">
+                        <div class="nav-icon book-btn"></div>
+                        <div class="h6 mgt-2">메인화면</div>
+                    </a>
+                </div>
+    
+                <div class="nav-4 lc-center">
+                    <a href="/member/analysis/main" class="lc-vertical-alignment" >
+                    <div class="nav-icon  hourglass-dark-btn"></div>
+                    <div class="h6 mgt-2">돌아보기</div>
+                </a>
+                </div>
+                <div class="nav-5 lc-center">
+
+                    <a href="/member/setting/main" class="lc-vertical-alignment">
+
+                    <div class="nav-icon gear-btn"></div>
+                    <div class="h6 mgt-2">설정하기</div>
+                </a>
+                </div>
+            </div>
+
+        </footer>
+    
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/css/layout.css">
+<link rel="stylesheet" href="/css/icon.css">
+<link rel="stylesheet" href="/css/button.css">
+<link rel="stylesheet" href="/css/box.css">
+<link rel="stylesheet" href="/css/component-mobile.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/util.css">
+
+<script src="/js/selectTmp.js"></script>
+<title>어떻게 일기를 작성해볼까?</title>
+</head>
+<body>
+	<div class="container-1">
+		<div class="header"
+			style="display: flex; justify-content: end; align-items: center;">
+			<a th:href="@{/member/main}" class=" pdr-4"><div class="icon close-btn"></div></a>
+		</div>
+		<div class="main tmp-main">
+			<div class="lc-center">
+				<p class="text-center h1 font-bold">
+					어떻게 일기를<br>남기고 싶으신가요?
+				</p>
+			</div>
+			<div class="tmp-section">				
+        <ul class="tmps" style="margin-bottom: 1rem;">
+
+              <li class="btn1" value="free-form"><a th:href="@{/member/diary/register(tmp=${'free-form'})}">자유롭게</a></li>
+
+              <li>
+                <div id="simple-tmp" class="btn1">간편일기</div>      
+                <ul class="tmp-select-box mgt-1">
+                  <li class="simple-tmp-box" value="thanks-form"><a th:href="@{/member/diary/register(tmp=${'thanks-form'})}">감사일기</a></li>
+                  <li class="simple-tmp-box" value="meat-form"><a th:href="@{/member/diary/register(tmp=${'meat-form'})}">밥블로그</a></li>
+                  <li class="simple-tmp-box" value="question-form"><a th:href="@{/member/diary/register(tmp=${'question-form'})}">질문일기</a></li>
+                </ul>        
+              </li>      
+              <li class="btn1" value="movie-form"><a th:href="@{/member/diary/register(tmp=${'movie-form'})}">영화</a></li>
+              <li class="btn1" value="trip-form"><a th:href="@{/member/diary/register(tmp=${'trip-form'})}">여행</a></li>              
+        </ul>
+   	 	</div>
+		</div>
+		<div class="footer lc-center">
+			<div class="lc-center">선택 시 작성화면으로 넘어갑니다.</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

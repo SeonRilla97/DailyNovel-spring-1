@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dailynovel.web.repository.AnalysisRepository">
+
+	<resultMap id="HonestyMap" type="Honesty">
+		 <result property="honestyRange" column="honesty_range"/>
+		</resultMap>
+	
+	
+	<select id="findCount" parameterType="Integer" resultType="Feeling">
+		SELECT f.name, f.img, count(d.feeling_id) as frequency, d.reg_date
+		FROM feeling f
+		LEFT JOIN diary d ON f.id = d.feeling_id AND d.member_id = #{id} and MONTH(d.reg_date) = MONTH(CURRENT_DATE())
+		group by f.name
+		ORDER BY frequency DESC;
+	</select>
+
+	
+
+	<select id="findFeelingTopRank" parameterType="Integer" resultType="Feeling">
+		SELECT name, img, count(d.member_id) as frequency, description
+		FROM diary d
+        inner join feeling f on f.id = d.feeling_id
+		where member_id = #{id} and MONTH(reg_date) = MONTH(CURRENT_DATE())
+		group by name
+		ORDER BY frequency DESC
+	</select>
+	
+
+	<select id="findFeelingRank" parameterType="Integer" resultType="Feeling">
+		SELECT name, img, count(d.member_id) as frequency, DENSE_RANK() OVER (ORDER BY frequency DESC) as ranking
+		FROM diary d
+        left join feeling f on f.id = d.feeling_id
+		where member_id = #{id}  and MONTH(reg_date) = MONTH(CURRENT_DATE())
+		group by name
+		ORDER BY frequency DESC
+        LIMIT 1,4;
+	</select>
+	
+	<select id="findValue" parameterType="Integer" resultType="Feeling">
+		SELECT f.name, count(d.member_id) as frequency
+		FROM diary d
+        inner join feeling f on f.id = d.feeling_id
+		where member_id = #{id} and MONTH(reg_date) = MONTH(CURRENT_DATE())
+		GROUP BY name
+		ORDER BY frequency DESC;
+	</select>
+	
+	<select id="findHonesty" parameterType="Integer" resultMap="HonestyMap">
+    SELECT
+    CASE
+        WHEN honesty BETWEEN 0 AND 20 THEN '0-20'
+        WHEN honesty BETWEEN 21 AND 40 THEN '21-40'
+        WHEN honesty BETWEEN 41 AND 60 THEN '41-60'
+        WHEN honesty BETWEEN 61 AND 80 THEN '61-80'
+        WHEN honesty BETWEEN 81 AND 100 THEN '81-100'
+	    END AS honesty_range,
+	    COUNT(*) AS count
+		FROM diary
+		WHERE member_id = #{id} AND honesty IS NOT NULL and MONTH(reg_date) = MONTH(CURRENT_DATE())
+		GROUP BY honesty_range
+		ORDER BY honesty_range ASC;
+	</select>
+	
+	<select id ="findHow" parameterType="Integer" resultType="How">
+	select t.name, d.member_id, count(d.template_id) as count
+	from template t
+	inner join diary d on d.template_id = t.id
+	where month(d.reg_date) = month(current_date())
+	group by t.name, d.member_id
+	having d.member_id = #{id}
+	order by count DESC;
+	</select>
+	
+	<select id ="findTopHow" parameterType="Integer" resultType="How">
+	select t.name, d.member_id, count(d.template_id) as count, t.description
+	from template t
+	inner join diary d on d.template_id = t.id
+	where month(d.reg_date) = month(current_date())
+	group by t.name, d.member_id
+	having d.member_id = #{id}
+	order by count DESC;
+	</select>
+	
+	<select id ="findpercent" parameterType="Integer" resultType="Feelingpercent">
+	SELECT 
+	f.name, 
+	COUNT(d.feeling_id) AS frequency,
+	(SELECT COUNT(d.feeling_id) FROM diary d WHERE d.member_id = #{id} AND MONTH(d.reg_date) = MONTH(CURRENT_DATE())) AS total,
+	ROUND(COUNT(d.feeling_id) / (SELECT COUNT(d.feeling_id) FROM diary d WHERE d.member_id = #{id} AND MONTH(d.reg_date) = MONTH(CURRENT_DATE())) * 100, 0) AS percent
+	from diary d
+	LEFT JOIN feeling f ON d.feeling_id = f.id
+	WHERE member_id = #{id} AND MONTH(d.reg_date) = MONTH(CURRENT_DATE())
+	GROUP BY f.name
+	ORDER BY percent DESC;
+	</select>
+	
+	
+	
+
+
+</mapper>

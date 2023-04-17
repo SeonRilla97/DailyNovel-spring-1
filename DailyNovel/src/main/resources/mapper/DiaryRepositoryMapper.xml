@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dailynovel.web.repository.DiaryRepository">
+	<resultMap id="DiaryResultMap" type="Diary">
+      <result property="memberId" column="member_id" />
+      <result property="templateId" column="template_id" />
+      <result property="feelingId" column="feeling_id" />
+      <result property="weatherId" column="weather_id" />
+      <result property="content" column="text" />
+      <result property="regDate" column="reg_date" />
+	</resultMap>
+	
+	<resultMap id="DiaryReadResultMap" type="DiaryView">
+      <result property="memberId" column="member_id" />
+      <result property="templateName" column="t_name" />
+      <result property="feelingName" column="f_name" />
+      <result property="feelingImg" column="f_img" />
+      <result property="weatherName" column="w_name" />
+      <result property="content" column="text" />
+      <result property="regDate" column="reg_date" />
+	</resultMap>
+	
+
+  <select id="getAllDiaryById" resultType="Diary">
+    select * 
+    from Diary 
+    where member_id = #{id};
+    
+  </select>
+  
+  	<select id="findAllById" resultMap="DiaryResultMap">
+		select id, title, text,
+		date_format(reg_date, '%Y-%m-%d') as reg_date,
+		feeling_id,weather_id, member_id,template_id,id
+		FROM dailynoveldb.diary
+		where member_id = #{memberId}
+			<if test="date != null">
+				and str_to_date(reg_date,'%Y-%m-%d') = #{date}</if>
+			<if test="tid != null">
+				and template_id = ${tid}</if>
+			<if test="wid != null">
+				and weather_id = ${wid}</if>
+			<if test="fid != null">
+				and feeling_id = ${fid}</if>
+	</select>
+  
+  <insert id="register" parameterType="Diary">
+	insert 
+	into diary
+	
+	(member_id,
+	reg_date,
+	title,
+	text,
+	template_id,
+	feeling_id,
+	weather_id,
+	honesty)
+	
+	values
+	
+	(#{memberId},
+	#{regDate},
+	#{title},
+	#{content},
+	#{templateId},
+	#{feelingId},
+	#{weatherId},
+	#{honesty});  
+  </insert>  
+  
+
+  
+  <select id="getDiaryByMonthly" resultMap="DiaryResultMap">
+  	SELECT 
+	  	substring(text, 1, 60) as text,
+	  	title,
+	 	str_to_date(reg_date,'%Y-%m-%d') as reg_date,
+	 	day(reg_date) as diary_date,
+	 	id
+  	FROM 
+  		dailynoveldb.diary
+	WHERE  		
+		member_id = #{memberId}
+		and year(reg_date) = ${year}
+  		and month(reg_date) = ${month};
+  </select>
+
+
+  <select id="getDateByMonthly" resultType="Integer">
+  	SELECT 
+		day(reg_date) as reg_date
+	FROM 
+		dailynoveldb.diary
+	WHERE
+		year(reg_date) = ${year}
+		and month(reg_date) = ${month};
+  </select>
+  
+  
+  <!-- 특정 다이어리 조회  -->
+  <select id="view" resultMap="DiaryResultMap">
+  	
+  	SELECT 
+  		* FROM diary 
+	where id = ${id};
+  </select>
+  
+  <select id="findDiaryView" resultMap="DiaryReadResultMap">
+  	
+  	SELECT 
+  		* 
+  		FROM diary_view 
+	where id = ${id};
+  </select>
+  
+  	<update id="update" parameterType="Diary">
+		update diary
+		<set>
+			<if test="title != null">title = #{title},</if>
+			<if test="content != null">text = #{content}</if>
+			
+			<!-- <trim prefix="set" suffixOverrides=",">
+				<if test="title != null">
+					title = ${title},
+				</if>
+				<if test="content !=null">
+					text = ${content},
+				</if>
+			</trim> -->
+		</set>
+		where id = #{id}
+	</update>
+  
+  
+  	<delete id="delete">
+		delete 
+		from 
+			diary 
+		where id =${id}
+  	</delete>
+  
+  
+  
+  
+</mapper>

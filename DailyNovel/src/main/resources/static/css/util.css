@@ -10,13 +10,23 @@
  */
 
 /* -------------------------------------------------------------  */
+
+/* 230331 : util 속성의 경우에는 최종적으로 부여하는 속성의 위치를 수정하는 부분들이라서 !important을 다 부여해준다고 합니다! */
 /* 공통 속성 */
 .d-none{
   display: none;
 }
 
+.t-none{
+  text-decoration: none !important;
+}
+
+
+
 /* margin */
- 
+.mg-2{margin: 0px 0.25rem};/* 추가한자: 유병우 사유:피드백의 문의 종류 라디오버튼 여유를 위해 */
+
+
 /* margin-top */
 /* 4 8 16 24 48 */
 
@@ -25,93 +35,52 @@
 .mgt-3{ margin-top: 1rem;}
 .mgt-4{ margin-top: 1.5rem;}
 .mgt-5{ margin-top: 3rem;}
+/* 추가한자: 이동형 사유:메인에서 헤더와 메인이 더 벌어졌으면 해서 넣었습니다. */
+.mgt-6{ margin-top: 5rem;}
+
+/* 추가한자: 이동형 사유:왼쪽 방향도 추가했습니다. */
+.mgl-1{ margin-left: 0.25rem;}
+.mgl-2{ margin-left: 0.5rem;}
+.mgl-3{ margin-left: 1rem;}
+.mgl-4{ margin-left: 1.5rem;}
+.mgl-5{ margin-left: 3rem;}
+
+
 
 /* -------------------------------------------------------------  */
 
 /* padding */
 
-.pd{}
-.pdt{}
+/* 1 2 3  4  5 */
+/* 4 8 16 24 48 */
 
-/* -------------------------------------------------------------  */
+.pd-a{ padding: 3rem 1.5rem;} 
 
-/* color - 값이 오를수록 진해짐.*/
+/* 48px, 24px */
 
-/* 배경 */
+.pdt-1{ padding-top: 0.25rem;}
+.pdt-2{ padding-top: 0.5rem;}
+.pdt-3{ padding-top: 1.0rem;}
+.pdt-4{ padding-top: 1.5rem;}
+.pdt-5{ padding-top: 3rem;}
 
-/* 초록색 */
-.color-bg-green-1 { background-color: #9aefb0; }
-.color-bg-green-2 { background-color: #69bc80; }
-.color-bg-green-3 { background-color: #388b53; }
-/* 흰 색 */
-.color-bg-white-1 { background-color: #ffffff; }
-.color-bg-white-2 { background-color: #fcfcfc; }
-.color-bg-white-3 { background-color: #fafafa; }
-/* 노란색 */
-.color-bg-yellow-1 { background-color: #ffff77; }
-.color-bg-yellow-2 { background-color: #fff241; }
-.color-bg-yellow-3 { background-color: #c8c000; }
+.pdb-1{ padding-bottom: 0.25rem;}
+.pdb-2{ padding-bottom: 0.5rem;}
+.pdb-3{ padding-bottom: 1.0rem;}
+.pdb-4{ padding-bottom: 1.5rem;}
+.pdb-5{ padding-bottom: 3.0rem;}
 
-/* 색상 */
+.pdl-1{ padding-left: 0.25rem;}
+.pdl-2{ padding-left: 0.5rem;}
+.pdl-3{ padding-left: 1.0rem;}
+.pdl-4{ padding-left: 1.5rem;}
+.pdl-5{ padding-left: 3rem;}
 
-/* 초록색 */
-.color-green-1 { color: #9aefb0; }
-.color-green-2 { color: #69bc80; }
-.color-green-3 { color: #388b53; }
-
-/* 흰 색 */
-.color-white-1 { color: #ffffff; }
-.color-white-2 { color: #fcfcfc; }
-.color-white-3 { color: #fafafa; }
-
-/* 노란색 */
-.color-yellow-1 { color: #ffff77; }
-.color-yellow-2 { color: #fff241; }
-.color-yellow-3 { color: #c8c000; }
-
-
-/* -------------------------------------------------------------  */
-
-/* font */
-
-/* font 크기 */
-.font-size-1{ font-size: px;}
-
-/* font 굵기 */
-.font-weight-1{ font-weight: 100;}
-
-/* -------------------------------------------------------------  */
-
-/* border */
-
-/* radius */
-.border-r-1{ border-radius: 10px; }
-.border-r-2{border-radius: 20px;}
-.border-r-3{border-radius: 30px;}
-.border-r-3{ border-radius: 40px; }
-.border-r-4{ border-radius: 50px; }
-
-
-.border-style-btm {
-    border-radius: 0px 0px 40px 40px;
-}
-
-.border-style-left1 {
-    border-radius: 10px 0px 0px 10px;
-}
-
-.border-style-top {
-    border-radius: 30px 30px 0px 0px ;
-}
-
-.border-style-top2 {
-    border-radius: 10px 10px 0px 0px ;
-}
-.border-style-btm2 {
-    border-radius: 0px 0px 10px 10px;
-}
-
-
+.pdr-1{ padding-right: 0.25rem;}
+.pdr-2{ padding-right: 0.5rem;}
+.pdr-3{ padding-right: 1.0rem;}
+.pdr-4{ padding-right: 1.5rem;}
+.pdr-5{ padding-right: 3rem;}
 
 /* -------------------------------------------------------------  */
 
@@ -122,6 +91,57 @@
   align-items: center;
 }
 
+.flex-jfy-center{
+  display: flex;
+  justify-content: center;
+}
+
+.flex-aln-center{
+  display: flex;
+  align-items: center;
+}
+
+
+/* 이재준 : space-between 간격 조절 추가했습니다. (03/14) */
+.flex-jty-spacebtw {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-jfy-speven{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+.flex-row{
+  flex-direction: row;
+}
+
+.flex-column{
+  flex-direction: column;
+}
+
+/*  추가한자: 이동형 사유:location 수직 정렬이 필요했기 때문에 정렬정중앙 정렬이 아님 */
+.lc-vertical-alignment{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+
+}
+/*  추가한자: 이동형 사유:location 수평 정렬이 필요했기 때문에 정렬정중앙 정렬이 아님 */
+.lc-horizontal-alignment{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
 /* Layout(개별 컨텐츠 레이아웃) */
 .relative{
   position: relative;
@@ -130,17 +150,37 @@
   position: sticky;
   bottom: 0;
 }
+/* 임시 별칭  */
+.top-sticky{
+  position: sticky;    
+  top: 0;
+  background-color: white;  
+}
+
+.bottom-sticky{
+  position: sticky;    
+  background-color: white;     
+  bottom: 0px;
+}
 .ib{
   display: inline-block;
 }
 
-/* 박스 쉐도우 */
-.shadow-1 {box-shadow: 0px 3px 13px -5px rgba(0,0,0,0.69);}
-.shadow-2 {box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.153);}
+
+
 
 /* 아이템 크기 설정 */
 .content-box {
   height: 100%;
   width: 100%;
 }
+.input-boder-none{
+  border:0px;
+}
 
+.undrag {
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none
+}

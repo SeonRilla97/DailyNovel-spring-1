@@ -1,0 +1,166 @@
+/* 나눔 글꼴 임포트 */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+/* 설정 폰트 임포트 */
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Sunflower:wght@300;500;700&display=swap');
+
+/* -------------------------------------------------------------  */
+
+/* 앱 기본 폰트 */
+html {
+    font-size: 100%;
+	font: inherit;
+	font-family: 'Nanum Gothic', sans-serif;
+	vertical-align: baseline;
+}
+/* 설정 폰트 */
+.noto-sans-k{
+
+    /* font-size: 100%; */
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.nanum-pen-s{
+    /* font-size: 100%; */
+    font-family: 'Nanum Pen Script', cursive;
+}
+.sunflower{
+    /* font-size: 100%; */
+    font-family: 'Sunflower', sans-serif;
+}
+.dongle{
+    /* font-size: 100%; */
+    font-family: 'Dongle', sans-serif;
+}
+
+/* color - 값이 오를수록 진해짐.*/
+
+/* 배경 */
+
+/* 초록색 */
+.color-bg-green-1 { background-color: #9aefb0; }
+.color-bg-green-2 { background-color: #69bc80; }
+.color-bg-green-3 { background-color: #388b53; }
+
+/* 흰 색 */
+.color-bg-white-1 { background-color: #ffffff; }
+.color-bg-white-2 { background-color: #fcfcfc; }
+.color-bg-white-3 { background-color: #fafafa; }
+
+/* 노란색 */
+.color-bg-yellow-1 { background-color: #ffff77; }
+.color-bg-yellow-2 { background-color: #fff241; }
+.color-bg-yellow-3 { background-color: #c8c000; }
+
+/* 색상 */
+
+/* 초록색 */
+.color-green-1 { color: #9aefb0; }
+.color-green-2 { color: #69bc80; }
+.color-green-3 { color: #388b53; }
+
+/* 흰 색 */
+.color-white-1 { color: #ffffff; }
+.color-white-2 { color: #fcfcfc; }
+.color-white-3 { color: #fafafa; }
+
+/* 노란색 */
+.color-yellow-1 { color: #ffff77; }
+.color-yellow-2 { color: #fff241; }
+.color-yellow-3 { color: #c8c000; }
+
+/* 추가한자: 이동형 사유: 빨간색이 필요함 */
+.color-red-1{color:#F08A8A;}
+.color-red-2{color:#d63a3a;}
+.color-red-3{color:#f70000;}
+
+/* 검은색 */
+.color-black-1 { color: #000;}
+
+
+/* -------------------------------------------------------------  */
+
+/* font */
+
+/* font 크기 */
+.font-size11{font-size:0.6875rem;}
+
+.font-size30{font-size: 1.875rem;}
+.font-size20{font-size: 1.25rem;}
+/* 30 = 1.875 */
+
+/* 작은 크기 더 추가했습니다. - 이재준(03.07)/
+/ 32px 24px 20px 16px 14px */
+
+.h1 { font-size: 2rem; }
+.h2 { font-size: 1.5rem; }
+.h3 { font-size: 1.125rem; }
+.h4 { font-size: 1rem; }
+.h5 { font-size: 0.875rem;}
+
+.h6 { font-size: 0.7rem;}
+
+
+.font-size30{font-size: 1.875rem;}
+/* detail 에 폰트 사이즈 특정하기 위해서 추가함 */
+.font-size22{font-size: 1.375rem;} 
+.font-size20{font-size: 1.25rem;}
+
+/*font-size 새로 만들려고 합니다.  index에서 사용중*/
+.font-size48{font-size: 3rem;}
+/* 30 = 1.875 */
+
+
+/* font 굵기 */
+
+/* .font-weight-normal{ font-weight: 400;} */
+.font-weight-700{ font-weight: 700;}
+.font-weight-bolder {font-weight: bolder;}
+
+
+/* 굵기 단위 새로 추가했습니다. - 이재준(03.07) */
+/* 굵음 보통 얇게 */
+
+.font-bold{ font-weight : bold;}
+.font-normal{ font-weight: normal;}
+.font-light{ font-weight: lighter;}
+
+/* text-align */
+
+.text-center{
+    text-align: center;
+}
+/* -------------------------------------------------------------  */
+
+/* border */
+
+/* radius */
+.border-r-1{ border-radius: 10px; }
+.border-r-2{ border-radius: 20px;}
+.border-r-3{ border-radius: 30px;}
+.border-r-3{ border-radius: 40px; }
+.border-r-4{ border-radius: 50px; }
+
+
+.border-style-btm {
+    border-radius: 0px 0px 40px 40px;
+}
+
+.border-style-left1 {
+    border-radius: 10px 0px 0px 10px;
+}
+
+.border-style-top {
+    border-radius: 30px 30px 0px 0px ;
+}
+
+.border-style-top2 {
+    border-radius: 10px 10px 0px 0px ;
+}
+.border-style-btm2 {
+    border-radius: 0px 0px 10px 10px;
+}
+
+/* 박스 쉐도우 */
+.shadow-1 {box-shadow: 0px 3px 13px -5px rgba(0,0,0,0.69);}
+.shadow-2 {box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.153);}
+
+

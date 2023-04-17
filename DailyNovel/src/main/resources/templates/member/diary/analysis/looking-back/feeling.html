@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html 	xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/button.css">
+    <link rel="stylesheet" type="text/css" href="/css/box.css">
+    <link rel="stylesheet" type="text/css" href="/css/layout.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/icon.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/component-mobile.css">
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+</head>
+<body class="container-1">
+    
+        <header class="header lc-center">
+            <div class="box-large color-bg-green-2 h2 font-weight-700 color-white-1 ">기분</div>
+        </header>
+<!-- ----------------------------header----------------------------------------------------------- -->
+
+      <div class="main lc-space-between-alignment">
+               
+               
+            <div class="MC">
+				<div class="feeling-rank-box" >
+	
+					 <div class="top-feeling " th:unless="${Toprank == null}" th:style="'background-image:url('+ @{/image/feeling/{img}(img=${Toprank.img})} +');'">
+						    <div class="first-prize"></div>
+						</div>
+						<div th:unless="${Toprank != null}" class="pdt-5 diary-img"></div>
+					<div class="sub-feeling">
+					    <div th:unless="${rank == null}" th:each="r : ${rank}" th:style="'background-image:url('+ @{/image/feeling/{img}(img=${r.img})} +');'" class="rank-box "></div>
+					</div>
+					
+				</div>
+			</div>
+				
+				
+				
+            <div class="PC">
+            					
+                    <p class="box-p font-size20 font-weight-bolder description-pont" th:unless="${Toprank == null}" th:text="${Toprank.description}">
+                    </p>
+                </div>    
+
+               <div class="BC">
+                    <div th:unless="${Toprank != null}" class ="font-size30 lc-center f-pdb-9  font-weight-700">일기를 작성해주세요</div>
+               
+	                <div class="lc-space-around border pdb-5">
+	                    <div class="btn-feeling"><a class="" href="/member/analysis/feeling-view-detail">상세보기</a></div>
+	                    <div class="btn-feeling"><a class="" href="/member/analysis/feeling-chart">차트보기</a></div>
+	                </div>
+          	 </div>
+
+                
+                
+       </div>
+
+        <footer class="footer ">
+            <div class="container-nav color-white-1">
+                
+                <div class="nav-1 lc-center">
+                    <a href="/member/diary/list" class="lc-vertical-alignment">
+                    <div class="nav-icon bookmark-btn"></div>
+                    <div class="h6 mgt-2">모아보기</div>
+                </a>
+                </div>
+                
+                <div class="nav-2 lc-center">
+                    <a href="/" class="lc-vertical-alignment">
+                        <div class=" nav-icon speech-bubble-btn"></div>
+                        <div class="h6 mgt-2">커뮤니티</div>
+                    </a>
+                </div>
+
+                <div class="nav-main lc-center">
+                    <a href="/member/main" class="lc-vertical-alignment">
+                        <div class="nav-icon book-btn"></div>
+                        <div class="h6 mgt-2">메인화면</div>
+                    </a>
+                </div>
+    
+                <div class="nav-4 lc-center">
+                    <a href="/member/analysis/main" class="lc-vertical-alignment" >
+                    <div class="nav-icon  hourglass-dark-btn"></div>
+                    <div class="h6 mgt-2">돌아보기</div>
+                </a>
+                </div>
+                <div class="nav-5 lc-center">
+
+                    <a href="/member/setting/main" class="lc-vertical-alignment">
+
+                    <div class="nav-icon gear-btn"></div>
+                    <div class="h6 mgt-2">설정하기</div>
+                </a>
+                </div>
+            </div>
+
+        </footer>
+    
+
+</body>
+</html>

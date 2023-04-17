@@ -1,0 +1,24 @@
+.outBox {padding: 0px;}
+.outBox .inputBox {position:relative; height:100%; width:100%; border: 0px;}
+.outBox .inputBox input[type="text"] {padding:10px 10px; width:100%; height:120%; font-size:1.2rem; box-sizing:border-box; border:0px solid #999; outline:none;}
+.outBox .inputBox label {position:absolute; left:0; bottom:0; padding:0 6px; color:#999; font-size:1rem; font-weight:normal; background:#fff; transform:scale(1) translate(4px, -18px); transition:all .15s; pointer-events:none;}
+
+
+.outBox .inputBox input[type="text"]:focus,
+.outBox.existence .inputBox input[type="text"] {
+  border: 1px solid #69bc80;
+}
+
+.outBox .inputBox input[type="text"]:focus + label,
+.outBox.existence .inputBox label {color:#69BC80; transform:scale(.85) translate(-10px, -48px);}
+
+
+
+
+a{
+  transition: all 0.5s ease-in-out .1s;
+}
+a:hover{
+  width:30vw;
+
+}

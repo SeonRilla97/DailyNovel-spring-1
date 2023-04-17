@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/css/layout.css">
+<link rel="stylesheet" href="/css/box.css">
+<link rel="stylesheet" href="/css/icon.css">
+<link rel="stylesheet" href="/css/component-mobile.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/util.css">
+
+<!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+<script src="/js/member/diary/list2.js" defer="defer"></script>
+</head>
+<body>
+
+	<div class="container-1" id = "main-container">
+		<header class="header lc-center">
+			<div class="box-large h2 font-weight-700" 
+			 @click.prevent="calcHandler"
+			>모아보기</div>
+			
+		</header>
+		
+		<main class="main list-main-flex-col" id="main">
+			<div class="option-container lists-filter pdt-4">
+			 <!-- 정렬을 위로 빼기 -->
+					<div class="option-box mgl-2">
+						<div data-name="tid" data-id="" class="title lc-center border-r-2" th:attr="data-id=${curTmeplate?.id}?:''" th:text="${curTmeplate?.name}?:'템플릿'">템플릿</div>		
+						<div class="select border-r-2 hidden no-scroll">
+							<div class="option lc-center" th:text="${template.name}"  th:attr = "data-id=${template.id}" th:each="template : ${templateList}">기본</div>
+							<div class="option lc-center h5" data-id="" data-default="템플릿">선택안함</div>
+						</div>
+					</div>
+					
+					<div  data-name="fid" data-id="" class="option-box mgl-2">
+						<div class="title lc-center border-r-2" th:attr="data-id=${curFeeling?.id}?:''" th:text="${curFeeling?.name}?:'기분'" >기분</div>
+						<div class="select border-r-2 hidden">
+							<div class="option lc-center" th:each="feeling:${feeling}" th:text="${feeling.name}" th:attr="data-id= ${feeling.id}">화남</div>
+							<div class="option lc-center h5" data-id="" data-default="기분">선택안함</div>
+						</div>
+					</div>
+
+					<div data-name="wid" data-id="" class="option-box mgl-2" >
+						<div class="title lc-center border-r-2" th:attr="data-id=${curWeather?.id}?:''" th:text="${curWeather?.name}?:'날씨'">날씨</div>
+						<div class="select border-r-2 hidden">
+							<div class="option lc-center" th:attr= "data-id = ${weather.id}" th:each="weather:${weatherList}" th:text = "${weather.name}">맑음</div>
+							<div class="option lc-center h5" data-id="" data-default="날씨">선택안함</div>
+						</div>
+					</div>
+					 
+					
+					<div class="b lc-center args border-r-2 mgl-2 color-bg-green-2 wid-6rem" id="openBtn" th:attr="data-reg-date=${curRegDate}">날짜</div>
+				
+			</div>
+	<hr>
+			<ul class="lists">
+				<li class="list-box" th:each="diary : ${list}" th:onclick="|location.href='@{/member/diary/detail(diaryId=${diary.id})}'|">
+					<div class="list-date lc-center h2 font-weight-bolder mgt-2" th:text="${#dates.format(diary.regDate, 'yyyy-MM-dd')}">2022-22-22</div>
+					<div class="list-title mgt-3" th:text="${diary.title}">오늘은 힘든 하루</div>
+					<!-- <div class="title"><span class="ib diary">노는게 젤 좋아 친구들 모여라</span><span class="ib date">2022-22-22</span></div> -->
+					<div class="content mgt-2" th:text=${diary.content}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea eum labore eos a deleniti tenetur, libero minima hic at, vel necessitatibus nemo, suscipit rerum vitae expedita porro obcaecati quibusdam repellat.</div>
+				</li>
+
+		        	
+	        	<li class="list-box" th:if="${#lists.isEmpty(list)}">
+					<div class="list-date lc-center h2 font-weight-bolder mgt-2" th:text="${param?.reg_date}?'날짜 : ' +  ${param.reg_date}:'다시한번 확인해주세요!'">2022-22-22</div>
+					<div class="content mgt-5 lc-center h3" > 일기가 없어요!</div>
+				</li>
+			</ul>
+
+		</main>
+
+		
+		<footer class="footer ">
+            <div class="container-nav color-white-1">
+                
+                <div class="nav-1 lc-center">
+                    <a href="/member/diary/list" class="lc-vertical-alignment">
+                    <div class="nav-icon bookmark-dark-btn"></div>
+                    <div class="h6 mgt-2">모아보기</div>
+                </a>
+                </div>
+                
+                <div class="nav-2 lc-center">
+                    <a href="/" class="lc-vertical-alignment">
+                        <div class=" nav-icon speech-bubble-btn"></div>
+                        <div class="h6 mgt-2">커뮤니티</div>
+                    </a>
+                </div>
+
+                <div class="nav-main lc-center">
+                    <a href="/member/main" class="lc-vertical-alignment">
+                        <div class="nav-icon book-btn"></div>
+                        <div class="h6 mgt-2">메인화면</div>
+                    </a>
+                </div>
+    
+                <div class="nav-4 lc-center">
+                    <a href="/member/analysis/main" class="lc-vertical-alignment" >
+                    <div class="nav-icon  hourglass-btn"></div>
+                    <div class="h6 mgt-2">돌아보기</div>
+                </a>
+                </div>
+                <div class="nav-5 lc-center">
+
+                    <a href="/member/setting/main" class="lc-vertical-alignment">
+
+                    <div class="nav-icon gear-btn"></div>
+                    <div class="h6 mgt-2">설정하기</div>
+                </a>
+                </div>
+            </div>
+
+        </footer>
+	</div>
+
+		<!-- 모달창 -->
+	<div class="list-modal hidden"> 
+		<div class="bg"></div>
+		<div class="modalBox">
+			<div class="calender" id = "calendar">
+				<div class="header" id="calendar-header">
+				  <div class="prev-month" id="prev-btn">&#60;</div>
+				  <div class="h3 lc-center" id="date-config"></div>
+				  <div class="next-month" id="next-btn">&#62;</div>
+				</div>
+	  
+				<div class="main">
+				  <ul class="day mgt-3">
+					<li>SUN</li>
+					<li>MON</li>
+					<li>TUE</li>
+					<li>WED</li>
+					<li>THU</li>
+					<li>FIR</li>
+					<li>SAT</li>
+				  </ul>
+	  
+				  <ul class="date" id="calendar-date"></ul>
+				</div>
+			  </div>
+		</div>
+	</div>
+
+	<!-- //템플릿 모달
+	<div class="list-modal hidden">
+		<div class="bg"></div>
+		<div class="modalBox">
+
+		</div>
+	</div> -->
+
+
+
+	<script src="/js/calendar.js"></script>
+</body>
+</html>
