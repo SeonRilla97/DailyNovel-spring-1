@@ -28,6 +28,12 @@ public interface MemberService{
 
 
 	int[] getMemberSetting(int uid);
+	
+	
+	boolean mailCheck(String email,int authCode , String Subject ,String Text);
+
+
+	int randNum();
 
 
 
