@@ -2,6 +2,7 @@ package com.dailynovel.web.config;
 
 import javax.sql.DataSource;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 
@@ -20,7 +21,7 @@ import org.springframework.security.web.SecurityFilterChain;
 // https://www.baeldung.com/spring-security-thymeleaf
 
 @Configuration
-public class RlandSecurityConfig {
+public class DailyNovelSecurityConfig {
 	
 	
 	@Autowired
@@ -115,7 +116,7 @@ public class RlandSecurityConfig {
 		
 		
 		
-		return new RlandUserDetailService() ;
+		return new DailyNovelUserDetailService() ;
 	}
 
 }

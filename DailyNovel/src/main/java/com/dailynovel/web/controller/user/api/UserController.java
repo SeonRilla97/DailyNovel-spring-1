@@ -1,7 +1,8 @@
 package com.dailynovel.web.controller.user.api;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,13 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.dailynovel.web.service.MemberService;
 
 import com.dailynovel.web.service.SignupService;
 
 import ch.qos.logback.core.model.Model;
-
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 
@@ -31,16 +31,22 @@ public class UserController {
 	private SignupService signupService;
 		
 	@PostMapping("login")
-	public String loginCheck(@RequestParam(required = true) String email,
+	public void loginCheck(@RequestParam(required = true) String email,
 	@RequestParam(required = true) String password,
-	 Model model ,HttpSession session) {
+	 Model model ,HttpSession session
+	 ,HttpServletResponse res
+			) throws IOException {
 		boolean logincheck= service.loginCheck(email,password);
 		if(logincheck) {
 			int id = service.getIdByEmail(email);
 			session.setAttribute("id", id);
-			return "redirect:/member/main";
+			String redirect_url ="/member/main";
+			res.sendRedirect(redirect_url);
 		}
-		return "redirect:login?error=error";
+		else {
+		String redirect_url ="login?error=error";
+		res.sendRedirect(redirect_url);
+		}
 	}
 	
 	@PostMapping(value = "/signup")

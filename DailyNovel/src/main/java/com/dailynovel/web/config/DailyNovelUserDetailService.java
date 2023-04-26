@@ -1,5 +1,4 @@
 package com.dailynovel.web.config;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,12 +10,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import kr.co.rland.web.entity.Member;
-import kr.co.rland.web.repository.MemberRepository;
+import com.dailynovel.web.entity.Member;
+import com.dailynovel.web.repository.MemberRepository;
+
+
 
 
 @Service
-public class RlandUserDetailService implements UserDetailsService{
+public class DailyNovelUserDetailService implements UserDetailsService{
 
 	@Autowired
 	private MemberRepository repository;
@@ -33,7 +34,7 @@ public class RlandUserDetailService implements UserDetailsService{
 		
 		//데이터가 준비되었으면 이제 RlandUserDetails 객체를 만들어서 데이터 담아서 반환해주기
 		
-		RlandUserDetails user = new RlandUserDetails();
+		DailyNovelUserDetails user = new DailyNovelUserDetails();
 		
 		user.setId(member.getId());
 		user.setUsername(username);

@@ -1,3 +1,4 @@
+
 package com.dailynovel.web.config;
 
 import java.util.Collection;
@@ -6,7 +7,7 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class RlandUserDetails implements UserDetails { 
+public class DailyNovelUserDetails implements UserDetails { 
 	
 	//데이터 베이스에서 쿼리문을쓰면 담을 공간
 
