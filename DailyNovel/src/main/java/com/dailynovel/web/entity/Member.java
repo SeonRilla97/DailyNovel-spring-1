@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Member {
-	private int id;
+	private long id;
 	private	String email;
 	private	String password;
 	private String nickname;

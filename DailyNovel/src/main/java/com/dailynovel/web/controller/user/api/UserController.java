@@ -30,24 +30,25 @@ public class UserController {
 	@Autowired
 	private SignupService signupService;
 		
-	@PostMapping("login")
-	public void loginCheck(@RequestParam(required = true) String email,
-	@RequestParam(required = true) String password,
-	 Model model ,HttpSession session
-	 ,HttpServletResponse res
-			) throws IOException {
-		boolean logincheck= service.loginCheck(email,password);
-		if(logincheck) {
-			int id = service.getIdByEmail(email);
-			session.setAttribute("id", id);
-			String redirect_url ="/member/main";
-			res.sendRedirect(redirect_url);
-		}
-		else {
-		String redirect_url ="login?error=error";
-		res.sendRedirect(redirect_url);
-		}
-	}
+//	@PostMapping("login")
+//	public void loginCheck(@RequestParam(required = true) String username,
+//	@RequestParam(required = true) String password,
+//	 Model model ,HttpSession session
+//	 ,HttpServletResponse res
+//			) throws IOException {
+//		boolean logincheck= service.loginCheck(username,password);
+//		if(logincheck) {
+//			int id = service.getIdByEmail(username);
+//			session.setAttribute("id", id);
+//			String redirect_url ="/member/main";
+//			res.sendRedirect(redirect_url);
+//			System.out.println("여기오니?");
+//		}
+//		else {
+//		String redirect_url ="login?error=error";
+//		res.sendRedirect(redirect_url);
+//		}
+//	}
 	
 	@PostMapping(value = "/signup")
 	public String PostsignUp(

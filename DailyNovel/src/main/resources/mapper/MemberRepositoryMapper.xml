@@ -36,7 +36,7 @@
 	</update>
 	
 	<update id="updateTemporaryPassword" parameterType="String">
-		update member set password = #{uuid} where email = #{email}
+		update member set password = #{uid} where email = #{email}
 	
 	</update>
 	
@@ -47,6 +47,10 @@
 			member
 		where
 			id = #{uid}
+	</select>
+	
+	<select id="findByUserName" resultType="Member">
+		select * from member where email =#{username};
 	</select>
 	
 

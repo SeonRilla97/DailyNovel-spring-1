@@ -93,7 +93,7 @@ public class DailyNovelUserDetails implements UserDetails {
 
 	@Override
 	public String toString() {
-		return "RlandUserDetail [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password
+		return "DailyNovelUserDetails [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password
 				+ ", ahthroties=" + authroties + "]";
 	}
 

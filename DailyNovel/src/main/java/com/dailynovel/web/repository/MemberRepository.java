@@ -37,6 +37,9 @@ public interface MemberRepository {
 	public int getFindIdByEmail(String email);
 
 
+	public Member findByUserName(String username);
+
+
 
 
 }
